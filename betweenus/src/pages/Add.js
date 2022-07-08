@@ -13,14 +13,14 @@ import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRound
 export default function Add() {
   return (
     <Container>
-      <AppBar position="static">
+      <Grid item xs={12}>
         <Toolbar>
           <ArrowBackIosNewRoundedIcon />
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             모집하기
           </Typography>
         </Toolbar>
-      </AppBar>
+      </Grid>
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <TextField
