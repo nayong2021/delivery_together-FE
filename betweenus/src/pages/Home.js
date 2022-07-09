@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Container } from "@mui/system";
-import { AppBar, Toolbar, Typography, Grid } from "@mui/material";
+import { Toolbar, Typography, Grid } from "@mui/material";
 import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import NoRoomNotice from "../components/NoRoomNotice";

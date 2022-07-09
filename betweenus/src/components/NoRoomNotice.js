@@ -8,7 +8,7 @@ export default function NoRoomNotice() {
       display="flex"
       justifyContent="center"
       alignItems="center"
-      minHeight="85vh"
+      minHeight="80vh"
     >
       <Grid container justifyContent="center" alignItems="center">
         <img

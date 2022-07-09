@@ -1,13 +1,7 @@
 import * as React from "react";
-import {
-  AppBar,
-  Toolbar,
-  Button,
-  TextField,
-  Grid,
-  Typography,
-} from "@mui/material";
+import { Toolbar, Button, TextField, Grid, Typography } from "@mui/material";
 import { Container } from "@mui/system";
+import { Link } from "react-router-dom";
 import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded";
 
 export default function Add() {
@@ -15,7 +9,9 @@ export default function Add() {
     <Container>
       <Grid item xs={12}>
         <Toolbar>
-          <ArrowBackIosNewRoundedIcon />
+          <Link to="/home">
+            <ArrowBackIosNewRoundedIcon />
+          </Link>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             모집하기
           </Typography>

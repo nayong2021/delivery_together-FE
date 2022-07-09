@@ -17,41 +17,43 @@ export default function LabelBottomNavigation() {
 
   return (
     <BottomNavigation value={value} onChange={handleChange}>
-      <Link to="/home">
-        <BottomNavigationAction
-          label="홈"
-          value="home"
-          icon={<HomeRoundedIcon />}
-        />
-      </Link>
-      <Link to="/map">
-        <BottomNavigationAction
-          label="지도"
-          value="map"
-          icon={<LocationOnOutlinedIcon />}
-        />
-      </Link>
-      <Link to="/add">
-        <BottomNavigationAction
-          label="추가"
-          value="add"
-          icon={<AddCircleRoundedIcon />}
-        />
-      </Link>
-      <Link to="/order">
-        <BottomNavigationAction
-          label="주문"
-          value="order"
-          icon={<ListRoundedIcon />}
-        />
-      </Link>
-      <Link to="/setting">
-        <BottomNavigationAction
-          label="설정"
-          value="setting"
-          icon={<AccountCircleRoundedIcon />}
-        />
-      </Link>
+      <BottomNavigationAction
+        label="홈"
+        value="home"
+        icon={<HomeRoundedIcon />}
+        component={Link}
+        to={"/home"}
+      />
+      <BottomNavigationAction
+        label="지도"
+        value="map"
+        icon={<LocationOnOutlinedIcon />}
+        component={Link}
+        to={"/map"}
+      />
+      <BottomNavigationAction
+        label="추가"
+        value="add"
+        icon={<AddCircleRoundedIcon />}
+        component={Link}
+        to={"/add"}
+      />
+
+      <BottomNavigationAction
+        label="주문"
+        value="order"
+        icon={<ListRoundedIcon />}
+        component={Link}
+        to={"/order"}
+      />
+
+      <BottomNavigationAction
+        label="설정"
+        value="setting"
+        icon={<AccountCircleRoundedIcon />}
+        component={Link}
+        to={"/setting"}
+      />
     </BottomNavigation>
   );
 }
