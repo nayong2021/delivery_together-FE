@@ -1,0 +1,61 @@
+/*modal style*/
+.modal-layer { display: none; position: fixed; top: 50%; left: 50%; z-index: 200; transform: translate(-50%, -50%) scale(1); -webkit-transform: translate(-50%, -50%) scale(1); -moz-transform: translate(-50%, -50%) scale(1); -ms-transform: translate(-50%, -50%) scale(1); -o-transform: translate(-50%, -50%) scale(1); width: calc(100% - 48px); max-width: 312px; }
+.dim-layer { display: none; position: fixed; _position: fixed; top: 0; left: 0; z-index: 200; width: 100%; height: 100%; }
+.dim-layer-on { display: block; }
+.dim-layer .dim-bg { position: fixed; top: 0; left: 0; right: 0; width: 100%; height: 100%; margin: 0 auto; background: #000; opacity: .3; filter: alpha(opacity=30); }
+.dim-layer .modal-layer { display: block; }
+.modal-close { position: absolute; top: 10px; right: 10px; width: 20px; height: 20px; border: none; background: url('../img/ico_x1.png') center center no-repeat; background-size: 10px; }
+
+
+/*bottom sheet style*/
+.modal-layer-v1 { top: auto; left: 0; right: 0; bottom: 0; transform: none; width: 420px; max-width: 100%; margin: 0 auto; border-radius: 10px 10px 0 0; box-shadow: 3px 3px 6px 0 rgba(0, 0, 0, 0.16); box-sizing: border-box; background: #fff; animation: motion1 .5s ease-out; }
+.modal-layer-v1 .modal-close { position: absolute; top: 30px; right: 18px; width: 25px; height: 25px; border: none; background: url('../img/ico_x2.png') center center no-repeat; background-size: 13px; }
+
+/*motion*/
+@keyframes motion1 {
+  0% {
+     bottom: -100%;
+  }
+  100% {
+     bottom: 0;
+  }
+}
+
+
+/*아이디 찾기 모달창*/
+.modal-find { position: relative; margin: 0 auto; padding: 26px; border-radius: 6px; box-sizing: border-box; background: #fff; text-align: center; }
+.modal-find img { display: block; width: 27px; margin: 0 auto 20px; }
+.modal-find .txt { margin-bottom: 25px; font-size: 14px; font-weight: 400; color: #000; text-align: center; }
+.modal-find .txt p { margin-bottom: 20px; }
+.modal-find .txt p:last-child { margin-bottom: 0; }
+.modal-find .txt span { font-weight: 700; color: #1200ff; text-decoration: underline; }
+.modal-find .btn-custom { height: 49px; font-size: 15px; }
+
+
+/*결제하기 모달창*/
+.modal-order { padding: 50px 24px 24px; border-radius: 20px 20px 0 0; box-sizing: border-box; background: #fff; }
+.modal-order .item-info { margin-bottom: 5px; }
+.modal-order .item-info .tit { margin-bottom: 4px; font-size: 14px; font-weight: 500; color: #eb636e; }
+.modal-order .item-info .tit2 { margin-bottom: 8px; font-size: 18px; font-weight: 400; color: #000; }
+.modal-order .item-info .txt { font-size: 16px; font-weight: 400; color: #000; }
+.modal-order .item-info .txt span { margin-right: 3px; font-size: 22px; font-weight: 500; }
+.modal-order .item-info .txt2 { font-size: 16px; font-weight: 400; color: #b6b6b6; text-decoration: line-through; }
+.modal-order .item-info .btn-cart { position: absolute; top: 24px; right: 24px; width: 23px; height: 23px; border: none; background: url('../img/ico_cart2.png') center center no-repeat; background-size: 23px; }
+.modal-order .list-team { padding: 20px 0; box-sizing: border-box; }
+.modal-order .item-count { display: flex; align-items: center; width: 78px; height: 28px; margin: 0 0 25px auto; border: 1px solid #f3f3f3; border-radius: 3px; box-sizing: border-box; }
+.modal-order .item-count > * { display: flex; justify-content: center; align-items: center; width: 33.33%; height: 100%; border: none; background: none; font-size: 13px; font-weight: 400; color: #000; text-align: center; }
+.modal-order .line { height: 1px; margin-bottom: 5px; background: #f3f3f3; }
+.modal-order .item-price { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 22px; }
+.modal-order .item-price .tit { font-size: 13px; font-weight: 400; color: #000; }
+.modal-order .item-price .txt { font-size: 14px; font-weight: 400; color: #000; }
+.modal-order .item-price .txt span { margin: 0 2px 0 6px; font-size: 19px; font-weight: 700; }
+.modal-order .team-message { margin-bottom: 25px; font-size: 14px; font-weight: 700; color: #000; }
+.modal-order .new-team { display: flex; justify-content: space-between; align-items: center; margin-top: 17px; }
+.modal-order .new-team .tit { font-size: 13px; font-weight: 400; color: #909090; line-height: 18px; }
+.modal-order .new-team .btn { display: flex; justify-content: center; align-items: center; height: 43px; padding: 0 20px; border-radius: 6px; box-sizing: border-box; background: #eb636e; font-size: 14px; font-weight: 400; color: #fff; }
+.modal-order .btn-floating-bottom { position: static; padding: 18px 0; }
+
+
+@media only screen and (max-width: 768px) {
+	.modal-layer-v1 { width: 100%; }
+}

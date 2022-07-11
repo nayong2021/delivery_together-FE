@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=0,maximum-scale=10,user-scalable=no">
+<title>우리끼리</title>
+<link rel="stylesheet" href="../css/common.css">
+<script src="../js/jquery-1.11.1.min.js"></script>
+<script src="../js/script.js"></script>
+</head>
+<body>
+
+<!--업로드 최대 용량 모달창-->
+<div class="dim-layer dim-layer-on js-modal">
+	<div class="dim-bg"></div>
+	<div id="layer" class="modal-layer">
+		<div class="modal-container">
+			<div class="modal-message">
+				<img src="../img/ico_mark2.svg" alt=" " class="ico">
+				
+				<div class="tit-group">
+					<div class="tit">게스트 주문 거절</div>
+					<div class="txt">게스트의 주문을 거절할 시에 <br>되돌릴 수 없습니다.</div>
+				</div>
+				
+				<div class="btn-group-modal">
+					<button type="button" class="btn btn-custom js-modal-master-close">주문 거절</button>
+					<button type="button" class="btn btn-custom btn-custom-v1 js-modal-master-close">돌아가기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<header class="header">
+	<div class="hd hd-v1">
+		<div class="hd-tit">그룹 장바구니</div>
+	</div>
+</header>
+
+<section class="cart">
+	<div class="wrap">
+		<!--케이스에 따른 메시지 창-->
+		<!--<div class="no-data">
+			<img src="../img/ico_graphic2.svg" alt=" ">
+			<div class="txt">현재 참여하고 있는 배달 공동구매 방이 없어요!</div>
+			<div class="txt">아직 호스트가 모집 중이에요. 호스트가 주문 수락 <br>또는 거절 시 푸시 알림으로 알려드릴게요! :)</div>
+			<div class="txt">아직 배달 공동구매 방에 참여한 게스트가 없어요!</div>
+		</div>-->
+		
+		<ol class="list-cart">
+			<li>
+				<div class="order-info">
+					<div class="user"><img src="../img/ico_user1.svg" alt=" ">치킨마니아</div>
+					<div class="total-price">총금액:  15,000원</div>
+				</div>
+				
+				<div class="menu-group">
+					<div class="menu">
+						<div class="tit">순살 후라이드 양념 반반</div>
+						<div class="num">x 1개</div>
+						<div class="price">15,000원</div>
+					</div>
+				</div>
+				
+				<div class="btn-group-order">
+					<button type="button" class="btn btn-custom btn-custom-v1">수락</button>
+					<button type="button" class="btn btn-custom btn-custom-v2">거절</button>
+				</div>
+			</li>
+			
+			<li>
+				<div class="order-info">
+					<div class="user"><img src="../img/ico_user1.svg" alt=" ">치킨마니아</div>
+					<div class="total-price">총금액:  20,000원</div>
+				</div>
+				
+				<div class="menu-group">
+					<div class="menu">
+						<div class="tit">황금 올리브 치킨</div>
+						<div class="num">x 2개</div>
+						<div class="price">20,000원</div>
+					</div>
+				</div>
+				
+				<div class="btn-group-order">
+					<button type="button" class="btn btn-custom">수락</button>
+					<button type="button" class="btn btn-custom btn-custom-v2">거절</button>
+				</div>
+			</li>
+			
+			<li>
+				<div class="order-info">
+					<div class="user"><img src="../img/ico_user1.svg" alt=" ">치킨마니아</div>
+					<div class="total-price">총금액:  30,000원</div>
+				</div>
+				
+				<div class="menu-group">
+					<div class="menu">
+						<div class="tit">순살 양념치킨</div>
+						<div class="num">x 1개</div>
+						<div class="price">15,000원</div>
+					</div>
+					
+					<div class="menu">
+						<div class="tit">순살 후라이드 치킨</div>
+						<div class="num">x 1개</div>
+						<div class="price">15,000원</div>
+					</div>
+				</div>
+				
+				<div class="btn-group-order">
+					<button type="button" class="btn btn-custom btn-custom-v1">수락</button>
+					<button type="button" class="btn btn-custom btn-custom-v2">거절</button>
+				</div>
+			</li>
+		</ol>
+		
+		<ol class="order-result">
+			<li>
+				<div class="tit">그룹 음식 총 금액</div>
+				<div class="txt">65,000원</div>
+			</li>
+			
+			<li>
+				<div class="tit">배달비</div>
+				<div class="txt">4,000원</div>
+			</li>
+			
+			<li>
+				<div class="tit"><strong>총 금액</strong></div>
+				<div class="txt"><strong>69,000원</strong></div>
+			</li>
+		</ol>
+		
+		<button type="button" class="btn-custom btn-custom-v2 btn-complete">모집완료</button>
+	</div>
+</section>
+
+<footer class="footer">
+	<div class="ft">
+		<div class="ft-menu">
+			<a href="../index.html"><div class="ico"></div><div class="tit">홈</div></a>
+			<a href="map.html"><div class="ico"></div><div class="tit">지도</div></a>
+			<a href="item-write.html"></a>
+			<a href="cart.html" class="active"><div class="ico"></div><div class="tit">주문</div></a>
+			<a href="setting.html"><div class="ico"></div><div class="tit">설정</div></a>
+		</div>
+	</div>
+</footer>
+
+</body>
+</html>
