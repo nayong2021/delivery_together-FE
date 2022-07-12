@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Typography, Box, Grid } from "@mui/material";
-import NoRoomIcon from "../assets/image/NoRoomIcon.png";
+import NoRoomIcon from "../assets/NoRoomIcon.png";
 
 export default function NoRoomNotice() {
   return (
