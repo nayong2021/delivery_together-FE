@@ -1,27 +1,15 @@
 import * as React from "react";
 import "../assets/css/common.css";
 import MetaTag from "../components/MetaTag";
+import DrowpdownMenuHeader from "../components/DropdownMenuHeader";
+import { ReactComponent as ShortCut } from "../assets/img/ico_shortcut1.svg";
+import { ReactComponent as Clock } from "../assets/img/ico_clock1.svg";
 
 const Home = () => {
   return (
     <div className="Home">
       <MetaTag />
-      <header className="header">
-        <div className="hd">
-          <select className="hd-filter">
-            <option>최신순</option>
-            <option>가까운 순</option>
-            <option>모집인원 많은 순</option>
-          </select>
-          <a href="#!" className="hd-search">
-            <img
-              src={require("../assets/img/ico_search1.svg").default}
-              alt=" "
-            />
-          </a>
-        </div>
-      </header>
-
+      <DrowpdownMenuHeader />
       <section className="main">
         <div className="wrap">
           <a href="#!" className="bnr-main">
@@ -33,10 +21,7 @@ const Home = () => {
               </div>
             </div>
 
-            <img
-              src={require("../assets/img/ico_shortcut1.svg").default}
-              alt=" "
-            />
+            <ShortCut />
           </a>
 
           <ol className="list-item">
@@ -46,10 +31,7 @@ const Home = () => {
                 <div className="place">BBQ 치킨 아주대점</div>
                 <div className="info-group">
                   <div className="time">
-                    <img
-                      src={require("../assets/img/ico_clock1.svg").default}
-                      alt=" "
-                    />
+                    <Clock />
                     마감 6:00pm
                   </div>
                   <div className="info">
@@ -66,10 +48,7 @@ const Home = () => {
                 <div className="place">도미노피자 우만동점</div>
                 <div className="info-group">
                   <div className="time">
-                    <img
-                      src={require("../assets/img/ico_clock1.svg").default}
-                      alt=" "
-                    />
+                    <Clock />
                     마감 6:30pm
                   </div>
                   <div className="info">
@@ -86,10 +65,7 @@ const Home = () => {
                 <div className="place">도미노피자 우만동점</div>
                 <div className="info-group">
                   <div className="time">
-                    <img
-                      src={require("../assets/img/ico_clock1.svg").default}
-                      alt=" "
-                    />
+                    <Clock />
                     마감 6:30pm
                   </div>
                   <div className="info">
@@ -106,10 +82,7 @@ const Home = () => {
                 <div className="place">도미노피자 우만동점</div>
                 <div className="info-group">
                   <div className="time">
-                    <img
-                      src={require("../assets/img/ico_clock1.svg").default}
-                      alt=" "
-                    />
+                    <Clock />
                     마감 6:30pm
                   </div>
                   <div className="info">
@@ -126,10 +99,7 @@ const Home = () => {
                 <div className="place">도미노피자 우만동점</div>
                 <div className="info-group">
                   <div className="time">
-                    <img
-                      src={require("../assets/img/ico_clock1.svg").default}
-                      alt=" "
-                    />
+                    <Clock />
                     마감 6:30pm
                   </div>
                   <div className="info">
