@@ -2,6 +2,7 @@ import * as React from "react";
 import "../assets/css/common.css";
 import MetaTag from "../components/MetaTag";
 import DrowpdownMenuHeader from "../components/DropdownMenuHeader";
+import BottomNavigation from "../components/BottomNavigation";
 import { ReactComponent as ShortCut } from "../assets/img/ico_shortcut1.svg";
 import { ReactComponent as Clock } from "../assets/img/ico_clock1.svg";
 
@@ -112,32 +113,7 @@ const Home = () => {
           </ol>
         </div>
       </section>
-
-      <footer className="footer">
-        <div className="ft">
-          <div className="ft-menu">
-            <a href="index.html" className="active">
-              <div className="ico"></div>
-              <div className="tit">홈</div>
-            </a>
-            <a href="sub/map.html">
-              <div className="ico"></div>
-              <div className="tit">지도</div>
-            </a>
-            <a href="sub/item-write.html">
-              <i className="ico" aria-hidden="true"></i>
-            </a>
-            <a href="sub/cart.html">
-              <div className="ico"></div>
-              <div className="tit">주문</div>
-            </a>
-            <a href="sub/setting.html">
-              <div className="ico"></div>
-              <div className="tit">설정</div>
-            </a>
-          </div>
-        </div>
-      </footer>
+      <BottomNavigation />
     </div>
   );
 };
