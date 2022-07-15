@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ReactComponent as SearchIcon } from "../assets/img/ico_search1.svg";
+import { ReactComponent as SearchIcon } from "../../assets/img/ico_search1.svg";
 
 export default function DrowpdownMenuHeader() {
   return (

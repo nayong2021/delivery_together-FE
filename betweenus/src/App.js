@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Add from "./pages/Add";
 import React from "react";
 import Basic from "./pages/Basic";
+import ItemView from "./pages/ItemView";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/home" element={<Home />}></Route>
+        <Route path="/itemview" element={<ItemView />}></Route>
         <Route path="/add" element={<Add />}></Route>
         <Route path="/basic" element={<Basic />}></Route>
       </Routes>

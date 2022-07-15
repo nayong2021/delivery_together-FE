@@ -1,5 +1,5 @@
 import * as React from "react";
-import "../assets/css/common.css";
+import "../../assets/css/common.css";
 
 export default function BottomNavigation() {
   return (

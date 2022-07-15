@@ -1,10 +1,10 @@
 import * as React from "react";
 import "../assets/css/common.css";
-import MetaTag from "../components/MetaTag";
-import DrowpdownMenuHeader from "../components/DropdownMenuHeader";
-import BottomNavigation from "../components/BottomNavigation";
+import MetaTag from "../components/common/MetaTag";
+import DrowpdownMenuHeader from "../components/home/DropdownMenuHeader";
+import BottomNavigation from "../components/common/BottomNavigation";
+import HomeItem from "../components/home/HomeItem";
 import { ReactComponent as ShortCut } from "../assets/img/ico_shortcut1.svg";
-import { ReactComponent as Clock } from "../assets/img/ico_clock1.svg";
 
 const Home = () => {
   return (
@@ -21,95 +21,15 @@ const Home = () => {
                 함께 배달음식을 주문하세요.
               </div>
             </div>
-
             <ShortCut />
           </a>
-
           <ol className="list-item">
-            <li>
-              <a href="sub/item-view.html">
-                <div className="tit">BBQ 치킨 같이 시켜먹어요</div>
-                <div className="place">BBQ 치킨 아주대점</div>
-                <div className="info-group">
-                  <div className="time">
-                    <Clock />
-                    마감 6:00pm
-                  </div>
-                  <div className="info">
-                    <span className="price">예상배달비: 4000원 / 3명</span>
-                    <span className="distance">0.1km</span>
-                  </div>
-                </div>
-              </a>
-            </li>
-
-            <li>
-              <a href="sub/item-view.html">
-                <div className="tit">피자 배달비 더치페이해요~</div>
-                <div className="place">도미노피자 우만동점</div>
-                <div className="info-group">
-                  <div className="time">
-                    <Clock />
-                    마감 6:30pm
-                  </div>
-                  <div className="info">
-                    <span className="price">예상배달비: 4000원 / 3명</span>
-                    <span className="distance">0.1km</span>
-                  </div>
-                </div>
-              </a>
-            </li>
-
-            <li>
-              <a href="sub/item-view.html">
-                <div className="tit">피자 배달비 더치페이해요~</div>
-                <div className="place">도미노피자 우만동점</div>
-                <div className="info-group">
-                  <div className="time">
-                    <Clock />
-                    마감 6:30pm
-                  </div>
-                  <div className="info">
-                    <span className="price">예상배달비: 4000원 / 3명</span>
-                    <span className="distance">0.1km</span>
-                  </div>
-                </div>
-              </a>
-            </li>
-
-            <li>
-              <a href="sub/item-view.html">
-                <div className="tit">피자 배달비 더치페이해요~</div>
-                <div className="place">도미노피자 우만동점</div>
-                <div className="info-group">
-                  <div className="time">
-                    <Clock />
-                    마감 6:30pm
-                  </div>
-                  <div className="info">
-                    <span className="price">예상배달비: 4000원 / 3명</span>
-                    <span className="distance">0.1km</span>
-                  </div>
-                </div>
-              </a>
-            </li>
-
-            <li>
-              <a href="sub/item-view.html">
-                <div className="tit">피자 배달비 더치페이해요~</div>
-                <div className="place">도미노피자 우만동점</div>
-                <div className="info-group">
-                  <div className="time">
-                    <Clock />
-                    마감 6:30pm
-                  </div>
-                  <div className="info">
-                    <span className="price">예상배달비: 4000원 / 3명</span>
-                    <span className="distance">0.1km</span>
-                  </div>
-                </div>
-              </a>
-            </li>
+            <HomeItem />
+            <HomeItem />
+            <HomeItem />
+            <HomeItem />
+            <HomeItem />
+            <HomeItem />
           </ol>
         </div>
       </section>
