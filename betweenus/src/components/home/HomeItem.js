@@ -11,7 +11,7 @@ export default function RoomItem() {
         <div className="info-group">
           <div className="time">
             <Clock />
-            마감 6:00pm
+            &nbsp;마감 6:00pm
           </div>
           <div className="info">
             <span className="price">예상배달비: 4000원 / 3명</span>

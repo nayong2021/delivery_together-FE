@@ -3,8 +3,8 @@ import { Container } from "@mui/system";
 import { Toolbar, Typography, Grid } from "@mui/material";
 import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
-import NoRoomNotice from "../components/NoRoomNotice";
-import BottomNavigation from "../components/BottomNavigation";
+import NoRoomNotice from "../components/home/NoRoomNotice";
+import BottomNavigation from "../components/common/BottomNavigation";
 
 export default function HomeBefore() {
   return (
