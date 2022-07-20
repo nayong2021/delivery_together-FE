@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded";
 import { useForm, Controller } from "react-hook-form";
 
-const Before = () => {
+const AddBefore = () => {
   const { handleSubmit, control } = useForm();
 
   const onSubmit = (data) => {
@@ -181,4 +181,4 @@ const Before = () => {
   );
 };
 
-export default Add;
+export default AddBefore;

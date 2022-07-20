@@ -1,5 +1,6 @@
 import * as React from "react";
 import "../../assets/css/common.css";
+import { Link } from "react-router-dom";
 
 export default function BottomNavigation() {
   return (
@@ -14,9 +15,9 @@ export default function BottomNavigation() {
             <div className="ico"></div>
             <div className="tit">지도</div>
           </a>
-          <a href="sub/item-write.html">
+          <Link to="/add">
             <i className="ico" aria-hidden="true"></i>
-          </a>
+          </Link>
           <a href="sub/cart.html">
             <div className="ico"></div>
             <div className="tit">주문</div>
