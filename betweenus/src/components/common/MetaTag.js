@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 
-export default function () {
+const MetaTag = () => {
   return (
     <HelmetProvider>
       <Helmet>
@@ -14,4 +14,6 @@ export default function () {
       </Helmet>
     </HelmetProvider>
   );
-}
+};
+
+export default MetaTag;

@@ -3,10 +3,10 @@ import "../assets/css/common.css";
 import MetaTag from "../components/common/MetaTag";
 import DrowpdownMenuHeader from "../components/home/DropdownMenuHeader";
 import BottomNavigation from "../components/common/BottomNavigation";
-import HomeItem from "../components/home/HomeItem";
 import { ReactComponent as ShortCut } from "../assets/img/ico_shortcut1.svg";
+import HomeItemList from "../components/home/HomeItemList";
 
-const Home = () => {
+const Home = ({ match }) => {
   return (
     <div className="Home">
       <MetaTag />
@@ -23,14 +23,7 @@ const Home = () => {
             </div>
             <ShortCut />
           </a>
-          <ol className="list-item">
-            <HomeItem />
-            <HomeItem />
-            <HomeItem />
-            <HomeItem />
-            <HomeItem />
-            <HomeItem />
-          </ol>
+          <HomeItemList />
         </div>
       </section>
       <BottomNavigation />
