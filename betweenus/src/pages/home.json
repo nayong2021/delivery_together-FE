@@ -1,6 +1,7 @@
 {
   "rooms": [
     {
+      "index": 0,
       "tit": "BBQ 치킨 같이 시켜먹어요",
       "place": "BBQ 치킨 아주대점",
       "time": "마감: 6:00pm",
@@ -8,6 +9,7 @@
       "distance": "0.1km"
     },
     {
+      "index": 1,
       "tit": "BBQ 치킨 같이 시켜먹어요",
       "place": "BBQ 치킨 아주대점",
       "time": "마감: 6:00pm",
@@ -15,6 +17,7 @@
       "distance": "0.1km"
     },
     {
+      "index": 2,
       "tit": "BBQ 치킨 같이 시켜먹어요",
       "place": "BBQ 치킨 아주대점",
       "time": "마감: 6:00pm",
@@ -22,6 +25,7 @@
       "distance": "0.1km"
     },
     {
+      "index": 3,
       "tit": "마지막 글이에용",
       "place": "마지막",
       "time": "마감: 6:00pm",

@@ -4,13 +4,13 @@ import HomeItem from "./HomeItem";
 
 export default function HomeItemList() {
   const homeitems = data.rooms;
-  console.log(homeitems);
   return (
     <>
       <ol className="list-item">
         {homeitems.map((item, idx) => (
           <HomeItem
             key={idx}
+            index={item.index}
             title={item.tit}
             place={item.place}
             time={item.time}

@@ -1,11 +1,12 @@
 import * as React from "react";
 import "../assets/css/common.css";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import MetaTag from "../components/common/MetaTag";
 import { ReactComponent as Clock } from "../assets/img/ico_clock1.svg";
 
-const ItemView = () => {
+const ItemView = ({ index }) => {
   const navigate = useNavigate();
+  console.log(index);
   return (
     <div className="ItemView">
       <MetaTag />
@@ -69,6 +70,7 @@ const ItemView = () => {
           </div>
         </div>
       </section>
+      <Outlet />
     </div>
   );
 };
