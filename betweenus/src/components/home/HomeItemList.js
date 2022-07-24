@@ -1,5 +1,5 @@
 import * as React from "react";
-import data from "../../pages/home.json";
+import data from "../../pages/home/home.json";
 import HomeItem from "./HomeItem";
 
 export default function HomeItemList() {

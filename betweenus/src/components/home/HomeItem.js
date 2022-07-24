@@ -1,7 +1,6 @@
 import * as React from "react";
-import { Link, Routes, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ReactComponent as Clock } from "../../assets/img/ico_clock1.svg";
-import ItemView from "../../pages/ItemView";
 
 export default function RoomItem({
   index,
@@ -27,14 +26,6 @@ export default function RoomItem({
           </div>
         </div>
       </Link>
-      <Routes>
-        <Route
-          path="/itemview/:index"
-          render={(props) => (
-            <ItemView index={props.match.params.index} {...props} />
-          )}
-        />
-      </Routes>
     </li>
   );
 }

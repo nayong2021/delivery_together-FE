@@ -1,12 +1,15 @@
 import * as React from "react";
-import "../assets/css/common.css";
+import "../../assets/css/common.css";
 import { Outlet, useNavigate } from "react-router-dom";
-import MetaTag from "../components/common/MetaTag";
-import { ReactComponent as Clock } from "../assets/img/ico_clock1.svg";
+import MetaTag from "../../components/common/MetaTag";
+import { ReactComponent as Clock } from "../../assets/img/ico_clock1.svg";
+import data from "./home.json";
 
-const ItemView = ({ index }) => {
+const ItemView = ({ itemindex }) => {
+  console.log(itemindex);
   const navigate = useNavigate();
-  console.log(index);
+  const homeitems = data.rooms.itemindex;
+  console.log(homeitems);
   return (
     <div className="ItemView">
       <MetaTag />
