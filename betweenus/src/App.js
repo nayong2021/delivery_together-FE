@@ -16,7 +16,7 @@ function App() {
         <Route path="*" element={<Home />}></Route>
         <Route path="/home" element={<Home />}></Route>
         <Route path="/itemview/*" element={<ItemView />}>
-          <Route path=":index" element={<ItemView />}>
+          <Route exact path=":index" element={<ItemView />}>
             <Route path=":order" element={<Order />}></Route>
           </Route>
         </Route>

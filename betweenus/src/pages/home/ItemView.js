@@ -1,15 +1,16 @@
 import * as React from "react";
 import "../../assets/css/common.css";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate, useParams, Link } from "react-router-dom";
 import MetaTag from "../../components/common/MetaTag";
 import { ReactComponent as Clock } from "../../assets/img/ico_clock1.svg";
-import data from "./home.json";
+import data from "../../pages/home/home.json";
 
-const ItemView = ({ itemindex }) => {
-  console.log(itemindex);
+const ItemView = () => {
   const navigate = useNavigate();
-  const homeitems = data.rooms.itemindex;
-  console.log(homeitems);
+  const id = useParams();
+  const itemdata = data.rooms[id.index];
+  console.log(itemdata);
+
   return (
     <div className="ItemView">
       <MetaTag />
@@ -29,9 +30,9 @@ const ItemView = ({ itemindex }) => {
       <section className="item-view">
         <div className="wrap">
           <div className="item-info">
-            <div className="tit">BBQ 치킨 같이 시켜먹어요!!!</div>
+            <div className="tit">{itemdata.tit}</div>
             <div className="group">
-              <div className="place">BBQ 치킨 아주대점</div>
+              <div className="place">{itemdata.place}</div>
               <div className="time">
                 <Clock />
                 &nbsp;마감 6:00pm
@@ -39,7 +40,7 @@ const ItemView = ({ itemindex }) => {
             </div>
           </div>
 
-          <div className="delivery-charge">예상배달비: 4000원 / 3명</div>
+          <div className="delivery-charge">{itemdata.price}</div>
 
           <div className="delivery-location">
             상세 픽업 장소: <strong>서울 강남구 테헤란로 311</strong>
@@ -67,9 +68,11 @@ const ItemView = ({ itemindex }) => {
             </div>
           </div>
           <div className="btn-group-bottom">
-            <button type="button" className="btn-custom">
-              주문하러 가기
-            </button>
+            <Link to=":order">
+              <button type="button" className="btn-custom">
+                주문하러 가기
+              </button>
+            </Link>
           </div>
         </div>
       </section>

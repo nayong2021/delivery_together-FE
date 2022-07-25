@@ -10,7 +10,7 @@ export default function HomeItemList() {
         {homeitems.map((item, idx) => (
           <HomeItem
             key={idx}
-            index={item.index}
+            index={item.itemindex}
             title={item.tit}
             place={item.place}
             time={item.time}
