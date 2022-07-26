@@ -1,7 +1,7 @@
 import * as React from "react";
 import "../../assets/css/common.css";
 import MetaTag from "../../components/common/MetaTag";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { ReactComponent as Clock } from "../../assets/img/ico_clock1.svg";
 import foodpic from "../../assets/img/img_picture1.jpg";
 
@@ -10,6 +10,7 @@ const Order = () => {
 
   return (
     <div className="Order">
+      <Outlet />
       <MetaTag />
       <header className="header">
         <div className="hd">

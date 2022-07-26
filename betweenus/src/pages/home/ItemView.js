@@ -68,7 +68,7 @@ const ItemView = () => {
             </div>
           </div>
           <div className="btn-group-bottom">
-            <Link to=":order">
+            <Link to="/order">
               <button type="button" className="btn-custom">
                 주문하러 가기
               </button>
