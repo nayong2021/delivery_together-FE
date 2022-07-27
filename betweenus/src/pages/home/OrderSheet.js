@@ -10,7 +10,6 @@ const OrderSheet = () => {
   const navigate = useNavigate();
   const itemdata = data.rooms[id.index];
   console.log(itemdata);
-
   return (
     <div className="OrderSheet">
       <MetaTag />

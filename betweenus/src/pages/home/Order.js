@@ -1,16 +1,15 @@
 import * as React from "react";
 import "../../assets/css/common.css";
 import MetaTag from "../../components/common/MetaTag";
-import { Outlet, useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { ReactComponent as Clock } from "../../assets/img/ico_clock1.svg";
 import foodpic from "../../assets/img/img_picture1.jpg";
 
 const Order = () => {
   const navigate = useNavigate();
-
+  console.log("really?");
   return (
     <div className="Order">
-      <Outlet />
       <MetaTag />
       <header className="header">
         <div className="hd">
@@ -113,9 +112,11 @@ const Order = () => {
           </ol>
 
           <div className="btn-group-bottom">
-            <button type="button" className="btn-custom">
-              주문 확인
-            </button>
+            <Link to={`order/ordersheet`}>
+              <button type="button" className="btn-custom">
+                주문 확인
+              </button>
+            </Link>
           </div>
         </div>
       </section>

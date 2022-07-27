@@ -1,6 +1,6 @@
 import * as React from "react";
 import "../../assets/css/common.css";
-import { Outlet, useNavigate, useParams, Link } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import MetaTag from "../../components/common/MetaTag";
 import { ReactComponent as Clock } from "../../assets/img/ico_clock1.svg";
 import data from "../../pages/home/home.json";
@@ -10,7 +10,6 @@ const ItemView = () => {
   const id = useParams();
   const itemdata = data.rooms[id.index];
   console.log(itemdata);
-
   return (
     <div className="ItemView">
       <MetaTag />
@@ -26,7 +25,6 @@ const ItemView = () => {
           </div>
         </div>
       </header>
-
       <section className="item-view">
         <div className="wrap">
           <div className="item-info">
@@ -68,7 +66,7 @@ const ItemView = () => {
             </div>
           </div>
           <div className="btn-group-bottom">
-            <Link to="/order">
+            <Link to={`${id.index}/order`}>
               <button type="button" className="btn-custom">
                 주문하러 가기
               </button>
@@ -76,7 +74,6 @@ const ItemView = () => {
           </div>
         </div>
       </section>
-      <Outlet />
     </div>
   );
 };
