@@ -5,14 +5,14 @@ import BottomNavigation from "../components/common/BottomNavigation";
 
 const Map = () => {
   return (
-    <div className="Map" height="100%">
+    <div className="Map">
       <MetaTag />
       <section className="map">
         <a href="/search" className="btn-search">
           <button type="button" className="btn-location"></button>
         </a>
+        <BottomNavigation map={"active"} />
       </section>
-      <BottomNavigation />
     </div>
   );
 };

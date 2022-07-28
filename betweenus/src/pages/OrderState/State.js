@@ -135,7 +135,7 @@ const State = () => {
           </button>
         </div>
       </section>
-      <BottomNavigation />
+      <BottomNavigation order={"active"} />
     </div>
   );
 };
