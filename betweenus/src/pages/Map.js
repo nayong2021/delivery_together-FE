@@ -5,7 +5,7 @@ import BottomNavigation from "../components/common/BottomNavigation";
 
 const Map = () => {
   return (
-    <div className="Map">
+    <div className="Map" height="100%">
       <MetaTag />
       <section className="map">
         <a href="/search" className="btn-search">

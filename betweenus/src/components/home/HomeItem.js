@@ -10,7 +10,6 @@ export default function RoomItem({
   price,
   distance,
 }) {
-  console.log(index);
   return (
     <li className="list-item">
       <Link to={`/itemview/${index}`}>

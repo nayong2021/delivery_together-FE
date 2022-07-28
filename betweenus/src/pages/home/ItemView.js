@@ -9,7 +9,6 @@ const ItemView = () => {
   const navigate = useNavigate();
   const id = useParams();
   const itemdata = data.rooms[id.index];
-  console.log(itemdata);
   return (
     <div className="ItemView">
       <MetaTag />
@@ -66,7 +65,7 @@ const ItemView = () => {
             </div>
           </div>
           <div className="btn-group-bottom">
-            <Link to={`${id.index}/order`}>
+            <Link to={`/itemview/${id.index}/order`}>
               <button type="button" className="btn-custom">
                 주문하러 가기
               </button>

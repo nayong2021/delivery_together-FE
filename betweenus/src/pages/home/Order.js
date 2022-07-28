@@ -1,13 +1,16 @@
 import * as React from "react";
 import "../../assets/css/common.css";
 import MetaTag from "../../components/common/MetaTag";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useParams } from "react-router-dom";
 import { ReactComponent as Clock } from "../../assets/img/ico_clock1.svg";
 import foodpic from "../../assets/img/img_picture1.jpg";
+import data from "../../pages/home/home.json";
 
 const Order = () => {
   const navigate = useNavigate();
-  console.log("really?");
+  const id = useParams();
+  const itemdata = data.rooms[id.index];
+
   return (
     <div className="Order">
       <MetaTag />
@@ -27,9 +30,9 @@ const Order = () => {
       <section className="item-view">
         <div className="wrap">
           <div className="item-info">
-            <div className="tit">BBQ 치킨 같이 시켜먹어요 😊</div>
+            <div className="tit">{itemdata.tit}</div>
             <div className="group">
-              <div className="place">BBQ 치킨 아주대점</div>
+              <div className="place">{itemdata.place}</div>
               <div className="time">
                 <Clock />
                 &nbsp;마감 6:00pm
@@ -37,7 +40,7 @@ const Order = () => {
             </div>
           </div>
 
-          <div className="delivery-charge">예상배달비: 4000원 / 3명</div>
+          <div className="delivery-charge">{itemdata.price}</div>
 
           <ol className="list-menu">
             <li>
@@ -112,7 +115,7 @@ const Order = () => {
           </ol>
 
           <div className="btn-group-bottom">
-            <Link to={`order/ordersheet`}>
+            <Link to={`ordersheet`}>
               <button type="button" className="btn-custom">
                 주문 확인
               </button>

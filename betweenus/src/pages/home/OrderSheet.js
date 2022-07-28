@@ -9,7 +9,6 @@ const OrderSheet = () => {
   const id = useParams();
   const navigate = useNavigate();
   const itemdata = data.rooms[id.index];
-  console.log(itemdata);
   return (
     <div className="OrderSheet">
       <MetaTag />
@@ -29,9 +28,9 @@ const OrderSheet = () => {
       <section className="order-sheet">
         <div className="wrap">
           <div className="item-info">
-            <div className="tit">BBQ 치킨 같이 시켜먹어요 😊</div>
+            <div className="tit">{itemdata.tit}</div>
             <div className="group">
-              <div className="place">BBQ 치킨 아주대점</div>
+              <div className="place">{itemdata.place}</div>
               <div className="time">
                 <Clock />
                 &nbsp;마감 6:00pm
@@ -39,7 +38,7 @@ const OrderSheet = () => {
             </div>
           </div>
 
-          <div className="delivery-charge">예상배달비: 4000원 / 3명</div>
+          <div className="delivery-charge">{itemdata.price}</div>
 
           <ol className="list-order">
             <li>

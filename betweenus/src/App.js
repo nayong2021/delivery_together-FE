@@ -14,19 +14,18 @@ function App() {
     <Router>
       <Routes>
         <Route path="/home" element={<Home />}></Route>
-        <Route path="/itemview" element={<ItemView />}>
-          <Route path="/itemview/:index" element={<ItemView />} />
-          <Route path="/itemview/:index/order" element={<Order />} />
-          <Route
-            path="/itemview/:index/order/ordersheet"
-            element={<OrderSheet />}
-          />
-        </Route>
+        <Route path="/itemview/:index" element={<ItemView />} />
+        <Route path="/itemview/:index/order" element={<Order />} />
+        <Route
+          path="/itemview/:index/order/ordersheet"
+          element={<OrderSheet />}
+        />
         <Route path="/add" element={<Add />}></Route>
         <Route path="/map" element={<Map />}></Route>
         <Route path="/state" element={<State />}></Route>
         <Route path="/setting" element={<Setting />}></Route>
-        <Route path="*" element={<Home />}></Route>
+        <Route path="/order" element={<Order />}></Route>
+        <Route path="/" element={<Home />}></Route>
       </Routes>
     </Router>
   );
