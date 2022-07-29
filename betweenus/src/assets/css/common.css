@@ -1329,6 +1329,16 @@ section {
 .map {
   background: url("../img/img_map1.png") center center no-repeat;
   background-size: cover;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  -webkit-transform: translate(-50%, -50%) scale(1);
+  -moz-transform: translate(-50%, -50%) scale(1);
+  -ms-transform: translate(-50%, -50%) scale(1);
+  -o-transform: translate(-50%, -50%) scale(1);
+  width: 100%;
+  text-align: center;
 }
 .map .btn-search {
   position: absolute;

@@ -7,7 +7,7 @@ const Map = () => {
   return (
     <div className="Map">
       <MetaTag />
-      <section className="map">
+      <section className="map" width="100%" height="100%">
         <a href="/search" className="btn-search">
           <button type="button" className="btn-location"></button>
         </a>
