@@ -1668,6 +1668,7 @@ section {
   border-radius: 4px;
   box-sizing: border-box;
   background: #febd22;
+  width: 3%;
 }
 .progress-group .bubble {
   display: inline-flex;
