@@ -6,7 +6,7 @@ import JoinBefore from "../../components/OrderState/JoinBefore";
 import HostNoGuest from "../../components/OrderState/HostNoGuest";
 import HostYesGuest from "../../components/OrderState/HostYesGuest";
 import GuestWaitRecruit from "../../components/OrderState/GuestWaitRecruit";
-import OrderState from "../../components/OrderState/OrderState";
+import TopOrderState from "../../components/OrderState/TopOrderState";
 
 const State = () => {
   return (
@@ -16,7 +16,7 @@ const State = () => {
       {/* <HostYesGuest /> */}
       {/* <HostNoGuest /> */}
       {/* <GuestWaitRecruit /> */}
-      <OrderState />
+      <TopOrderState />
       <BottomNavigation order={"active"} />
     </div>
   );

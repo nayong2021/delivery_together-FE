@@ -1,7 +1,5 @@
 import * as React from "react";
 import "../../assets/css/common.css";
-import { ReactComponent as Clock } from "../../assets/img/ico_clock1.svg";
-import { ReactComponent as User } from "../../assets/img/ico_user1.svg";
 
 const GuestBeforeOrder = () => {
   return (
@@ -14,7 +12,7 @@ const GuestBeforeOrder = () => {
       </div>
       <div className="progress-group">
         <div className="bg">
-          <div className="current">
+          <div className="current" style={{ width: "3%" }}>
             <span className="bubble bubble-v1">주문전</span>
           </div>
         </div>

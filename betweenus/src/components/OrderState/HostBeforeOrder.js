@@ -1,7 +1,5 @@
 import * as React from "react";
 import "../../assets/css/common.css";
-import { ReactComponent as Clock } from "../../assets/img/ico_clock1.svg";
-import { ReactComponent as User } from "../../assets/img/ico_user1.svg";
 
 const HostBeforeOrder = () => {
   return (
