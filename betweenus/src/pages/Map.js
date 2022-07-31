@@ -11,7 +11,7 @@ const Map = () => {
         <a href="/search" className="btn-search">
           <button type="button" className="btn-location"></button>
         </a>
-        <BottomNavigation map={"active"} />
+        <BottomNavigation />
       </section>
     </div>
   );

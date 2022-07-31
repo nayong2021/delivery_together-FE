@@ -26,7 +26,7 @@ const Home = () => {
           <HomeItemList />
         </div>
       </section>
-      <BottomNavigation home={"active"} />
+      <BottomNavigation />
     </div>
   );
 };

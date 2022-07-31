@@ -53,7 +53,7 @@ const Setting = () => {
           </li>
         </ol>
       </section>
-      <BottomNavigation setting={"active"} />
+      <BottomNavigation />
     </div>
   );
 };

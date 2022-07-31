@@ -18,7 +18,7 @@ const State = () => {
       {/* <HostNoGuest /> */}
       {/* <GuestWaitRecruit /> */}
       <TopOrderState />
-      <BottomNavigation order={"active"} />
+      <BottomNavigation />
     </div>
   );
 };
