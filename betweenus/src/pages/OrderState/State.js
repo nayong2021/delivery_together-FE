@@ -11,7 +11,7 @@ import TopOrderState from "../../components/OrderState/TopOrderState";
 const State = () => {
   const user = "guest"; /*guest*/
   const join = true; /*true*/
-  const guest = false; /*true*/
+  const guest = true; /*true*/
   const recruit = true;
 
   if (user === "host") {

@@ -7,6 +7,20 @@ import { ReactComponent as User } from "../../assets/img/ico_user1.svg";
 import OrderComplete from "./OrderComplete";
 
 const OrderState = () => {
+  const user = "guest";
+  const order = true;
+  let component;
+
+  if (order) {
+    component = <OrderComplete />;
+  } else {
+    if (user === "host") {
+      component = <HostBeforeOrder />;
+    } else if (user === "guest") {
+      component = <GuestBeforeOrder />;
+    }
+  }
+
   return (
     <section className="state">
       <div className="wrap">
@@ -21,9 +35,7 @@ const OrderState = () => {
           </div>
         </div>
 
-        {/* <HostBeforeOrder /> */}
-        {/* <GuestBeforeOrder /> */}
-        <OrderComplete />
+        {component}
 
         <ol className="list-cart">
           <li>
