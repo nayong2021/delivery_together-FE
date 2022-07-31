@@ -9,7 +9,10 @@ const Chatting = () => {
           <li>
             <div className="ly-l">
               <div className="user-info">
-                <img src="../img/ico_user1.svg" alt=" " />
+                <img
+                  src={require("../../assets/img/ico_user1.svg").default}
+                  alt=" "
+                />
                 <div className="nickname">치킨마니아</div>
               </div>
 
@@ -32,7 +35,10 @@ const Chatting = () => {
           <li>
             <div className="ly-l">
               <div className="user-info">
-                <img src="../img/ico_user1.svg" alt=" " />
+                <img
+                  src={require("../../assets/img/ico_user1.svg").default}
+                  alt=" "
+                />
                 <div className="nickname">치킨마니아</div>
               </div>
 
@@ -58,7 +64,10 @@ const Chatting = () => {
           <li>
             <div className="ly-l">
               <div className="user-info">
-                <img src="../img/ico_user1.svg" alt=" " />
+                <img
+                  src={require("../../assets/img/ico_user1.svg").default}
+                  alt=" "
+                />
                 <div className="nickname">배고파용용</div>
               </div>
 
@@ -74,7 +83,10 @@ const Chatting = () => {
           <li>
             <div className="ly-l">
               <div className="user-info">
-                <img src="../img/ico_user1.svg" alt=" " />
+                <img
+                  src={require("../../assets/img/ico_user1.svg").default}
+                  alt=" "
+                />
                 <div className="nickname">냥냥펀치</div>
               </div>
 
@@ -88,7 +100,10 @@ const Chatting = () => {
           <li>
             <div className="ly-l">
               <div className="user-info">
-                <img src="../img/ico_user1.svg" alt=" " />
+                <img
+                  src={require("../../assets/img/ico_user1.svg").default}
+                  alt=" "
+                />
                 <div className="nickname">치킨마니아</div>
               </div>
 
@@ -114,7 +129,7 @@ const Chatting = () => {
         <div className="write-tool">
           <div className="btn-upload">
             <input type="file" id="upload" />
-            <label for="upload"></label>
+            <label htmlFor="upload"></label>
           </div>
           <input
             type="text"

@@ -91,7 +91,6 @@ const OrderState = () => {
             <div className="tit">배달비</div>
             <div className="txt">4,000원</div>
           </li>
-
           <li>
             <div className="tit">
               <strong>총 금액</strong>

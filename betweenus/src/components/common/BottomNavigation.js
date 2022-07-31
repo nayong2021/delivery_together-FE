@@ -9,34 +9,34 @@ export default function BottomNavigation() {
         <div className="ft-menu">
           <NavLink
             to="/home"
-            class={({ isActive }) => (isActive ? "active" : "")}
+            className={({ isActive }) => (isActive ? "active" : "")}
           >
             <div className="ico"></div>
             <div className="tit">홈</div>
           </NavLink>
           <NavLink
             to="/map"
-            class={({ isActive }) => (isActive ? "active" : "")}
+            className={({ isActive }) => (isActive ? "active" : "")}
           >
             <div className="ico"></div>
             <div className="tit">지도</div>
           </NavLink>
           <NavLink
             to="/add"
-            class={({ isActive }) => (isActive ? "active" : "")}
+            className={({ isActive }) => (isActive ? "active" : "")}
           >
             <i className="ico" aria-hidden="true"></i>
           </NavLink>
           <NavLink
             to="/state"
-            class={({ isActive }) => (isActive ? "active" : "")}
+            className={({ isActive }) => (isActive ? "active" : "")}
           >
             <div className="ico"></div>
             <div className="tit">주문</div>
           </NavLink>
           <NavLink
             to="/setting"
-            class={({ isActive }) => (isActive ? "active" : "")}
+            className={({ isActive }) => (isActive ? "active" : "")}
           >
             <div className="ico"></div>
             <div className="tit">설정</div>
