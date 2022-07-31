@@ -8,6 +8,8 @@ import State from "./pages/OrderState/State";
 import Order from "./pages/home/Order";
 import ItemView from "./pages/home/ItemView";
 import OrderSheet from "./pages/home/OrderSheet";
+import Chatting from "./components/OrderState/Chatting";
+import OrderState from "./components/OrderState/OrderState";
 
 function App() {
   return (
@@ -22,7 +24,10 @@ function App() {
         />
         <Route path="/add" element={<Add />}></Route>
         <Route path="/map" element={<Map />}></Route>
-        <Route path="/state" element={<State />}></Route>
+        <Route path="/state" element={<State />}>
+          <Route path="/state/order" element={<OrderState />}></Route>
+          <Route path="/state/chatting" element={<Chatting />}></Route>
+        </Route>
         <Route path="/setting" element={<Setting />}></Route>
         <Route path="/order" element={<Order />}></Route>
         <Route path="/" element={<Home />}></Route>

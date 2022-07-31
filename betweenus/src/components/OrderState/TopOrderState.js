@@ -1,21 +1,27 @@
 import * as React from "react";
 import "../../assets/css/common.css";
-import OrderState from "./OrderState";
-import Chatting from "./Chatting";
+import { NavLink, Outlet } from "react-router-dom";
 
 const TopOrderState = () => {
   return (
     <div>
       <header class="header">
         <div class="tab-menu">
-          <a href="state.html" class="active">
+          <NavLink
+            to="order"
+            class={({ isActive }) => (isActive ? "active" : "active")}
+          >
             주문현황
-          </a>
-          <a href="chat.html">채팅방</a>
+          </NavLink>
+          <NavLink
+            to="chatting"
+            class={({ isActive }) => (isActive ? "active" : "")}
+          >
+            채팅방
+          </NavLink>
         </div>
       </header>
-      <OrderState />
-      {/* <Chatting /> */}
+      <Outlet />
     </div>
   );
 };
