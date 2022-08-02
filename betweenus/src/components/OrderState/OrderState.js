@@ -7,7 +7,7 @@ import { ReactComponent as User } from "../../assets/img/ico_user1.svg";
 import OrderComplete from "./OrderComplete";
 
 const OrderState = () => {
-  const user = "guest";
+  const user = "host";
   const order = true;
   let component;
 

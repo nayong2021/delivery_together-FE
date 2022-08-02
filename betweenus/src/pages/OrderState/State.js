@@ -9,7 +9,7 @@ import GuestWaitRecruit from "../../components/OrderState/GuestWaitRecruit";
 import TopOrderState from "../../components/OrderState/TopOrderState";
 
 const State = () => {
-  const user = "guest"; /*guest*/
+  const user = "host"; /*guest*/
   const join = true; /*true*/
   const guest = true; /*true*/
   const recruit = true;
