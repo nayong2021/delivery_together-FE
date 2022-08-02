@@ -8,7 +8,7 @@ export default function BottomNavigation() {
       <div className="ft">
         <div className="ft-menu">
           <NavLink
-            to="/home"
+            to="/"
             className={({ isActive }) => (isActive ? "active" : "")}
           >
             <div className="ico"></div>
