@@ -2,7 +2,7 @@ import * as React from "react";
 import "../../assets/css/common.css";
 import { useParams, useNavigate } from "react-router-dom";
 import MetaTag from "../../components/common/MetaTag";
-import data from "../../pages/home/home.json";
+import data from "./home.json";
 import { ReactComponent as Clock } from "../../assets/img/ico_clock1.svg";
 
 const OrderSheet = () => {

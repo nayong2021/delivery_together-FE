@@ -12,7 +12,7 @@ const Add = () => {
   };
 
   return (
-    <div className="Add">
+    <div id="root">
       <MetaTag />
       <header className="header">
         <div className="hd">

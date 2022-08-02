@@ -23,7 +23,7 @@ export default function RoomItem({
           </div>
           <div className="info">
             <span className="price">
-              예상배달비: {price} / {participant}
+              예상배달비: {price}원 / {participant}
             </span>
             <span className="distance">{distance}</span>
           </div>

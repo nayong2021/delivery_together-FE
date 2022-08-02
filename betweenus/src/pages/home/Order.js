@@ -4,7 +4,7 @@ import MetaTag from "../../components/common/MetaTag";
 import { useNavigate, Link, useParams } from "react-router-dom";
 import { ReactComponent as Clock } from "../../assets/img/ico_clock1.svg";
 import foodpic from "../../assets/img/img_picture1.jpg";
-import data from "../../pages/home/home.json";
+import data from "../../pages/Home/home.json";
 
 const Order = () => {
   const navigate = useNavigate();

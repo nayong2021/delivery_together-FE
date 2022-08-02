@@ -9,7 +9,7 @@ import { ReactComponent as Menu3 } from "../assets/img/ico_menu3_setting.svg";
 
 const Setting = () => {
   return (
-    <div className="setting">
+    <div id="root">
       <MetaTag />
       <header className="header">
         <div className="hd hd-v1">

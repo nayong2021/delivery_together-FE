@@ -1,20 +1,22 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/home/Home";
+import Home from "./pages/Home/Home";
 import React from "react";
 import Add from "./pages/Add";
 import Map from "./pages/Map";
 import Setting from "./pages/Setting";
 import State from "./pages/OrderState/State";
-import Order from "./pages/home/Order";
-import ItemView from "./pages/home/ItemView";
-import OrderSheet from "./pages/home/OrderSheet";
+import Order from "./pages/Home/Order";
+import ItemView from "./pages/Home/ItemView";
+import OrderSheet from "./pages/Home/OrderSheet";
 import Chatting from "./components/OrderState/Chatting";
 import OrderState from "./components/OrderState/OrderState";
+import LogIn from "./pages/LogIn/LogIn";
 
 function App() {
   return (
     <Router>
       <Routes>
+        <Route path="/login" element={<LogIn />}></Route>
         <Route path="/home" element={<Home />}></Route>
         <Route path="/itemview/:index" element={<ItemView />} />
         <Route path="/itemview/:index/order" element={<Order />} />

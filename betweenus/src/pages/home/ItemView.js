@@ -4,7 +4,7 @@ import { useNavigate, useParams, Link } from "react-router-dom";
 import MetaTag from "../../components/common/MetaTag";
 import { ReactComponent as Clock } from "../../assets/img/ico_clock1.svg";
 import { useEffect, useState } from "react";
-import { GetGroupBuyingDetailApi } from "../../modules/GetGroupBuyingDetailApi";
+import { GetGroupBuyingDetailApi } from "../../modules/api/GetGroupBuyingDetailApi";
 
 const ItemView = () => {
   const navigate = useNavigate();

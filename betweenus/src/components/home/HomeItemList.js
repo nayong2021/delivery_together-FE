@@ -24,7 +24,7 @@ export default function HomeItemList() {
             title={item.title}
             place={item.storeName}
             time={item.timeToOrder}
-            price="4000원"
+            price={item.expectedDeliveryFee}
             participant={item.currentParticipant}
             distance={item.timeToOrder}
           />

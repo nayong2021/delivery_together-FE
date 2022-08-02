@@ -4,7 +4,7 @@ import { ReactComponent as User1 } from "../../assets/img/ico_user1.svg";
 
 const HostYesGuest = () => {
   return (
-    <div>
+    <div id="root">
       <header className="header">
         <div className="hd hd-v1">
           <div className="hd-tit">그룹 장바구니</div>

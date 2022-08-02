@@ -8,7 +8,7 @@ import HomeItemList from "../../components/home/HomeItemList";
 
 const Home = () => {
   return (
-    <div className="Home">
+    <div id="root">
       <MetaTag />
       <DrowpdownMenuHeader />
       <section className="main">
