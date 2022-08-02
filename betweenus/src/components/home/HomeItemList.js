@@ -1,21 +1,32 @@
 import * as React from "react";
-import data from "../../pages/home/home.json";
 import HomeItem from "./HomeItem";
+import { useEffect, useState } from "react";
+import { GetJoinableGroupBuyingApi } from "../../modules/api/GetJoinableGroupBuyingApi";
 
 export default function HomeItemList() {
-  const homeitems = data.rooms;
+  const [list, setData] = useState([]);
+
+  const getList = async () => {
+    const list = await GetJoinableGroupBuyingApi();
+    setData(list);
+  };
+  useEffect(() => {
+    getList();
+  }, []);
+
   return (
     <>
       <ol className="list-item">
-        {homeitems.map((item, idx) => (
+        {list.map((item, idx) => (
           <HomeItem
             key={idx}
-            index={item.itemindex}
-            title={item.tit}
-            place={item.place}
-            time={item.time}
-            price={item.price}
-            distance={item.distance}
+            index={item.postIdx}
+            title={item.title}
+            place={item.storeName}
+            time={item.timeToOrder}
+            price="4000원"
+            participant={item.currentParticipant}
+            distance={item.timeToOrder}
           />
         ))}
       </ol>

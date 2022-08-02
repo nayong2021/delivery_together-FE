@@ -8,6 +8,7 @@ export default function RoomItem({
   place,
   time,
   price,
+  participant,
   distance,
 }) {
   return (
@@ -18,10 +19,12 @@ export default function RoomItem({
         <div className="info-group">
           <div className="time">
             <Clock />
-            &nbsp;{time}
+            &nbsp;마감 {time}
           </div>
           <div className="info">
-            <span className="price">{price}</span>
+            <span className="price">
+              예상배달비: {price} / {participant}
+            </span>
             <span className="distance">{distance}</span>
           </div>
         </div>
