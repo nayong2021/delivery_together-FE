@@ -27,7 +27,7 @@ function App() {
         <Route path="/add" element={<Add />}></Route>
         <Route path="/map" element={<Map />}></Route>
         <Route path="/state" element={<State />}>
-          <Route path="/state/order" element={<OrderState />}></Route>
+          <Route path="/state" element={<OrderState />}></Route>
           <Route path="/state/chatting" element={<Chatting />}></Route>
         </Route>
         <Route path="/setting" element={<Setting />}></Route>

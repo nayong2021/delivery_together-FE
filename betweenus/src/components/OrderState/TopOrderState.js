@@ -8,7 +8,8 @@ const TopOrderState = () => {
       <header className="header">
         <div className="tab-menu">
           <NavLink
-            to="order"
+            end
+            to="/state"
             className={({ isActive }) => (isActive ? "active" : "")}
           >
             주문현황
