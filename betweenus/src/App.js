@@ -10,14 +10,19 @@ import ItemView from "./pages/Home/ItemView";
 import OrderSheet from "./pages/Home/OrderSheet";
 import Chatting from "./components/OrderState/Chatting";
 import OrderState from "./components/OrderState/OrderState";
-import LogIn from "./pages/LogIn/LogIn";
+import LogIn from "./pages/Member/LogIn";
+import Join from "./pages/Member/Join";
+import FindId from "./pages/Member/FindId";
+import FindPw from "./pages/Member/FindPw";
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/login" element={<LogIn />}></Route>
-        <Route path="/home" element={<Home />}></Route>
+        <Route path="/login/join" element={<Join />}></Route>
+        <Route path="/login/findid" element={<FindId />}></Route>
+        <Route path="/login/findpw" element={<FindPw />}></Route>
         <Route path="/itemview/:index" element={<ItemView />} />
         <Route path="/itemview/:index/order" element={<Order />} />
         <Route
