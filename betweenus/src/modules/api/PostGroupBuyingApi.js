@@ -1,4 +1,11 @@
 import axios from "axios";
-import { AbstractApi, CommonResponse } from "./AbstractApi";
 
-const ADMIN_URL = "https://server.sodam.me/admin";
+export const PostGroupBuyingApi = async (data) => {
+  try {
+    const response = await axios.post("/api/groupbuying", data);
+    console.log(response);
+  } catch (e) {
+    console.log("[FAIL] GET user data", e);
+    return e;
+  }
+};

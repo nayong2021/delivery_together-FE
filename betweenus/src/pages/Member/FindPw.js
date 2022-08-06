@@ -6,34 +6,15 @@ import MetaTag from "../../components/common/MetaTag";
 
 const FindPw = () => {
   const navigate = useNavigate();
-  const [guideMS, setGuideMS] = useState(
-    "인증번호가 일치하지 않습니다. 확인 후 다시 입력해주세요."
-  );
   const [inputs, setInputs] = useState({
-    email: "",
-    emailnum: "",
-    pw: "",
-    pwconfirm: "",
     name: "",
     birth: "",
-    sex: "",
-    nickname: "",
+    email: "",
     phone: "",
     phonenum: "",
   });
 
-  const {
-    email,
-    emailnum,
-    pw,
-    pwconfirm,
-    name,
-    birth,
-    sex,
-    nickname,
-    phone,
-    phonenum,
-  } = inputs;
+  const { name, birth, email, phone, phonenum } = inputs;
 
   const onChangeInput = (e) => {
     setInputs({
@@ -44,6 +25,7 @@ const FindPw = () => {
 
   const onClickButton = () => {
     console.log(inputs);
+    navigate("/");
   };
 
   return (
@@ -67,7 +49,13 @@ const FindPw = () => {
           <div className="frm">
             <div className="frm-group">
               <div className="tit-frm">이름</div>
-              <input type="text" className="inp-frm" />
+              <input
+                type="text"
+                name="name"
+                className="inp-frm"
+                onChange={onChangeInput}
+                value={name}
+              />
             </div>
 
             <div className="frm-group">
@@ -75,13 +63,22 @@ const FindPw = () => {
               <input
                 type="text"
                 placeholder="8자리 숫자 입력"
+                name="birth"
                 className="inp-frm"
+                onChange={onChangeInput}
+                value={birth}
               />
             </div>
 
             <div className="frm-group">
               <div className="tit-frm">이메일</div>
-              <input type="text" className="inp-frm" />
+              <input
+                type="text"
+                className="inp-frm"
+                name="email"
+                onChange={onChangeInput}
+                value={email}
+              />
             </div>
 
             <div className="frm-group">
@@ -91,6 +88,9 @@ const FindPw = () => {
                   type="text"
                   placeholder="‘-’ 없이 입력"
                   className="inp-frm"
+                  name="phone"
+                  onChange={onChangeInput}
+                  value={phone}
                 />
                 <button type="button" className="btn-frm">
                   인증요청
@@ -100,11 +100,17 @@ const FindPw = () => {
 
             <div className="frm-group">
               <div className="tit-frm">휴대폰 인증번호</div>
-              <input type="text" className="inp-frm" />
+              <input
+                type="text"
+                className="inp-frm"
+                name="phonenum"
+                onChange={onChangeInput}
+                value={phonenum}
+              />
             </div>
           </div>
 
-          <div className="btn-group-bottom">
+          <div className="btn-group-bottom" onClick={onClickButton}>
             <button type="button" className="btn-custom">
               확인
             </button>

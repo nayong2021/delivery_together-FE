@@ -6,34 +6,14 @@ import MetaTag from "../../components/common/MetaTag";
 
 const FindId = () => {
   const navigate = useNavigate();
-  const [guideMS, setGuideMS] = useState(
-    "인증번호가 일치하지 않습니다. 확인 후 다시 입력해주세요."
-  );
   const [inputs, setInputs] = useState({
-    email: "",
-    emailnum: "",
-    pw: "",
-    pwconfirm: "",
     name: "",
     birth: "",
-    sex: "",
-    nickname: "",
     phone: "",
     phonenum: "",
   });
 
-  const {
-    email,
-    emailnum,
-    pw,
-    pwconfirm,
-    name,
-    birth,
-    sex,
-    nickname,
-    phone,
-    phonenum,
-  } = inputs;
+  const { name, birth, phone, phonenum } = inputs;
 
   const onChangeInput = (e) => {
     setInputs({
@@ -44,6 +24,7 @@ const FindId = () => {
 
   const onClickButton = () => {
     console.log(inputs);
+    navigate("/");
   };
 
   return (
@@ -67,15 +48,24 @@ const FindId = () => {
           <div className="frm">
             <div className="frm-group">
               <div className="tit-frm">이름</div>
-              <input type="text" className="inp-frm" />
+              <input
+                type="text"
+                name="name"
+                className="inp-frm"
+                onChange={onChangeInput}
+                value={name}
+              />
             </div>
 
             <div className="frm-group">
               <div className="tit-frm">생년월일</div>
               <input
                 type="text"
+                name="birth"
                 placeholder="8자리 숫자 입력"
                 className="inp-frm"
+                onChange={onChangeInput}
+                value={birth}
               />
             </div>
 
@@ -85,7 +75,10 @@ const FindId = () => {
                 <input
                   type="text"
                   placeholder="‘-’ 없이 입력"
+                  name="phone"
                   className="inp-frm"
+                  onChange={onChangeInput}
+                  value={phone}
                 />
                 <button type="button" className="btn-frm">
                   인증요청
@@ -95,12 +88,22 @@ const FindId = () => {
 
             <div className="frm-group">
               <div className="tit-frm">휴대폰 인증번호</div>
-              <input type="text" className="inp-frm" />
+              <input
+                type="text"
+                name="phonenum"
+                className="inp-frm"
+                onChange={onChangeInput}
+                value={phonenum}
+              />
             </div>
           </div>
 
           <div className="btn-group-bottom">
-            <button type="button" className="btn-custom">
+            <button
+              type="button"
+              className="btn-custom"
+              onClick={onClickButton}
+            >
               확인
             </button>
           </div>
