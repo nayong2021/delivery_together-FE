@@ -5,11 +5,24 @@ import { useNavigate, Link, useParams } from "react-router-dom";
 import { ReactComponent as Clock } from "../../assets/img/ico_clock1.svg";
 import foodpic from "../../assets/img/img_picture1.jpg";
 import data from "../../pages/Home/home.json";
+import { GetGroupBuyingMenuListApi } from "../../modules/api/GetGroupBuyingMenuListApi";
+import { useState, useEffect } from "react";
 
 const Order = () => {
   const navigate = useNavigate();
   const id = useParams();
-  const itemdata = data.rooms[id.index];
+  const [itemdata, setData] = useState([]);
+
+  const getList = async () => {
+    const itemdata = await GetGroupBuyingMenuListApi(id);
+    setData(itemdata);
+  };
+
+  useEffect(() => {
+    getList();
+  }, []);
+
+  console.log(itemdata);
 
   return (
     <div className="Order">
@@ -30,17 +43,20 @@ const Order = () => {
       <section className="item-view">
         <div className="wrap">
           <div className="item-info">
-            <div className="tit">{itemdata.tit}</div>
+            <div className="tit">{itemdata.title}</div>
             <div className="group">
-              <div className="place">{itemdata.place}</div>
+              <div className="place">{itemdata.storeName}</div>
               <div className="time">
                 <Clock />
-                &nbsp;마감 6:00pm
+                &nbsp;마감: {itemdata.timeToOrder}
               </div>
             </div>
           </div>
 
-          <div className="delivery-charge">{itemdata.price}</div>
+          <div className="delivery-charge">
+            예상배달비: {itemdata.expectedDeliveryFee} /{" "}
+            {itemdata.currentParticipant}
+          </div>
 
           <ol className="list-menu">
             <li>
