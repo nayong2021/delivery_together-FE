@@ -33,7 +33,14 @@ const Order = () => {
   };
   const onMinus = (title, value) => {
     setMenuData((current) => {
-      current.map((item) => console.log(item));
+      return current.map((item) =>
+        item.menuName === title && item.quantity > 0
+          ? {
+              ...item,
+              quantity: value - 1,
+            }
+          : item
+      );
     });
   };
 
