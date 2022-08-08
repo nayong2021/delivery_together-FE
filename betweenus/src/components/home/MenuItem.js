@@ -1,7 +1,7 @@
 import * as React from "react";
 import foodpic from "../../assets/img/img_picture1.jpg";
 
-export default function MenuItem({ title, price }) {
+export default function MenuItem({ title, price, quantity, onMinus, onPlus }) {
   return (
     <li>
       <div className="img-group">
@@ -12,9 +12,21 @@ export default function MenuItem({ title, price }) {
         <div className="tit">{title}</div>
         <div className="price">{price}원</div>
         <div className="order-count">
-          <button type="button" className="btn-minus"></button>
-          <div className="num">1개</div>
-          <button type="button" className="btn-plus"></button>
+          <button
+            type="button"
+            className="btn-minus"
+            onClick={() => {
+              onMinus(title, quantity);
+            }}
+          ></button>
+          <div className="num">{quantity}개</div>
+          <button
+            type="button"
+            className="btn-plus"
+            onClick={() => {
+              onPlus(title, quantity);
+            }}
+          ></button>
         </div>
       </div>
     </li>

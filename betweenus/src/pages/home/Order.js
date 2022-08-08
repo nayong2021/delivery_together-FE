@@ -19,6 +19,24 @@ const Order = () => {
     setMenuData(itemdata.menuList);
   };
 
+  const onPlus = (title, value) => {
+    setMenuData((current) => {
+      return current.map((item) =>
+        item.menuName === title
+          ? {
+              ...item,
+              quantity: value + 1,
+            }
+          : item
+      );
+    });
+  };
+  const onMinus = (title, value) => {
+    setMenuData((current) => {
+      current.map((item) => console.log(item));
+    });
+  };
+
   useEffect(() => {
     getList();
   }, []);
@@ -59,7 +77,14 @@ const Order = () => {
 
           <ol className="list-menu">
             {menudata.map((item, idx) => (
-              <MenuItem key={idx} title={item.menuName} price={item.price} />
+              <MenuItem
+                key={idx}
+                title={item.menuName}
+                price={item.price}
+                quantity={item.quantity}
+                onMinus={onMinus}
+                onPlus={onPlus}
+              />
             ))}
           </ol>
 
