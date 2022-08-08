@@ -3,26 +3,25 @@ import "../../assets/css/common.css";
 import MetaTag from "../../components/common/MetaTag";
 import { useNavigate, Link, useParams } from "react-router-dom";
 import { ReactComponent as Clock } from "../../assets/img/ico_clock1.svg";
-import foodpic from "../../assets/img/img_picture1.jpg";
-import data from "../../pages/Home/home.json";
 import { GetGroupBuyingMenuListApi } from "../../modules/api/GetGroupBuyingMenuListApi";
 import { useState, useEffect } from "react";
+import MenuItem from "../../components/home/MenuItem";
 
 const Order = () => {
   const navigate = useNavigate();
   const id = useParams();
-  const [itemdata, setData] = useState([]);
+  const [itemdata, setData] = useState({});
+  const [menudata, setMenuData] = useState([]);
 
   const getList = async () => {
     const itemdata = await GetGroupBuyingMenuListApi(id);
     setData(itemdata);
+    setMenuData(itemdata.menuList);
   };
 
   useEffect(() => {
     getList();
   }, []);
-
-  console.log(itemdata);
 
   return (
     <div className="Order">
@@ -48,86 +47,20 @@ const Order = () => {
               <div className="place">{itemdata.storeName}</div>
               <div className="time">
                 <Clock />
-                &nbsp;마감: {itemdata.timeToOrder}
+                &nbsp;마감 {itemdata.timeToOrder}
               </div>
             </div>
           </div>
 
           <div className="delivery-charge">
-            예상배달비: {itemdata.expectedDeliveryFee} /{" "}
-            {itemdata.currentParticipant}
+            예상배달비: {itemdata.expectedDeliveryFee} 원 /{" "}
+            {itemdata.currentParticipant} 명
           </div>
 
           <ol className="list-menu">
-            <li>
-              <div className="img-group">
-                <img src={foodpic} alt="썸네일" className="thumb" />
-              </div>
-
-              <div className="menu-info">
-                <div className="tit">[BBQ주문1위]황금올리브치킨</div>
-                <div className="price">20,000원</div>
-                <div className="order-count">
-                  <button type="button" className="btn-minus"></button>
-                  <div className="num">1개</div>
-                  <button type="button" className="btn-plus"></button>
-                </div>
-              </div>
-            </li>
-
-            <li>
-              <div className="img-group">
-                <img
-                  src={foodpic}
-                  alt="썸네일"
-                  className="thumb"
-                  max-width={"100%"}
-                  height={"auto"}
-                />
-              </div>
-
-              <div className="menu-info">
-                <div className="tit">황금올리브닭다리</div>
-                <div className="price">21,000원</div>
-                <div className="order-count">
-                  <button type="button" className="btn-minus"></button>
-                  <div className="num">1개</div>
-                  <button type="button" className="btn-plus"></button>
-                </div>
-              </div>
-            </li>
-
-            <li>
-              <div className="img-group">
-                <img src={foodpic} alt="썸네일" className="thumb" />
-              </div>
-
-              <div className="menu-info">
-                <div className="tit">황금올리브 핫 윙</div>
-                <div className="price">20,000원</div>
-                <div className="order-count">
-                  <button type="button" className="btn-minus"></button>
-                  <div className="num">0개</div>
-                  <button type="button" className="btn-plus"></button>
-                </div>
-              </div>
-            </li>
-
-            <li>
-              <div className="img-group">
-                <img src={foodpic} alt="썸네일" className="thumb" />
-              </div>
-
-              <div className="menu-info">
-                <div className="tit">황금올리브 핫 윙</div>
-                <div className="price">20,000원</div>
-                <div className="order-count">
-                  <button type="button" className="btn-minus"></button>
-                  <div className="num">0개</div>
-                  <button type="button" className="btn-plus"></button>
-                </div>
-              </div>
-            </li>
+            {menudata.map((item, idx) => (
+              <MenuItem key={idx} title={item.menuName} price={item.price} />
+            ))}
           </ol>
 
           <div className="btn-group-bottom">

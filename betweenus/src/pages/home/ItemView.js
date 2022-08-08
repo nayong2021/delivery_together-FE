@@ -48,7 +48,8 @@ const ItemView = () => {
           </div>
 
           <div className="delivery-charge">
-            예상배달비: {list.expectedDeliveryFee} / {list.currentParticipant}
+            예상배달비: {list.expectedDeliveryFee} 원 /{" "}
+            {list.currentParticipant} 명
           </div>
 
           <div className="delivery-location">
