@@ -11,6 +11,12 @@ export default function RoomItem({
   participant,
   distance,
 }) {
+  let second = time[2];
+  if (time[2]) {
+    second = time[2];
+  } else {
+    second = "00";
+  }
   return (
     <li className="list-item">
       <Link to={`/itemview/${index}`}>
@@ -19,11 +25,11 @@ export default function RoomItem({
         <div className="info-group">
           <div className="time">
             <Clock />
-            &nbsp;마감 {time}
+            &nbsp;마감 {time[0]}시 {time[1]}분 {second}초
           </div>
           <div className="info">
             <span className="price">
-              예상배달비: {price}원 / {participant}
+              예상배달비: {price}원 / {participant}명
             </span>
             <span className="distance">{distance}</span>
           </div>

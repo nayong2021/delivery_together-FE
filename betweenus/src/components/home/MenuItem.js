@@ -1,7 +1,11 @@
 import * as React from "react";
 import foodpic from "../../assets/img/img_picture1.jpg";
+import useStoreMenu from "../../store/storeMenu";
 
 export default function MenuItem({ title, price, quantity, onMinus, onPlus }) {
+  const { smenudata, setMenudata, fixMenudata } = useStoreMenu(
+    (state) => state
+  );
   return (
     <li>
       <div className="img-group">
@@ -24,7 +28,7 @@ export default function MenuItem({ title, price, quantity, onMinus, onPlus }) {
             type="button"
             className="btn-plus"
             onClick={() => {
-              onPlus(title, quantity);
+              fixMenudata(title, quantity);
             }}
           ></button>
         </div>

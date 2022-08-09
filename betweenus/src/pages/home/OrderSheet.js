@@ -1,14 +1,17 @@
 import * as React from "react";
 import "../../assets/css/common.css";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import MetaTag from "../../components/common/MetaTag";
 import data from "./home.json";
 import { ReactComponent as Clock } from "../../assets/img/ico_clock1.svg";
+import useStoreMenu from "../../store/storeMenu";
+import OrderSheetItem from "../../components/home/OrderSheetItem";
 
 const OrderSheet = () => {
   const id = useParams();
   const navigate = useNavigate();
   const itemdata = data.rooms[id.index];
+
   return (
     <div className="OrderSheet">
       <MetaTag />
@@ -41,26 +44,6 @@ const OrderSheet = () => {
           <div className="delivery-charge">{itemdata.price}</div>
 
           <ol className="list-order">
-            <li>
-              <div className="menu">순살 후라이드 양념 반반</div>
-              <div className="price">15,000원</div>
-              <div className="order-count">
-                <button type="button" className="btn-minus"></button>
-                <div className="num">1개</div>
-                <button type="button" className="btn-plus"></button>
-              </div>
-            </li>
-
-            <li>
-              <div className="menu">순살 후라이드 양념 반반</div>
-              <div className="price">15,000원</div>
-              <div className="order-count">
-                <button type="button" className="btn-minus"></button>
-                <div className="num">1개</div>
-                <button type="button" className="btn-plus"></button>
-              </div>
-            </li>
-
             <li>
               <div className="menu">순살 후라이드 양념 반반</div>
               <div className="price">15,000원</div>

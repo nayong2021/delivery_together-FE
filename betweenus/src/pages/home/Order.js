@@ -6,17 +6,20 @@ import { ReactComponent as Clock } from "../../assets/img/ico_clock1.svg";
 import { GetGroupBuyingMenuListApi } from "../../modules/api/GetGroupBuyingMenuListApi";
 import { useState, useEffect } from "react";
 import MenuItem from "../../components/home/MenuItem";
+import useStoreMenu from "../../store/storeMenu";
 
 const Order = () => {
   const navigate = useNavigate();
   const id = useParams();
   const [itemdata, setData] = useState({});
   const [menudata, setMenuData] = useState([]);
+  const { smenudata, setMenudata } = useStoreMenu((state) => state);
 
   const getList = async () => {
     const itemdata = await GetGroupBuyingMenuListApi(id);
     setData(itemdata);
     setMenuData(itemdata.menuList);
+    setMenudata(itemdata.menuList);
   };
 
   const onPlus = (title, value) => {
@@ -47,6 +50,11 @@ const Order = () => {
   useEffect(() => {
     getList();
   }, []);
+
+  const menu = smenudata.find(
+    (menus) => menus.menuNmae === "[BBQ주문1위] 황금올리브치킨"
+  );
+  console.log(menu);
 
   return (
     <div className="Order">
@@ -96,11 +104,13 @@ const Order = () => {
           </ol>
 
           <div className="btn-group-bottom">
-            <Link to={`ordersheet`}>
-              <button type="button" className="btn-custom">
-                주문 확인
-              </button>
-            </Link>
+            <button
+              type="button"
+              className="btn-custom"
+              onClick={() => navigate("ordersheet", menudata)}
+            >
+              주문 확인
+            </button>
           </div>
         </div>
       </section>
