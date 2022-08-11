@@ -20,7 +20,7 @@ const ItemView = () => {
   }, []);
 
   return (
-    <div className="ItemView">
+    <div id="root">
       <MetaTag />
       <header className="header">
         <div className="hd">

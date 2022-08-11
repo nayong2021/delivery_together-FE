@@ -10,7 +10,7 @@ export default function OrderSheetItem({
   return (
     <li>
       <div className="menu">{menuName}</div>
-      <div className="price">{price}</div>
+      <div className="price">{price}원</div>
       <div className="order-count">
         <button
           type="button"

@@ -25,7 +25,7 @@ const Order = () => {
   }, []);
 
   return (
-    <div className="Order">
+    <div id="root">
       <MetaTag />
       <header className="header">
         <div className="hd">
