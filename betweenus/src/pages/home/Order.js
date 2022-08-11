@@ -1,7 +1,7 @@
 import * as React from "react";
 import "../../assets/css/common.css";
 import MetaTag from "../../components/common/MetaTag";
-import { useNavigate, Link, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { ReactComponent as Clock } from "../../assets/img/ico_clock1.svg";
 import { GetGroupBuyingMenuListApi } from "../../modules/api/GetGroupBuyingMenuListApi";
 import { useState, useEffect } from "react";
@@ -51,10 +51,11 @@ const Order = () => {
     getList();
   }, []);
 
-  const menu = smenudata.find(
-    (menus) => menus.menuNmae === "[BBQ주문1위] 황금올리브치킨"
-  );
-  console.log(menu);
+  // console.log(
+  //   smenudata.findIndex((menus) => menus.menuName === "황금올리브닭다리")
+  // );
+
+  //console.log(smenudata);
 
   return (
     <div className="Order">
