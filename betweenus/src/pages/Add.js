@@ -7,7 +7,6 @@ import { PostGroupBuyingApi } from "../modules/api/PostGroupBuyingApi";
 const Add = () => {
   const navigate = useNavigate();
   const [inputs, setInputs] = useState({
-    hostEmail: "thdgorhkd97@gmail.com",
     title: "",
     timeToOrder: "",
     storeName: "",
@@ -17,7 +16,6 @@ const Add = () => {
   });
 
   const {
-    hostEmail,
     title,
     timeToOrder,
     storeName,

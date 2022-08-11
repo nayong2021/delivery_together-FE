@@ -1,19 +1,23 @@
 import create from "zustand";
-import { produce, original } from "immer";
+import { produce } from "immer";
 
 const useStoreMenu = create((set) => ({
-  smenudata: [],
-  setMenudata: (input) => set({ smenudata: input }),
-  fixMenudata: (title, value) =>
+  menudata: [],
+  setMenudata: (input) => set({ menudata: input }),
+  plusMenudata: (title) =>
     set(
-      produce((state) => {
-        console.log(
-          original(
-            state.smenudata.findIndex(
-              (menus) => menus.menuName === "황금올리브닭다리"
-            )
-          )
-        );
+      produce((draft) => {
+        const menus = draft.menudata.find((el) => el.menuName === title);
+        menus.quantity += 1;
+      })
+    ),
+  minusMenudata: (title, value) =>
+    set(
+      produce((draft) => {
+        const menus = draft.menudata.find((el) => el.menuName === title);
+        if (value > 0) {
+          menus.quantity -= 1;
+        }
       })
     ),
 }));

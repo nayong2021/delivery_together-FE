@@ -12,50 +12,17 @@ const Order = () => {
   const navigate = useNavigate();
   const id = useParams();
   const [itemdata, setData] = useState({});
-  const [menudata, setMenuData] = useState([]);
-  const { smenudata, setMenudata } = useStoreMenu((state) => state);
+  const { menudata, setMenudata, plusMenudata, minusMenudata } = useStoreMenu();
 
   const getList = async () => {
-    const itemdata = await GetGroupBuyingMenuListApi(id);
-    setData(itemdata);
-    setMenuData(itemdata.menuList);
-    setMenudata(itemdata.menuList);
-  };
-
-  const onPlus = (title, value) => {
-    setMenuData((current) => {
-      return current.map((item) =>
-        item.menuName === title
-          ? {
-              ...item,
-              quantity: value + 1,
-            }
-          : item
-      );
-    });
-  };
-  const onMinus = (title, value) => {
-    setMenuData((current) => {
-      return current.map((item) =>
-        item.menuName === title && item.quantity > 0
-          ? {
-              ...item,
-              quantity: value - 1,
-            }
-          : item
-      );
-    });
+    const data = await GetGroupBuyingMenuListApi(id);
+    setData(data);
+    setMenudata(data.menuList);
   };
 
   useEffect(() => {
     getList();
   }, []);
-
-  // console.log(
-  //   smenudata.findIndex((menus) => menus.menuName === "황금올리브닭다리")
-  // );
-
-  //console.log(smenudata);
 
   return (
     <div className="Order">
@@ -95,11 +62,11 @@ const Order = () => {
             {menudata.map((item, idx) => (
               <MenuItem
                 key={idx}
-                title={item.menuName}
+                menuName={item.menuName}
                 price={item.price}
                 quantity={item.quantity}
-                onMinus={onMinus}
-                onPlus={onPlus}
+                minusMenudata={minusMenudata}
+                plusMenudata={plusMenudata}
               />
             ))}
           </ol>
@@ -108,7 +75,7 @@ const Order = () => {
             <button
               type="button"
               className="btn-custom"
-              onClick={() => navigate("ordersheet", menudata)}
+              onClick={() => navigate("ordersheet")}
             >
               주문 확인
             </button>

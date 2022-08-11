@@ -1,16 +1,27 @@
 import * as React from "react";
 import "../../assets/css/common.css";
-import { useParams, useNavigate, useLocation } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import MetaTag from "../../components/common/MetaTag";
-import data from "./home.json";
+import { useState, useEffect } from "react";
 import { ReactComponent as Clock } from "../../assets/img/ico_clock1.svg";
 import useStoreMenu from "../../store/storeMenu";
 import OrderSheetItem from "../../components/home/OrderSheetItem";
+import { GetGroupBuyingMenuListApi } from "../../modules/api/GetGroupBuyingMenuListApi";
 
 const OrderSheet = () => {
   const id = useParams();
   const navigate = useNavigate();
-  const itemdata = data.rooms[id.index];
+  const [itemdata, setData] = useState({});
+  const { menudata, plusMenudata, minusMenudata } = useStoreMenu();
+
+  const getList = async () => {
+    const data = await GetGroupBuyingMenuListApi(id);
+    setData(data);
+  };
+
+  useEffect(() => {
+    getList();
+  }, []);
 
   return (
     <div className="OrderSheet">
@@ -31,28 +42,34 @@ const OrderSheet = () => {
       <section className="order-sheet">
         <div className="wrap">
           <div className="item-info">
-            <div className="tit">{itemdata.tit}</div>
+            <div className="tit">{itemdata.title}</div>
             <div className="group">
-              <div className="place">{itemdata.place}</div>
+              <div className="place">{itemdata.storeName}</div>
               <div className="time">
                 <Clock />
-                &nbsp;마감 6:00pm
+                &nbsp;마감 {itemdata.timeToOrder}
               </div>
             </div>
           </div>
 
-          <div className="delivery-charge">{itemdata.price}</div>
+          <div className="delivery-charge">
+            예상배달비: {itemdata.expectedDeliveryFee}원 /{" "}
+            {itemdata.currentParticipant}명
+          </div>
 
           <ol className="list-order">
-            <li>
-              <div className="menu">순살 후라이드 양념 반반</div>
-              <div className="price">15,000원</div>
-              <div className="order-count">
-                <button type="button" className="btn-minus"></button>
-                <div className="num">1개</div>
-                <button type="button" className="btn-plus"></button>
-              </div>
-            </li>
+            {menudata.map((item, idx) =>
+              item.quantity > 0 ? (
+                <OrderSheetItem
+                  key={idx}
+                  menuName={item.menuName}
+                  price={item.price}
+                  quantity={item.quantity}
+                  minusMenudata={minusMenudata}
+                  plusMenudata={plusMenudata}
+                />
+              ) : null
+            )}
           </ol>
 
           <ol className="order-result">
