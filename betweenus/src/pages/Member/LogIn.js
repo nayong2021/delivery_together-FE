@@ -38,10 +38,7 @@ const LogIn = () => {
     });
   };
 
-  useEffect(() => {
-    // console.log(inputId);
-    // console.log(inputPw);
-  }, [inputId, inputPw]);
+  useEffect(() => {}, [inputId, inputPw]);
 
   return (
     <div id="root">

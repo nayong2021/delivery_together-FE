@@ -3,6 +3,9 @@ import MetaTag from "../components/common/MetaTag";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { PostGroupBuyingApi } from "../modules/api/PostGroupBuyingApi";
+import "rc-time-picker/assets/index.css";
+import moment from "moment";
+import TimePicker from "rc-time-picker";
 
 const Add = () => {
   const navigate = useNavigate();
@@ -14,6 +17,13 @@ const Add = () => {
     detailPickupPlace: "",
     additionalInfo: "",
   });
+
+  const format = "h:mm a";
+  const now = moment().hour(0).minute(0);
+
+  function onChange(value) {
+    console.log(value && value.format(format));
+  }
 
   const {
     title,
@@ -32,7 +42,6 @@ const Add = () => {
   };
 
   const onClickButton = () => {
-    // console.log(inputs);
     PostGroupBuyingApi(inputs);
     navigate("/");
   };
@@ -73,13 +82,22 @@ const Add = () => {
                 설정
               </div>
               <div className="inp-group-time">
-                <input
+                {/* <input
                   type="text"
                   placeholder="주문시간 설정"
                   className="inp-frm"
                   name="timeToOrder"
                   onChange={onChangeInput}
                   value={timeToOrder}
+                /> */}
+                <TimePicker
+                  showSecond={false}
+                  defaultValue={now}
+                  className="xxx"
+                  onChange={onChange}
+                  format={format}
+                  use12Hours
+                  inputReadOnly
                 />
               </div>
             </div>

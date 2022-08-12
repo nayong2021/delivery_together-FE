@@ -7,6 +7,7 @@ import { ReactComponent as Clock } from "../../assets/img/ico_clock1.svg";
 import useStoreMenu from "../../store/storeMenu";
 import OrderSheetItem from "../../components/home/OrderSheetItem";
 import { GetGroupBuyingMenuListApi } from "../../modules/api/GetGroupBuyingMenuListApi";
+import { PostParticipationgApi } from "../../modules/api/PostParticipationApi";
 
 const OrderSheet = () => {
   const id = useParams();
@@ -17,6 +18,11 @@ const OrderSheet = () => {
   const getList = async () => {
     const data = await GetGroupBuyingMenuListApi(id);
     setData(data);
+  };
+
+  const onSubmitOrder = () => {
+    PostParticipationgApi(id, { orderItems: menudata });
+    navigate("/");
   };
 
   useEffect(() => {
@@ -99,7 +105,11 @@ const OrderSheet = () => {
           </div>
 
           <div className="btn-group-bottom">
-            <button type="button" className="btn-custom">
+            <button
+              type="button"
+              className="btn-custom"
+              onClick={onSubmitOrder}
+            >
               주문서 전달
             </button>
           </div>
