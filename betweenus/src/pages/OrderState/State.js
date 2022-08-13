@@ -2,11 +2,11 @@ import * as React from "react";
 import "../../assets/css/common.css";
 import MetaTag from "../../components/common/MetaTag";
 import BottomNavigation from "../../components/common/BottomNavigation";
-import JoinBefore from "../../components/OrderState/JoinBefore";
-import HostNoGuest from "../../components/OrderState/HostNoGuest";
-import HostYesGuest from "../../components/OrderState/HostYesGuest";
-import GuestWaitRecruit from "../../components/OrderState/GuestWaitRecruit";
-import TopOrderState from "../../components/OrderState/TopOrderState";
+import JoinBefore from "../../components/orderState/JoinBefore";
+import HostNoGuest from "../../components/orderState/HostNoGuest";
+import HostYesGuest from "../../components/orderState/HostYesGuest";
+import GuestWaitRecruit from "../../components/orderState/GuestWaitRecruit";
+import TopOrderState from "../../components/orderState/TopOrderState";
 
 const State = () => {
   const user = "host"; /*guest*/
