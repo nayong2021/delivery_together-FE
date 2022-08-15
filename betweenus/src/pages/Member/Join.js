@@ -3,36 +3,34 @@ import "../../assets/css/common.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MetaTag from "../../components/common/MetaTag";
+import { GetSendEmailTokenApi } from "../../modules/api/GetSendEmailTokenApi";
+import { PostMemberRegister } from "../../modules/api/PostMemberRegisterApi";
 
 const Join = () => {
   const navigate = useNavigate();
-  const [guideMS, setGuideMS] = useState(
-    "인증번호가 일치하지 않습니다. 확인 후 다시 입력해주세요."
-  );
+  const [guideMS, setGuideMS] = useState("");
   const [inputs, setInputs] = useState({
     email: "",
-    emailnum: "",
-    pw: "",
-    pwconfirm: "",
+    authToken: 0,
+    password: "",
+    passwordVerification: "",
     name: "",
     birth: "",
-    sex: "",
-    nickname: "",
-    phone: "",
-    phonenum: "",
+    gender: "",
+    nickName: "",
+    phoneNumber: "",
   });
 
   const {
     email,
-    emailnum,
-    pw,
-    pwconfirm,
+    authToken,
+    password,
+    passwordVerification,
     name,
     birth,
-    sex,
-    nickname,
-    phone,
-    phonenum,
+    gender,
+    nickName,
+    phoneNumber,
   } = inputs;
 
   const onChangeInput = (e) => {
@@ -42,9 +40,25 @@ const Join = () => {
     });
   };
 
-  const onClickButton = () => {
-    console.log(inputs);
-    navigate("/login");
+  const onClickEmail = () => {
+    GetSendEmailTokenApi(inputs.email);
+  };
+
+  const onClickLogin = () => {
+    // console.log(inputs);
+    const result = PostMemberRegister(inputs);
+    result.then((r) => {
+      if (r.data === 1) {
+        console.log("corret");
+        navigate("/login");
+      } else {
+        setGuideMS(
+          "이메일 또는 비밀번호를 잘못 입력했습니다. 입력하신 내용을 다시 확인해주세요."
+        );
+        console.log(r.data);
+        console.log(inputs);
+      }
+    });
   };
 
   return (
@@ -75,7 +89,11 @@ const Join = () => {
                   onChange={onChangeInput}
                   value={email}
                 />
-                <button type="button" className="btn-frm">
+                <button
+                  type="button"
+                  className="btn-frm"
+                  onClick={onClickEmail}
+                >
                   인증요청
                 </button>
               </div>
@@ -84,11 +102,11 @@ const Join = () => {
             <div className="frm-group">
               <div className="tit-frm">이메일 인증번호</div>
               <input
-                type="text"
-                name="emailnum"
+                type="number"
+                name="authToken"
                 className="inp-frm"
                 onChange={onChangeInput}
-                value={emailnum}
+                value={authToken > 0 ? authToken : ""}
               />
             </div>
 
@@ -96,11 +114,11 @@ const Join = () => {
               <div className="tit-frm">비밀번호</div>
               <input
                 type="password"
-                name="pw"
+                name="password"
                 placeholder="영어 대문자와 소문자, 숫자, 특수문자 포함 9~15자"
                 className="inp-frm"
                 onChange={onChangeInput}
-                value={pw}
+                value={password}
               />
             </div>
 
@@ -108,10 +126,10 @@ const Join = () => {
               <div className="tit-frm">비밀번호 확인</div>
               <input
                 type="password"
-                name="pwconfirm"
+                name="passwordVerification"
                 className="inp-frm"
                 onChange={onChangeInput}
-                value={pwconfirm}
+                value={passwordVerification}
               />
             </div>
 
@@ -137,9 +155,9 @@ const Join = () => {
                   onChange={onChangeInput}
                   value={birth}
                 />
-                <select name="sex" onChange={onChangeInput} value={sex}>
-                  <option value="남자">남자</option>
-                  <option value="여자">여자</option>
+                <select name="gender" onChange={onChangeInput} value={gender}>
+                  <option value="MALE">남자</option>
+                  <option value="FEMALE">여자</option>
                 </select>
               </div>
             </div>
@@ -149,10 +167,10 @@ const Join = () => {
               <div className="inp-group">
                 <input
                   type="text"
-                  name="nickname"
+                  name="nickName"
                   className="inp-frm"
                   onChange={onChangeInput}
-                  value={nickname}
+                  value={nickName}
                 />
                 <button type="button" className="btn-frm">
                   중복확인
@@ -165,11 +183,11 @@ const Join = () => {
               <div className="inp-group">
                 <input
                   type="text"
-                  name="phone"
+                  name="phoneNumber"
                   placeholder="‘-’ 없이 입력"
                   className="inp-frm"
                   onChange={onChangeInput}
-                  value={phone}
+                  value={phoneNumber}
                 />
                 <button type="button" className="btn-frm">
                   중복확인
@@ -179,19 +197,13 @@ const Join = () => {
 
             <div className="frm-group">
               <div className="tit-frm">휴대폰 인증번호</div>
-              <input
-                type="text"
-                name="phonenum"
-                className="inp-frm"
-                onChange={onChangeInput}
-                value={phonenum}
-              />
+              <input type="text" className="inp-frm" />
             </div>
 
             <div className="frm-message">{guideMS}</div>
           </div>
 
-          <div className="btn-group-bottom" onClick={onClickButton}>
+          <div className="btn-group-bottom" onClick={onClickLogin}>
             <button type="button" className="btn-custom">
               다음
             </button>
