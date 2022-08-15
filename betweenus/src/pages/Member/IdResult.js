@@ -31,7 +31,12 @@ const IdResult = () => {
               <div className="frm-guide">
                 고객님의 정보와 일치하는 아이디입니다.
               </div>
-              <input type="text" value={state} className="inp-frm" readOnly />
+              <input
+                type="text"
+                value={state.email}
+                className="inp-frm"
+                readOnly
+              />
             </div>
           </div>
 

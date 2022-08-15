@@ -13,7 +13,7 @@ const FindId = () => {
     phone: "",
     phonenum: "",
   });
-  const [id, setId] = useState("");
+
   const [guideMS, setGuideMs] = useState("");
 
   const { name, birth, phone, phonenum } = inputs;
@@ -25,16 +25,10 @@ const FindId = () => {
     });
   };
 
-  const onClickButton = () => {
-    getList();
-  };
-
-  const getList = async () => {
+  const onClickButton = async () => {
     const data = await GetFindidApi(inputs.name, inputs.phone, inputs.birth);
     if (data.find) {
-      setId(data.email);
-      console.log(id);
-      // navigate("idresult", { state: id });
+      navigate("idresult", { state: data });
     } else {
       setGuideMs("정보와 일치하는 아이디가 없습니다. 다시한번 확인해주세요");
     }
