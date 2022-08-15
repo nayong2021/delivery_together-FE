@@ -6,6 +6,7 @@ import { StaticTimePicker } from "@mui/x-date-pickers/StaticTimePicker";
 import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
 import { orange } from "@mui/material/colors";
 import useStoreTime from "../../store/storeTime";
+import { MobileTimePicker } from "@mui/x-date-pickers/MobileTimePicker";
 
 export default function ScrollTimePicker() {
   const { hour, minute, setHours, setMinutes } = useStoreTime();
@@ -25,15 +26,13 @@ export default function ScrollTimePicker() {
   return (
     <ThemeProvider theme={theme}>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <CustomTime
+        <MobileTimePicker
           theme={theme}
-          toolbarTitle={"주문시간 설정"}
-          displayStaticWrapperAs="mobile"
           value={value}
           onChange={(newValue) => {
             setValue(newValue);
-            setHours(newValue.getHours());
-            setMinutes(newValue.getMinutes());
+            setHours(String(newValue.getHours()));
+            setMinutes(String(newValue.getMinutes()));
           }}
           renderInput={(params) => <TextField {...params} />}
         />

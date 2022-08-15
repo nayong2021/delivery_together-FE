@@ -1425,10 +1425,10 @@ section {
   margin: 30px 0;
 }
 .frm2 .frm-group-time .tit-frm {
-  width: 68px;
+  width: 100px;
 }
 .frm2 .frm-group-time .inp-group-time {
-  width: calc(100% - 68px);
+  width: calc(100% - 80px);
 }
 
 /*mui*/

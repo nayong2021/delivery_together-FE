@@ -4,9 +4,12 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { PostGroupBuyingApi } from "../modules/api/PostGroupBuyingApi";
 import ScrollTimePicker from "../components/add/ScrollTimePicker";
+import useStoreTime from "..//store/storeTime";
 
 const Add = () => {
   const navigate = useNavigate();
+  const { hour, minute, setHours, setMinutes } = useStoreTime();
+
   const [inputs, setInputs] = useState({
     title: "",
     timeToOrder: "",
@@ -29,6 +32,15 @@ const Add = () => {
     setInputs({
       ...inputs,
       [e.target.name]: e.target.value,
+    });
+  };
+
+  const onClickTime = () => {
+    setInputs({
+      ...inputs,
+      timeToOrder: `${hour.length < 2 ? "0" + hour : hour}:${
+        minute.length < 2 ? "0" + minute : minute
+      }:00`,
     });
   };
 
@@ -68,8 +80,11 @@ const Add = () => {
             </div>
 
             <div className="frm-group frm-group-time">
-              {/* <div className="tit-frm">주문시간 설정</div> */}
-              <div className="inp-group-time">
+              <div className="tit-frm">
+                주문시간 <br />
+                설정
+              </div>
+              <div className="inp-group-time" onClick={onClickTime}>
                 {/* <input
                   type="text"
                   placeholder="주문시간 설정"
@@ -79,8 +94,8 @@ const Add = () => {
                   value={timeToOrder}
                 /> */}
                 <ScrollTimePicker
+                  className="inp-frm"
                   name="timeToOrder"
-                  onChange={onChangeInput}
                   value={timeToOrder}
                 />
               </div>

@@ -11,9 +11,10 @@ export default function HomeItemList() {
     const data = await GetJoinableGroupBuyingApi();
     setData(data);
   };
+
   useEffect(() => {
     getList();
-  }, []);
+  }, [list]);
 
   return (
     <>
