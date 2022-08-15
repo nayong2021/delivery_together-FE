@@ -5,6 +5,8 @@ import { useState } from "react";
 import { PostGroupBuyingApi } from "../modules/api/PostGroupBuyingApi";
 import "rc-time-picker/assets/index.css";
 import moment from "moment";
+import ScrollTimePicker from "../components/add/ScrollTimePicker";
+import Box from "@mui/material/Box";
 // import MuiTimePicker from "../components/add/MuiTimePicker";
 
 const Add = () => {
@@ -77,29 +79,21 @@ const Add = () => {
             </div>
 
             <div className="frm-group frm-group-time">
-              <div className="tit-frm">
-                주문시간 <br />
-                설정
-              </div>
+              {/* <div className="tit-frm">주문시간 설정</div> */}
               <div className="inp-group-time">
-                <input
+                {/* <input
                   type="text"
                   placeholder="주문시간 설정"
                   className="inp-frm"
                   name="timeToOrder"
                   onChange={onChangeInput}
                   value={timeToOrder}
-                />
-                {/* <TimePicker
-                  showSecond={false}
-                  defaultValue={now}
-                  className="xxx"
-                  onChange={onChange}
-                  format={format}
-                  use12Hours
-                  inputReadOnly
                 /> */}
-                {/* <MuiTimePicker /> */}
+                <ScrollTimePicker
+                  name="timeToOrder"
+                  onChange={onChangeInput}
+                  value={timeToOrder}
+                />
               </div>
             </div>
 

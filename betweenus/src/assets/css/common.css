@@ -1431,6 +1431,8 @@ section {
   width: calc(100% - 68px);
 }
 
+/*mui*/
+
 /*장바구니*/
 .cart .wrap {
   padding: 0 15px 80px;

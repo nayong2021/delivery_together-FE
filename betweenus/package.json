@@ -1,62 +1,65 @@
 {
-  "name": "betweenus",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@date-io/date-fns": "^2.15.0",
-    "@emotion/react": "^11.9.3",
-    "@emotion/styled": "^11.9.3",
-    "@mui/icons-material": "^5.8.4",
-    "@mui/material": "^5.9.1",
-    "@mui/styles": "^5.9.1",
-    "@mui/system": "^5.9.1",
-    "@mui/x-date-pickers": "^5.0.0-beta.1",
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.3.0",
-    "@testing-library/user-event": "^13.5.0",
-    "axios": "^0.27.2",
-    "cors": "^2.8.5",
-    "http-proxy-middleware": "^2.0.6",
-    "immer": "^9.0.15",
-    "mui": "^0.0.1",
-    "rc-time-picker": "^3.7.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-helmet": "^6.1.0",
-    "react-helmet-async": "^1.3.0",
-    "react-hook-form": "^7.33.1",
-    "react-mobile-picker": "^0.1.13",
-    "react-router-dom": "^6.3.0",
-    "react-scripts": "^5.0.1",
-    "web-vitals": "^2.1.4",
-    "zustand": "^4.0.0"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "prettier": "2.7.1"
-  }
+    "name": "betweenus",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "@date-io/date-fns": "^2.15.0",
+        "@emotion/react": "^11.9.3",
+        "@emotion/styled": "^11.9.3",
+        "@mobiscroll/cli": "^1.7.2",
+        "@mobiscroll/react": "https://npm.mobiscroll.com/@mobiscroll/react-trial/-/react-trial-5.18.1.tgz",
+        "@mui/icons-material": "^5.8.4",
+        "@mui/material": "^5.9.1",
+        "@mui/styles": "^5.9.1",
+        "@mui/system": "^5.9.1",
+        "@mui/x-date-pickers": "^5.0.0-beta.1",
+        "@testing-library/jest-dom": "^5.16.4",
+        "@testing-library/react": "^13.3.0",
+        "@testing-library/user-event": "^13.5.0",
+        "axios": "^0.27.2",
+        "cors": "^2.8.5",
+        "date-fns": "^2.29.1",
+        "http-proxy-middleware": "^2.0.6",
+        "immer": "^9.0.15",
+        "mui": "^0.0.1",
+        "rc-time-picker": "^3.7.3",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-helmet": "^6.1.0",
+        "react-helmet-async": "^1.3.0",
+        "react-hook-form": "^7.33.1",
+        "react-mobile-picker": "^0.1.13",
+        "react-router-dom": "^6.3.0",
+        "react-scripts": "^5.0.1",
+        "web-vitals": "^2.1.4",
+        "zustand": "^4.0.0"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "devDependencies": {
+        "eslint-plugin-react-hooks": "^4.6.0",
+        "prettier": "2.7.1"
+    }
 }
