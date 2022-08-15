@@ -14,6 +14,7 @@ import LogIn from "./pages/member/LogIn";
 import Join from "./pages/member/Join";
 import FindId from "./pages/member/FindId";
 import FindPw from "./pages/member/FindPw";
+import IdResult from "./pages/member/IdResult";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/login" element={<LogIn />}></Route>
         <Route path="/login/join" element={<Join />}></Route>
         <Route path="/login/findid" element={<FindId />}></Route>
+        <Route path="/login/findid/idresult" element={<IdResult />}></Route>
         <Route path="/login/findpw" element={<FindPw />}></Route>
         <Route path="/itemview/:index" element={<ItemView />} />
         <Route path="/itemview/:index/order" element={<Order />} />

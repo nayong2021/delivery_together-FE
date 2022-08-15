@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@date-io/date-fns": "^2.15.0",
     "react-hook-form": "^7.33.1"
   }
 }

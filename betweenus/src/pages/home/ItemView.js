@@ -53,7 +53,11 @@ const ItemView = () => {
           </div>
 
           <div className="delivery-location">
-            상세 픽업 장소: <strong>{list.detailPickupPlace}</strong>
+            상세 픽업 장소:{" "}
+            <strong>
+              {list.pickupPlace}&nbsp;
+              {list.detailPickupPlace}
+            </strong>
           </div>
 
           <div className="btn-group-util">

@@ -44,6 +44,7 @@ const Join = () => {
 
   const onClickButton = () => {
     console.log(inputs);
+    navigate("/login");
   };
 
   return (

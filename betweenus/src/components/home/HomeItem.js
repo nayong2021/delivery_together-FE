@@ -2,7 +2,7 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 import { ReactComponent as Clock } from "../../assets/img/ico_clock1.svg";
 
-export default function RoomItem({
+export default function HomeItem({
   index,
   title,
   place,
