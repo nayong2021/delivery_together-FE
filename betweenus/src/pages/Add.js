@@ -3,11 +3,7 @@ import MetaTag from "../components/common/MetaTag";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { PostGroupBuyingApi } from "../modules/api/PostGroupBuyingApi";
-import "rc-time-picker/assets/index.css";
-import moment from "moment";
 import ScrollTimePicker from "../components/add/ScrollTimePicker";
-import Box from "@mui/material/Box";
-// import MuiTimePicker from "../components/add/MuiTimePicker";
 
 const Add = () => {
   const navigate = useNavigate();
@@ -19,13 +15,6 @@ const Add = () => {
     detailPickupPlace: "",
     additionalInfo: "",
   });
-
-  const format = "h:mm a";
-  const now = moment().hour(0).minute(0);
-
-  function onChange(value) {
-    console.log(value && value.format(format));
-  }
 
   const {
     title,

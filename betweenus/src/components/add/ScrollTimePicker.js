@@ -5,8 +5,10 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { StaticTimePicker } from "@mui/x-date-pickers/StaticTimePicker";
 import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
 import { orange } from "@mui/material/colors";
+import useStoreTime from "../../store/storeTime";
 
-export default function StaticTimePickerDemo() {
+export default function ScrollTimePicker() {
+  const { hour, minute, setHours, setMinutes } = useStoreTime();
   const [value, setValue] = React.useState(new Date());
 
   const CustomTime = styled(StaticTimePicker)(({ theme }) => ({
@@ -30,6 +32,8 @@ export default function StaticTimePickerDemo() {
           value={value}
           onChange={(newValue) => {
             setValue(newValue);
+            setHours(newValue.getHours());
+            setMinutes(newValue.getMinutes());
           }}
           renderInput={(params) => <TextField {...params} />}
         />
