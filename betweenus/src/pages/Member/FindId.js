@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MetaTag from "../../components/common/MetaTag";
 import { GetFindidApi } from "../../modules/api/member/GetFindidApi";
+import Parser from "html-react-parser";
 
 const FindId = () => {
   const navigate = useNavigate();
@@ -30,7 +31,9 @@ const FindId = () => {
     if (data.find) {
       navigate("idresult", { state: data });
     } else {
-      setGuideMs("정보와 일치하는 아이디가 없습니다. 다시한번 확인해주세요");
+      setGuideMs(
+        "&nbsp;입력하신 정보와 일치하는 아이디가 없습니다.<br/>&nbsp;입력하신 내용을 다시 확인해주세요."
+      );
     }
   };
 
@@ -103,7 +106,9 @@ const FindId = () => {
                 value={phonenum}
               />
             </div>
-            <div className="frm-message">{guideMS}</div>
+            <div className="frm-message" white-space="pre-wrap">
+              {Parser(guideMS)}
+            </div>
           </div>
 
           <div className="btn-group-bottom">

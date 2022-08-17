@@ -2,7 +2,7 @@ import * as React from "react";
 import "../../assets/css/common.css";
 import { useParams, useNavigate } from "react-router-dom";
 import MetaTag from "../../components/common/MetaTag";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { ReactComponent as Clock } from "../../assets/img/ico_clock1.svg";
 import useStoreMenu from "../../store/storeMenu";
 import OrderSheetItem from "../../components/home/OrderSheetItem";
@@ -15,10 +15,10 @@ const OrderSheet = () => {
   const [itemdata, setData] = useState({});
   const { menudata, plusMenudata, minusMenudata } = useStoreMenu();
 
-  const getList = async () => {
+  const getList = useCallback(async () => {
     const data = await GetGroupBuyingMenuListApi(id);
     setData(data);
-  };
+  }, [id]);
 
   const onSubmitOrder = () => {
     PostParticipationgApi(id, { orderItems: menudata });
@@ -27,7 +27,7 @@ const OrderSheet = () => {
 
   useEffect(() => {
     getList();
-  }, []);
+  }, [getList]);
 
   return (
     <div id="root">

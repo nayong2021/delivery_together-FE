@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import MetaTag from "../../components/common/MetaTag";
 import { GetSendEmailTokenApi } from "../../modules/api/member/GetSendEmailTokenApi";
 import { GetSelectMemberApi } from "../../modules/api/member/GetSelectMemberApi";
+import Parser from "html-react-parser";
 
 const FindPw = () => {
   const navigate = useNavigate();
@@ -38,7 +39,9 @@ const FindPw = () => {
     if (data) {
       navigate("pwresult", { state: inputs });
     } else {
-      setGuideMs("정보와 일치하는 아이디가 없습니다. 다시한번 확인해주세요");
+      setGuideMs(
+        "&nbsp;입력하신 정보와 일치하는 유저가 없습니다.<br/>&nbsp;입력하신 내용을 다시 확인해주세요."
+      );
     }
   };
 
@@ -130,7 +133,7 @@ const FindPw = () => {
                 value={phoneNumber}
               />
             </div>
-            <div className="frm-message">{guideMS}</div>
+            <div className="frm-message">{Parser(guideMS)}</div>
           </div>
 
           <div className="btn-group-bottom" onClick={onClickButton}>

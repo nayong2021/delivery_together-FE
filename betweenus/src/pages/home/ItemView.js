@@ -3,7 +3,7 @@ import "../../assets/css/common.css";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import MetaTag from "../../components/common/MetaTag";
 import { ReactComponent as Clock } from "../../assets/img/ico_clock1.svg";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { GetGroupBuyingDetailApi } from "../../modules/api/GetGroupBuyingDetailApi";
 
 const ItemView = () => {
@@ -11,13 +11,14 @@ const ItemView = () => {
   const id = useParams();
   const [list, setData] = useState([]);
 
-  const getList = async () => {
+  const getList = useCallback(async () => {
     const list = await GetGroupBuyingDetailApi(id);
     setData(list);
-  };
+  }, [id]);
+
   useEffect(() => {
     getList();
-  }, []);
+  }, [getList]);
 
   return (
     <div id="root">

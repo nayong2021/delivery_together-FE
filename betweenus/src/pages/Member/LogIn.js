@@ -7,6 +7,7 @@ import Naver from "../../assets/img/ico_naver1.png";
 import Kakao from "../../assets/img/ico_kakao1.png";
 import Apple from "../../assets/img/ico_apple1.png";
 import { PostLoginApi } from "../../modules/api/member/PostLoginApi";
+import Parser from "html-react-parser";
 
 const LogIn = () => {
   const [inputId, setInputId] = useState("");
@@ -31,7 +32,7 @@ const LogIn = () => {
         document.location.href = "/";
       } else {
         setWrongMessage(
-          "이메일 또는 비밀번호를 잘못 입력했습니다. 입력하신 내용을 다시 확인해주세요."
+          "&nbsp;&nbsp;&nbsp;이메일 또는 비밀번호를 잘못 입력했습니다. 입력하신 내용을 다시 확인해주세요."
         );
         console.log("wrong");
       }
@@ -73,7 +74,7 @@ const LogIn = () => {
             </div>
           </div>
 
-          <div className="frm-message">{WrongMessage}</div>
+          <div className="frm-message">{Parser(WrongMessage)}</div>
 
           <button type="button" className="btn-custom" onClick={onClickLogin}>
             로그인

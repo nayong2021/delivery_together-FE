@@ -4,7 +4,7 @@ import MetaTag from "../../components/common/MetaTag";
 import { useNavigate, useParams } from "react-router-dom";
 import { ReactComponent as Clock } from "../../assets/img/ico_clock1.svg";
 import { GetGroupBuyingMenuListApi } from "../../modules/api/GetGroupBuyingMenuListApi";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import MenuItem from "../../components/home/MenuItem";
 import useStoreMenu from "../../store/storeMenu";
 
@@ -14,15 +14,15 @@ const Order = () => {
   const [itemdata, setData] = useState({});
   const { menudata, setMenudata, plusMenudata, minusMenudata } = useStoreMenu();
 
-  const getList = async () => {
+  const getList = useCallback(async () => {
     const data = await GetGroupBuyingMenuListApi(id);
     setData(data);
     setMenudata(data.menuList);
-  };
+  }, [setMenudata, id]);
 
   useEffect(() => {
     getList();
-  }, []);
+  }, [getList]);
 
   return (
     <div id="root">

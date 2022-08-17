@@ -1,9 +1,10 @@
 import * as React from "react";
 import "../../assets/css/common.css";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import MetaTag from "../../components/common/MetaTag";
 import { useState } from "react";
 import { GetResetpwApi } from "../../modules/api/member/GetResetpwApi";
+import Parser from "html-react-parser";
 
 const PwResult = () => {
   const navigate = useNavigate();
@@ -33,7 +34,9 @@ const PwResult = () => {
     if (data) {
       navigate("/login");
     } else {
-      setGuideMs("비밀번호가 일치하지 않습니다. 다시한번 확인해주세요 :)");
+      setGuideMs(
+        "&nbsp;비밀번호가 일치하지 않습니다. 다시 한번 확인해 주세요."
+      );
     }
   };
 
@@ -58,7 +61,6 @@ const PwResult = () => {
           <div className="pw-result">
             <div className="frm">
               <div className="frm-guide">비밀번호를 변경해 주세요.</div>
-
               <div className="frm-group">
                 <div className="tit-frm">새 비밀번호</div>
                 <input
@@ -81,7 +83,7 @@ const PwResult = () => {
                   value={passwordConfirmation}
                 />
               </div>
-              <div className="frm-message">{guideMS}</div>
+              <div className="frm-message">{Parser(guideMS)}</div>
             </div>
           </div>
 

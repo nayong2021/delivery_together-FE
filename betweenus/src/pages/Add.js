@@ -8,7 +8,7 @@ import useStoreTime from "..//store/storeTime";
 
 const Add = () => {
   const navigate = useNavigate();
-  const { hour, minute, setHours, setMinutes } = useStoreTime();
+  const { hour, minute } = useStoreTime();
 
   const [inputs, setInputs] = useState({
     title: "",
