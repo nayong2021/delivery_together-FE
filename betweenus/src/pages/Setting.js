@@ -6,6 +6,7 @@ import { ReactComponent as Profile1 } from "../assets/img/img_profile1.svg";
 import { ReactComponent as Menu1 } from "../assets/img/ico_menu1_setting.svg";
 import { ReactComponent as Menu2 } from "../assets/img/ico_menu2_setting.svg";
 import { ReactComponent as Menu3 } from "../assets/img/ico_menu3_setting.svg";
+import Character from "../assets/img/img_3d.png";
 
 const Setting = () => {
   return (
@@ -52,7 +53,14 @@ const Setting = () => {
             </a>
           </li>
         </ol>
+        <img
+          src={Character}
+          alt=" "
+          width={"90%"}
+          style={{ position: "absolute", bottom: 70, right: 0 }}
+        />
       </section>
+
       <BottomNavigation />
     </div>
   );

@@ -3,18 +3,21 @@ import "../../assets/css/common.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MetaTag from "../../components/common/MetaTag";
+import { GetSendEmailTokenApi } from "../../modules/api/member/GetSendEmailTokenApi";
+import { GetSelectMemberApi } from "../../modules/api/member/GetSelectMemberApi";
 
 const FindPw = () => {
   const navigate = useNavigate();
+  const [guideMS, setGuideMs] = useState("");
   const [inputs, setInputs] = useState({
     name: "",
     birth: "",
     email: "",
-    phone: "",
-    phonenum: "",
+    phoneNumber: "",
+    authToken: 0,
   });
 
-  const { name, birth, email, phone, phonenum } = inputs;
+  const { name, birth, email, phoneNumber, authToken } = inputs;
 
   const onChangeInput = (e) => {
     setInputs({
@@ -23,9 +26,24 @@ const FindPw = () => {
     });
   };
 
-  const onClickButton = () => {
-    console.log(inputs);
-    navigate("/");
+  const onClickButton = async () => {
+    // console.log(inputs);
+    const data = await GetSelectMemberApi(
+      inputs.name,
+      inputs.birth,
+      inputs.email,
+      inputs.phoneNumber,
+      inputs.authToken
+    );
+    if (data) {
+      navigate("pwresult", { state: inputs });
+    } else {
+      setGuideMs("정보와 일치하는 아이디가 없습니다. 다시한번 확인해주세요");
+    }
+  };
+
+  const onClickEmail = () => {
+    GetSendEmailTokenApi(inputs.email);
   };
 
   return (
@@ -72,42 +90,47 @@ const FindPw = () => {
 
             <div className="frm-group">
               <div className="tit-frm">이메일</div>
-              <input
-                type="text"
-                className="inp-frm"
-                name="email"
-                onChange={onChangeInput}
-                value={email}
-              />
-            </div>
-
-            <div className="frm-group">
-              <div className="tit-frm">휴대폰 번호</div>
               <div className="inp-group">
                 <input
                   type="text"
-                  placeholder="‘-’ 없이 입력"
+                  name="email"
                   className="inp-frm"
-                  name="phone"
                   onChange={onChangeInput}
-                  value={phone}
+                  value={email}
                 />
-                <button type="button" className="btn-frm">
+                <button
+                  type="button"
+                  className="btn-frm"
+                  onClick={onClickEmail}
+                >
                   인증요청
                 </button>
               </div>
             </div>
 
             <div className="frm-group">
-              <div className="tit-frm">휴대폰 인증번호</div>
+              <div className="tit-frm">이메일 인증번호</div>
               <input
-                type="text"
+                type="number"
+                name="authToken"
                 className="inp-frm"
-                name="phonenum"
                 onChange={onChangeInput}
-                value={phonenum}
+                value={authToken > 0 ? authToken : ""}
               />
             </div>
+
+            <div className="frm-group">
+              <div className="tit-frm">휴대폰 번호</div>
+              <input
+                type="text"
+                placeholder="‘-’ 없이 입력"
+                className="inp-frm"
+                name="phoneNumber"
+                onChange={onChangeInput}
+                value={phoneNumber}
+              />
+            </div>
+            <div className="frm-message">{guideMS}</div>
           </div>
 
           <div className="btn-group-bottom" onClick={onClickButton}>

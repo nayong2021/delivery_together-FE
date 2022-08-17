@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import Naver from "../../assets/img/ico_naver1.png";
 import Kakao from "../../assets/img/ico_kakao1.png";
 import Apple from "../../assets/img/ico_apple1.png";
-import { PostLoginApi } from "../../modules/api/PostLoginApi";
+import { PostLoginApi } from "../../modules/api/member/PostLoginApi";
 
 const LogIn = () => {
   const [inputId, setInputId] = useState("");

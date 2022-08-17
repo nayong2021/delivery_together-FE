@@ -15,6 +15,7 @@ import Join from "./pages/member/Join";
 import FindId from "./pages/member/FindId";
 import FindPw from "./pages/member/FindPw";
 import IdResult from "./pages/member/IdResult";
+import PwResult from "./pages/member/PwResult";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/login/findid" element={<FindId />}></Route>
         <Route path="/login/findid/idresult" element={<IdResult />}></Route>
         <Route path="/login/findpw" element={<FindPw />}></Route>
+        <Route path="/login/findpw/pwresult" element={<PwResult />}></Route>
         <Route path="/itemview/:index" element={<ItemView />} />
         <Route path="/itemview/:index/order" element={<Order />} />
         <Route

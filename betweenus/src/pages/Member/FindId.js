@@ -3,7 +3,7 @@ import "../../assets/css/common.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MetaTag from "../../components/common/MetaTag";
-import { GetFindidApi } from "../../modules/api/GetFindidApi";
+import { GetFindidApi } from "../../modules/api/member/GetFindidApi";
 
 const FindId = () => {
   const navigate = useNavigate();

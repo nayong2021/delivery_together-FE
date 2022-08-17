@@ -3,8 +3,8 @@ import "../../assets/css/common.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MetaTag from "../../components/common/MetaTag";
-import { GetSendEmailTokenApi } from "../../modules/api/GetSendEmailTokenApi";
-import { PostMemberRegister } from "../../modules/api/PostMemberRegisterApi";
+import { GetSendEmailTokenApi } from "../../modules/api/member/GetSendEmailTokenApi";
+import { PostMemberRegister } from "../../modules/api/member/PostMemberRegisterApi";
 
 const Join = () => {
   const navigate = useNavigate();
