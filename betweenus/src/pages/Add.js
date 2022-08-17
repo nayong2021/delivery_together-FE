@@ -4,11 +4,14 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { PostGroupBuyingApi } from "../modules/api/PostGroupBuyingApi";
 import ScrollTimePicker from "../components/add/ScrollTimePicker";
-import useStoreTime from "..//store/storeTime";
+import useStoreTime from "../store/storeTime";
+import DaumPostcode from "react-daum-postcode";
 
 const Add = () => {
   const navigate = useNavigate();
   const { hour, minute } = useStoreTime();
+
+  const [isOpenPost, setIsOpenPost] = useState(false);
 
   const [inputs, setInputs] = useState({
     title: "",
@@ -47,6 +50,37 @@ const Add = () => {
   const onClickButton = () => {
     PostGroupBuyingApi(inputs);
     navigate("/");
+  };
+
+  const onChangeOpenPost = () => {
+    setIsOpenPost(!isOpenPost);
+  };
+
+  const onCompletePost = (data) => {
+    let addr = "";
+
+    if (data.userSelectedType === "R") {
+      // 사용자가 도로명 주소를 선택했을 경우
+      addr = data.roadAddress;
+    } else {
+      // 사용자가 지번 주소를 선택했을 경우(J)
+      addr = data.jibunAddress;
+    }
+
+    setInputs({
+      ...inputs,
+      pickupPlace: addr,
+    });
+    setIsOpenPost(false);
+  };
+
+  const postCodeStyle = {
+    display: "block",
+    position: "relative",
+    top: "0%",
+    width: "400px",
+    height: "400px",
+    padding: "7px",
   };
 
   return (
@@ -121,12 +155,28 @@ const Add = () => {
                   name="pickupPlace"
                   onChange={onChangeInput}
                   value={pickupPlace}
+                  disabled={true}
                 />
-                <button type="button" className="btn-frm">
+                <button
+                  type="button"
+                  className="btn-frm"
+                  onClick={onChangeOpenPost}
+                >
                   주소 찾기
                 </button>
               </div>
             </div>
+            {isOpenPost ? (
+              <div className="frm-group">
+                <div className="inp-group">
+                  <DaumPostcode
+                    style={postCodeStyle}
+                    autoClose
+                    onComplete={onCompletePost}
+                  />
+                </div>
+              </div>
+            ) : null}
 
             <div className="frm-group">
               <input
