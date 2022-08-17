@@ -7,7 +7,7 @@ import { ReactComponent as User } from "../../assets/img/ico_user1.svg";
 import OrderComplete from "./OrderComplete";
 
 const OrderState = () => {
-  const user = "host";
+  const user = "guest";
   const order = true;
   let component;
 
@@ -25,7 +25,7 @@ const OrderState = () => {
     <section className="state">
       <div className="wrap">
         <div className="item-info">
-          <div className="tit">BBQ 치킨 같이 시켜먹어요 😊</div>
+          <div className="tit">BBQ 치킨 같이 시켜먹어요!</div>
           <div className="group">
             <div className="place">BBQ 치킨 아주대점</div>
             <div className="time">

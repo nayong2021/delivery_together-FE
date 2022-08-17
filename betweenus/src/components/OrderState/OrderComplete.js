@@ -4,7 +4,7 @@ import "../../assets/css/common.css";
 const OrderComplete = () => {
   return (
     <div className="delivery-state">
-      <div className="message">주문 완료! 😀</div>
+      <div className="message">주문 완료! :)</div>
       <div className="time">오후 7시 15분 도착 예정</div>
       <div className="timer">
         남은시간 <br />

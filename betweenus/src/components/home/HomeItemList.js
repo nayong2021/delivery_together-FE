@@ -1,14 +1,22 @@
 import * as React from "react";
 import HomeItem from "./HomeItem";
 import { useEffect, useState } from "react";
-import { GetJoinableGroupBuyingApi } from "../../modules/api/GetJoinableGroupBuyingApi";
+import { GetJoinableGroupBuyingApi } from "../../modules/api/home/GetJoinableGroupBuyingApi";
 import NoRoomNotice from "./NoRoomNotice";
+import useStoreDropdownMenu from "../../store/storeDropdownMenu";
+import { GetOrderOfLargePeopleApi } from "../../modules/api/home/GetOrderOfLargePeopleApi";
 
 export default function HomeItemList() {
   const [list, setData] = useState({});
+  const { option } = useStoreDropdownMenu();
+  let data = {};
 
   const getList = async () => {
-    const data = await GetJoinableGroupBuyingApi();
+    if (!option || option === "최신순") {
+      data = await GetJoinableGroupBuyingApi();
+    } else if (option === "모집인원 많은 순") {
+      data = await GetOrderOfLargePeopleApi();
+    }
     setData(data);
   };
 

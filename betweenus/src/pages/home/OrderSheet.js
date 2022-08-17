@@ -6,8 +6,8 @@ import { useState, useEffect, useCallback } from "react";
 import { ReactComponent as Clock } from "../../assets/img/ico_clock1.svg";
 import useStoreMenu from "../../store/storeMenu";
 import OrderSheetItem from "../../components/home/OrderSheetItem";
-import { GetGroupBuyingMenuListApi } from "../../modules/api/GetGroupBuyingMenuListApi";
-import { PostParticipationgApi } from "../../modules/api/PostParticipationApi";
+import { GetGroupBuyingMenuListApi } from "../../modules/api/home/GetGroupBuyingMenuListApi";
+import { PostParticipationgApi } from "../../modules/api/home/PostParticipationApi";
 
 const OrderSheet = () => {
   const id = useParams();

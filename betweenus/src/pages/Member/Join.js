@@ -51,7 +51,13 @@ const Join = () => {
       if (r.data === 1) {
         console.log("corret");
         navigate("/login");
-      } else {
+      } else if (r.data === 2) {
+        setGuideMS(
+          "이메일 또는 비밀번호를 잘못 입력했습니다. 입력하신 내용을 다시 확인해주세요."
+        );
+        console.log(r.data);
+        console.log(inputs);
+      } else if (r.data === 3) {
         setGuideMS(
           "이메일 또는 비밀번호를 잘못 입력했습니다. 입력하신 내용을 다시 확인해주세요."
         );

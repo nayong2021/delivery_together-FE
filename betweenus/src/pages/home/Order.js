@@ -3,7 +3,7 @@ import "../../assets/css/common.css";
 import MetaTag from "../../components/common/MetaTag";
 import { useNavigate, useParams } from "react-router-dom";
 import { ReactComponent as Clock } from "../../assets/img/ico_clock1.svg";
-import { GetGroupBuyingMenuListApi } from "../../modules/api/GetGroupBuyingMenuListApi";
+import { GetGroupBuyingMenuListApi } from "../../modules/api/home/GetGroupBuyingMenuListApi";
 import { useState, useEffect, useCallback } from "react";
 import MenuItem from "../../components/home/MenuItem";
 import useStoreMenu from "../../store/storeMenu";

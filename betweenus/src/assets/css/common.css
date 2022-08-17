@@ -434,6 +434,18 @@ section {
   color: #f77145;
   letter-spacing: 0.18px;
 }
+.hd .hd-search {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.hd .hd-search .my-filter {
+  padding: 10px;
+}
+
 .hd .hd-tit {
   display: flex;
   align-items: center;

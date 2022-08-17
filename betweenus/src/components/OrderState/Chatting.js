@@ -1,7 +1,18 @@
 import * as React from "react";
 import "../../assets/css/common.css";
+import { ReactComponent as User } from "../../assets/img/ico_user1.svg";
+// import { GetChatList } from "../../modules/api/chatting/GetChatListApi";
 
 const Chatting = () => {
+  // const getList = async () => {
+  //   const data = await GetChatList();
+  //   setData(data);
+  // };
+
+  // useEffect(() => {
+  //   getList();
+  // }, [list]);
+
   return (
     <section className="chat">
       <div className="wrap">
@@ -9,11 +20,8 @@ const Chatting = () => {
           <li>
             <div className="ly-l">
               <div className="user-info">
-                <img
-                  src={require("../../assets/img/ico_user1.svg").default}
-                  alt=" "
-                />
-                <div className="nickname">치킨마니아</div>
+                <User />
+                <div className="nickname">&nbsp;치킨마니아</div>
               </div>
 
               <div className="chat-content">
@@ -35,11 +43,8 @@ const Chatting = () => {
           <li>
             <div className="ly-l">
               <div className="user-info">
-                <img
-                  src={require("../../assets/img/ico_user1.svg").default}
-                  alt=" "
-                />
-                <div className="nickname">치킨마니아</div>
+                <User />
+                <div className="nickname">&nbsp;치킨마니아</div>
               </div>
 
               <div className="chat-content">
@@ -64,11 +69,8 @@ const Chatting = () => {
           <li>
             <div className="ly-l">
               <div className="user-info">
-                <img
-                  src={require("../../assets/img/ico_user1.svg").default}
-                  alt=" "
-                />
-                <div className="nickname">배고파용용</div>
+                <User />
+                <div className="nickname">&nbsp;배고파용용</div>
               </div>
 
               <div className="chat-content">
@@ -83,11 +85,8 @@ const Chatting = () => {
           <li>
             <div className="ly-l">
               <div className="user-info">
-                <img
-                  src={require("../../assets/img/ico_user1.svg").default}
-                  alt=" "
-                />
-                <div className="nickname">냥냥펀치</div>
+                <User />
+                <div className="nickname">&nbsp;냥냥펀치</div>
               </div>
 
               <div className="chat-content">
@@ -100,11 +99,8 @@ const Chatting = () => {
           <li>
             <div className="ly-l">
               <div className="user-info">
-                <img
-                  src={require("../../assets/img/ico_user1.svg").default}
-                  alt=" "
-                />
-                <div className="nickname">치킨마니아</div>
+                <User />
+                <div className="nickname">&nbsp;치킨마니아</div>
               </div>
 
               <div className="chat-content">
