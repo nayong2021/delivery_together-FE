@@ -12,12 +12,12 @@ const FindId = () => {
     name: "",
     birth: "",
     phone: "",
-    phonenum: "",
+    // phonenum: "",
   });
 
   const [guideMS, setGuideMs] = useState("");
 
-  const { name, birth, phone, phonenum } = inputs;
+  const { name, birth, phone } = inputs;
 
   const onChangeInput = (e) => {
     setInputs({
@@ -81,22 +81,22 @@ const FindId = () => {
 
             <div className="frm-group">
               <div className="tit-frm">휴대폰 번호</div>
-              <div className="inp-group">
-                <input
-                  type="text"
-                  placeholder="‘-’ 없이 입력"
-                  name="phone"
-                  className="inp-frm"
-                  onChange={onChangeInput}
-                  value={phone}
-                />
-                <button type="button" className="btn-frm">
+              {/* <div className="inp-group"> */}
+              <input
+                type="text"
+                placeholder="‘-’ 없이 입력"
+                name="phone"
+                className="inp-frm"
+                onChange={onChangeInput}
+                value={phone}
+              />
+              {/* <button type="button" className="btn-frm">
                   인증요청
-                </button>
-              </div>
+                </button> */}
+              {/* </div> */}
             </div>
 
-            <div className="frm-group">
+            {/* <div className="frm-group">
               <div className="tit-frm">휴대폰 인증번호</div>
               <input
                 type="text"
@@ -105,7 +105,7 @@ const FindId = () => {
                 onChange={onChangeInput}
                 value={phonenum}
               />
-            </div>
+            </div> */}
             <div className="frm-message" white-space="pre-wrap">
               {Parser(guideMS)}
             </div>

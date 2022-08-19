@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 
 export default function DrowpdownMenuHeader() {
   const navigate = useNavigate();
-  // const { option, setOption } = useStoreDropdownMenu();
   const onClickSearch = () => {
     navigate("search");
   };
@@ -23,7 +22,3 @@ export default function DrowpdownMenuHeader() {
     </header>
   );
 }
-
-/* <option>최신순</option>
-<option>가까운 순</option>
-<option>모집인원 많은 순</option> */

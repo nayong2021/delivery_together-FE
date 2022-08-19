@@ -13,11 +13,15 @@ export default function HomeItemList() {
   // console.log(option);
 
   const getList = async () => {
-    console.log(option);
+    // console.log(option);
     if (option === "최신순") {
+      console.log(option);
       data = await GetJoinableGroupBuyingApi();
+      console.log(data);
     } else if (option === "모집인원 많은 순") {
+      console.log(option);
       data = await GetOrderOfLargePeopleApi();
+      console.log(data);
     }
     setData(data);
   };

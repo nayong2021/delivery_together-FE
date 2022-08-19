@@ -16,7 +16,7 @@ const Join = () => {
     passwordVerification: "",
     name: "",
     birth: "",
-    gender: "",
+    gender: "남자",
     nickName: "",
     phoneNumber: "",
   });
@@ -44,8 +44,18 @@ const Join = () => {
     GetSendEmailTokenApi(inputs.email);
   };
 
+  /*
+  1: 회원가입 성공
+  2: 올바르지 않은 이메일 형식
+  3: 비밀번호 형식 올바르지 않음
+  4: 중복된 닉네임
+  5: 전화번호 형식 올바르지 않음
+  6: 비밀번호 확인 일치하지 않음
+  7: 잘못된 인증번호 
+  */
+
   const onClickLogin = () => {
-    // console.log(inputs);
+    console.log(inputs);
     const result = PostMemberRegister(inputs);
     result.then((r) => {
       if (r.data === 1) {
@@ -53,13 +63,37 @@ const Join = () => {
         navigate("/login");
       } else if (r.data === 2) {
         setGuideMS(
-          "이메일 또는 비밀번호를 잘못 입력했습니다. 입력하신 내용을 다시 확인해주세요."
+          "올바르지 않은 이메일 형식입니다. 입력하신 내용을 다시 확인해주세요."
         );
         console.log(r.data);
         console.log(inputs);
       } else if (r.data === 3) {
         setGuideMS(
-          "이메일 또는 비밀번호를 잘못 입력했습니다. 입력하신 내용을 다시 확인해주세요."
+          "비밀번호 형식이 올바르지 않습니다. 입력하신 내용을 다시 확인해주세요."
+        );
+        console.log(r.data);
+        console.log(inputs);
+      } else if (r.data === 4) {
+        setGuideMS(
+          "중복된 닉네임이 존재합니다. 입력하신 내용을 다시 확인해주세요."
+        );
+        console.log(r.data);
+        console.log(inputs);
+      } else if (r.data === 5) {
+        setGuideMS(
+          "전화번호 형식이 올바르지 않습니다. 입력하신 내용을 다시 확인해주세요."
+        );
+        console.log(r.data);
+        console.log(inputs);
+      } else if (r.data === 6) {
+        setGuideMS(
+          "비밀번호 확인이 일치하지 않습니다. 입력하신 내용을 다시 확인해주세요."
+        );
+        console.log(r.data);
+        console.log(inputs);
+      } else if (r.data === 7) {
+        setGuideMS(
+          "이메일 인증번호가 일치하지 않습니다. 입력하신 내용을 다시 확인해주세요."
         );
         console.log(r.data);
         console.log(inputs);
@@ -170,41 +204,39 @@ const Join = () => {
 
             <div className="frm-group">
               <div className="tit-frm">닉네임</div>
-              <div className="inp-group">
-                <input
-                  type="text"
-                  name="nickName"
-                  className="inp-frm"
-                  onChange={onChangeInput}
-                  value={nickName}
-                />
-                <button type="button" className="btn-frm">
+              <input
+                type="text"
+                name="nickName"
+                className="inp-frm"
+                onChange={onChangeInput}
+                value={nickName}
+              />
+              {/* <button type="button" className="btn-frm">
                   중복확인
-                </button>
-              </div>
+                </button> */}
             </div>
 
             <div className="frm-group">
               <div className="tit-frm">휴대폰 번호</div>
-              <div className="inp-group">
-                <input
-                  type="text"
-                  name="phoneNumber"
-                  placeholder="‘-’ 없이 입력"
-                  className="inp-frm"
-                  onChange={onChangeInput}
-                  value={phoneNumber}
-                />
-                <button type="button" className="btn-frm">
+              {/* <div className="inp-group"> */}
+              <input
+                type="text"
+                name="phoneNumber"
+                placeholder="‘-’ 없이 입력"
+                className="inp-frm"
+                onChange={onChangeInput}
+                value={phoneNumber}
+              />
+              {/* <button type="button" className="btn-frm">
                   중복확인
-                </button>
-              </div>
+                </button> */}
+              {/* </div> */}
             </div>
 
-            <div className="frm-group">
+            {/* <div className="frm-group">
               <div className="tit-frm">휴대폰 인증번호</div>
               <input type="text" className="inp-frm" />
-            </div>
+            </div> */}
 
             <div className="frm-message">{guideMS}</div>
           </div>

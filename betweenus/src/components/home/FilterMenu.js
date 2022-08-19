@@ -12,7 +12,7 @@ import PeopleRoundedIcon from "@mui/icons-material/PeopleRounded";
 export default function FilterMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-  const { option, setOption } = useStoreDropdownMenu();
+  const { setOption } = useStoreDropdownMenu();
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
