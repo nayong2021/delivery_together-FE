@@ -3,7 +3,7 @@ import Home from "./pages/home/Home";
 import React from "react";
 import Add from "./pages/Add";
 import Map from "./pages/Map";
-import Setting from "./pages/Setting";
+import Setting from "./pages/setting/Setting";
 import State from "./pages/orderState/State";
 import Order from "./pages/home/Order";
 import ItemView from "./pages/home/ItemView";
@@ -17,6 +17,7 @@ import FindPw from "./pages/member/FindPw";
 import IdResult from "./pages/member/IdResult";
 import PwResult from "./pages/member/PwResult";
 import HomeSearch from "./pages/home/HomeSearch";
+import RegionSetting from "./pages/setting/RegionSetting";
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
           <Route path="/state/chatting" element={<Chatting />}></Route>
         </Route>
         <Route path="/setting" element={<Setting />}></Route>
+        <Route path="/setting/region" element={<RegionSetting />}></Route>
         <Route path="/order" element={<Order />}></Route>
         <Route path="/search" element={<HomeSearch />}></Route>
         <Route path="/" element={<Home />}></Route>

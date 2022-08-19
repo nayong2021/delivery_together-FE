@@ -12,7 +12,9 @@ export default function DrowpdownMenuHeader() {
   return (
     <header className="header">
       <div className="hd">
-        <div className="hd-filter">강남구 테헤란로 311</div>
+        <div className="hd-filter" onClick={() => navigate("/setting/region")}>
+          강남구 테헤란로 311
+        </div>
         <div className="hd-search">
           <FilterMenu />
           <div className="hd-space"></div>

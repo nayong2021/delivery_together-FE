@@ -2,7 +2,7 @@ import * as React from "react";
 import MetaTag from "../components/common/MetaTag";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { PostGroupBuyingApi } from "../modules/api/PostGroupBuyingApi";
+import { PostGroupBuyingApi } from "../modules/api/add/PostGroupBuyingApi";
 import ScrollTimePicker from "../components/add/ScrollTimePicker";
 import useStoreTime from "../store/storeTime";
 import DaumPostcode from "react-daum-postcode";
