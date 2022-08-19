@@ -16,6 +16,7 @@ import FindId from "./pages/member/FindId";
 import FindPw from "./pages/member/FindPw";
 import IdResult from "./pages/member/IdResult";
 import PwResult from "./pages/member/PwResult";
+import HomeSearch from "./pages/home/HomeSearch";
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
         </Route>
         <Route path="/setting" element={<Setting />}></Route>
         <Route path="/order" element={<Order />}></Route>
+        <Route path="/search" element={<HomeSearch />}></Route>
         <Route path="/" element={<Home />}></Route>
       </Routes>
     </Router>

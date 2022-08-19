@@ -10,9 +10,11 @@ export default function HomeItemList() {
   const [list, setData] = useState({});
   const { option } = useStoreDropdownMenu();
   let data = {};
+  // console.log(option);
 
   const getList = async () => {
-    if (!option || option === "최신순") {
+    console.log(option);
+    if (option === "최신순") {
       data = await GetJoinableGroupBuyingApi();
     } else if (option === "모집인원 많은 순") {
       data = await GetOrderOfLargePeopleApi();
@@ -22,7 +24,7 @@ export default function HomeItemList() {
 
   useEffect(() => {
     getList();
-  }, [list]);
+  }, [option]);
 
   return (
     <>
