@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ReactComponent as NoRoomIcon } from "/Users/kwaksj329/BetweenUs_FE/betweenus/src/assets/img/ico_graphic1.svg";
+import { ReactComponent as NoRoomIcon } from "../../assets/img/ico_graphic1.svg";
 
 export default function NoRoomNotice() {
   return (

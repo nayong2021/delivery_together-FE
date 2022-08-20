@@ -16,7 +16,7 @@ const Join = () => {
     passwordVerification: "",
     name: "",
     birth: "",
-    gender: "남자",
+    gender: "MALE",
     nickName: "",
     phoneNumber: "",
   });
