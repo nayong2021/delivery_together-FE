@@ -1,20 +1,28 @@
 import * as React from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { ReactComponent as Home } from "../../assets/img/home-03.svg";
 import { ReactComponent as Building } from "../../assets/img/building-05.svg";
 import { ReactComponent as Etc } from "../../assets/img/marker-pin-02.svg";
+import { useState, useEffect } from "react";
 
 export default function RegionPost() {
   const navigate = useNavigate();
+  const { state } = useLocation();
+  const [btnActive, setBtnActive] = useState("");
+  console.log(state);
+
+  // useEffect(() => {
+  //   console.log("effect");
+  // }, [btnActive]);
 
   return (
     <>
-      <header class="header">
-        <div class="hd">
-          <div class="hd-tit">
+      <header className="header">
+        <div className="hd">
+          <div className="hd-tit">
             <button
               type="button"
-              class="hd-back"
+              className="hd-back"
               onClick={() => navigate(-1)}
             ></button>
             상세 정보 입력
@@ -22,36 +30,46 @@ export default function RegionPost() {
         </div>
       </header>
 
-      <section class="region">
-        <div class="wrap">
-          <ol class="list-region">
+      <section className="region">
+        <div className="wrap">
+          <ol className="list-region">
             <li>
-              <div class="txt">
+              <div className="txt">
                 <div>
-                  <div class="txt-address1">
-                    서울특별시 강남구 대치동 172-66
-                  </div>
-                  <div>[도로명] 서울특별시 강남구 테헤란로 340</div>
+                  <div className="txt-address1">{state.jibunAddr}</div>
+                  <div>[도로명] {state.roadAddrPart1}</div>
                 </div>
               </div>
             </li>
           </ol>
         </div>
-        <div class="box-places">
-          <div class="box">
-            <div class="contents">
+        <div className="box-places">
+          <div
+            className={"box" + ("home" === btnActive ? " active" : "")}
+            // onClick={() => setBtnActive("home")}
+          >
+            <div className="contents" value={"home"}>
               <Home />
               우리집
             </div>
           </div>
-          <div class="box">
-            <div class="contents">
+          <div
+            className={
+              "box"
+              // + ("building" === btnActive ? " active" : "")
+            }
+            // onClick={() => setBtnActive("building")}
+          >
+            <div className="contents" value={"building"}>
               <Building />
               회사
             </div>
           </div>
-          <div class="box">
-            <div class="contents">
+          <div
+            className={"box" + ("etc" === btnActive ? " active" : "")}
+            // onClick={() => setBtnActive("etc")}
+          >
+            <div className="contents" value={"etc"}>
               <Etc />
               기타
             </div>

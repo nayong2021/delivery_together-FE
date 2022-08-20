@@ -15,20 +15,20 @@ export default function HomeItemList() {
   const getList = async () => {
     // console.log(option);
     if (option === "최신순") {
-      console.log(option);
+      // console.log(option);
       data = await GetJoinableGroupBuyingApi();
-      console.log(data);
+      // console.log(data);
     } else if (option === "모집인원 많은 순") {
-      console.log(option);
+      // console.log(option);
       data = await GetOrderOfLargePeopleApi();
-      console.log(data);
+      // console.log(data);
     }
     setData(data);
   };
 
   useEffect(() => {
     getList();
-  }, [option]);
+  }, [list, option]);
 
   return (
     <>

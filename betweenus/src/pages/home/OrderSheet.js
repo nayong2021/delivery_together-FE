@@ -13,6 +13,7 @@ const OrderSheet = () => {
   const id = useParams();
   const navigate = useNavigate();
   const [itemdata, setData] = useState({});
+  const [sum, setSum] = useState(0);
   const { menudata, plusMenudata, minusMenudata } = useStoreMenu();
 
   const getList = useCallback(async () => {
@@ -25,9 +26,21 @@ const OrderSheet = () => {
     navigate("/");
   };
 
+  const calTotalSum = () => {
+    setSum(
+      menudata.reduce(
+        (previousValue, currentValue) =>
+          previousValue + currentValue.price * currentValue.quantity,
+        0
+      )
+    );
+    console.log(menudata);
+  };
+
   useEffect(() => {
     getList();
-  }, [getList]);
+    calTotalSum();
+  }, [getList, menudata]);
 
   return (
     <div id="root">
@@ -81,7 +94,7 @@ const OrderSheet = () => {
           <ol className="order-result">
             <li>
               <div className="tit">음식 총 금액</div>
-              <div className="txt">65,000원</div>
+              <div className="txt">{sum}원</div>
             </li>
 
             <li>
@@ -94,7 +107,7 @@ const OrderSheet = () => {
                 <strong>총 금액</strong>
               </div>
               <div className="txt">
-                <strong>65,000원</strong>
+                <strong>{sum}원</strong>
               </div>
             </li>
           </ol>

@@ -1151,6 +1151,25 @@ section {
   padding-bottom: 5%;
 }
 
+.box:active {
+  color: #f87245;
+  border-color: #f87245;
+}
+/* 
+.box-active {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border: 1px solid #f87245;
+  border-radius: 5px;
+  width: 100%;
+  flex-direction: column;
+  margin: 3px 3px 3px 3px;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  color: #f87245;
+} */
+
 .box .contents {
   font-size: 15px;
   justify-content: space-between;
@@ -1410,6 +1429,8 @@ section {
   margin-bottom: 20px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 .list-order li {
   position: relative;
