@@ -19,6 +19,7 @@ import PwResult from "./pages/member/PwResult";
 import HomeSearch from "./pages/home/HomeSearch";
 import RegionSearch from "./pages/setting/RegionSearch";
 import RegionList from "./pages/setting/RegionList";
+import RegionPost from "./pages/setting/RegionPost";
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
         <Route path="/setting" element={<Setting />}></Route>
         <Route path="/setting/region" element={<RegionList />}></Route>
         <Route path="/setting/region/search" element={<RegionSearch />}></Route>
+        <Route path="/setting/region/post" element={<RegionPost />}></Route>
         <Route path="/order" element={<Order />}></Route>
         <Route path="/search" element={<HomeSearch />}></Route>
         <Route path="/" element={<Home />}></Route>
