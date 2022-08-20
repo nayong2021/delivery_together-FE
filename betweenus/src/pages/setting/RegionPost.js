@@ -1,8 +1,11 @@
 import * as React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ReactComponent as Home } from "../../assets/img/home-03.svg";
+import { ReactComponent as HomeSelected } from "../../assets/img/home-03-orange.svg";
 import { ReactComponent as Building } from "../../assets/img/building-05.svg";
+import { ReactComponent as BuildingSelected } from "../../assets/img/building-05-orange.svg";
 import { ReactComponent as Etc } from "../../assets/img/marker-pin-02.svg";
+import { ReactComponent as EtcSelected } from "../../assets/img/marker-pin-02-orange.svg";
 import { useState, useEffect } from "react";
 
 export default function RegionPost() {
@@ -45,32 +48,37 @@ export default function RegionPost() {
         </div>
         <div className="box-places">
           <div
-            className={"box" + ("home" === btnActive ? " active" : "")}
-            // onClick={() => setBtnActive("home")}
+            className={"box" + ("home" === btnActive ? "-selected" : "")}
+            onClick={() => setBtnActive("home")}
           >
             <div className="contents" value={"home"}>
-              <Home />
+              {"home" === btnActive ? 
+                <HomeSelected /> : <Home/>
+              }
               우리집
             </div>
           </div>
           <div
             className={
-              "box"
-              // + ("building" === btnActive ? " active" : "")
+              "box"+ ("building" === btnActive ? "-selected" : "")
             }
-            // onClick={() => setBtnActive("building")}
+            onClick={() => setBtnActive("building")}
           >
             <div className="contents" value={"building"}>
-              <Building />
+              {"building" === btnActive ? 
+                <BuildingSelected /> : <Building/>
+              }
               회사
             </div>
           </div>
           <div
-            className={"box" + ("etc" === btnActive ? " active" : "")}
-            // onClick={() => setBtnActive("etc")}
+            className={"box" + ("etc" === btnActive ? "-selected" : "")}
+            onClick={() => setBtnActive("etc")}
           >
             <div className="contents" value={"etc"}>
-              <Etc />
+              {"etc" === btnActive ? 
+                <EtcSelected /> : <Etc/>
+              }
               기타
             </div>
           </div>
