@@ -29,7 +29,7 @@ export default function BottomNavigation() {
             <i className="ico" aria-hidden="true"></i>
           </NavLink>
           <NavLink
-            to="/state"
+            to="/state/participating"
             className={({ isActive }) => (isActive ? "active" : "")}
           >
             <div className="ico"></div>

@@ -69,19 +69,19 @@ const Join = () => {
         console.log(inputs);
       } else if (r.data === 3) {
         setGuideMS(
-          "비밀번호 형식이 올바르지 않습니다. 입력하신 내용을 다시 확인해주세요."
+          "중복된 이메일이 존재합니다. 입력하신 내용을 다시 확인해주세요."
         );
         console.log(r.data);
         console.log(inputs);
       } else if (r.data === 4) {
         setGuideMS(
-          "중복된 닉네임이 존재합니다. 입력하신 내용을 다시 확인해주세요."
+          "이메일 인증번호가 일치하지 않습니다. 입력하신 내용을 다시 확인해주세요."
         );
         console.log(r.data);
         console.log(inputs);
       } else if (r.data === 5) {
         setGuideMS(
-          "전화번호 형식이 올바르지 않습니다. 입력하신 내용을 다시 확인해주세요."
+          "비밀번호 형식이 올바르지 않습니다. 입력하신 내용을 다시 확인해주세요."
         );
         console.log(r.data);
         console.log(inputs);
@@ -93,7 +93,13 @@ const Join = () => {
         console.log(inputs);
       } else if (r.data === 7) {
         setGuideMS(
-          "이메일 인증번호가 일치하지 않습니다. 입력하신 내용을 다시 확인해주세요."
+          "중복된 닉네임이 존재합니다. 입력하신 내용을 다시 확인해주세요."
+        );
+        console.log(r.data);
+        console.log(inputs);
+      } else if (r.data === 8) {
+        setGuideMS(
+          "전화번호 형식이 올바르지 않습니다. 입력하신 내용을 다시 확인해주세요."
         );
         console.log(r.data);
         console.log(inputs);

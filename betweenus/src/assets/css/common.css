@@ -1870,7 +1870,7 @@ section {
   box-sizing: border-box;
   background: #f0f0f0;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 300;
   color: #000;
   letter-spacing: 0.14px;
   word-break: break-all;
@@ -1997,9 +1997,10 @@ section {
 .user-profile .user-info .user-nickname {
   margin-bottom: 2px;
   font-size: 15px;
-  font-weight: 700;
+  font-weight: 500;
   color: #000;
   letter-spacing: 0.15px;
+  margin-left: 5px;
 }
 .user-profile .user-info .user-mail {
   font-size: 13px;

@@ -5,10 +5,13 @@ import GuestBeforeOrder from "./GuestBeforeOrder";
 import { ReactComponent as Clock } from "../../assets/img/ico_clock1.svg";
 import { ReactComponent as User } from "../../assets/img/ico_user1.svg";
 import OrderComplete from "./OrderComplete";
+import useStoreOrderInfo from "../../store/storeOrderInfo";
+
 
 const OrderState = () => {
   const user = "guest";
   const order = true;
+  const { orderInfo, setOrderInfo } = useStoreOrderInfo();
   let component;
 
   if (order) {
@@ -31,6 +34,7 @@ const OrderState = () => {
             <div className="time">
               <Clock />
               &nbsp;마감 6:00pm
+
             </div>
           </div>
         </div>
