@@ -1,25 +1,21 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import "../../assets/css/common.css";
-import { useParams } from "react-router-dom";
-import { ReactComponent as User } from "../../assets/img/ico_user1.svg";
 import { GetChatList } from "../../modules/api/chatting/GetChatListApi";
 import useStoreOrderInfo from "../../store/storeOrderInfo";
 import ChatItem from "./ChatItem";
 
 const Chatting = () => {
 
-  const { orderInfo, setOrderInfo } = useStoreOrderInfo();
+  const { orderInfo } = useStoreOrderInfo();
   const [ chatList, setChatList ] = useState([]);
   const [ resultCount, setResultCount ] = useState(0);
 
   const getList = async () => {
-    const data = await GetChatList(id.index);
+    const data = await GetChatList(orderInfo.postIdx);
     setChatList(data.chatList);
     setResultCount(data.resultCount);
   };
-
-  const id = useParams();
 
   useEffect(() => {
     getList();
