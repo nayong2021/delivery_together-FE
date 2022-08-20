@@ -1,7 +1,6 @@
 import * as React from "react";
 import "../../assets/css/common.css";
 import MetaTag from "../../components/common/MetaTag";
-import BottomNavigation from "../../components/common/BottomNavigation";
 import HomeSearchItemList from "../../components/home/HomeItemList";
 import SearchKeyword from "../../components/home/SearchKeyword";
 import { useNavigate } from "react-router-dom";
@@ -22,16 +21,17 @@ const HomeSearch = () => {
               className="hd-back"
               onClick={() => navigate(-1)}
             ></button>
+            모집글 검색
           </div>
-          <SearchKeyword />
         </div>
+        <SearchKeyword />
       </header>
       <section className="main">
         <div className="wrap">
+          <div className="search-div"></div>
           <HomeSearchItemList />
         </div>
       </section>
-      <BottomNavigation />
     </div>
   );
 };

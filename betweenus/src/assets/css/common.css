@@ -261,6 +261,10 @@ section {
   box-sizing: border-box;
 }
 
+.wrap .search-div {
+  padding: 30px 0 15px 0;
+}
+
 /*modal style*/
 .modal-layer {
   display: none;
@@ -395,7 +399,8 @@ section {
   cursor: pointer;
 }
 .ck-custom:checked + label {
-  background-image: url("../img/ico_check1_on.svg");
+  background-image: url("../img/check.svg");
+  color: #f77145;
 }
 
 /*thumbnail style*/
@@ -994,6 +999,37 @@ section {
   margin: 0 auto 22px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
+}
+
+.home-search {
+  /* margin-bottom: 10px; */
+  /* padding: 0 30px 0 30px; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: calc(100% - 40px);
+  margin: 10px auto 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+}
+
+.home-search .inp-frm {
+  width: calc(100% - 35px);
+  padding-left: 35px;
+  border: none;
+  box-sizing: border-box;
+  background: url("../img/ico_search2.svg") left center no-repeat;
+  font-size: 15px;
+  font-weight: 500;
+  color: #000;
+  letter-spacing: -0.41px;
+}
+
+.home-search .btn-delete {
+  width: 35px;
+  height: 35px;
+  border: none;
+  background: url("../img/ico_x1.svg") center center no-repeat;
 }
 .search-group .inp-group-search .inp-frm {
   width: calc(100% - 35px);

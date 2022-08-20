@@ -1,7 +1,7 @@
 import create from "zustand";
 
 const useStoreSearchKeyword = create((set) => ({
-  keyword: "최신순",
+  keyword: "",
   setKeyword: (input) => set({ keyword: input }),
 }));
 

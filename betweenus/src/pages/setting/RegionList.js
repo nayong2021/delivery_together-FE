@@ -1,6 +1,5 @@
 import * as React from "react";
 import { useNavigate } from "react-router-dom";
-import { ReactComponent as Location } from "../../assets/img/ico_location1.svg";
 import { ReactComponent as Marker } from "../../assets/img/marker-pin-01.svg";
 
 export default function RegionList() {
@@ -29,10 +28,10 @@ export default function RegionList() {
               <button type="button" class="btn-delete"></button>
             </div>
 
-            <button type="button" class="btn-search">
+            {/* <button type="button" class="btn-search">
               <Location width={"18px"} height={"18px"} />
               &nbsp;현재 위치로 검색
-            </button>
+            </button> */}
           </div>
 
           {/* <div class="region-info">
