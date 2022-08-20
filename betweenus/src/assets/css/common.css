@@ -359,7 +359,7 @@ section {
   box-sizing: border-box;
   background: linear-gradient(to right, #ff981c 0%, #f77145 100%);
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 500;
   color: #fff !important;
   letter-spacing: 0.2px;
 }
@@ -1001,7 +1001,7 @@ section {
   border: none;
   box-sizing: border-box;
   background: url("../img/ico_search2.svg") left center no-repeat;
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 500;
   color: #000;
   letter-spacing: -0.41px;
@@ -1060,15 +1060,31 @@ section {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 18px 8px 18px 11px;
+  padding: 15px 8px 15px 11px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
 }
 .list-region .txt {
-  font-size: 18px;
+  display: flex;
+  font-size: 15px;
   font-weight: 400;
   color: #7e7e7e;
   letter-spacing: 0.18px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list-region .txt .marker {
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 15px 5px 0px;
+  color: #7e7e7e;
+  display: flex;
+}
+
+.list-region .txt .txt-title {
+  color: #000000;
+  font-weight: 500;
 }
 
 /*메인*/

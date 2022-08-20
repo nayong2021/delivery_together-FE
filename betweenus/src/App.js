@@ -17,7 +17,8 @@ import FindPw from "./pages/member/FindPw";
 import IdResult from "./pages/member/IdResult";
 import PwResult from "./pages/member/PwResult";
 import HomeSearch from "./pages/home/HomeSearch";
-import RegionSetting from "./pages/setting/RegionSetting";
+import RegionSearch from "./pages/setting/RegionSearch";
+import RegionList from "./pages/setting/RegionList";
 
 function App() {
   return (
@@ -42,7 +43,8 @@ function App() {
           <Route path="/state/chatting" element={<Chatting />}></Route>
         </Route>
         <Route path="/setting" element={<Setting />}></Route>
-        <Route path="/setting/region" element={<RegionSetting />}></Route>
+        <Route path="/setting/region" element={<RegionList />}></Route>
+        <Route path="/setting/region/search" element={<RegionSearch />}></Route>
         <Route path="/order" element={<Order />}></Route>
         <Route path="/search" element={<HomeSearch />}></Route>
         <Route path="/" element={<Home />}></Route>
