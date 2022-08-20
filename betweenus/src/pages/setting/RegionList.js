@@ -7,12 +7,12 @@ export default function RegionList() {
 
   return (
     <>
-      <header class="header">
-        <div class="hd">
-          <div class="hd-tit">
+      <header className="header">
+        <div className="hd">
+          <div className="hd-tit">
             <button
               type="button"
-              class="hd-back"
+              className="hd-back"
               onClick={() => navigate(-1)}
             ></button>
             내 동네 설정
@@ -20,47 +20,52 @@ export default function RegionList() {
         </div>
       </header>
 
-      <section class="region">
-        <div class="wrap">
-          <div class="search-group">
-            <div class="inp-group-search" onClick={() => navigate("search")}>
-              <input type="text" placeholder="동네 검색" class="inp-frm" />
-              <button type="button" class="btn-delete"></button>
+      <section className="region">
+        <div className="wrap">
+          <div className="search-group">
+            <div
+              className="inp-group-search"
+              onClick={() => navigate("search")}
+            >
+              <input type="text" placeholder="동네 검색" className="inp-frm" />
+              <button type="button" className="btn-delete"></button>
             </div>
 
-            {/* <button type="button" class="btn-search">
+            {/* <button type="button" className="btn-search">
               <Location width={"18px"} height={"18px"} />
               &nbsp;현재 위치로 검색
             </button> */}
           </div>
 
-          {/* <div class="region-info">
+          {/* <div className="region-info">
             지역은 최소 1개 이상, 최대 3개까지 설정 가능해요.
           </div> */}
 
-          <ol class="list-region">
+          <ol className="list-region">
             <li>
-              <div class="txt">
-                <Marker class="marker" />
+              <div className="txt">
+                <Marker className="marker" />
+
                 <div>
-                  <div class="txt-title">서울특별시 강남구 서초4동</div>
+                  <div className="txt-title">서울특별시 강남구 서초4동</div>
                   <div>서울특별시 강남구 서초4동</div>
                 </div>
               </div>
-              <div class="ck-area">
+
+              <div className="ck-area">
                 <input
                   id="region_ck1"
                   type="checkbox"
                   name="region_ck"
-                  class="ck-custom"
+                  className="ck-custom"
                 />
-                <label for="region_ck1"></label>
+                <label htmlfor="region_ck1"></label>
               </div>
             </li>
           </ol>
 
-          <div class="btn-group-bottom">
-            <button type="button" class="btn-custom">
+          <div className="btn-group-bottom">
+            <button type="button" className="btn-custom">
               내 동네 설정 완료
             </button>
           </div>
