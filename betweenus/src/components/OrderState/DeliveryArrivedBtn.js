@@ -18,7 +18,7 @@ export default function DeliveryArrivedBtn() {
     return (
         (orderInfo.currentUserIsHost && orderInfo.postStatus === "ORDERED") ? (
         <button type="button" 
-        class="btn-arrival" 
+        className="btn-arrival" 
         onClick={onClickDeliveryArrived}>
             도착 완료 시 여기를 눌러주세요!
         </button>
