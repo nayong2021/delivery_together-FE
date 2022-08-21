@@ -4,6 +4,8 @@ import MetaTag from "../../components/common/MetaTag";
 import HomeSearchItemList from "../../components/home/HomeSearchItemList";
 import SearchKeyword from "../../components/home/SearchKeyword";
 import { useNavigate } from "react-router-dom";
+import useStoreSearchKeyword from "../../store/storeSearchKeyword";
+import { useEffect } from "react";
 
 const HomeSearch = () => {
   const navigate = useNavigate();

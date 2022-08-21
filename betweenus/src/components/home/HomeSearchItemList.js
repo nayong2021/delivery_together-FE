@@ -5,15 +5,15 @@ import { GetJoinableGroupBuyingApi } from "../../modules/api/home/GetJoinableGro
 import NoRoomNotice from "./NoRoomNotice";
 import useStoreDropdownMenu from "../../store/storeDropdownMenu";
 import useStoreSearchKeyword from "../../store/storeSearchKeyword";
-import GetSearchLatestOrderApi from "../../modules/api/home/GetSearchLatestOrderApi";
-import GetSearchLargePeopleApi from "../../modules/api/home/GetSearchLargePeopleApi";
+import { ReactComponent as NoRoomIcon } from "../../assets/img/ico_graphic1.svg";
+import { GetSearchLatestOrderApi } from "../../modules/api/home/GetSearchLatestOrderApi";
+import { GetSearchLargePeopleApi } from "../../modules/api/home/GetSearchLargePeopleApi";
 
 export default function HomeSearchItemList() {
   const [list, setData] = useState({});
   const { option } = useStoreDropdownMenu();
-  const { keyword, setKeyword } = useStoreSearchKeyword();
+  const { keyword } = useStoreSearchKeyword();
   let data = {};
-  console.log(keyword);
 
   const getList = async () => {
     if (option === "최신순") {
@@ -30,7 +30,6 @@ export default function HomeSearchItemList() {
 
   useEffect(() => {
     getList();
-    console.log("effect");
   }, [option, keyword]);
 
   return (
@@ -50,7 +49,13 @@ export default function HomeSearchItemList() {
             />
           ))
         ) : (
-          <NoRoomNotice />
+          <div className="no-data">
+            <NoRoomIcon />
+            <div className="txt">
+              아직 공동구매 모집방이 없어요. <br />
+              호스트가 되어 배달 공동구매방을 만들어주세요 :)
+            </div>
+          </div>
         )}
       </ol>
     </>
