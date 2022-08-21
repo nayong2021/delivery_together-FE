@@ -43,7 +43,8 @@ const ItemView = () => {
               <div className="place">{list.storeName}</div>
               <div className="time">
                 <Clock />
-                &nbsp;마감 {list.timeToOrder}
+                &nbsp;모집 마감 {list.timeToOrder ? list.timeToOrder[0] : null}
+                시 {list.timeToOrder ? list.timeToOrder[1] : null}분
               </div>
             </div>
           </div>
