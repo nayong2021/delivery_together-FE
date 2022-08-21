@@ -7,16 +7,28 @@ import { ReactComponent as BuildingSelected } from "../../assets/img/building-05
 import { ReactComponent as Etc } from "../../assets/img/marker-pin-02.svg";
 import { ReactComponent as EtcSelected } from "../../assets/img/marker-pin-02-orange.svg";
 import { useState, useEffect } from "react";
+import styled from "styled-components";
+
+const EtcBox = styled.input`
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border: 1px solid #a5a5a9;
+  border-radius: 5px;
+  width: 100%;
+  flex-direction: column;
+  margin: 3px 3px 3px 3px;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  padding-left: 5%;
+  font-size: 15px;
+`;
 
 export default function RegionPost() {
   const navigate = useNavigate();
   const { state } = useLocation();
   const [btnActive, setBtnActive] = useState("");
-  console.log(state);
-
-  // useEffect(() => {
-  //   console.log("effect");
-  // }, [btnActive]);
+  const [etcActive, setEtcActive] = useState(false);
 
   return (
     <>
@@ -52,22 +64,16 @@ export default function RegionPost() {
             onClick={() => setBtnActive("home")}
           >
             <div className="contents" value={"home"}>
-              {"home" === btnActive ? 
-                <HomeSelected /> : <Home/>
-              }
+              {"home" === btnActive ? <HomeSelected /> : <Home />}
               우리집
             </div>
           </div>
           <div
-            className={
-              "box"+ ("building" === btnActive ? "-selected" : "")
-            }
+            className={"box" + ("building" === btnActive ? "-selected" : "")}
             onClick={() => setBtnActive("building")}
           >
             <div className="contents" value={"building"}>
-              {"building" === btnActive ? 
-                <BuildingSelected /> : <Building/>
-              }
+              {"building" === btnActive ? <BuildingSelected /> : <Building />}
               회사
             </div>
           </div>
@@ -75,14 +81,22 @@ export default function RegionPost() {
             className={"box" + ("etc" === btnActive ? "-selected" : "")}
             onClick={() => setBtnActive("etc")}
           >
-            <div className="contents" value={"etc"}>
-              {"etc" === btnActive ? 
-                <EtcSelected /> : <Etc/>
-              }
+            <div
+              className="contents"
+              value={"etc"}
+              onClick={() => setEtcActive(!etcActive)}
+            >
+              {"etc" === btnActive ? <EtcSelected /> : <Etc />}
               기타
             </div>
           </div>
         </div>
+        {btnActive === "etc" ? (
+          <div className="box-places">
+            <EtcBox placeholder="주소 별명 입력" />
+          </div>
+        ) : null}
+
         <div className="btn-group-bottom">
           <button type="button" className="btn-custom">
             확인

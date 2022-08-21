@@ -1116,6 +1116,7 @@ section {
   padding: 5px 15px 5px 0px;
   color: #7e7e7e;
   display: flex;
+  width: 24px;
 }
 
 .list-region .txt .txt-title {
@@ -1132,7 +1133,7 @@ section {
 .box-places {
   justify-content: space-between;
   align-items: center;
-  padding: 5px 30px 5px 30px;
+  padding: 5px 20px 5px 20px;
   color: #000000;
   display: flex;
   box-sizing: border-box;
