@@ -13,11 +13,12 @@ import { GetOrderStateApi } from "../../modules/api/orderstate/GetOrderStateApi"
 import useStoreOrderInfo from "../../store/storeOrderInfo";
 
 const State = () => {
-  const { orderInfo, setOrderInfo } = useStoreOrderInfo();
+  const { orderInfo, setOrderInfo, setSelectedIndex} = useStoreOrderInfo();
 
   const id = useParams();
 
   const getList = async () => {
+    setSelectedIndex(id.index);
     const data = await GetOrderStateApi(id.index);
     setOrderInfo(data);
   }

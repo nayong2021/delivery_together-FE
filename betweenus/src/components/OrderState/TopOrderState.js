@@ -4,14 +4,14 @@ import { NavLink, Outlet } from "react-router-dom";
 import useStoreOrderInfo from "../../store/storeOrderInfo";
 
 const TopOrderState = () => {
-  const { orderInfo } = useStoreOrderInfo();
+  const { selectedIndex } = useStoreOrderInfo();
   return (
     <div id="root">
       <header className="header">
         <div className="tab-menu">
           <NavLink
             end
-            to={`/state/${orderInfo.postIdx}`}
+            to={`/state/${selectedIndex}`}
             className={({ isActive }) => (isActive ? "active" : "")}
           >
             주문현황
