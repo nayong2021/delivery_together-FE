@@ -1165,24 +1165,6 @@ section {
   padding-bottom: 5%;
   color: #f87245;
 }
-/* .box:selected {
-  color: #f87245;
-  border-color: #f87245;
-} */
-/* 
-.box-active {
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  border: 1px solid #f87245;
-  border-radius: 5px;
-  width: 100%;
-  flex-direction: column;
-  margin: 3px 3px 3px 3px;
-  padding-top: 5%;
-  padding-bottom: 5%;
-  color: #f87245;
-} */
 
 .box .contents {
   font-size: 15px;
