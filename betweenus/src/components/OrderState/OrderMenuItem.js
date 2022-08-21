@@ -1,5 +1,4 @@
 import * as React from "react";
-import { ReactComponent as User } from "../../assets/img/ico_user1.svg";
 
 export default function OrderMenuItem({
     menu

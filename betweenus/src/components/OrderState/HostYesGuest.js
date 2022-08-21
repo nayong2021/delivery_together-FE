@@ -7,6 +7,7 @@ import HostGusetParticipationItem from "./HostGusetParticipationItem"
 import { PostParticipateAcceptApi } from "../../modules/api/orderstate/PostParticipateAcceptApi";
 import { PostParticipateRefuseApi } from "../../modules/api/orderstate/PostParticipateRefuseApi";
 import RefuseModal from "./RefuseModal"
+import OrderResult from "./OrderResult"
 
 
 const HostYesGuest = () => {
@@ -92,35 +93,14 @@ const HostYesGuest = () => {
               ))
             }
           </ol>
-
-          <ol className="order-result">
-            <li>
-              <div className="tit">그룹 음식 총 금액</div>
-              <div className="txt">{orderInfo.totalPrice}원</div>
-            </li>
-
-            <li>
-              <div className="tit">배달비</div>
-              <div className="txt">4,000원</div>
-              {/* <div className="txt">{orderInfo.expectedDeliveryFee}원</div> */}
-            </li>
-
-            <li>
-              <div className="tit">
-                <strong>총 금액</strong>
-              </div>
-              <div className="txt">
-                <strong>{orderInfo.totalPrice + orderInfo.expectedDeliveryFee}원</strong>
-              </div>
-            </li>
-          </ol>
+          <OrderResult />
 
           <button
             type="button"
             className="btn-custom btn-custom-v2 btn-complete"
             onClick={onClickRecuitmentClose}
           >
-            모집완료
+            모집 마감
           </button>
         </div>
       </section>
