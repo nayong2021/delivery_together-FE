@@ -5,23 +5,24 @@ import { GetJoinableGroupBuyingApi } from "../../modules/api/home/GetJoinableGro
 import NoRoomNotice from "./NoRoomNotice";
 import useStoreDropdownMenu from "../../store/storeDropdownMenu";
 import useStoreSearchKeyword from "../../store/storeSearchKeyword";
+import GetSearchLatestOrderApi from "../../modules/api/home/GetSearchLatestOrderApi";
+import GetSearchLargePeopleApi from "../../modules/api/home/GetSearchLargePeopleApi";
 
 export default function HomeSearchItemList() {
   const [list, setData] = useState({});
   const { option } = useStoreDropdownMenu();
   const { keyword, setKeyword } = useStoreSearchKeyword();
   let data = {};
-  // console.log(option);
+  console.log(keyword);
 
   const getList = async () => {
-    // console.log(option);
     if (option === "최신순") {
       console.log(option);
-      data = await GetJoinableGroupBuyingApi();
+      data = await GetSearchLatestOrderApi(keyword);
       console.log(data);
     } else if (option === "모집인원 많은 순") {
       console.log(option);
-      data = await GetSearchOrderOfLargePeopleApi();
+      data = await GetSearchLargePeopleApi(keyword);
       console.log(data);
     }
     setData(data);
@@ -29,7 +30,8 @@ export default function HomeSearchItemList() {
 
   useEffect(() => {
     getList();
-  }, [option]);
+    console.log("effect");
+  }, [option, keyword]);
 
   return (
     <>

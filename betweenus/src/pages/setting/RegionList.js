@@ -30,22 +30,13 @@ export default function RegionList() {
               <input type="text" placeholder="동네 검색" className="inp-frm" />
               <button type="button" className="btn-delete"></button>
             </div>
-
-            {/* <button type="button" className="btn-search">
-              <Location width={"18px"} height={"18px"} />
-              &nbsp;현재 위치로 검색
-            </button> */}
           </div>
 
-          {/* <div className="region-info">
-            지역은 최소 1개 이상, 최대 3개까지 설정 가능해요.
-          </div> */}
-
+          {/* 체크박스는 백엔드에서 값 넘겨주기로 함*/}
           <ol className="list-region">
             <li>
               <div className="txt">
                 <Marker className="marker" />
-
                 <div>
                   <div className="txt-title">서울특별시 강남구 서초4동</div>
                   <div>서울특별시 강남구 서초4동</div>
@@ -59,11 +50,10 @@ export default function RegionList() {
                   name="region_ck"
                   className="ck-custom"
                 />
-                <label htmlfor="region_ck1"></label>
+                {/* <label htmlfor="region_ck1"></label> */}
               </div>
             </li>
           </ol>
-
           <div className="btn-group-bottom">
             <button type="button" className="btn-custom">
               내 동네 설정 완료

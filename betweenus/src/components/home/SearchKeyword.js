@@ -4,27 +4,21 @@ import useStoreSearchKeyword from "../../store/storeSearchKeyword";
 export default function SearchKeyword() {
   const { keyword, setKeyword } = useStoreSearchKeyword();
 
-  const onClick = () => {
-    alert("클릭");
-    console.log(keyword);
-  };
-
   const onKeyEnter = (e) => {
     if (e.key === "Enter") {
-      onClick();
+      setKeyword(e.target.value);
     }
   };
   return (
-    <div class="home-search">
+    <div className="home-search">
       <input
         type="text"
         placeholder="동네 검색"
-        class="inp-frm"
+        className="inp-frm"
         onKeyPress={onKeyEnter}
-        value={keyword}
         name={keyword}
       />
-      <button type="button" class="btn-delete"></button>
+      <button type="button" className="btn-delete"></button>
     </div>
   );
 }

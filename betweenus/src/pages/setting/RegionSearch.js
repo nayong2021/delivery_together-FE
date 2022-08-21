@@ -42,6 +42,10 @@ const GuideEx = styled.div`
   color: #7e7e7e;
 `;
 
+const ResultTxt = styled.div`
+  width: calc(100% - 40px);
+`;
+
 export default function RegionSearch() {
   const navigate = useNavigate();
   const [keyword, setKeyword] = useState("");
@@ -126,10 +130,10 @@ export default function RegionSearch() {
                 >
                   <div className="txt">
                     <MapIcon className="marker" />
-                    <div>
+                    <ResultTxt>
                       <div className="txt-title">{item.jibunAddr}</div>
-                      <div>[도로명] {item.roadAddrPart1}</div>
-                    </div>
+                      <div width="100%">[도로명] {item.roadAddrPart1}</div>
+                    </ResultTxt>
                   </div>
                 </li>
               ))

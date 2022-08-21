@@ -1,13 +1,11 @@
 import * as React from "react";
 import "../../assets/css/common.css";
 import MetaTag from "../../components/common/MetaTag";
-import HomeSearchItemList from "../../components/home/HomeItemList";
+import HomeSearchItemList from "../../components/home/HomeSearchItemList";
 import SearchKeyword from "../../components/home/SearchKeyword";
 import { useNavigate } from "react-router-dom";
-// import useStoreDropdownMenu from "../../store/storeDropdownMenu";
 
 const HomeSearch = () => {
-  //   const { option, setOption } = useStoreDropdownMenu();
   const navigate = useNavigate();
 
   return (

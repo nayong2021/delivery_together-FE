@@ -1,9 +1,9 @@
 import axios from "axios";
 
-export const GetSearchLargePeopleApi = async (keyword) => {
+export const GetSearchLatestOrderApi = async (keyword) => {
   try {
     const { data } = await axios.get(
-      `/api/groupbuying/search?query=${keyword}&sort=participant`
+      `/api/groupbuying/search?query=${keyword}`
     );
     return data;
   } catch (e) {
