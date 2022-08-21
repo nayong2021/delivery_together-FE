@@ -1,8 +1,6 @@
 import * as React from "react";
 import HomeItem from "./HomeItem";
 import { useEffect, useState } from "react";
-import { GetJoinableGroupBuyingApi } from "../../modules/api/home/GetJoinableGroupBuyingApi";
-import NoRoomNotice from "./NoRoomNotice";
 import useStoreDropdownMenu from "../../store/storeDropdownMenu";
 import useStoreSearchKeyword from "../../store/storeSearchKeyword";
 import { ReactComponent as NoRoomIcon } from "../../assets/img/ico_graphic1.svg";

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
-import { ReactComponent as Clock } from "../../assets/img/ico_clock1.svg";
+import OrderTimeClock from "../common/OrderTimeClock";
 
 export default function HomeItem({
   index,
@@ -18,8 +18,7 @@ export default function HomeItem({
         <div className="place">{place}</div>
         <div className="info-group">
           <div className="time">
-            <Clock />
-            &nbsp;모집 마감 {time[0]}시 {time[1]}분
+            <OrderTimeClock timeToOrder={time} />
           </div>
           <div className="info">
             <span className="price">

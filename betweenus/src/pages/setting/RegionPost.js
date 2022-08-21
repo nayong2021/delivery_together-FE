@@ -6,7 +6,7 @@ import { ReactComponent as Building } from "../../assets/img/building-05.svg";
 import { ReactComponent as BuildingSelected } from "../../assets/img/building-05-orange.svg";
 import { ReactComponent as Etc } from "../../assets/img/marker-pin-02.svg";
 import { ReactComponent as EtcSelected } from "../../assets/img/marker-pin-02-orange.svg";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 
 const EtcBox = styled.input`

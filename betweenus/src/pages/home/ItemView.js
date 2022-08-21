@@ -2,9 +2,9 @@ import * as React from "react";
 import "../../assets/css/common.css";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import MetaTag from "../../components/common/MetaTag";
-import { ReactComponent as Clock } from "../../assets/img/ico_clock1.svg";
 import { useEffect, useState, useCallback } from "react";
 import { GetGroupBuyingDetailApi } from "../../modules/api/home/GetGroupBuyingDetailApi";
+import OrderTimeClock from "../../components/common/OrderTimeClock";
 
 const ItemView = () => {
   const navigate = useNavigate();
@@ -42,9 +42,7 @@ const ItemView = () => {
             <div className="group">
               <div className="place">{list.storeName}</div>
               <div className="time">
-                <Clock />
-                &nbsp;모집 마감 {list.timeToOrder ? list.timeToOrder[0] : null}
-                시 {list.timeToOrder ? list.timeToOrder[1] : null}분
+                <OrderTimeClock timeToOrder={list.timeToOrder} />
               </div>
             </div>
           </div>
