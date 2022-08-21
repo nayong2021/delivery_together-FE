@@ -7,21 +7,24 @@ import useStoreOrderInfo from "../../store/storeOrderInfo";
 import OrderResult from "./OrderResult"
 import GuestOrderList from "./GuestOrderList"
 import OrderStateItemInfo from "./OrderStateItemInfo";
+import DeliveryArrivedBtn from "./DeliveryArrivedBtn";
+import OrderDeliveryArrived from "./OrderDeliveryArrived";
 
 const OrderState = () => {
-  const user = "guest";
-  const order = true;
   const { orderInfo } = useStoreOrderInfo();
   let component;
 
-  if (order) {
+  if (orderInfo.postStatus === "ORDERED") {
     component = <OrderComplete />;
-  } else {
-    if (user === "host") {
-      component = <HostBeforeOrder />;
-    } else if (user === "guest") {
-      component = <GuestBeforeOrder />;
-    }
+  } 
+  if (orderInfo.currentUserIsHost && orderInfo.postStatus === "RECRUITMENT_CLOSED") {
+    component = <HostBeforeOrder />;
+  } 
+  if (!orderInfo.currentUserIsHost && orderInfo.postStatus === "RECRUITMENT_CLOSED") {
+    component = <GuestBeforeOrder />;
+  }
+  if (orderInfo.postStatus === "DELIVERY_ARRIVED"){
+    component = <OrderDeliveryArrived />
   }
 
   return (
@@ -30,6 +33,7 @@ const OrderState = () => {
         <OrderStateItemInfo
         orderInfo={orderInfo}/>
         {component}
+        <DeliveryArrivedBtn/>
 
         <ol className="list-cart">
           {
