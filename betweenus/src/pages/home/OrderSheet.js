@@ -3,11 +3,11 @@ import "../../assets/css/common.css";
 import { useParams, useNavigate } from "react-router-dom";
 import MetaTag from "../../components/common/MetaTag";
 import { useState, useEffect, useCallback } from "react";
-import { ReactComponent as Clock } from "../../assets/img/ico_clock1.svg";
 import useStoreMenu from "../../store/storeMenu";
 import OrderSheetItem from "../../components/home/OrderSheetItem";
 import { GetGroupBuyingMenuListApi } from "../../modules/api/home/GetGroupBuyingMenuListApi";
 import { PostParticipationgApi } from "../../modules/api/home/PostParticipationApi";
+import OrderTimeClock from "../../components/common/OrderTimeClock";
 
 const OrderSheet = () => {
   const id = useParams();
@@ -36,7 +36,6 @@ const OrderSheet = () => {
         0
       )
     );
-    console.log(menudata);
   };
 
   useEffect(() => {
@@ -67,10 +66,7 @@ const OrderSheet = () => {
             <div className="group">
               <div className="place">{itemdata.storeName}</div>
               <div className="time">
-                <Clock />
-                &nbsp;모집 마감{" "}
-                {itemdata.timeToOrder ? itemdata.timeToOrder[0] : null}시{" "}
-                {itemdata.timeToOrder ? itemdata.timeToOrder[1] : null}분
+                <OrderTimeClock timeToOrder={itemdata.timeToOrder} />
               </div>
             </div>
           </div>

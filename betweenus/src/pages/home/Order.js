@@ -2,11 +2,11 @@ import * as React from "react";
 import "../../assets/css/common.css";
 import MetaTag from "../../components/common/MetaTag";
 import { useNavigate, useParams } from "react-router-dom";
-import { ReactComponent as Clock } from "../../assets/img/ico_clock1.svg";
 import { GetGroupBuyingMenuListApi } from "../../modules/api/home/GetGroupBuyingMenuListApi";
 import { useState, useEffect, useCallback } from "react";
 import MenuItem from "../../components/home/MenuItem";
 import useStoreMenu from "../../store/storeMenu";
+import OrderTimeClock from "../../components/common/OrderTimeClock";
 
 const Order = () => {
   const navigate = useNavigate();
@@ -47,10 +47,7 @@ const Order = () => {
             <div className="group">
               <div className="place">{itemdata.storeName}</div>
               <div className="time">
-                <Clock />
-                &nbsp;모집 마감{" "}
-                {itemdata.timeToOrder ? itemdata.timeToOrder[0] : null}시{" "}
-                {itemdata.timeToOrder ? itemdata.timeToOrder[1] : null}분
+                <OrderTimeClock timeToOrder={itemdata.timeToOrder} />
               </div>
             </div>
           </div>
