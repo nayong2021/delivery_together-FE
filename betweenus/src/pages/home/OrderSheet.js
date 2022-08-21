@@ -22,8 +22,10 @@ const OrderSheet = () => {
   }, [id]);
 
   const onSubmitOrder = () => {
-    PostParticipationgApi(id, { orderItems: menudata });
-    navigate("/");
+    if (sum !== 0) {
+      PostParticipationgApi(id, { orderItems: menudata });
+      navigate("/");
+    }
   };
 
   const calTotalSum = () => {
@@ -66,13 +68,15 @@ const OrderSheet = () => {
               <div className="place">{itemdata.storeName}</div>
               <div className="time">
                 <Clock />
-                &nbsp;마감 {itemdata.timeToOrder}
+                &nbsp;모집 마감{" "}
+                {itemdata.timeToOrder ? itemdata.timeToOrder[0] : null}시{" "}
+                {itemdata.timeToOrder ? itemdata.timeToOrder[1] : null}분
               </div>
             </div>
           </div>
 
           <div className="delivery-charge">
-            예상배달비: {itemdata.expectedDeliveryFee}원 /{" "}
+            예상배달비: {itemdata.expectedDeliveryFee} 원 /{" "}
             {itemdata.currentParticipant}명
           </div>
 
@@ -99,7 +103,7 @@ const OrderSheet = () => {
 
             <li>
               <div className="tit">배달비</div>
-              <div className="txt">?원</div>
+              <div className="txt">? 원</div>
             </li>
 
             <li>

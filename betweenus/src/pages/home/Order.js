@@ -48,7 +48,9 @@ const Order = () => {
               <div className="place">{itemdata.storeName}</div>
               <div className="time">
                 <Clock />
-                &nbsp;마감 {itemdata.timeToOrder}
+                &nbsp;모집 마감{" "}
+                {itemdata.timeToOrder ? itemdata.timeToOrder[0] : null}시{" "}
+                {itemdata.timeToOrder ? itemdata.timeToOrder[1] : null}분
               </div>
             </div>
           </div>
