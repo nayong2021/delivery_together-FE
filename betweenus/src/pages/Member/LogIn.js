@@ -8,11 +8,16 @@ import Kakao from "../../assets/img/ico_kakao1.png";
 import Apple from "../../assets/img/ico_apple1.png";
 import { PostLoginApi } from "../../modules/api/member/PostLoginApi";
 import Parser from "html-react-parser";
+import { useNavigate } from "react-router-dom";
+import { GetCurrentUserApi } from "../../modules/api/member/GetCurrentUserApi";
+import useStoreCurrentUser from "../../store/storeCurrentUser";
 
 const LogIn = () => {
   const [inputId, setInputId] = useState("");
   const [inputPw, setInputPw] = useState("");
   const [WrongMessage, setWrongMessage] = useState("");
+  const { setUser } = useStoreCurrentUser();
+  const navigate = useNavigate();
 
   const handleInputId = (e) => {
     setInputId(e.target.value);
@@ -29,7 +34,10 @@ const LogIn = () => {
     result.then((r) => {
       if (r.data) {
         console.log("corret");
-        document.location.href = "/";
+        GetCurrentUserApi().then((data) => {
+          setUser(data);
+        });
+        navigate("/");
       } else {
         setWrongMessage(
           "&nbsp;&nbsp;&nbsp;이메일 또는 비밀번호를 잘못 입력했습니다. 입력하신 내용을 다시 확인해주세요."
