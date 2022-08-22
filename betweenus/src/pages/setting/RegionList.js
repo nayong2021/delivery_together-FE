@@ -1,9 +1,25 @@
 import * as React from "react";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as Marker } from "../../assets/img/marker-pin-01.svg";
+import useStoreCurrentUser from "../../store/storeCurrentUser";
+import { GetAddressSettingApi } from "../../modules/api/setting/GetAddressSettingApi";
+import { useState, useEffect } from "react";
 
 export default function RegionList() {
   const navigate = useNavigate();
+  const [list, setList] = useState([]);
+  const { user } = useStoreCurrentUser();
+  console.log(user.memberIdx);
+
+  const getList = async () => {
+    const data = await GetAddressSettingApi(user.memberIdx);
+    setList(data);
+    console.log(list);
+  };
+
+  useEffect(() => {
+    getList();
+  }, []);
 
   return (
     <>
