@@ -115,8 +115,8 @@ const Add = () => {
 
             <div className="frm-group frm-group-time">
               <div className="tit-frm">
-                주문시간 <br />
-                설정
+                모집 마감 <br />
+                시간 설정
               </div>
               <div className="inp-group-time" onClick={onClickTime}>
                 {/* <input

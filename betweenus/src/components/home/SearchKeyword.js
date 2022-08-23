@@ -1,8 +1,13 @@
 import * as React from "react";
 import useStoreSearchKeyword from "../../store/storeSearchKeyword";
+import { useEffect } from "react";
 
 export default function SearchKeyword() {
   const { keyword, setKeyword } = useStoreSearchKeyword();
+
+  useEffect(() => {
+    setKeyword("");
+  }, []);
 
   const onKeyEnter = (e) => {
     if (e.key === "Enter") {
