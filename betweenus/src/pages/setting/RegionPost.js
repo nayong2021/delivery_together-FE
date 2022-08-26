@@ -37,19 +37,19 @@ export default function RegionPost() {
   };
 
   const onClickConfirm = async () => {
-    const reqbody = {
+    let reqbody = {
       address: state.jibunAddr,
       alias: alias,
       addressCategory: ""
     }
-    if(btnActive === "home"){
+    if(btnActive === "우리집"){
       reqbody.addressCategory = "우리집"
     }
-    if(btnActive === "building"){
+    if(btnActive === "회사"){
       reqbody.addressCategory = "회사"
     }
-    if(btnActive === "etc"){
-      reqbody.addressCategory = "기타"
+    if(btnActive === "기타"){
+      reqbody.addressCategory = "ETC"
     }
     await RegionPostApi(reqbody);
     
@@ -86,38 +86,38 @@ export default function RegionPost() {
         </div>
         <div className="box-places">
           <div
-            className={"box" + ("home" === btnActive ? "-selected" : "")}
-            onClick={() => setBtnActive("home")}
+            className={"box" + ("우리집" === btnActive ? "-selected" : "")}
+            onClick={() => setBtnActive("우리집")}
           >
-            <div className="contents" value={"home"}>
-              {"home" === btnActive ? <HomeSelected /> : <Home />}
+            <div className="contents" value={"우리집"}>
+              {"우리집" === btnActive ? <HomeSelected /> : <Home />}
               우리집
             </div>
           </div>
           <div
-            className={"box" + ("building" === btnActive ? "-selected" : "")}
-            onClick={() => setBtnActive("building")}
+            className={"box" + ("회사" === btnActive ? "-selected" : "")}
+            onClick={() => setBtnActive("회사")}
           >
-            <div className="contents" value={"building"}>
-              {"building" === btnActive ? <BuildingSelected /> : <Building />}
+            <div className="contents" value={"회사"}>
+              {"회사" === btnActive ? <BuildingSelected /> : <Building />}
               회사
             </div>
           </div>
           <div
-            className={"box" + ("etc" === btnActive ? "-selected" : "")}
-            onClick={() => setBtnActive("etc")}
+            className={"box" + ("기타" === btnActive ? "-selected" : "")}
+            onClick={() => setBtnActive("기타")}
           >
             <div
               className="contents"
-              value={"etc"}
+              value={"기타"}
               onClick={() => setEtcActive(!etcActive)}
             >
-              {"etc" === btnActive ? <EtcSelected /> : <Etc />}
+              {"기타" === btnActive ? <EtcSelected /> : <Etc />}
               기타
             </div>
           </div>
         </div>
-        {btnActive === "etc" ? (
+        {btnActive === "기타" ? (
           <div className="box-places">
             <EtcBox 
             placeholder="주소 별명 입력"

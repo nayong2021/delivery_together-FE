@@ -370,7 +370,7 @@ section {
 .btn-custom-v1 {
   border: 3px solid;
   border-image-source: linear-gradient(to bottom, #f87245 0%, #ff981d 100%);
-  border-image-slice: 1;
+  border-image-slice: 0;
   box-sizing: border-box;
   background: #fff;
   background-image: linear-gradient(to bottom, #fff, #fff),
@@ -394,12 +394,12 @@ section {
   display: block;
   width: 26px;
   height: 26px;
-  background: url("../img/ico_check1_off.svg") center center no-repeat;
+  background: url("../img/check.svg") center center no-repeat;
   background-size: contain;
   cursor: pointer;
 }
 .ck-custom:checked + label {
-  background-image: url("../img/check.svg");
+  /* background-image: url("../img/check.svg"); */
   color: #f77145;
 }
 
@@ -1068,7 +1068,7 @@ section {
   height: 34px;
   border: 2px solid;
   border-image-source: linear-gradient(to bottom, #f87245 0%, #ff981d 100%);
-  border-image-slice: 1;
+  border-image-slice: 0;
   border-radius: 10px;
   box-sizing: border-box;
   background: #fff;
@@ -1326,7 +1326,7 @@ section {
   margin-bottom: 30px;
   border: 2px solid;
   border-image-source: linear-gradient(to bottom, #f87245 0%, #ff981d 100%);
-  border-image-slice: 1;
+  border-image-slice: 0;
   border-radius: 10px;
   box-sizing: border-box;
   background: #fff;
@@ -1847,7 +1847,7 @@ section {
   margin: 27px auto 0;
   border: 2px solid;
   border-image-source: linear-gradient(to bottom, #f87245 0%, #ff981d 100%);
-  border-image-slice: 1;
+  border-image-slice: 0;
   border-radius: 10px;
   box-sizing: border-box;
   background: #fff;

@@ -2,9 +2,11 @@ import * as React from "react";
 import { ReactComponent as Home } from "../../assets/img/home-03.svg";
 import { ReactComponent as Building } from "../../assets/img/building-05.svg";
 import { ReactComponent as Marker } from "../../assets/img/marker-pin-01.svg";
+import { ReactComponent as Check } from "../../assets/img/check.svg";
 
 export default function RegionListItem({
-    addressInfo
+    addressInfo,
+    onClickRegion
 }) {
 
     let component;
@@ -25,7 +27,7 @@ export default function RegionListItem({
     
   return (
     addressInfo ? (
-        <li>
+        <li onClick={() => onClickRegion(addressInfo.addressIdx)}>
             <div className="txt">
                 {component}
                 <div>
@@ -33,15 +35,9 @@ export default function RegionListItem({
                     <div>{addressInfo.address}</div>
                 </div>
             </div>
-
-            <div className="ck-area">
-                <input
-                    id="region_ck1"
-                    type="checkbox"
-                    name="region_ck"
-                    className="ck-custom"
-                />
-            </div>
+            {addressInfo.representationStatus ? (<div className="ck-area">
+                <Check />
+            </div>) : null}
         </li>
       ) : null
   )
