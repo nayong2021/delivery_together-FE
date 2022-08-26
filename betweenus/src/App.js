@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useNavigate,
+} from "react-router-dom";
 import Home from "./pages/home/Home";
 import React, { useEffect } from "react";
 import Add from "./pages/Add";
@@ -24,18 +29,8 @@ import Intro from "./pages/onboarding/Intro";
 import Guide1 from "./pages/onboarding/Guide1";
 import Guide2 from "./pages/onboarding/Guide2";
 import Guide3 from "./pages/onboarding/Guide3";
-import { GetCurrentUserApi } from "./modules/api/member/GetCurrentUserApi";
-import useStoreCurrentUser from "./store/storeCurrentUser";
 
 function App() {
-  const { user, setUser } = useStoreCurrentUser();
-  useEffect(() => {
-    GetCurrentUserApi().then((data) => {
-      setUser(data);
-      console.log(user);
-    });
-  }, []);
-
   return (
     <Router>
       <Routes>

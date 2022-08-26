@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as Marker } from "../../assets/img/marker-pin-01.svg";
+import { ReactComponent as Check } from "../../assets/img/check.svg";
 import useStoreCurrentUser from "../../store/storeCurrentUser";
 import { GetAddressSettingApi } from "../../modules/api/setting/GetAddressSettingApi";
 import { useState, useEffect } from "react";
@@ -60,13 +61,14 @@ export default function RegionList() {
               </div>
 
               <div className="ck-area">
-                <input
+                <Check />
+                {/* <input
                   id="region_ck1"
                   type="checkbox"
                   name="region_ck"
                   className="ck-custom"
                 />
-                {/* <label htmlfor="region_ck1"></label> */}
+                <label htmlfor="region_ck1"></label> */}
               </div>
             </li>
           </ol>

@@ -394,12 +394,12 @@ section {
   display: block;
   width: 26px;
   height: 26px;
-  background: url("../img/ico_check1_off.svg") center center no-repeat;
+  background: url("../img/check.svg") center center no-repeat;
   background-size: contain;
   cursor: pointer;
 }
 .ck-custom:checked + label {
-  background-image: url("../img/check.svg");
+  /* background-image: url("../img/check.svg"); */
   color: #f77145;
 }
 
