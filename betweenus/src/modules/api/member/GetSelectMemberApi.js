@@ -9,7 +9,7 @@ export const GetSelectMemberApi = async (
 ) => {
   try {
     const { data } = await axios.get(
-      `/api/member/pwInquiry/selectUser?name=${name}&birth=${birth}&email=${email}&phoneNumber=${phoneNumber}&authToken=${authToken}`
+      `${process.env.REACT_APP_API_HOST}/member/pwInquiry/selectUser?name=${name}&birth=${birth}&email=${email}&phoneNumber=${phoneNumber}&authToken=${authToken}`
     );
     return data;
   } catch (e) {

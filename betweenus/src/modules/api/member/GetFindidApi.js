@@ -3,7 +3,7 @@ import axios from "axios";
 export const GetFindidApi = async (name, phone, birth) => {
   try {
     const { data } = await axios.get(
-      `/api/member/findId?name=${name}&phoneNumber=${phone}&birth=${birth}/`
+      `${process.env.REACT_APP_API_HOST}/member/findId?name=${name}&phoneNumber=${phone}&birth=${birth}/`
     );
     return data;
   } catch (e) {

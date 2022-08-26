@@ -1,9 +1,21 @@
 import * as React from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { ReactComponent as Marker } from "../../assets/img/marker-pin-01.svg";
+import { RegionListGetApi } from "../../modules/api/member/RegionListGetApi";
+import RegionListItem from "../../components/settings/RegionListItem";
 
 export default function RegionList() {
   const navigate = useNavigate();
+  const [regionList, setRegionList] = useState({});
+  const getList = async () => {
+    const result = await RegionListGetApi();
+    console.log(result)
+    setRegionList(result.data);
+  }
+
+  useEffect(() => {
+    getList();
+  }, []);
 
   return (
     <>
@@ -34,25 +46,20 @@ export default function RegionList() {
 
           {/* 체크박스는 백엔드에서 값 넘겨주기로 함*/}
           <ol className="list-region">
-            <li>
-              <div className="txt">
-                <Marker className="marker" />
-                <div>
-                  <div className="txt-title">서울특별시 강남구 서초4동</div>
-                  <div>서울특별시 강남구 서초4동</div>
-                </div>
-              </div>
-
-              <div className="ck-area">
-                <input
-                  id="region_ck1"
-                  type="checkbox"
-                  name="region_ck"
-                  className="ck-custom"
+            <RegionListItem
+            addressInfo={regionList.homeAddressInfo}
+            />
+            <RegionListItem
+            addressInfo={regionList.officeAddressInfo}
+            />
+            {
+              regionList.etcAddressesCount > 0 ? (regionList.etcAddressInfoList.map((item, idx) => (
+                <RegionListItem
+                key={idx}
+                addressInfo={item}
                 />
-                {/* <label htmlfor="region_ck1"></label> */}
-              </div>
-            </li>
+              ))) : (null)
+            }
           </ol>
           <div className="btn-group-bottom">
             <button type="button" className="btn-custom">

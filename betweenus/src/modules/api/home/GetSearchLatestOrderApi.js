@@ -3,7 +3,7 @@ import axios from "axios";
 export const GetSearchLatestOrderApi = async (keyword) => {
   try {
     const { data } = await axios.get(
-      `/api/groupbuying/search?query=${keyword}`
+      `${process.env.REACT_APP_API_HOST}/groupbuying/search?query=${keyword}`
     );
     return data;
   } catch (e) {

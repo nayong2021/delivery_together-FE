@@ -3,7 +3,7 @@ import axios from "axios";
 export const GetSearchLargePeopleApi = async (keyword) => {
   try {
     const { data } = await axios.get(
-      `/api/groupbuying/search?query=${keyword}&sort=participant`
+      `${process.env.REACT_APP_API_HOST}/groupbuying/search?query=${keyword}&sort=participant`
     );
     return data;
   } catch (e) {

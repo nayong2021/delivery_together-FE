@@ -3,7 +3,7 @@ import axios from "axios";
 export const PostParticipationgApi = async (id, data) => {
   try {
     const response = await axios.post(
-      `/api/groupbuying/order/${id.index}`,
+      `${process.env.REACT_APP_API_HOST}/groupbuying/order/${id.index}`,
       data
     );
     console.log(response);

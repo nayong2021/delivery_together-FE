@@ -3,7 +3,7 @@ import axios from "axios";
 export const PostChatRegister = async (index, data) => {
   try {
     const { response } = await axios.get(
-      `/api/groupbuying/chat/${index}`,
+      `${process.env.REACT_APP_API_HOST}/groupbuying/chat/${index}`,
       data
     );
     return response;
