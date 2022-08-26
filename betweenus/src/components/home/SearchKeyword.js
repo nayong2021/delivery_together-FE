@@ -1,29 +1,45 @@
 import * as React from "react";
 import useStoreSearchKeyword from "../../store/storeSearchKeyword";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function SearchKeyword() {
-  const { keyword, setKeyword } = useStoreSearchKeyword();
+  const { setKeyword } = useStoreSearchKeyword();
+  const [input, setInput] = useState("");
 
   useEffect(() => {
     setKeyword("");
   }, []);
 
+  const handleInput = (e) => {
+    setInput(e.target.value);
+  };
+
   const onKeyEnter = (e) => {
     if (e.key === "Enter") {
-      setKeyword(e.target.value);
+      setKeyword(input);
     }
   };
+
+  const handleClear = (e) => {
+    setInput("");
+    setKeyword("");
+  };
+
   return (
     <div className="home-search">
       <input
         type="text"
-        placeholder="동네 검색"
+        placeholder="모집글 검색"
         className="inp-frm"
         onKeyPress={onKeyEnter}
-        name={keyword}
+        onChange={handleInput}
+        value={input}
       />
-      <button type="button" className="btn-delete"></button>
+      <button
+        type="button"
+        className="btn-delete"
+        onClick={handleClear}
+      ></button>
     </div>
   );
 }
