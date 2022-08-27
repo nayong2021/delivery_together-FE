@@ -67,6 +67,10 @@ export default function RegionSearch() {
   const handleKeyword = (e) => {
     setKeyword(e.target.value);
   };
+
+  const handleClear = () => {
+    setKeyword("");
+  };
   return (
     <>
       <header className="header">
@@ -95,7 +99,11 @@ export default function RegionSearch() {
                 onKeyPress={onKeyPress}
                 value={keyword}
               />
-              <button type="button" className="btn-delete"></button>
+              <button
+                type="button"
+                className="btn-delete"
+                onClick={handleClear}
+              ></button>
             </div>
 
             <button type="button" className="btn-search">
