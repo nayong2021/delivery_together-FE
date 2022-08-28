@@ -8,17 +8,17 @@ import { GetOrderStateApi } from "../../modules/api/orderstate/GetOrderStateApi"
 import useStoreOrderInfo from "../../store/storeOrderInfo";
 
 const HostBeforeOrder = () => {
-  const { orderInfo ,setOrderInfo } = useStoreOrderInfo();
+  const { orderInfo, setOrderInfo } = useStoreOrderInfo();
   const [inputTime, setInputTime] = useState("");
 
   const id = useParams();
   const onClickPostTime = async () => {
     const result = await PostDeliveryTimeApi(orderInfo.postIdx, inputTime);
-    if(result) {
+    if (result) {
       const data = await GetOrderStateApi(id.index);
       setOrderInfo(data);
     }
-  }
+  };
   const handleInputTime = (e) => {
     setInputTime(e.target.value);
   };
@@ -30,15 +30,14 @@ const HostBeforeOrder = () => {
       </div>
       <div className="time">배달 주문 후 도착 예정시간을 입력해주세요.</div>
       <div className="inp-group-timer">
-        <input type="number" 
-        placeholder="남은 시간" 
-        className="inp-timer" 
-        value={inputTime} 
-        onChange={handleInputTime}/>
-        <button 
-        type="button" 
-        className="btn-timer" 
-        onClick={onClickPostTime}>
+        <input
+          type="number"
+          placeholder="남은 시간 (분)"
+          className="inp-timer"
+          value={inputTime}
+          onChange={handleInputTime}
+        />
+        <button type="button" className="btn-timer" onClick={onClickPostTime}>
           시간 등록
         </button>
       </div>
