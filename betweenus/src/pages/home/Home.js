@@ -12,18 +12,17 @@ import { GetCurrentUserApi } from "../../modules/api/member/GetCurrentUserApi";
 const Home = () => {
   const navigate = useNavigate();
   const { user, setUser } = useStoreCurrentUser();
-  const getCurrentUser = async () => {
-    const result = await GetCurrentUserApi();
-    if(result){
-      setUser(result.email);
-    }
-    else{
-      navigate("/guide");
-    }
-  }
-  useEffect(() => {
-    getCurrentUser()
-  }, [user]);
+  // const getCurrentUser = async () => {
+  //   const result = await GetCurrentUserApi();
+  //   if (result) {
+  //     setUser(result.email);
+  //   } else {
+  //     navigate("/guide");
+  //   }
+  // };
+  // useEffect(() => {
+  //   getCurrentUser();
+  // }, [user]);
   return (
     <div id="root">
       <MetaTag />
