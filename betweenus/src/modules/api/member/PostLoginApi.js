@@ -1,11 +1,8 @@
-import axios from "axios";
+import instance from "../ApiInstance";
 
 export const PostLoginApi = async (data) => {
   try {
-    const response = await axios.post(
-      `${process.env.REACT_APP_API_HOST}/login`,
-      data
-    );
+    const response = await instance.post(`/login`, data);
     return response;
   } catch (e) {
     console.log("[FAIL] GET user data", e);

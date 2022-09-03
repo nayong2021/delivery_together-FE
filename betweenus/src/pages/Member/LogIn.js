@@ -9,17 +9,13 @@ import Apple from "../../assets/img/ico_apple1.png";
 import { PostLoginApi } from "../../modules/api/member/PostLoginApi";
 import Parser from "html-react-parser";
 import { useNavigate } from "react-router-dom";
-import { GetCurrentUserApi } from "../../modules/api/member/GetCurrentUserApi";
-import useStoreCurrentUser from "../../store/storeCurrentUser";
 import useStoreLoginData from "../../store/storeLoginData";
 
 const LogIn = () => {
   const [inputId, setInputId] = useState("");
   const [inputPw, setInputPw] = useState("");
   const [WrongMessage, setWrongMessage] = useState("");
-  const { setUser } = useStoreCurrentUser();
-  const { accessToken, refreshToken, setAccessToken, setRefreshToken } =
-    useStoreLoginData();
+  const { setAccessToken, setRefreshToken } = useStoreLoginData();
   const navigate = useNavigate();
 
   const handleInputId = (e) => {
@@ -38,8 +34,8 @@ const LogIn = () => {
       if (r.data) {
         console.log("corret");
         console.log(r.data);
-        setAccessToken(r.data.accessToken);
-        setRefreshToken(r.data.refreshToken);
+        sessionStorage.setItem("accessToken", r.data.accessToken);
+        sessionStorage.setItem("refreshToken", r.data.refreshToken);
         navigate("/");
       } else {
         setWrongMessage(
