@@ -1,9 +1,9 @@
-import axios from "axios";
+import instance from "../ApiInstance";
 
 export const PostParticipationgApi = async (id, data) => {
   try {
-    const response = await axios.post(
-      `${process.env.REACT_APP_API_HOST}/groupbuying/order/${id.index}`,
+    const response = await instance.post(
+      `/groupbuying/order/${id.index}`,
       data
     );
     console.log(response);

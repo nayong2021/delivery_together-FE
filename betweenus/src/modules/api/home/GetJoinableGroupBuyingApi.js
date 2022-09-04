@@ -1,10 +1,8 @@
-import axios from "axios";
+import instance from "../ApiInstance";
 
 export const GetJoinableGroupBuyingApi = async () => {
   try {
-    const { data } = await axios.get(
-      `${process.env.REACT_APP_API_HOST}/groupbuying/`
-    );
+    const { data } = await instance.get(`/groupbuying/`);
     return data;
   } catch (e) {
     console.log("[FAIL] GET user data", e);

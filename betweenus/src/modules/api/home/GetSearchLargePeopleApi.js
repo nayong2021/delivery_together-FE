@@ -1,9 +1,9 @@
-import axios from "axios";
+import instance from "../ApiInstance";
 
 export const GetSearchLargePeopleApi = async (keyword) => {
   try {
-    const { data } = await axios.get(
-      `${process.env.REACT_APP_API_HOST}/groupbuying/search?query=${keyword}&sort=participant`
+    const { data } = await instance.get(
+      `/groupbuying/search?query=${keyword}&sort=participant`
     );
     return data;
   } catch (e) {

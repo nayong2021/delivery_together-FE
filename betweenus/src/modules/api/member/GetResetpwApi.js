@@ -1,9 +1,9 @@
-import axios from "axios";
+import instance from "../ApiInstance";
 
 export const GetResetpwApi = async (password, passwordConfirmation) => {
   try {
-    const { data } = await axios.get(
-      `${process.env.REACT_APP_API_HOST}/member/pwInquiry/resetPw?password=${password}&passwordConfirmation=${passwordConfirmation}`
+    const { data } = await instance.get(
+      `/member/pwInquiry/resetPw?password=${password}&passwordConfirmation=${passwordConfirmation}`
     );
     return data;
   } catch (e) {

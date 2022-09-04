@@ -1,8 +1,8 @@
-import axios from "axios";
+import instance from "../ApiInstance";
 
 export const RegionListGetApi = async () => {
   try {
-    const response = await axios.get(`${process.env.REACT_APP_API_HOST}/member/address`);
+    const response = await instance.get(`/member/address`);
     return response;
   } catch (e) {
     console.log("[FAIL] GET RegionList Api", e);

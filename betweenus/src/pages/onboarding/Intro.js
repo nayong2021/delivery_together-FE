@@ -6,7 +6,7 @@ import MetaTag from "../../components/common/MetaTag";
 const Intro = () => {
   const navigate = useNavigate();
   return (
-    <div id="root" onClick={() => navigate("1")}>
+    <div id="root" onClick={() => navigate("/guide/1")}>
       <section className="intro">
         <MetaTag />
         <div className="txt-group">

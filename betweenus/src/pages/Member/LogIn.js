@@ -73,7 +73,7 @@ const LogIn = () => {
           </div>
 
           <div className="account-group">
-            <Link to="join">회원가입</Link>
+            <Link to="/login/join">회원가입</Link>
 
             <div className="link-find">
               <Link to="findid">아이디 찾기</Link>

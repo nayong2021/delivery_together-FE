@@ -1,4 +1,4 @@
-import axios from "axios";
+import instance from "../ApiInstance";
 
 export const GetSelectMemberApi = async (
   name,
@@ -8,8 +8,8 @@ export const GetSelectMemberApi = async (
   authToken
 ) => {
   try {
-    const { data } = await axios.get(
-      `${process.env.REACT_APP_API_HOST}/member/pwInquiry/selectUser?name=${name}&birth=${birth}&email=${email}&phoneNumber=${phoneNumber}&authToken=${authToken}`
+    const { data } = await instance.get(
+      `/member/pwInquiry/selectUser?name=${name}&birth=${birth}&email=${email}&phoneNumber=${phoneNumber}&authToken=${authToken}`
     );
     return data;
   } catch (e) {

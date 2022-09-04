@@ -1,8 +1,10 @@
-import axios from "axios";
+import instance from "../ApiInstance";
 
 export const PatchRepresentationRegion = async (addressIdx) => {
   try {
-    const response = await axios.patch(`${process.env.REACT_APP_API_HOST}/member/address?addressIdx=${addressIdx}`);
+    const response = await instance.patch(
+      `/member/address?addressIdx=${addressIdx}`
+    );
     return response;
   } catch (e) {
     console.log("[FAIL] POST Region Api", e);

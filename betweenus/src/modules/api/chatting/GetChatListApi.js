@@ -1,8 +1,8 @@
-import axios from "axios";
+import instance from "../ApiInstance";
 
 export const GetChatList = async (index) => {
   try {
-    const { data } = await axios.get(`${process.env.REACT_APP_API_HOST}/groupbuying/chat/${index}`);
+    const { data } = await instance.get(`/groupbuying/chat/${index}`);
     return data;
   } catch (e) {
     console.log("[FAIL] GET user data", e);

@@ -1,8 +1,10 @@
-import axios from "axios";
+import instance from "../ApiInstance";
 
 export const PostDeliveryArrivedApi = async (index) => {
   try {
-    const { data } = await axios.post(`${process.env.REACT_APP_API_HOST}/groupbuying/deliveryArrived/${index}`);
+    const { data } = await instance.post(
+      `/groupbuying/deliveryArrived/${index}`
+    );
     return data;
   } catch (e) {
     console.log("[FAIL] POST delivery arrived", e);

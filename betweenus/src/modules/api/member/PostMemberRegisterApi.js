@@ -1,11 +1,8 @@
-import axios from "axios";
+import instance from "../ApiInstance";
 
 export const PostMemberRegister = async (data) => {
   try {
-    const response = await axios.post(
-      `${process.env.REACT_APP_API_HOST}/member`,
-      data
-    );
+    const response = await instance.post(`/member`, data);
     return response;
   } catch (e) {
     console.log("[FAIL] GET user data", e);

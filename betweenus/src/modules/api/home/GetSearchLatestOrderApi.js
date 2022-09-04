@@ -1,10 +1,8 @@
-import axios from "axios";
+import instance from "../ApiInstance";
 
 export const GetSearchLatestOrderApi = async (keyword) => {
   try {
-    const { data } = await axios.get(
-      `${process.env.REACT_APP_API_HOST}/groupbuying/search?query=${keyword}`
-    );
+    const { data } = await instance.get(`/groupbuying/search?query=${keyword}`);
     return data;
   } catch (e) {
     console.log("[FAIL] GET user data", e);

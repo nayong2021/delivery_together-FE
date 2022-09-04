@@ -1,8 +1,10 @@
-import axios from "axios";
+import instance from "../ApiInstance";
 
 export const PostParticipateRefuseApi = async (memberIdx, postIdx) => {
   try {
-    const { data } = await axios.post(`${process.env.REACT_APP_API_HOST}/groupbuying/order/refuse?memberIdx=${memberIdx}&postIdx=${postIdx}`);
+    const { data } = await instance.post(
+      `/groupbuying/order/refuse?memberIdx=${memberIdx}&postIdx=${postIdx}`
+    );
     return data;
   } catch (e) {
     console.log("[FAIL] GET order progress data", e);

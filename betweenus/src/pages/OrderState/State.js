@@ -13,7 +13,7 @@ import { GetOrderStateApi } from "../../modules/api/orderstate/GetOrderStateApi"
 import useStoreOrderInfo from "../../store/storeOrderInfo";
 
 const State = () => {
-  const { orderInfo, setOrderInfo, setSelectedIndex} = useStoreOrderInfo();
+  const { orderInfo, setOrderInfo, setSelectedIndex } = useStoreOrderInfo();
 
   const id = useParams();
 
@@ -21,7 +21,7 @@ const State = () => {
     setSelectedIndex(id.index);
     const data = await GetOrderStateApi(id.index);
     setOrderInfo(data);
-  }
+  };
 
   useEffect(() => {
     getList();
@@ -29,33 +29,33 @@ const State = () => {
 
   return (
     <>
-        <MetaTag />  
-        {
-        !orderInfo ? <JoinBefore /> : null            
-          }
-          {
-          (orderInfo.currentUserIsHost && orderInfo.postStatus === "RECRUITING" && orderInfo.currentParticipant === 1) ? 
-          <HostNoGuest /> : null
-          }
-          {
-          (orderInfo.currentUserIsHost && orderInfo.postStatus === "RECRUITING" && orderInfo.currentParticipant > 1) ? 
-          <HostYesGuest /> : null
-          }
-          {
-          (orderInfo.currentUserIsHost && !(orderInfo.postStatus === "RECRUITING") && orderInfo.currentParticipant > 1) ? 
-          <TopOrderState /> : null
-          }
-          {
-          (!orderInfo.currentUserIsHost && orderInfo.postStatus === "RECRUITING") ? 
-          <GuestWaitRecruit /> : null
-          }
-          {
-          (!orderInfo.currentUserIsHost && !(orderInfo.postStatus === "RECRUITING")) ? 
-          <TopOrderState /> : null
-          }
-        <BottomNavigation />
-      </>
-  )
+      <MetaTag />
+      {!orderInfo ? <JoinBefore /> : null}
+      {orderInfo.currentUserIsHost &&
+      orderInfo.postStatus === "RECRUITING" &&
+      orderInfo.currentParticipant === 1 ? (
+        <HostNoGuest />
+      ) : null}
+      {orderInfo.currentUserIsHost &&
+      orderInfo.postStatus === "RECRUITING" &&
+      orderInfo.currentParticipant > 1 ? (
+        <HostYesGuest />
+      ) : null}
+      {orderInfo.currentUserIsHost &&
+      !(orderInfo.postStatus === "RECRUITING") &&
+      orderInfo.currentParticipant > 1 ? (
+        <TopOrderState />
+      ) : null}
+      {!orderInfo.currentUserIsHost && orderInfo.postStatus === "RECRUITING" ? (
+        <GuestWaitRecruit />
+      ) : null}
+      {!orderInfo.currentUserIsHost &&
+      !(orderInfo.postStatus === "RECRUITING") ? (
+        <TopOrderState />
+      ) : null}
+      <BottomNavigation />
+    </>
+  );
 };
 
 export default State;
