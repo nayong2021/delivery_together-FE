@@ -2,6 +2,7 @@ import * as React from "react";
 import "../../assets/css/common.css";
 import MetaTag from "../../components/common/MetaTag";
 import BottomNavigation from "../../components/common/BottomNavigation";
+import { useNavigate } from "react-router-dom";
 import { ReactComponent as Profile1 } from "../../assets/img/img_profile1.svg";
 import { ReactComponent as Menu1 } from "../../assets/img/ico_menu1_setting.svg";
 import { ReactComponent as Menu2 } from "../../assets/img/ico_menu2_setting.svg";
@@ -9,6 +10,7 @@ import { ReactComponent as Menu3 } from "../../assets/img/ico_menu3_setting.svg"
 import Character from "../../assets/img/img_3d.png";
 
 const Setting = () => {
+  const navigate = useNavigate();
   return (
     <div id="root">
       <MetaTag />
@@ -29,12 +31,12 @@ const Setting = () => {
         </a>
         <ol className="list-setting-menu">
           <li>
-            <a href="/region">
+            <div onClick={() => navigate("/setting/region")}>
               <div className="ico">
                 <Menu1 />
               </div>
               <div className="tit">동네 설정</div>
-            </a>
+            </div>
           </li>
           <li>
             <a href="/village">
