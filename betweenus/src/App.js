@@ -33,6 +33,8 @@ import DefaultRoute from "./routes/DefaultRoute";
 import PrivateRoute from "./components/PrivateRoute";
 import EditProfile from "./pages/setting/EditProfile";
 import NickName from "./pages/setting/NickName";
+import OrderHistory from "./pages/setting/OrderHistory";
+import OrderHistoryDetail from "./pages/setting/OrderHistoryDetail";
 
 function App() {
   return (
@@ -56,15 +58,15 @@ function App() {
           <Route path="/guide/3" element={<Guide3 />}></Route>
         </Route>
 
-        {/* 홈 -> 상세, 주문 */}
-        <Route path="/itemview/:index" element={<ItemView />} />
-        <Route path="/itemview/:index/order" element={<Order />} />
-        <Route
-          path="/itemview/:index/order/ordersheet"
-          element={<OrderSheet />}
-        />
-
         <Route path="/" element={<PrivateRoute />}>
+          {/* 홈 -> 상세, 주문 */}
+          <Route path="/itemview/:index" element={<ItemView />} />
+          <Route path="/itemview/:index/order" element={<Order />} />
+          <Route
+            path="/itemview/:index/order/ordersheet"
+            element={<OrderSheet />}
+          />
+
           {/* 모집하기 */}
           <Route path="/add" element={<Add />}></Route>
 
@@ -93,6 +95,23 @@ function App() {
             element={<RegionSearch />}
           ></Route>
           <Route path="/setting/region/post" element={<RegionPost />}></Route>
+          <Route
+            path="/setting/orderhistory"
+            element={<OrderHistory />}
+          ></Route>
+
+          <Route path="/setting/orderhistory" element={<OrderHistoryDetail />}>
+            <Route path="/setting/orderhistory/:index" element={<State />}>
+              <Route
+                path="/setting/orderhistory/:index"
+                element={<OrderState />}
+              ></Route>
+              <Route
+                path="/setting/orderhistory/:index/chatting"
+                element={<Chatting />}
+              ></Route>
+            </Route>
+          </Route>
 
           {/* 홈 */}
           <Route path="/search" element={<HomeSearch />}></Route>

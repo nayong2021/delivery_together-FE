@@ -50,12 +50,12 @@ const Setting = () => {
             </a>
           </li>
           <li>
-            <a href="/history">
+            <div onClick={() => navigate("orderhistory")}>
               <div className="ico">
                 <Menu3 />
               </div>
               <div className="tit">주문 내역</div>
-            </a>
+            </div>
           </li>
         </ol>
         <img
