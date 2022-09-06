@@ -1,29 +1,41 @@
 import * as React from "react";
 import "../../assets/css/common.css";
 import MetaTag from "../../components/common/MetaTag";
-import BottomNavigation from "../../components/common/BottomNavigation";
-import { useNavigate } from "react-router-dom";
 import { ReactComponent as Profile1 } from "../../assets/img/img_profile1.svg";
 import { ReactComponent as Menu1 } from "../../assets/img/ico_menu1_setting.svg";
 import { ReactComponent as Menu2 } from "../../assets/img/ico_menu2_setting.svg";
 import { ReactComponent as Menu3 } from "../../assets/img/ico_menu3_setting.svg";
-import Character from "../../assets/img/img_3d.png";
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
-const Setting = () => {
+const NickNameDiv = styled.div`
+  padding: 0 0 0 50px;
+  font-size: 15px;
+  font-weight: 400;
+  color: #f87245;
+  width: 100%;
+  display: flex;
+`;
+
+export default function EditProfile() {
   const navigate = useNavigate();
   return (
     <div id="root">
       <MetaTag />
       <header className="header">
-        <div className="hd hd-v1">
-          <div className="hd-tit">설정</div>
+        <div className="hd">
+          <div className="hd-tit">
+            <button
+              type="button"
+              className="hd-back"
+              onClick={() => navigate(-1)}
+            ></button>
+            내 정보 수정
+          </div>
         </div>
       </header>
-      <section className="setting">
-        <div
-          className="user-profile"
-          onClick={() => navigate("/setting/profile")}
-        >
+      <section className="profile">
+        <div className="edit-profile">
           <div className="user-picture">
             <Profile1 />
           </div>
@@ -31,14 +43,17 @@ const Setting = () => {
             <div className="user-nickname">치킨공주</div>
             <div className="user-mail">kwaksj329@naver.com</div>
           </div>
+          <NickNameDiv onClick={() => navigate("nickname")}>
+            닉네임 변경
+          </NickNameDiv>
         </div>
         <ol className="list-setting-menu">
           <li>
-            <div onClick={() => navigate("/setting/region")}>
+            <div>
               <div className="ico">
                 <Menu1 />
               </div>
-              <div className="tit">동네 설정</div>
+              <div className="tit">비밀번호 변경</div>
             </div>
           </li>
           <li>
@@ -46,7 +61,7 @@ const Setting = () => {
               <div className="ico">
                 <Menu2 />
               </div>
-              <div className="tit">동네 인증</div>
+              <div className="tit">생년월일</div>
             </a>
           </li>
           <li>
@@ -54,21 +69,11 @@ const Setting = () => {
               <div className="ico">
                 <Menu3 />
               </div>
-              <div className="tit">주문 내역</div>
+              <div className="tit">휴대폰 번호 변경</div>
             </a>
           </li>
         </ol>
-        <img
-          src={Character}
-          alt=" "
-          width={"90%"}
-          style={{ position: "absolute", bottom: 70, right: 0 }}
-        />
       </section>
-
-      <BottomNavigation />
     </div>
   );
-};
-
-export default Setting;
+}

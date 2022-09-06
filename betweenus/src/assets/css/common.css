@@ -2038,6 +2038,41 @@ section {
   letter-spacing: 0.13px;
 }
 
+.edit-profile {
+  display: flex;
+  align-items: center;
+  padding: 28px 25px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  /* background: url("../img/ico_arrow_right1.svg") calc(100% - 10px) center
+    no-repeat; */
+}
+.edit-profile .user-picture {
+  width: 54px;
+  height: 54px;
+  margin-right: 12px;
+}
+.edit-profile .user-picture .thumb {
+  height: 100%;
+}
+.edit-profile .user-info {
+  width: calc(100% - 66px);
+}
+.edit-profile .user-info .user-nickname {
+  margin-bottom: 2px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #000;
+  letter-spacing: 0.15px;
+  margin-left: 5px;
+}
+.edit-profile .user-info .user-mail {
+  font-size: 13px;
+  font-weight: 500;
+  color: #7f7f7f;
+  letter-spacing: 0.13px;
+}
+
 .list-setting-menu {
   display: flex;
   justify-content: space-around;

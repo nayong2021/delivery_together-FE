@@ -31,6 +31,8 @@ import Guide2 from "./pages/onboarding/Guide2";
 import Guide3 from "./pages/onboarding/Guide3";
 import DefaultRoute from "./routes/DefaultRoute";
 import PrivateRoute from "./components/PrivateRoute";
+import EditProfile from "./pages/setting/EditProfile";
+import NickName from "./pages/setting/NickName";
 
 function App() {
   return (
@@ -80,6 +82,11 @@ function App() {
 
           {/* 환경설정 */}
           <Route path="/setting" element={<Setting />}></Route>
+          <Route path="/setting/profile" element={<EditProfile />}></Route>
+          <Route
+            path="/setting/profile/nickname"
+            element={<NickName />}
+          ></Route>
           <Route path="/setting/region" element={<RegionList />}></Route>
           <Route
             path="/setting/region/search"

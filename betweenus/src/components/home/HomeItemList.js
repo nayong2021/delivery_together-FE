@@ -10,7 +10,6 @@ export default function HomeItemList() {
   const [list, setData] = useState({});
   const { option } = useStoreDropdownMenu();
   let data = {};
-  // console.log(option);
 
   const getList = async () => {
     // console.log(option);
@@ -28,7 +27,7 @@ export default function HomeItemList() {
 
   useEffect(() => {
     getList();
-  }, [list, option]);
+  }, [option]);
 
   return (
     <>
