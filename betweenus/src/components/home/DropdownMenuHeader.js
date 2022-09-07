@@ -1,6 +1,6 @@
 import * as React from "react";
 import { ReactComponent as SearchIcon } from "../../assets/img/ico_search1.svg";
-// import useStoreDropdownMenu from "../../store/storeDropdownMenu";
+import textLengthOverCut from "../../hooks/textLengthOverCut";
 import FilterMenu from "./FilterMenu";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -28,7 +28,7 @@ export default function DrowpdownMenuHeader() {
     <header className="header">
       <div className="hd">
         <div className="hd-filter" onClick={() => navigate("/setting/region")}>
-          {town} ▾
+          {textLengthOverCut(town, 16, "...")} ▾
         </div>
         <div className="hd-search">
           <FilterMenu />
