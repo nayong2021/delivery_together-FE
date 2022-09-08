@@ -4,7 +4,6 @@ import MetaTag from "../../components/common/MetaTag";
 import DrowpdownMenuHeader from "../../components/home/DropdownMenuHeader";
 import BottomNavigation from "../../components/common/BottomNavigation";
 import HomeItemList from "../../components/home/HomeItemList";
-import { useEffect } from "react";
 
 const Home = () => {
   return (

@@ -1,28 +1,14 @@
 import * as React from "react";
 import "../../assets/css/common.css";
-import { NavLink, Outlet } from "react-router-dom";
-import useStoreOrderInfo from "../../store/storeOrderInfo";
+import { Outlet } from "react-router-dom";
+import OrderStateBar from "./OrderStateBar";
 
 const TopOrderState = () => {
-  const { selectedIndex } = useStoreOrderInfo();
   return (
     <div id="root">
       <header className="header">
-        <div className="tab-menu">
-          <NavLink
-            end
-            to={`/state/${selectedIndex}`}
-            className={({ isActive }) => (isActive ? "active" : "")}
-          >
-            주문현황
-          </NavLink>
-          <NavLink
-            to="chatting"
-            className={({ isActive }) => (isActive ? "active" : "")}
-          >
-            채팅방
-          </NavLink>
-        </div>
+        <OrderStateBar
+        path={"/state"}/>
       </header>
       <Outlet />
     </div>

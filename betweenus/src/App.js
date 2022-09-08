@@ -1,11 +1,6 @@
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  useNavigate,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/home/Home";
-import React, { useEffect } from "react";
+import React from "react";
 import Add from "./pages/Add";
 import Map from "./pages/Map";
 import Setting from "./pages/setting/Setting";
@@ -34,9 +29,9 @@ import PrivateRoute from "./components/PrivateRoute";
 import EditProfile from "./pages/setting/EditProfile";
 import NickName from "./pages/setting/NickName";
 import OrderHistory from "./pages/setting/OrderHistory";
-import OrderHistoryDetail from "./pages/setting/OrderHistoryDetail";
 import Password from "./pages/setting/Password";
 import Unregister from "./pages/setting/Unregister";
+import OrderHistoryState from "./pages/setting/OrderHistoryState";
 
 function App() {
   return (
@@ -110,17 +105,18 @@ function App() {
             element={<OrderHistory />}
           ></Route>
 
-          <Route path="/setting/orderhistory" element={<OrderHistoryDetail />}>
-            <Route path="/setting/orderhistory/:index" element={<State />}>
-              <Route
-                path="/setting/orderhistory/:index"
-                element={<OrderState />}
-              ></Route>
-              <Route
-                path="/setting/orderhistory/:index/chatting"
-                element={<Chatting />}
-              ></Route>
-            </Route>
+          <Route
+            path="/setting/orderhistory/:index"
+            element={<OrderHistoryState />}
+          >
+            <Route
+              path="/setting/orderhistory/:index"
+              element={<OrderState />}
+            ></Route>
+            <Route
+              path="/setting/orderhistory/:index/chatting"
+              element={<Chatting />}
+            ></Route>
           </Route>
 
           {/* 홈 */}

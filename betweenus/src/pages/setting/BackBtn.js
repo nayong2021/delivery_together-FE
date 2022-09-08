@@ -1,12 +1,11 @@
 import * as React from "react";
 import "../../assets/css/common.css";
-import { useNavigate, Outlet } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const OrderHistoryDetail = () => {
+const BackBtn = ({text}) => {
   const navigate = useNavigate();
   return (
     <>
-      <header className="header">
         <div className="hd">
           <div className="hd-tit">
             <button
@@ -14,15 +13,11 @@ const OrderHistoryDetail = () => {
               className="hd-back"
               onClick={() => navigate(-1)}
             ></button>
-            주문 내역
+            {text}
           </div>
         </div>
-      </header>
-      <section className="outlet">
-        <Outlet />
-      </section>
     </>
   );
 };
 
-export default OrderHistoryDetail;
+export default BackBtn;
