@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import MetaTag from "../../components/common/MetaTag";
 import { GetSendEmailTokenApi } from "../../modules/api/member/GetSendEmailTokenApi";
 import { PostMemberRegister } from "../../modules/api/member/PostMemberRegisterApi";
+import { RequestKakaocert } from "../../modules/api/member/RequestKakaocert";
 
 const Join = () => {
   const navigate = useNavigate();
@@ -19,6 +20,7 @@ const Join = () => {
     gender: "MALE",
     nickName: "",
     phoneNumber: "",
+    receiptID: "",
   });
 
   const {
@@ -53,6 +55,15 @@ const Join = () => {
   6: 비밀번호 확인 일치하지 않음
   7: 잘못된 인증번호 
   */
+
+  const onClickPhone = () => {
+    RequestKakaocert(inputs).then(result => {
+      setInputs({
+        ...inputs,
+        receiptID: result.receiptID,
+      });
+    });
+  };
 
   const onClickLogin = () => {
     console.log(inputs);
@@ -224,19 +235,19 @@ const Join = () => {
 
             <div className="frm-group">
               <div className="tit-frm">휴대폰 번호</div>
-              {/* <div className="inp-group"> */}
-              <input
-                type="text"
-                name="phoneNumber"
-                placeholder="‘-’ 없이 입력"
-                className="inp-frm"
-                onChange={onChangeInput}
-                value={phoneNumber}
-              />
-              {/* <button type="button" className="btn-frm">
-                  중복확인
-                </button> */}
-              {/* </div> */}
+              <div className="inp-group">
+                <input
+                  type="text"
+                  name="phoneNumber"
+                  placeholder="‘-’ 없이 입력"
+                  className="inp-frm"
+                  onChange={onChangeInput}
+                  value={phoneNumber}
+                />
+                <button type="button" className="btn-frm" onClick={onClickPhone}>
+                  인증요청
+                </button>
+              </div>
             </div>
 
             {/* <div className="frm-group">

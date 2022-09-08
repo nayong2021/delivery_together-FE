@@ -1,9 +1,9 @@
 const textLengthOverCut = (txt, len, lastTxt) => {
-  if (len == "" || len == null) {
+  if (len === "" || len == null) {
     // 기본값
     len = 20;
   }
-  if (lastTxt == "" || lastTxt == null) {
+  if (lastTxt === "" || lastTxt == null) {
     // 기본값
     lastTxt = "...";
   }

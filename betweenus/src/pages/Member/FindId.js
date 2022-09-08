@@ -5,19 +5,20 @@ import { useNavigate } from "react-router-dom";
 import MetaTag from "../../components/common/MetaTag";
 import { GetFindidApi } from "../../modules/api/member/GetFindidApi";
 import Parser from "html-react-parser";
+import { RequestKakaocert } from "../../modules/api/member/RequestKakaocert";
 
 const FindId = () => {
   const navigate = useNavigate();
   const [inputs, setInputs] = useState({
     name: "",
     birth: "",
-    phone: "",
-    // phonenum: "",
+    phoneNumber: "",
+    receiptID: "",
   });
 
   const [guideMS, setGuideMs] = useState("");
 
-  const { name, birth, phone } = inputs;
+  const { name, birth, phoneNumber } = inputs;
 
   const onChangeInput = (e) => {
     setInputs({
@@ -27,7 +28,7 @@ const FindId = () => {
   };
 
   const onClickButton = async () => {
-    const data = await GetFindidApi(inputs.name, inputs.phone, inputs.birth);
+    const data = await GetFindidApi(inputs.name, inputs.phoneNumber, inputs.birth, inputs.receiptID);
     if (data.find) {
       navigate("idresult", { state: data });
     } else {
@@ -35,6 +36,15 @@ const FindId = () => {
         "&nbsp;입력하신 정보와 일치하는 아이디가 없습니다.<br/>&nbsp;입력하신 내용을 다시 확인해주세요."
       );
     }
+  };
+
+  const onClickPhone = () => {
+    RequestKakaocert(inputs).then(result => {
+      setInputs({
+        ...inputs,
+        receiptID: result.receiptID,
+      });
+    });
   };
 
   return (
@@ -81,19 +91,19 @@ const FindId = () => {
 
             <div className="frm-group">
               <div className="tit-frm">휴대폰 번호</div>
-              {/* <div className="inp-group"> */}
+              <div className="inp-group">
               <input
                 type="text"
                 placeholder="‘-’ 없이 입력"
-                name="phone"
+                name="phoneNumber"
                 className="inp-frm"
                 onChange={onChangeInput}
-                value={phone}
+                value={phoneNumber}
               />
-              {/* <button type="button" className="btn-frm">
+              <button type="button" className="btn-frm" onClick={onClickPhone}>
                   인증요청
-                </button> */}
-              {/* </div> */}
+                </button>
+              </div>
             </div>
 
             {/* <div className="frm-group">

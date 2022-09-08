@@ -3,13 +3,11 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { RegionListGetApi } from "../../modules/api/member/RegionListGetApi";
 import RegionListItem from "../../components/settings/RegionListItem";
-import useStoreCurrentUser from "../../store/storeCurrentUser";
 import { PatchRepresentationRegion } from "../../modules/api/member/PatchRepresentationRegion";
 
 export default function RegionList() {
   const navigate = useNavigate();
   const [regionList, setRegionList] = useState({});
-  const { user } = useStoreCurrentUser();
   const getList = async () => {
     const result = await RegionListGetApi();
     console.log(result)

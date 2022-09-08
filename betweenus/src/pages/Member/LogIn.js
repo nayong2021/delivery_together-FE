@@ -9,13 +9,11 @@ import Apple from "../../assets/img/ico_apple1.png";
 import { PostLoginApi } from "../../modules/api/member/PostLoginApi";
 import Parser from "html-react-parser";
 import { useNavigate } from "react-router-dom";
-import useStoreLoginData from "../../store/storeLoginData";
 
 const LogIn = () => {
   const [inputId, setInputId] = useState("");
   const [inputPw, setInputPw] = useState("");
   const [WrongMessage, setWrongMessage] = useState("");
-  const { setAccessToken, setRefreshToken } = useStoreLoginData();
   const navigate = useNavigate();
 
   const handleInputId = (e) => {
