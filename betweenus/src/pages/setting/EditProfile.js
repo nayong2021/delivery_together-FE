@@ -49,7 +49,7 @@ export default function EditProfile() {
         </div>
         <ol className="list-setting-menu">
           <li>
-            <div>
+            <div onClick={() => navigate("password")}>
               <div className="ico">
                 <Menu1 />
               </div>
@@ -73,6 +73,8 @@ export default function EditProfile() {
             </a>
           </li>
         </ol>
+        <div>로그아웃</div>
+        <div onClick={() => navigate("unregister")}>회원탈퇴</div>
       </section>
     </div>
   );

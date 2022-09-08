@@ -35,6 +35,8 @@ import EditProfile from "./pages/setting/EditProfile";
 import NickName from "./pages/setting/NickName";
 import OrderHistory from "./pages/setting/OrderHistory";
 import OrderHistoryDetail from "./pages/setting/OrderHistoryDetail";
+import Password from "./pages/setting/Password";
+import Unregister from "./pages/setting/Unregister";
 
 function App() {
   return (
@@ -88,6 +90,14 @@ function App() {
           <Route
             path="/setting/profile/nickname"
             element={<NickName />}
+          ></Route>
+          <Route
+            path="/setting/profile/password"
+            element={<Password />}
+          ></Route>
+          <Route
+            path="/setting/profile/unregister"
+            element={<Unregister />}
           ></Route>
           <Route path="/setting/region" element={<RegionList />}></Route>
           <Route
