@@ -32,6 +32,7 @@ import OrderHistory from "./pages/setting/OrderHistory";
 import Password from "./pages/setting/Password";
 import Unregister from "./pages/setting/Unregister";
 import OrderHistoryState from "./pages/setting/OrderHistoryState";
+import Phone from "./pages/setting/Phone";
 
 function App() {
   return (
@@ -89,6 +90,10 @@ function App() {
           <Route
             path="/setting/profile/password"
             element={<Password />}
+          ></Route>
+          <Route
+            path="/setting/profile/phone"
+            element={<Phone />}
           ></Route>
           <Route
             path="/setting/profile/unregister"

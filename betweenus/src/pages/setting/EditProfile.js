@@ -65,12 +65,12 @@ export default function EditProfile() {
             </a>
           </li>
           <li>
-            <a href="/history">
+            <div onClick={() => navigate("phone")}>
               <div className="ico">
                 <Menu3 />
               </div>
               <div className="tit">휴대폰 번호 변경</div>
-            </a>
+            </div>
           </li>
         </ol>
         <div>로그아웃</div>
