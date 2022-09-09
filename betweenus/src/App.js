@@ -33,6 +33,7 @@ import Password from "./pages/setting/Password";
 import Unregister from "./pages/setting/Unregister";
 import OrderHistoryState from "./pages/setting/OrderHistoryState";
 import TestChat from "./pages/TestChat";
+import Phone from "./pages/setting/Phone";
 
 function App() {
   return (
@@ -91,6 +92,7 @@ function App() {
             path="/setting/profile/password"
             element={<Password />}
           ></Route>
+          <Route path="/setting/profile/phone" element={<Phone />}></Route>
           <Route
             path="/setting/profile/unregister"
             element={<Unregister />}

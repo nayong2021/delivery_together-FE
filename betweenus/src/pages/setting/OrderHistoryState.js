@@ -9,7 +9,7 @@ import HostYesGuest from "../../components/orderState/HostYesGuest";
 import GuestWaitRecruit from "../../components/orderState/GuestWaitRecruit";
 import { GetOrderStateApi } from "../../modules/api/orderstate/GetOrderStateApi";
 import useStoreOrderInfo from "../../store/storeOrderInfo";
-import BackBtn from "./BackBtn";
+import BackBtn from "../../components/settings/BackBtn";
 import OrderStateBar from "../../components/orderState/OrderStateBar";
 
 const OrderHistoryState = () => {

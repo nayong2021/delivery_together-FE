@@ -3,9 +3,9 @@ import "../../assets/css/common.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MetaTag from "../../components/common/MetaTag";
-import { GetSendEmailTokenApi } from "../../modules/api/member/GetSendEmailTokenApi";
-import { GetSelectMemberApi } from "../../modules/api/member/GetSelectMemberApi";
+import { PostResetPwApi } from "../../modules/api/member/PostResetPwApi";
 import Parser from "html-react-parser";
+import { RequestKakaocert } from "../../modules/api/member/RequestKakaocert";
 
 const FindPw = () => {
   const navigate = useNavigate();
@@ -15,10 +15,10 @@ const FindPw = () => {
     birth: "",
     email: "",
     phoneNumber: "",
-    authToken: 0,
+    receiptID: "",
   });
 
-  const { name, birth, email, phoneNumber, authToken } = inputs;
+  const { name, birth, email, phoneNumber } = inputs;
 
   const onChangeInput = (e) => {
     setInputs({
@@ -27,26 +27,33 @@ const FindPw = () => {
     });
   };
 
+  const onClickPhone = () => {
+    RequestKakaocert(inputs).then(result => {
+      console.log(result);
+      setInputs({
+        ...inputs,
+        receiptID: result.receiptID,
+      });
+    });
+  };
+
   const onClickButton = async () => {
     // console.log(inputs);
-    const data = await GetSelectMemberApi(
-      inputs.name,
-      inputs.birth,
-      inputs.email,
-      inputs.phoneNumber,
-      inputs.authToken
-    );
-    if (data) {
+    try{
+      await PostResetPwApi(
+        inputs.name,
+        inputs.birth,
+        inputs.email,
+        inputs.phoneNumber,
+        inputs.receiptID
+      );
       navigate("pwresult", { state: inputs });
-    } else {
+    }
+    catch (e) {
       setGuideMs(
         "&nbsp;입력하신 정보와 일치하는 유저가 없습니다.<br/>&nbsp;입력하신 내용을 다시 확인해주세요."
       );
     }
-  };
-
-  const onClickEmail = () => {
-    GetSendEmailTokenApi(inputs.email);
   };
 
   return (
@@ -93,7 +100,14 @@ const FindPw = () => {
 
             <div className="frm-group">
               <div className="tit-frm">이메일</div>
-              <div className="inp-group">
+              <input
+                  type="text"
+                  name="email"
+                  className="inp-frm"
+                  onChange={onChangeInput}
+                  value={email}
+                />
+              {/* <div className="inp-group">
                 <input
                   type="text"
                   name="email"
@@ -108,10 +122,10 @@ const FindPw = () => {
                 >
                   인증요청
                 </button>
-              </div>
+              </div> */}
             </div>
 
-            <div className="frm-group">
+            {/* <div className="frm-group">
               <div className="tit-frm">이메일 인증번호</div>
               <input
                 type="number"
@@ -120,10 +134,11 @@ const FindPw = () => {
                 onChange={onChangeInput}
                 value={authToken > 0 ? authToken : ""}
               />
-            </div>
+            </div> */}
 
             <div className="frm-group">
               <div className="tit-frm">휴대폰 번호</div>
+              <div className="inp-group">
               <input
                 type="text"
                 placeholder="‘-’ 없이 입력"
@@ -131,7 +146,17 @@ const FindPw = () => {
                 name="phoneNumber"
                 onChange={onChangeInput}
                 value={phoneNumber}
+                
               />
+                <button
+                  type="button"
+                  className="btn-frm"
+                  onClick={onClickPhone}
+                >
+                  인증요청
+                </button>
+              </div>
+              
             </div>
             <div className="frm-message">{Parser(guideMS)}</div>
           </div>
