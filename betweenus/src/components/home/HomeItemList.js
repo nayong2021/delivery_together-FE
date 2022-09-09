@@ -5,6 +5,8 @@ import { GetJoinableGroupBuyingApi } from "../../modules/api/home/GetJoinableGro
 import NoRoomNotice from "./NoRoomNotice";
 import useStoreDropdownMenu from "../../store/storeDropdownMenu";
 import { GetOrderOfLargePeopleApi } from "../../modules/api/home/GetOrderOfLargePeopleApi";
+import useScript from "../common/useScript";
+import useScriptModule from "../common/useScriptModule";
 
 export default function HomeItemList() {
   const [list, setData] = useState({});
@@ -28,6 +30,9 @@ export default function HomeItemList() {
   useEffect(() => {
     getList();
   }, [option]);
+
+  useScript("https://asset.talkplus.io/talkplus-js-0.2.17.js");
+  useScriptModule("/index.js");
 
   return (
     <>

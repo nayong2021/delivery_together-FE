@@ -9,6 +9,7 @@ import Apple from "../../assets/img/ico_apple1.png";
 import { PostLoginApi } from "../../modules/api/member/PostLoginApi";
 import Parser from "html-react-parser";
 import { useNavigate } from "react-router-dom";
+import { ChatInitialize } from "../../modules/api/ChatInitialize";
 
 const LogIn = () => {
   const [inputId, setInputId] = useState("");
