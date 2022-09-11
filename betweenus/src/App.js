@@ -32,6 +32,7 @@ import OrderHistory from "./pages/setting/OrderHistory";
 import Password from "./pages/setting/Password";
 import Unregister from "./pages/setting/Unregister";
 import OrderHistoryState from "./pages/setting/OrderHistoryState";
+import TestChat from "./pages/TestChat";
 import Phone from "./pages/setting/Phone";
 
 function App() {
@@ -91,10 +92,7 @@ function App() {
             path="/setting/profile/password"
             element={<Password />}
           ></Route>
-          <Route
-            path="/setting/profile/phone"
-            element={<Phone />}
-          ></Route>
+          <Route path="/setting/profile/phone" element={<Phone />}></Route>
           <Route
             path="/setting/profile/unregister"
             element={<Unregister />}
@@ -126,6 +124,7 @@ function App() {
 
           {/* 홈 */}
           <Route path="/search" element={<HomeSearch />}></Route>
+          <Route path="/testchat" element={<TestChat />}></Route>
           <Route path="/" element={<Home />}></Route>
         </Route>
       </Routes>

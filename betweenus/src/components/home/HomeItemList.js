@@ -42,6 +42,7 @@ export default function HomeItemList() {
     talkPlusLogin(client).then(result => {
       console.log(result);
     });
+
   }, [option]);
 
   return (
