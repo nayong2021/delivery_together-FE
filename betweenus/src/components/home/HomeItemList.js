@@ -29,10 +29,11 @@ export default function HomeItemList() {
 
   useEffect(() => {
     getList();
+    const client = new window.TalkPlus.Client({
+      appId: "20dcef83-3228-4826-968e-672c6899eb96",
+    });
+    console.log(client);
   }, [option]);
-
-  useScript("https://asset.talkplus.io/talkplus-js-0.2.17.js");
-  useScriptModule("/index.js");
 
   return (
     <>
