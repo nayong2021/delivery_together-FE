@@ -5,10 +5,12 @@ import { GetJoinableGroupBuyingApi } from "../../modules/api/home/GetJoinableGro
 import NoRoomNotice from "./NoRoomNotice";
 import useStoreDropdownMenu from "../../store/storeDropdownMenu";
 import { GetOrderOfLargePeopleApi } from "../../modules/api/home/GetOrderOfLargePeopleApi";
+import useStoreChatClient from "../../store/storeChatClient";
 
 export default function HomeItemList() {
   const [list, setData] = useState({});
   const { option } = useStoreDropdownMenu();
+  const { client } = useStoreChatClient
   let data = {};
 
   const getList = async () => {
@@ -25,8 +27,21 @@ export default function HomeItemList() {
     setData(data);
   };
 
+  const talkPlusLogin = async (client) => {
+    return await client.loginWithToken({
+      userId: '84', // unique userId
+      username: '나는수정이다', // username
+      loginToken: '$2a$06$EGkgrThfCWTmnjbk24Bq/.sMUuAxp2g73oHmNgCEGr0ozp6CtpBzi',
+      profileImageUrl: '',
+      data: {},
+  });
+  }
+
   useEffect(() => {
     getList();
+    talkPlusLogin(client).then(result => {
+      console.log(result);
+    });
   }, [option]);
 
   return (
