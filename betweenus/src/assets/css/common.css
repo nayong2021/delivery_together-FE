@@ -1473,8 +1473,8 @@ section {
 
 /*지도*/
 .map {
-  background: url("../img/img_map1.png") center center no-repeat;
-  background-size: cover;
+  /* background: url("../img/img_map1.png") center center no-repeat; */
+  /* background-size: cover; */
   position: absolute;
   top: 50%;
   left: 50%;
