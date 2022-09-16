@@ -1,6 +1,6 @@
-import client from "../ChatClientInstance";
+// import client from "../ChatClientInstance";
 
-export const GetMessage = async () => {
+export const GetMessage = async (client) => {
   try {
     const resp = await client.getMessages({
       channelId: String(233),

@@ -7,6 +7,7 @@ import { postChatContentsApi } from "../../modules/api/orderstate/PostChatConten
 import useStoreOrderInfo from "../../store/storeOrderInfo";
 import ChatItem from "./ChatItem";
 import { GetMessage } from "../../modules/api/chatting/GetMessage";
+import client from "../../modules/api/ChatClientInstance";
 
 const Chatting = () => {
   const { orderInfo } = useStoreOrderInfo();
@@ -15,10 +16,14 @@ const Chatting = () => {
   const [contents, setContents] = useState("");
 
   const getList = async () => {
-    const data = await GetChatList(orderInfo.postIdx);
-    setChatList(data.chatList);
-    setResultCount(data.resultCount);
-    console.log(GetMessage());
+    const data = await GetMessage();
+    console.log(data);
+    // data.then((r) => {
+    //   console.log(r);
+    // });
+    // setChatList(data.chatList);
+    setResultCount(data.length);
+    // console.log(GetMessage());
   };
 
   const handleContents = (e) => {
