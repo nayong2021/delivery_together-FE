@@ -1,5 +1,3 @@
-// import client from "../ChatClientInstance";
-
 export const GetMessage = async (client) => {
   try {
     const resp = await client.getMessages({

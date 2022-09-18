@@ -1,28 +1,27 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import "../../assets/css/common.css";
-import { GetChatList } from "../../modules/api/chatting/GetChatListApi";
 import { SendMessage } from "../../modules/api/chatting/SendMessage";
-import { postChatContentsApi } from "../../modules/api/orderstate/PostChatContentsApi";
-import useStoreOrderInfo from "../../store/storeOrderInfo";
 import ChatItem from "./ChatItem";
 import { GetMessage } from "../../modules/api/chatting/GetMessage";
 import client from "../../modules/api/ChatClientInstance";
+import { LoginWithToken } from "../../modules/api/chatting/LoginWithToken";
 
 const Chatting = () => {
-  const { orderInfo } = useStoreOrderInfo();
   const [chatList, setChatList] = useState([]);
   const [resultCount, setResultCount] = useState(0);
   const [contents, setContents] = useState("");
 
+  const isLoggedIn = client.isLoggedIn();
+  if (!isLoggedIn) {
+    LoginWithToken(client);
+  }
+
   const getList = async () => {
-    const data = await GetMessage();
-    console.log(data);
-    // data.then((r) => {
-    //   console.log(r);
-    // });
-    // setChatList(data.chatList);
-    setResultCount(data.length);
+    const data = await GetMessage(client);
+    console.log(data.messages);
+    setChatList(data.messages);
+    // setResultCount(data.length);
     // console.log(GetMessage());
   };
 
@@ -47,7 +46,7 @@ const Chatting = () => {
 
   useEffect(() => {
     getList();
-  }, [resultCount]);
+  }, []);
 
   return (
     <section className="chat">
@@ -57,8 +56,8 @@ const Chatting = () => {
             chatList.map((item, idx) => (
               <ChatItem
                 key={idx}
-                writerNickname={item.writerNickname}
-                contents={item.contents}
+                writerNickname={item.username}
+                contents={item.text}
                 createdAt={item.createdAt}
                 writerStatus={item.writerStatus}
               />

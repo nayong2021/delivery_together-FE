@@ -9,10 +9,8 @@ import { LoginWithToken } from "../../modules/api/chatting/LoginWithToken";
 
 const Home = () => {
   const isLoggedIn = client.isLoggedIn();
-  console.log(isLoggedIn);
   if (!isLoggedIn) {
     LoginWithToken(client);
-    console.log(isLoggedIn);
   }
   return (
     <div id="root">
