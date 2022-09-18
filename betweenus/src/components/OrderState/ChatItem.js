@@ -1,6 +1,6 @@
 import * as React from "react";
 import { ReactComponent as User } from "../../assets/img/ico_user1.svg";
-import ChatTimeClock from "../common/ChatTimeClock";
+// import ChatTimeClock from "../common/ChatTimeClock";
 
 export default function ChatItem({
   writerNickname,

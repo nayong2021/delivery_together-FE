@@ -1,12 +1,11 @@
 import client from "../ChatClientInstance";
 
-export const SendMessage = async () => {
+export const SendMessage = async (sendtxt) => {
   try {
     const { response } = await client.sendMessage({
       channelId: String(233),
       type: "text",
-      text: "안녕하세요?",
-      //   data: { imageUrl: "" },
+      text: sendtxt,
     });
     return response;
   } catch (e) {

@@ -7,7 +7,7 @@ export const LoginWithToken = async (client) => {
     data.then(async (r) => {
       const userIdx = r.memberIdx;
       const userToken = r.talkPlusLoginToken;
-      const resp = await client.loginWithToken({
+      await client.loginWithToken({
         userId: String(userIdx), // unique userId
         loginToken: userToken, // login token issued by admin REST API
       });

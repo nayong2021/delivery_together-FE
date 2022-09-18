@@ -9,7 +9,7 @@ import { LoginWithToken } from "../../modules/api/chatting/LoginWithToken";
 
 const Chatting = () => {
   const [chatList, setChatList] = useState([]);
-  const [resultCount, setResultCount] = useState(0);
+  // const [resultCount, setResultCount] = useState(0);
   const [contents, setContents] = useState("");
 
   const isLoggedIn = client.isLoggedIn();
@@ -22,7 +22,6 @@ const Chatting = () => {
     console.log(data.messages);
     setChatList(data.messages);
     // setResultCount(data.length);
-    // console.log(GetMessage());
   };
 
   const handleContents = (e) => {
@@ -40,7 +39,7 @@ const Chatting = () => {
     // if (result) {
     //   getList();
     // }
-    SendMessage();
+    SendMessage(contents);
     setContents("");
   };
 
@@ -53,15 +52,17 @@ const Chatting = () => {
       <div className="wrap">
         <ol className="list-chat">
           {chatList && Array.isArray(chatList) ? (
-            chatList.map((item, idx) => (
-              <ChatItem
-                key={idx}
-                writerNickname={item.username}
-                contents={item.text}
-                createdAt={item.createdAt}
-                writerStatus={item.writerStatus}
-              />
-            ))
+            chatList
+              .reverse()
+              .map((item, idx) => (
+                <ChatItem
+                  key={idx}
+                  writerNickname={item.username}
+                  contents={item.text}
+                  createdAt={item.createdAt}
+                  writerStatus={item.writerStatus}
+                />
+              ))
           ) : (
             <li></li>
           )}
