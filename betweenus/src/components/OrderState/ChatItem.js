@@ -1,14 +1,23 @@
 import * as React from "react";
 import { ReactComponent as User } from "../../assets/img/ico_user1.svg";
-// import ChatTimeClock from "../common/ChatTimeClock";
+import { useState, useEffect } from "react";
 
 export default function ChatItem({
   writerNickname,
   contents,
   createdAt,
   writerStatus,
+  user,
 }) {
-  return writerStatus ? (
+  const [self, setSelf] = useState(false);
+  const date = new Date(createdAt);
+
+  useEffect(() => {
+    if (writerStatus === String(user)) {
+      setSelf(true);
+    }
+  }, []);
+  return self ? (
     <li>
       <div className="ly-r">
         <div className="chat-content">

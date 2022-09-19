@@ -4,7 +4,7 @@ import { GetCurrentUser } from "../common/GetCurrentUserApi";
 export const LoginWithToken = async (client) => {
   try {
     const data = GetCurrentUser();
-    data.then(async (r) => {
+    await data.then(async (r) => {
       const userIdx = r.memberIdx;
       const userToken = r.talkPlusLoginToken;
       await client.loginWithToken({

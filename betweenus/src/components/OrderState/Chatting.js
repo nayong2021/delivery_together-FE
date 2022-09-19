@@ -6,20 +6,16 @@ import ChatItem from "./ChatItem";
 import { GetMessage } from "../../modules/api/chatting/GetMessage";
 import client from "../../modules/api/ChatClientInstance";
 import { LoginWithToken } from "../../modules/api/chatting/LoginWithToken";
+import { GetCurrentUser } from "../../modules/api/common/GetCurrentUserApi";
 
 const Chatting = () => {
   const [chatList, setChatList] = useState([]);
   // const [resultCount, setResultCount] = useState(0);
   const [contents, setContents] = useState("");
-
-  const isLoggedIn = client.isLoggedIn();
-  if (!isLoggedIn) {
-    LoginWithToken(client);
-  }
+  const [user, setUser] = useState(null);
 
   const getList = async () => {
     const data = await GetMessage(client);
-    console.log(data.messages);
     setChatList(data.messages);
     // setResultCount(data.length);
   };
@@ -43,26 +39,38 @@ const Chatting = () => {
     setContents("");
   };
 
-  useEffect(() => {
+  const LoginAndGetChatList = async (client) => {
+    await LoginWithToken(client);
     getList();
+  };
+
+  useEffect(() => {
+    const isLoggedIn = client.isLoggedIn();
+    if (!isLoggedIn) {
+      LoginAndGetChatList(client);
+    } else {
+      getList();
+    }
+    GetCurrentUser().then((r) => {
+      setUser(r);
+    });
   }, []);
 
-  return (
+  return user ? (
     <section className="chat">
       <div className="wrap">
         <ol className="list-chat">
           {chatList && Array.isArray(chatList) ? (
-            chatList
-              .reverse()
-              .map((item, idx) => (
-                <ChatItem
-                  key={idx}
-                  writerNickname={item.username}
-                  contents={item.text}
-                  createdAt={item.createdAt}
-                  writerStatus={item.writerStatus}
-                />
-              ))
+            chatList.map((item, idx) => (
+              <ChatItem
+                key={idx}
+                writerNickname={item.username}
+                contents={item.text}
+                createdAt={item.createdAt}
+                writerStatus={item.userId}
+                user={user.memberIdx}
+              />
+            ))
           ) : (
             <li></li>
           )}
@@ -91,7 +99,7 @@ const Chatting = () => {
         </div>
       </div>
     </section>
-  );
+  ) : null;
 };
 
 export default Chatting;
