@@ -1,6 +1,7 @@
 import * as React from "react";
 import { ReactComponent as User } from "../../assets/img/ico_user1.svg";
 import { useState, useEffect } from "react";
+import ChatTimeClock from "../common/ChatTimeClock";
 
 export default function ChatItem({
   writerNickname,
@@ -22,8 +23,7 @@ export default function ChatItem({
       <div className="ly-r">
         <div className="chat-content">
           <div className="bubble">{contents}</div>
-          <div className="chat-time">{createdAt}</div>
-          {/* <ChatTimeClock createdAt={createdAt} /> */}
+          <ChatTimeClock hour={date.getHours()} minute={date.getMinutes()} />
         </div>
       </div>
     </li>
@@ -34,11 +34,9 @@ export default function ChatItem({
           <User />
           <div className="nickname">&nbsp;&nbsp;{writerNickname}</div>
         </div>
-
         <div className="chat-content">
           <div className="bubble">{contents}</div>
-          <div className="chat-time">{createdAt}</div>
-          {/* <ChatTimeClock createdAt={createdAt} /> */}
+          <ChatTimeClock hour={date.getHours()} minute={date.getMinutes()} />
         </div>
       </div>
     </li>
