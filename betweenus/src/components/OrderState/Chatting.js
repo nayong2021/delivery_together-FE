@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "../../assets/css/common.css";
 import { SendMessage } from "../../modules/api/chatting/SendMessage";
 import ChatItem from "./ChatItem";
@@ -7,17 +7,23 @@ import { GetMessage } from "../../modules/api/chatting/GetMessage";
 import client from "../../modules/api/ChatClientInstance";
 import { LoginWithToken } from "../../modules/api/chatting/LoginWithToken";
 import { GetCurrentUser } from "../../modules/api/common/GetCurrentUserApi";
+import useStoreOrderInfo from "../../store/storeOrderInfo";
 
 const Chatting = () => {
-  const [chatList, setChatList] = useState([]);
-  // const [resultCount, setResultCount] = useState(0);
+  const [chatList, _setChatList] = useState([]);
   const [contents, setContents] = useState("");
   const [user, setUser] = useState(null);
+  const chatListStateRef = useRef(chatList);
+  const { orderInfo } = useStoreOrderInfo();
 
-  const getList = async () => {
-    const data = await GetMessage(client);
+  const setChatList = (data) => {
+    chatListStateRef.current = data;
+    _setChatList(data);
+  };
+
+  const getList = async (postIdx) => {
+    const data = await GetMessage(client, postIdx);
     setChatList(data.messages);
-    // setResultCount(data.length);
   };
 
   const handleContents = (e) => {
@@ -31,45 +37,42 @@ const Chatting = () => {
   };
 
   const postChatContents = async () => {
-    // const result = await postChatContentsApi(orderInfo.postIdx, contents);
-    // if (result) {
-    //   getList();
-    // }
-    SendMessage(contents);
+    const response = await SendMessage(contents);
+    console.log(response);
+    // setChatList([...chatListStateRef.current, response]);
     setContents("");
   };
 
-  const LoginAndGetChatList = async (client) => {
+  const LoginAndGetChatList = async (client, postIdx) => {
     await LoginWithToken(client);
     client.on("event", (data) => {
       yourListenerFunc(data);
     });
-    getList();
+    getList(postIdx);
   };
 
   const yourListenerFunc = (data) => {
-    console.log(data);
     if (data.type === "message") {
-      console.log("message event");
-      if (data.message.channelId === "233") {
-        console.log(chatList);
-        console.log(data.message);
-        // setChatList([...chatList, data.message]);
+      if (data.message.channelId === String(orderInfo.postIdx)) {
+        setChatList([...chatListStateRef.current, data.message]);
       }
     }
   };
 
   useEffect(() => {
-    const isLoggedIn = client.isLoggedIn();
-    if (!isLoggedIn) {
-      LoginAndGetChatList(client);
-    } else {
-      getList();
+    if (orderInfo.postIdx) {
+      const isLoggedIn = client.isLoggedIn();
+      if (!isLoggedIn) {
+        LoginAndGetChatList(client, orderInfo.postIdx);
+      } else {
+        getList(orderInfo.postIdx);
+      }
+      GetCurrentUser().then((r) => {
+        setUser(r);
+      });
+      console.log(orderInfo);
     }
-    GetCurrentUser().then((r) => {
-      setUser(r);
-    });
-  }, []);
+  }, [orderInfo.postIdx]);
 
   return user ? (
     <section className="chat">
