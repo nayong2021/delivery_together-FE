@@ -41,7 +41,22 @@ const Chatting = () => {
 
   const LoginAndGetChatList = async (client) => {
     await LoginWithToken(client);
+    client.on("event", (data) => {
+      yourListenerFunc(data);
+    });
     getList();
+  };
+
+  const yourListenerFunc = (data) => {
+    console.log(data);
+    if (data.type === "message") {
+      console.log("message event");
+      if (data.message.channelId === "233") {
+        console.log(chatList);
+        console.log(data.message);
+        // setChatList([...chatList, data.message]);
+      }
+    }
   };
 
   useEffect(() => {
