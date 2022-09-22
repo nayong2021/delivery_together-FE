@@ -24,6 +24,7 @@ const Chatting = () => {
   const getList = async (postIdx) => {
     const data = await GetMessage(client, postIdx);
     setChatList(data.messages);
+    console.log(data);
   };
 
   const handleContents = (e) => {
@@ -37,9 +38,17 @@ const Chatting = () => {
   };
 
   const postChatContents = async () => {
-    const response = await SendMessage(contents);
-    console.log(response);
-    // setChatList([...chatListStateRef.current, response]);
+    await client.sendMessage(
+      {
+        channelId: String(orderInfo.postIdx),
+        type: "text",
+        text: contents,
+      },
+      function (err, data) {
+        console.log(data.message);
+        setChatList([...chatListStateRef.current, data.message]);
+      }
+    );
     setContents("");
   };
 
