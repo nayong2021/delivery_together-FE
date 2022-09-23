@@ -46,7 +46,7 @@ const Chatting = () => {
       },
       function (err, data) {
         console.log(data.message);
-        setChatList([...chatListStateRef.current, data.message]);
+        setChatList([data.message, ...chatListStateRef.current]);
       }
     );
     setContents("");
@@ -63,7 +63,7 @@ const Chatting = () => {
   const yourListenerFunc = (data) => {
     if (data.type === "message") {
       if (data.message.channelId === String(orderInfo.postIdx)) {
-        setChatList([...chatListStateRef.current, data.message]);
+        setChatList([data.message, ...chatListStateRef.current]);
       }
     }
   };
@@ -88,16 +88,19 @@ const Chatting = () => {
       <div className="wrap">
         <ol className="list-chat">
           {chatList && Array.isArray(chatList) ? (
-            chatList.map((item, idx) => (
-              <ChatItem
-                key={idx}
-                writerNickname={item.username}
-                contents={item.text}
-                createdAt={item.createdAt}
-                writerStatus={item.userId}
-                user={user.memberIdx}
-              />
-            ))
+            chatList
+              .slice()
+              .reverse()
+              .map((item, idx) => (
+                <ChatItem
+                  key={idx}
+                  writerNickname={item.username}
+                  contents={item.text}
+                  createdAt={item.createdAt}
+                  writerStatus={item.userId}
+                  user={user.memberIdx}
+                />
+              ))
           ) : (
             <li></li>
           )}
