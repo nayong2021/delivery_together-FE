@@ -15,6 +15,7 @@ const Chatting = () => {
   const [user, setUser] = useState(null);
   const chatListStateRef = useRef(chatList);
   const { orderInfo } = useStoreOrderInfo();
+  const scrollRef = useRef();
 
   const setChatList = (data) => {
     chatListStateRef.current = data;
@@ -69,6 +70,17 @@ const Chatting = () => {
   };
 
   useEffect(() => {
+    if (scrollRef.current) {
+      window.scrollTo({
+        top: scrollRef.current.scrollHeight,
+        left: 0,
+        behavior: "smooth",
+      });
+      // console.log(scrollRef.current.scrollTop)
+    }
+  });
+
+  useEffect(() => {
     if (orderInfo.postIdx) {
       const isLoggedIn = client.isLoggedIn();
       if (!isLoggedIn) {
@@ -85,7 +97,7 @@ const Chatting = () => {
 
   return user ? (
     <section className="chat">
-      <div className="wrap">
+      <div ref={scrollRef} className="wrap">
         <ol className="list-chat">
           {chatList && Array.isArray(chatList) ? (
             chatList
