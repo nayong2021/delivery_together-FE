@@ -1,7 +1,6 @@
 import * as React from "react";
 import { useState, useEffect, useRef } from "react";
 import "../../assets/css/common.css";
-import { SendMessage } from "../../modules/api/chatting/SendMessage";
 import ChatItem from "./ChatItem";
 import { GetMessage } from "../../modules/api/chatting/GetMessage";
 import client from "../../modules/api/ChatClientInstance";
@@ -65,6 +64,11 @@ const Chatting = () => {
     if (data.type === "message") {
       if (data.message.channelId === String(orderInfo.postIdx)) {
         setChatList([data.message, ...chatListStateRef.current]);
+        window.scrollTo({
+          top: scrollRef.current.scrollHeight,
+          left: 0,
+          behavior: "smooth",
+        });
       }
     }
   };
@@ -76,7 +80,6 @@ const Chatting = () => {
         left: 0,
         behavior: "smooth",
       });
-      // console.log(scrollRef.current.scrollTop)
     }
   });
 
