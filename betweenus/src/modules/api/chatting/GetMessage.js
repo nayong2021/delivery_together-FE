@@ -1,9 +1,9 @@
-export const GetMessage = async (client) => {
+export const GetMessage = async (client, postIdx) => {
   try {
     const resp = await client.getMessages({
-      channelId: String(233),
-      order: "oldest",
-      limit: 10, // how many messages to fetch, default: 20, max: 50
+      channelId: String(postIdx),
+      order: "latest",
+      limit: 50, // how many messages to fetch, default: 20, max: 50
     });
     return resp;
   } catch (e) {

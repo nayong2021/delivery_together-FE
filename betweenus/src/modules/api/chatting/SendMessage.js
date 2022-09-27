@@ -1,13 +1,18 @@
 import client from "../ChatClientInstance";
 
-export const SendMessage = async (sendtxt) => {
+export const SendMessage = async (sendtxt, setChatList) => {
   try {
-    const { response } = await client.sendMessage({
-      channelId: String(233),
-      type: "text",
-      text: sendtxt,
-    });
-    return response;
+    await client.sendMessage(
+      {
+        channelId: String(233),
+        type: "text",
+        text: sendtxt,
+      },
+      function (err, data) {
+        console.log(data);
+        return data;
+      }
+    );
   } catch (e) {
     console.log("[FAIL] GET user data", e);
     return e;
