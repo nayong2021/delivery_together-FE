@@ -7,18 +7,35 @@ import { useState, useEffect, useCallback } from "react";
 import MenuItem from "../../components/home/MenuItem";
 import useStoreMenu from "../../store/storeMenu";
 import OrderTimeClock from "../../components/common/OrderTimeClock";
+import MenuCategory from "../../components/home/MenuCategory";
+import MenuOption from "../../components/home/MenuOption";
 
 const Order = () => {
   const navigate = useNavigate();
   const id = useParams();
   const [itemdata, setData] = useState({});
-  const { menudata, setMenudata, plusMenudata, minusMenudata } = useStoreMenu();
+  const [menuList, setMenuList] = useState([]);
+  const [selectedMenu, setSelectedMenu] = useState({});
+  const [popupState, setPopupState] = useState(false);
+  // const { menudata, setMenudata, plusMenudata, minusMenudata } = useStoreMenu();
 
   const getList = useCallback(async () => {
     const data = await GetGroupBuyingMenuListApi(id);
     setData(data);
-    setMenudata(data.menuList);
-  }, [setMenudata, id]);
+    setMenuList(data.menuList);
+    // setMenudata(data.menuList);
+    // }, [setMenudata, id]);
+  }, [id]);
+
+  const onMenuClick = (menuData) => {
+    setSelectedMenu(menuData);
+    setPopupState(true);
+  };
+
+  const onPopupBackBtnClick = () => {
+    setPopupState(false);
+    setSelectedMenu({});
+  };
 
   useEffect(() => {
     getList();
@@ -27,6 +44,11 @@ const Order = () => {
   return (
     <div id="root">
       <MetaTag />
+      <MenuOption
+        menuData={selectedMenu}
+        open={popupState}
+        onPopupBackBtnClick={onPopupBackBtnClick}
+      />
       <header className="header">
         <div className="hd">
           <div className="hd-tit">
@@ -57,7 +79,15 @@ const Order = () => {
             {itemdata.currentParticipant} 명
           </div>
 
-          <ol className="list-menu">
+          {menuList.map((item, idx) => (
+            <MenuCategory
+              key={idx}
+              categoryList={item}
+              onMenuClick={onMenuClick}
+            ></MenuCategory>
+          ))}
+
+          {/* <ol className="list-menu">
             {menudata.map((item, idx) => (
               <MenuItem
                 key={idx}
@@ -68,7 +98,7 @@ const Order = () => {
                 plusMenudata={plusMenudata}
               />
             ))}
-          </ol>
+          </ol> */}
 
           <div className="btn-group-bottom">
             <button

@@ -312,6 +312,18 @@ section {
   opacity: 0.8;
   filter: alpha(opacity=80);
 }
+.dim-layer .menu-popup {
+  overflow-y: auto;
+  display: block;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  max-height: 80%;
+  background: rgb(255, 255, 255);
+  transform: none;
+  z-index: 2200;
+  min-height: 100%;
+}
 .dim-layer .modal-layer {
   display: block;
 }
@@ -1389,6 +1401,26 @@ section {
 }
 
 /*주문하기*/
+.menu-category {
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.menu-category .menu-category-info {
+  padding: 25px 0px 5px;
+}
+
+.menu-category .menu-category-info .category-tit {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.menu-category .menu-category-info .category-desc {
+  margin-top: 5px;
+  color: #999;
+  font-size: 14px;
+  overflow: hidden;
+}
 .list-menu li {
   display: flex;
   position: relative;
@@ -1419,6 +1451,10 @@ section {
   font-weight: 600;
   color: #363942;
   letter-spacing: 0.14px;
+}
+.list-menu .menu-info .menu-desc {
+  color: #999;
+  padding-bottom: 5px;
 }
 .list-menu .menu-info .price {
   font-size: 14px;
@@ -2134,6 +2170,234 @@ section {
   color: #000;
   text-align: center;
   letter-spacing: 0.16px;
+}
+
+/*상세 메뉴*/
+.menu-img {
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.menu-detail {
+  padding: 15px 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.menu-detail .menu-title {
+  font-size: 14px;
+}
+
+.menu-detail .menu-desc {
+  color: #7c7e84;
+}
+
+.menu-price {
+  font-size: 15px;
+  font-weight: bold;
+  padding: 15px 5px;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.menu-price > strong {
+  float: left;
+}
+
+.menu-price > div {
+  float: right;
+}
+
+.menu-option-group {
+  padding: 15px 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.menu-option-group .group-title {
+  display: flex;
+  align-items: center;
+}
+
+.menu-option-group .group-title > div {
+  font-size: 10px;
+}
+
+.menu-option-group .group-title > strong {
+  font-size: 14px;
+}
+
+.menu-option-group .option-list-item {
+  padding-top: 3px;
+}
+
+.menu-option-group .option-list-item > li {
+  display: flex;
+  padding: 10px 0px;
+  font-size: 14px;
+}
+
+.menu-option-group .option-list-item > li > .option-name {
+  margin-left: 5px;
+}
+
+.menu-option-group .option-list-item > li .option-price {
+  margin-left: auto;
+}
+
+.amount-select {
+  padding: 15px 5px;
+  align-items: center;
+  display: flex;
+}
+
+.amount-select > strong {
+  font-size: 14px;
+}
+
+.amount-select > div {
+  margin-left: auto;
+}
+
+.detail-total-price {
+  padding: 20px 15px 115px 15px;
+  background-color: #f2f2f2;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.detail-total-price > strong {
+  font-size: 14px;
+}
+
+.detail-total-price div {
+  margin-left: auto;
+  color: #f87245;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.menu-option {
+  padding-bottom: 0;
+}
+
+.menu-option .wrap {
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.chk_box {
+  display: block;
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* 기본 체크박스 숨기기 */
+.chk_box input[type="checkbox"] {
+  display: none;
+}
+
+/* 선택되지 않은 체크박스 스타일 꾸미기 */
+.on {
+  width: 20px;
+  height: 20px;
+  background: #ddd;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* 선택된 체크박스 스타일 꾸미기 */
+.chk_box input[type="checkbox"]:checked + .on {
+  background: #f87245;
+}
+.on:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.chk_box input[type="checkbox"]:checked + .on:after {
+  display: block;
+}
+.on:after {
+  width: 6px;
+  height: 10px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  position: absolute;
+  left: 6px;
+  top: 2px;
+}
+
+.container {
+  display: block;
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #f87245;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+  top: 6px;
+  left: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
 }
 
 @media only screen and (max-width: 768px) {
