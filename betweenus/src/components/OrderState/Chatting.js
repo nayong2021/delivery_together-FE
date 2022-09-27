@@ -15,6 +15,23 @@ const Chatting = () => {
   const chatListStateRef = useRef(chatList);
   const { orderInfo } = useStoreOrderInfo();
   const scrollRef = useRef();
+  const [scroll, setScroll] = useState(false);
+
+  // const handleScrollTop = (e) => {
+  //   console.log("handleScrollTop");
+  //   // if (e.target.scrollTop === 0) {
+  //   //   console.log("toptop");
+  //   // }
+  //   // const scrollTop = ("scroll", e.srcElement.scrollingElement.scrollTop);
+  //   // console.log(scrollTop);
+  //   if (window.scrollTop == 0) {
+  //     setScroll(true);
+  //     console.log(window.scrollTop);
+  //   } else {
+  //     // 스크롤이 50px 미만일경우 false를 넣어줌
+  //     setScroll(false);
+  //   }
+  // };
 
   const setChatList = (data) => {
     chatListStateRef.current = data;
@@ -63,6 +80,7 @@ const Chatting = () => {
   const yourListenerFunc = (data) => {
     if (data.type === "message") {
       if (data.message.channelId === String(orderInfo.postIdx)) {
+        console.log("plz");
         setChatList([data.message, ...chatListStateRef.current]);
         window.scrollTo({
           top: scrollRef.current.scrollHeight,
@@ -89,6 +107,9 @@ const Chatting = () => {
       if (!isLoggedIn) {
         LoginAndGetChatList(client, orderInfo.postIdx);
       } else {
+        client.on("event", (data) => {
+          yourListenerFunc(data);
+        });
         getList(orderInfo.postIdx);
       }
       GetCurrentUser().then((r) => {
@@ -97,6 +118,13 @@ const Chatting = () => {
       console.log(orderInfo);
     }
   }, [orderInfo.postIdx]);
+
+  // useEffect(() => {
+  //   window.addEventListener("scroll", handleScrollTop);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScrollTop); //clean up
+  //   };
+  // }, []);
 
   return user ? (
     <section className="chat">
