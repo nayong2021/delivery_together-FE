@@ -3,7 +3,6 @@ import "../../assets/css/common.css";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import MetaTag from "../../components/common/MetaTag";
 import { useState, useEffect, useCallback } from "react";
-import useStoreMenu from "../../store/storeMenu";
 import OrderSheetItem from "../../components/home/OrderSheetItem";
 import { GetGroupBuyingMenuListApi } from "../../modules/api/home/GetGroupBuyingMenuListApi";
 import { PostParticipationgApi } from "../../modules/api/home/PostParticipationApi";
@@ -13,8 +12,7 @@ const OrderSheet = () => {
   const id = useParams();
   const navigate = useNavigate();
   const [itemdata, setData] = useState({});
-  const [sum, setSum] = useState(0);
-  const { menudata, plusMenudata, minusMenudata } = useStoreMenu();
+  const [orderList, setOrderList] = useState([]);
 
   const { state } = useLocation();
 
@@ -24,26 +22,55 @@ const OrderSheet = () => {
   }, [id]);
 
   const onSubmitOrder = () => {
-    if (sum !== 0) {
-      PostParticipationgApi(id, { orderItems: menudata });
+    if (orderList.length > 0) {
+      let requestBody = { orderItems: [] };
+      orderList.forEach((orderInfo) => {
+        let orderItem = {};
+        orderItem.menuName = orderInfo.menuData.name;
+        orderItem.quantity = orderInfo.quantity;
+        orderItem.price = Number(orderInfo.menuData.price);
+        orderItem.options = [];
+        orderInfo.options.forEach((option) => {
+          let optionItem = {};
+          optionItem.optionName = option.name;
+          optionItem.price = Number(option.price);
+          orderItem.options.push(optionItem);
+        });
+        requestBody.orderItems.push(orderItem);
+      });
+      PostParticipationgApi(id, requestBody);
       navigate("/");
     }
   };
 
-  const calTotalSum = () => {
-    setSum(
-      menudata.reduce(
-        (previousValue, currentValue) =>
-          previousValue + currentValue.price * currentValue.quantity,
-        0
-      )
-    );
+  const calEachOrderPrice = (orderInfo) => {
+    let totalPrice = Number(orderInfo.menuData.price);
+    orderInfo.options.forEach((item) => {
+      totalPrice += Number(item.price);
+    });
+    totalPrice *= orderInfo.quantity;
+    return totalPrice;
+  };
+
+  const calTotalOrderPrice = () => {
+    let totalPrice = 0;
+    orderList.forEach((orderInfo) => {
+      totalPrice += calEachOrderPrice(orderInfo);
+    });
+    return totalPrice.toLocaleString();
+  };
+
+  const totalPrice = calTotalOrderPrice();
+
+  const deleteOrder = (orderInfo) => {
+    const filtered = orderList.filter((el) => el !== orderInfo);
+    setOrderList(filtered);
   };
 
   useEffect(() => {
     getList();
-    calTotalSum();
-  }, [getList, menudata]);
+    setOrderList(state);
+  }, [state]);
 
   return (
     <div id="root">
@@ -79,24 +106,23 @@ const OrderSheet = () => {
           </div>
 
           <ol className="list-order">
-            {menudata.map((item, idx) =>
-              item.quantity > 0 ? (
+            {orderList.map((item, idx) => {
+              return (
                 <OrderSheetItem
                   key={idx}
-                  menuName={item.menuName}
-                  price={item.price}
-                  quantity={item.quantity}
-                  minusMenudata={minusMenudata}
-                  plusMenudata={plusMenudata}
+                  index={idx}
+                  orderInfo={item}
+                  setOrderList={setOrderList}
+                  deleteOrder={deleteOrder}
                 />
-              ) : null
-            )}
+              );
+            })}
           </ol>
 
           <ol className="order-result">
             <li>
               <div className="tit">음식 총 금액</div>
-              <div className="txt">{sum}원</div>
+              <div className="txt">{totalPrice}원</div>
             </li>
 
             <li>
@@ -109,7 +135,7 @@ const OrderSheet = () => {
                 <strong>총 금액</strong>
               </div>
               <div className="txt">
-                <strong>{sum}원</strong>
+                <strong>{totalPrice}원</strong>
               </div>
             </li>
           </ol>
@@ -123,6 +149,7 @@ const OrderSheet = () => {
             <button
               type="button"
               className="btn-custom"
+              // onClick={onSubmitOrder}
               onClick={onSubmitOrder}
             >
               주문서 전달
