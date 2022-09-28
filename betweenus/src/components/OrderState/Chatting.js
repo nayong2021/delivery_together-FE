@@ -7,31 +7,22 @@ import client from "../../modules/api/ChatClientInstance";
 import { LoginWithToken } from "../../modules/api/chatting/LoginWithToken";
 import { GetCurrentUser } from "../../modules/api/common/GetCurrentUserApi";
 import useStoreOrderInfo from "../../store/storeOrderInfo";
+import { useInView } from "react-intersection-observer";
+import Status from "./Status";
 
 const Chatting = () => {
   const [chatList, _setChatList] = useState([]);
   const [contents, setContents] = useState("");
   const [user, setUser] = useState(null);
+  const [hasNext, setHasNext] = useState(false);
+  const [lastMessageId, setLastMessageId] = useState();
   const chatListStateRef = useRef(chatList);
   const { orderInfo } = useStoreOrderInfo();
   const scrollRef = useRef();
-  const [scroll, setScroll] = useState(false);
-
-  // const handleScrollTop = (e) => {
-  //   console.log("handleScrollTop");
-  //   // if (e.target.scrollTop === 0) {
-  //   //   console.log("toptop");
-  //   // }
-  //   // const scrollTop = ("scroll", e.srcElement.scrollingElement.scrollTop);
-  //   // console.log(scrollTop);
-  //   if (window.scrollTop == 0) {
-  //     setScroll(true);
-  //     console.log(window.scrollTop);
-  //   } else {
-  //     // 스크롤이 50px 미만일경우 false를 넣어줌
-  //     setScroll(false);
-  //   }
-  // };
+  const { ref, inView } = useInView({
+    threshold: 0,
+  });
+  let resp = {};
 
   const setChatList = (data) => {
     chatListStateRef.current = data;
@@ -39,9 +30,25 @@ const Chatting = () => {
   };
 
   const getList = async (postIdx) => {
-    const data = await GetMessage(client, postIdx);
-    setChatList(data.messages);
-    console.log(data);
+    resp = await GetMessage(client, postIdx);
+    setChatList(resp.messages);
+    setHasNext(resp.hasNext);
+    setLastMessageId(resp.messages[resp.messages.length - 1].id);
+  };
+
+  const getMoreList = async (postIdx) => {
+    console.log(hasNext, lastMessageId);
+    if (hasNext) {
+      const moreResp = await client.getMessages({
+        channelId: String(postIdx),
+        lastMessageId: lastMessageId,
+        limit: 10,
+      });
+      setHasNext(moreResp.hasNext);
+      setLastMessageId(moreResp.messages[moreResp.messages.length - 1].id);
+      setChatList([...chatListStateRef.current, ...moreResp.messages]);
+      console.log(chatList);
+    }
   };
 
   const handleContents = (e) => {
@@ -92,13 +99,13 @@ const Chatting = () => {
   };
 
   useEffect(() => {
-    if (scrollRef.current) {
-      window.scrollTo({
-        top: scrollRef.current.scrollHeight,
-        left: 0,
-        behavior: "smooth",
-      });
-    }
+    // if (scrollRef.current) {
+    //   window.scrollTo({
+    //     top: scrollRef.current.scrollHeight,
+    //     left: 0,
+    //     behavior: "smooth",
+    //   });
+    // }
   });
 
   useEffect(() => {
@@ -115,20 +122,20 @@ const Chatting = () => {
       GetCurrentUser().then((r) => {
         setUser(r);
       });
-      console.log(orderInfo);
     }
   }, [orderInfo.postIdx]);
 
-  // useEffect(() => {
-  //   window.addEventListener("scroll", handleScrollTop);
-  //   return () => {
-  //     window.removeEventListener("scroll", handleScrollTop); //clean up
-  //   };
-  // }, []);
+  useEffect(() => {
+    const isLoggedIn = client.isLoggedIn();
+    if (inView && isLoggedIn) {
+      getMoreList(orderInfo.postIdx);
+    }
+  }, [inView]);
 
   return user ? (
     <section className="chat">
       <div ref={scrollRef} className="wrap">
+        <div ref={ref}>TEST</div>
         <ol className="list-chat">
           {chatList && Array.isArray(chatList) ? (
             chatList
