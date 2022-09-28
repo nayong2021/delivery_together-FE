@@ -1,6 +1,6 @@
 import * as React from "react";
 import "../../assets/css/common.css";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import MetaTag from "../../components/common/MetaTag";
 import { useState, useEffect, useCallback } from "react";
 import useStoreMenu from "../../store/storeMenu";
@@ -15,6 +15,8 @@ const OrderSheet = () => {
   const [itemdata, setData] = useState({});
   const [sum, setSum] = useState(0);
   const { menudata, plusMenudata, minusMenudata } = useStoreMenu();
+
+  const { state } = useLocation();
 
   const getList = useCallback(async () => {
     const data = await GetGroupBuyingMenuListApi(id);

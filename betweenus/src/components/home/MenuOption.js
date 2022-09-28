@@ -2,7 +2,12 @@ import * as React from "react";
 import MenuOptionGroup from "./MenuOptionGroup";
 import { useState, useEffect } from "react";
 
-export default function MenuOption({ menuData, open, onPopupBackBtnClick }) {
+export default function MenuOption({
+  menuData,
+  open,
+  onPopupBackBtnClick,
+  setOrderList,
+}) {
   const [selectedOptions, setSelectedOptions] = useState({});
   const [quantity, setQuantity] = useState(1);
 
@@ -15,24 +20,65 @@ export default function MenuOption({ menuData, open, onPopupBackBtnClick }) {
       });
     } else {
       setSelectedOptions({});
+      setQuantity(1);
     }
   }, [menuData]);
 
   const onAddOrder = () => {
-    let temp = [];
+    let options = [];
     for (const key in selectedOptions) {
-      temp = [...temp, ...selectedOptions[key]];
+      options = [...options, ...selectedOptions[key]];
     }
+    const order = { menuData: menuData, quantity: quantity, options: options };
+
+    setOrderList((prevState) => {
+      let found = false;
+      let foundIndex;
+      prevState.some((item, index) => {
+        if (
+          JSON.stringify(item.menuData) === JSON.stringify(order.menuData) &&
+          JSON.stringify(item.options) === JSON.stringify(order.options)
+        ) {
+          found = true;
+          foundIndex = index;
+          return true;
+        }
+        return false;
+      });
+      let temp;
+      if (!found) {
+        temp = [...prevState, order];
+      } else {
+        temp = [...prevState];
+        temp[foundIndex].quantity += order.quantity;
+      }
+      return temp;
+    });
+    onPopupBackBtnClick();
   };
 
   const onPlusQuantity = () => {
-    setQuantity(quantity + 1);
+    let tempQuantity = quantity;
+    tempQuantity += 1;
+    setQuantity(tempQuantity);
   };
 
   const onMinusQuantity = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
+    let tempQuantity = quantity;
+    if (tempQuantity > 1) {
+      tempQuantity -= 1;
+      setQuantity(tempQuantity);
     }
+  };
+
+  const calculateTotalPrice = () => {
+    let tempTotalPrice = Number(menuData.price);
+    for (const key in selectedOptions) {
+      selectedOptions[key].forEach((item) => {
+        tempTotalPrice += Number(item.price);
+      });
+    }
+    return (tempTotalPrice * quantity).toLocaleString();
   };
 
   return (
@@ -91,7 +137,7 @@ export default function MenuOption({ menuData, open, onPopupBackBtnClick }) {
               </div>
               <div className="detail-total-price">
                 <strong>총 주문금액</strong>
-                <div>29,900원</div>
+                <div>{calculateTotalPrice()}원</div>
               </div>
               <div className="btn-group-bottom">
                 <button className="btn-custom" onClick={onAddOrder}>
