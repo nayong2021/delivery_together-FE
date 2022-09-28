@@ -16,14 +16,11 @@ const Order = () => {
   const [selectedMenu, setSelectedMenu] = useState({});
   const [popupState, setPopupState] = useState(false);
   const [orderList, setOrderList] = useState([]);
-  // const { menudata, setMenudata, plusMenudata, minusMenudata } = useStoreMenu();
 
   const getList = useCallback(async () => {
     const data = await GetGroupBuyingMenuListApi(id);
     setData(data);
     setMenuList(data.menuList);
-    // setMenudata(data.menuList);
-    // }, [setMenudata, id]);
   }, [id]);
 
   const onMenuClick = (menuData) => {
@@ -79,13 +76,15 @@ const Order = () => {
             {itemdata.currentParticipant} 명
           </div>
 
-          {menuList.map((item, idx) => (
-            <MenuCategory
-              key={idx}
-              categoryList={item}
-              onMenuClick={onMenuClick}
-            ></MenuCategory>
-          ))}
+          {menuList
+            ? menuList.map((item, idx) => (
+                <MenuCategory
+                  key={idx}
+                  categoryList={item}
+                  onMenuClick={onMenuClick}
+                ></MenuCategory>
+              ))
+            : null}
 
           <div className="btn-group-bottom">
             <button

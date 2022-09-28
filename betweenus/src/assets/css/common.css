@@ -1469,7 +1469,7 @@ section {
 }
 
 /*내 주문서*/
-.list-order {
+/* .list-order {
   margin-bottom: 20px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
@@ -1497,7 +1497,89 @@ section {
   position: absolute;
   right: 0;
   bottom: 0;
+} */
+
+.list-order {
+  margin-bottom: 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
+.list-order li {
+  display: flex;
+  position: relative;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  min-height: 150px;
+}
+
+.list-order .img-group {
+  width: 70px;
+  height: 70px;
+  margin-right: 10px;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+.list-order .img-group .thumb {
+  height: 100%;
+  border: 1px solid #bfbfbf;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+.list-order .menu-info {
+  width: calc(100% - 105px);
+}
+.list-order .menu-info .menu {
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #363942;
+  letter-spacing: 0.14px;
+}
+
+.list-order .menu-info .menu-option {
+  color: #999;
+  margin-bottom: 10px;
+  font-size: 12px;
+}
+
+.list-order .menu-info .price {
+  font-size: 14px;
+  font-weight: 500;
+  color: #363942;
+  letter-spacing: 0.14px;
+}
+.list-order .order-count {
+  position: absolute;
+  right: 0;
+  bottom: 18px;
+}
+
+.list-order .delete-order {
+  width: 18px;
+  height: 18px;
+  opacity: 0.8;
+  position: absolute;
+  top: 20px;
+  right: 0px;
+}
+
+.delete-order:before,
+.delete-order:after {
+  position: absolute;
+  left: 7px;
+  content: " ";
+  height: 18px;
+  width: 2px;
+  background-color: #000;
+  border-radius: 5.128vw;
+}
+.delete-order:before {
+  transform: rotate(45deg);
+}
+.delete-order:after {
+  transform: rotate(-45deg);
+}
+
 .order-message {
   margin-top: 140px;
   font-size: 13px;
@@ -1660,13 +1742,23 @@ section {
   color: #000;
   letter-spacing: 0.13px;
 }
+
+.list-cart .menu-group .order {
+  margin-bottom: 15px;
+}
+
+.list-cart .menu-group .menu-options {
+  font-size: 13px;
+  color: #999;
+}
+
 .list-cart .menu-group .menu {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 .list-cart .menu-group .menu:last-child {
-  margin-bottom: 0;
+  margin-bottom: 0px;
 }
 .list-cart .menu-group .menu .tit {
   width: calc(50% + 14px);
