@@ -8,17 +8,17 @@ export default function ChatItem({
   contents,
   createdAt,
   writerStatus,
-  user,
+  // user,
 }) {
   const [self, setSelf] = useState(false);
   const date = new Date(createdAt);
 
-  useEffect(() => {
-    if (writerStatus === String(user)) {
-      setSelf(true);
-    }
-  }, []);
-  return self ? (
+  // useEffect(() => {
+  //   if (writerStatus === String(user)) {
+  //     setSelf(true);
+  //   }
+  // }, []);
+  return writerStatus ? (
     <li>
       <div className="ly-r">
         <div className="chat-content">

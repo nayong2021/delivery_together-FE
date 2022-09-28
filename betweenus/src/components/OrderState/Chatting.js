@@ -147,8 +147,8 @@ const Chatting = () => {
                   writerNickname={item.username}
                   contents={item.text}
                   createdAt={item.createdAt}
-                  writerStatus={item.userId}
-                  user={user.memberIdx}
+                  writerStatus={item.userId === String(user.memberIdx)}
+                  // user={user.memberIdx}
                 />
               ))
           ) : (
