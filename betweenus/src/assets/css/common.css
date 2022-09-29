@@ -1742,13 +1742,23 @@ section {
   color: #000;
   letter-spacing: 0.13px;
 }
+
+.list-cart .menu-group .order {
+  margin-bottom: 15px;
+}
+
+.list-cart .menu-group .menu-options {
+  font-size: 13px;
+  color: #999;
+}
+
 .list-cart .menu-group .menu {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 .list-cart .menu-group .menu:last-child {
-  margin-bottom: 0;
+  margin-bottom: 0px;
 }
 .list-cart .menu-group .menu .tit {
   width: calc(50% + 14px);
