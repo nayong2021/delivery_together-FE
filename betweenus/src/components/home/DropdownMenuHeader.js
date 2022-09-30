@@ -16,6 +16,9 @@ export default function DrowpdownMenuHeader() {
     const data = GetCurrentUser();
     data.then((r) => {
       console.log(r);
+      if (r.representationTown === "") {
+        navigate("/setting/region");
+      }
       setTown(r.representationTown);
     });
   };

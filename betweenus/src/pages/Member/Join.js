@@ -46,18 +46,8 @@ const Join = () => {
     GetSendEmailTokenApi(inputs.email);
   };
 
-  /*
-  1: 회원가입 성공
-  2: 올바르지 않은 이메일 형식
-  3: 비밀번호 형식 올바르지 않음
-  4: 중복된 닉네임
-  5: 전화번호 형식 올바르지 않음
-  6: 비밀번호 확인 일치하지 않음
-  7: 잘못된 인증번호 
-  */
-
   const onClickPhone = () => {
-    RequestKakaocert(inputs).then(result => {
+    RequestKakaocert(inputs).then((result) => {
       setInputs({
         ...inputs,
         receiptID: result.receiptID,
@@ -65,57 +55,61 @@ const Join = () => {
     });
   };
 
-  const onClickLogin = () => {
+  const onClickLogin = async () => {
     console.log(inputs);
-    const result = PostMemberRegister(inputs);
-    result.then((r) => {
-      if (r.data === 1) {
+    try {
+      const result = await PostMemberRegister(inputs);
+      result.then((r) => {
+        console.log(r);
+        sessionStorage.setItem("accessToken", r.data.accessToken);
+        sessionStorage.setItem("refreshToken", r.data.refreshToken);
+        navigate("/");
+      });
+    } catch (error) {
+      const errorCode = error.response.data.code;
+      if (errorCode === 1) {
         console.log("corret");
         navigate("/login");
-      } else if (r.data === 2) {
+      } else if (errorCode === "M001") {
         setGuideMS(
           "올바르지 않은 이메일 형식입니다. 입력하신 내용을 다시 확인해주세요."
         );
-        console.log(r.data);
-        console.log(inputs);
-      } else if (r.data === 3) {
+      } else if (errorCode === "M002") {
         setGuideMS(
           "중복된 이메일이 존재합니다. 입력하신 내용을 다시 확인해주세요."
         );
-        console.log(r.data);
-        console.log(inputs);
-      } else if (r.data === 4) {
+      } else if (errorCode === "M003") {
         setGuideMS(
           "이메일 인증번호가 일치하지 않습니다. 입력하신 내용을 다시 확인해주세요."
         );
-        console.log(r.data);
-        console.log(inputs);
-      } else if (r.data === 5) {
+      } else if (errorCode === "M004") {
         setGuideMS(
           "비밀번호 형식이 올바르지 않습니다. 입력하신 내용을 다시 확인해주세요."
         );
-        console.log(r.data);
-        console.log(inputs);
-      } else if (r.data === 6) {
+      } else if (errorCode === "M005") {
         setGuideMS(
           "비밀번호 확인이 일치하지 않습니다. 입력하신 내용을 다시 확인해주세요."
         );
-        console.log(r.data);
-        console.log(inputs);
-      } else if (r.data === 7) {
+      } else if (errorCode === "M006") {
         setGuideMS(
           "중복된 닉네임이 존재합니다. 입력하신 내용을 다시 확인해주세요."
         );
-        console.log(r.data);
-        console.log(inputs);
-      } else if (r.data === 8) {
+      } else if (errorCode === "M007") {
         setGuideMS(
           "전화번호 형식이 올바르지 않습니다. 입력하신 내용을 다시 확인해주세요."
         );
-        console.log(r.data);
-        console.log(inputs);
+      } else if (errorCode === "K001") {
+        setGuideMS(
+          "휴대폰 본인인증이 완료되지 않았습니다. 본인인증을 완료해주세요."
+        );
+      } else if (errorCode === "K002") {
+        setGuideMS(
+          "휴대폰 본인인증 가능시간이 만료되었습니다. 본인인증을 다시 요청해주세요."
+        );
+      } else {
+        setGuideMS(error.response.data.message);
       }
-    });
+    }
   };
 
   return (
@@ -244,7 +238,11 @@ const Join = () => {
                   onChange={onChangeInput}
                   value={phoneNumber}
                 />
-                <button type="button" className="btn-frm" onClick={onClickPhone}>
+                <button
+                  type="button"
+                  className="btn-frm"
+                  onClick={onClickPhone}
+                >
                   인증요청
                 </button>
               </div>
