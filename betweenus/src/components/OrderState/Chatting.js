@@ -37,7 +37,6 @@ const Chatting = () => {
   };
 
   const getMoreList = async (postIdx) => {
-    console.log(hasNext, lastMessageId);
     if (hasNext) {
       const moreResp = await client.getMessages({
         channelId: String(postIdx),
@@ -47,7 +46,6 @@ const Chatting = () => {
       setHasNext(moreResp.hasNext);
       setLastMessageId(moreResp.messages[moreResp.messages.length - 1].id);
       setChatList([...chatListStateRef.current, ...moreResp.messages]);
-      console.log(chatList);
     }
   };
 
@@ -69,11 +67,15 @@ const Chatting = () => {
         text: contents,
       },
       function (err, data) {
-        console.log(data.message);
         setChatList([data.message, ...chatListStateRef.current]);
       }
     );
     setContents("");
+    window.scrollTo({
+      top: scrollRef.current.scrollHeight,
+      left: 0,
+      behavior: "smooth",
+    });
   };
 
   const LoginAndGetChatList = async (client, postIdx) => {
@@ -87,8 +89,15 @@ const Chatting = () => {
   const yourListenerFunc = (data) => {
     if (data.type === "message") {
       if (data.message.channelId === String(orderInfo.postIdx)) {
-        console.log("plz");
         setChatList([data.message, ...chatListStateRef.current]);
+      }
+    }
+  };
+
+  useEffect(() => {
+    // console.log("newChat!");
+    if (scrollRef.current) {
+      if (scrollRef.current.scrollHeight) {
         window.scrollTo({
           top: scrollRef.current.scrollHeight,
           left: 0,
@@ -96,17 +105,7 @@ const Chatting = () => {
         });
       }
     }
-  };
-
-  useEffect(() => {
-    // if (scrollRef.current) {
-    //   window.scrollTo({
-    //     top: scrollRef.current.scrollHeight,
-    //     left: 0,
-    //     behavior: "smooth",
-    //   });
-    // }
-  });
+  }, [chatList.length]);
 
   useEffect(() => {
     if (orderInfo.postIdx) {
@@ -123,6 +122,9 @@ const Chatting = () => {
         setUser(r);
       });
     }
+    return () => {
+      client.off("event", yourListenerFunc);
+    };
   }, [orderInfo.postIdx]);
 
   useEffect(() => {
@@ -131,6 +133,11 @@ const Chatting = () => {
       getMoreList(orderInfo.postIdx);
     }
   }, [inView]);
+
+  const check = () => {
+    console.log(chatList);
+    console.log(chatListStateRef);
+  };
 
   return user ? (
     <section className="chat">
@@ -174,7 +181,8 @@ const Chatting = () => {
           <button
             type="button"
             className="btn-send"
-            onClick={postChatContents}
+            // onClick={postChatContents}
+            onClick={check}
           ></button>
         </div>
       </div>
