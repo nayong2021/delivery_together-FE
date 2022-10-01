@@ -8,6 +8,7 @@ export default function ChatItem({
   contents,
   createdAt,
   writerStatus,
+  innerRef,
   // user,
 }) {
   const [self, setSelf] = useState(false);
@@ -19,7 +20,7 @@ export default function ChatItem({
   //   }
   // }, []);
   return writerStatus ? (
-    <li>
+    <li ref={innerRef}>
       <div className="ly-r">
         <div className="chat-content">
           <div className="bubble">{contents}</div>
@@ -28,7 +29,7 @@ export default function ChatItem({
       </div>
     </li>
   ) : (
-    <li>
+    <li ref={innerRef}>
       <div className="ly-l">
         <div className="user-info">
           <User />
