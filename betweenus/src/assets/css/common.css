@@ -2044,9 +2044,22 @@ section {
   display: flex;
   flex-direction: row-reverse;
 }
+
+/*.list-chat .ly-l .chat-content */
+
+.file-content-l {
+  max-width: 79%;
+}
+
+.file-content-r {
+  max-width: 79%;
+}
+
 .list-chat .ly-r .chat-content .bubble {
   background: #ff981e;
-  color: #fff;
+  max-width: 304px;
+  border-radius: 10px;
+  height: 184px;
 }
 .list-chat .ly-r .chat-content .chat-time {
   margin-left: 0;
