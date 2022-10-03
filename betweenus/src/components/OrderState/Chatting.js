@@ -2,13 +2,15 @@ import * as React from "react";
 import { useState, useEffect, useRef } from "react";
 import "../../assets/css/common.css";
 import ChatItem from "./ChatItem";
+import ChatFileItem from "./ChatFileItem";
 import { GetMessage } from "../../modules/api/chatting/GetMessage";
 import client from "../../modules/api/ChatClientInstance";
 import { LoginWithToken } from "../../modules/api/chatting/LoginWithToken";
 import { GetCurrentUser } from "../../modules/api/common/GetCurrentUserApi";
 import useStoreOrderInfo from "../../store/storeOrderInfo";
 import { useInView } from "react-intersection-observer";
-import Status from "./Status";
+
+let firstLoaded = true;
 
 const Chatting = () => {
   const [chatList, _setChatList] = useState([]);
@@ -16,12 +18,15 @@ const Chatting = () => {
   const [user, setUser] = useState(null);
   const [hasNext, setHasNext] = useState(false);
   const [lastMessageId, setLastMessageId] = useState();
+  const [firstMessageId, setFirstMessageId] = useState();
   const chatListStateRef = useRef(chatList);
   const { orderInfo } = useStoreOrderInfo();
   const scrollRef = useRef();
   const { ref, inView } = useInView({
     threshold: 0,
   });
+
+  const firstMessageRef = useRef(null);
   let resp = {};
 
   const setChatList = (data) => {
@@ -37,6 +42,7 @@ const Chatting = () => {
   };
 
   const getMoreList = async (postIdx) => {
+    setFirstMessageId(chatList[chatList.length - 1].id);
     if (hasNext) {
       const moreResp = await client.getMessages({
         channelId: String(postIdx),
@@ -71,11 +77,6 @@ const Chatting = () => {
       }
     );
     setContents("");
-    window.scrollTo({
-      top: scrollRef.current.scrollHeight,
-      left: 0,
-      behavior: "smooth",
-    });
   };
 
   const LoginAndGetChatList = async (client, postIdx) => {
@@ -95,15 +96,22 @@ const Chatting = () => {
   };
 
   useEffect(() => {
-    // console.log("newChat!");
-    if (scrollRef.current) {
-      if (scrollRef.current.scrollHeight) {
-        window.scrollTo({
-          top: scrollRef.current.scrollHeight,
-          left: 0,
-          behavior: "smooth",
-        });
-      }
+    if (firstMessageRef.current) {
+      firstMessageRef.current.scrollIntoView();
+    }
+  }, [firstMessageRef.current]);
+
+  useEffect(() => {
+    if (
+      scrollRef.current &&
+      (document.documentElement.scrollTop > 100 || firstLoaded)
+    ) {
+      firstLoaded = false;
+      window.scrollTo({
+        top: scrollRef.current.scrollHeight,
+        left: 0,
+        behavior: "smooth",
+      });
     }
   }, [chatList.length]);
 
@@ -129,35 +137,85 @@ const Chatting = () => {
 
   useEffect(() => {
     const isLoggedIn = client.isLoggedIn();
-    if (inView && isLoggedIn) {
+    if (inView && isLoggedIn && hasNext) {
       getMoreList(orderInfo.postIdx);
     }
   }, [inView]);
 
   const check = () => {
-    console.log(chatList);
-    console.log(chatListStateRef);
+    console.log(document.documentElement.scrollTop);
+    console.log(window.innerHeight);
+  };
+
+  const onUploadImg = async (event) => {
+    console.log(event.target.files[0]);
+    const response = await client.sendMessage({
+      channelId: String(orderInfo.postIdx),
+      type: "text",
+      text: "",
+      file: event.target.files[0], // 업로드 가능한 최대 파일 사이즈는 15MB입니다.
+    });
+    console.log(response);
   };
 
   return user ? (
     <section className="chat">
       <div ref={scrollRef} className="wrap">
-        <div ref={ref}>TEST</div>
+        <div ref={ref}></div>
         <ol className="list-chat">
           {chatList && Array.isArray(chatList) ? (
             chatList
               .slice()
               .reverse()
-              .map((item, idx) => (
-                <ChatItem
-                  key={idx}
-                  writerNickname={item.username}
-                  contents={item.text}
-                  createdAt={item.createdAt}
-                  writerStatus={item.userId === String(user.memberIdx)}
-                  // user={user.memberIdx}
-                />
-              ))
+              .map((item, idx) => {
+                if (item.id === firstMessageId) {
+                  if (item.fileUrl === "") {
+                    return (
+                      <ChatItem
+                        key={item.id}
+                        writerNickname={item.username}
+                        contents={item.text}
+                        createdAt={item.createdAt}
+                        writerStatus={item.userId === String(user.memberIdx)}
+                        innerRef={firstMessageRef}
+                      />
+                    );
+                  } else {
+                    return (
+                      <ChatFileItem
+                        key={item.id}
+                        writerNickname={item.username}
+                        createdAt={item.createdAt}
+                        writerStatus={item.userId === String(user.memberIdx)}
+                        fileurl={item.fileUrl}
+                        innerRef={firstMessageRef}
+                      ></ChatFileItem>
+                    );
+                  }
+                } else {
+                  if (item.fileUrl === "") {
+                    return (
+                      <ChatItem
+                        key={item.id}
+                        writerNickname={item.username}
+                        contents={item.text}
+                        createdAt={item.createdAt}
+                        writerStatus={item.userId === String(user.memberIdx)}
+                      />
+                    );
+                  } else {
+                    return (
+                      <ChatFileItem
+                        key={item.id}
+                        writerNickname={item.username}
+                        createdAt={item.createdAt}
+                        writerStatus={item.userId === String(user.memberIdx)}
+                        fileurl={item.fileUrl}
+                      ></ChatFileItem>
+                    );
+                  }
+                }
+              })
           ) : (
             <li></li>
           )}
@@ -167,7 +225,12 @@ const Chatting = () => {
       <div className="inp-group-chat">
         <div className="write-tool">
           <div className="btn-upload">
-            <input type="file" id="upload" />
+            <input
+              type="file"
+              id="upload"
+              accept="image/*"
+              onChange={onUploadImg}
+            />
             <label htmlFor="upload"></label>
           </div>
           <input

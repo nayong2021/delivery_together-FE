@@ -2163,6 +2163,17 @@ section {
   display: flex;
   flex-direction: row-reverse;
 }
+
+/*.list-chat .ly-l .chat-content */
+
+.list-chat .ly-l .chat-content .file-content-l {
+  max-width: 55%;
+}
+
+.list-chat .ly-r .chat-content .file-content-r {
+  max-width: 55%;
+}
+
 .list-chat .ly-r .chat-content .bubble {
   background: #ff981e;
   color: #fff;

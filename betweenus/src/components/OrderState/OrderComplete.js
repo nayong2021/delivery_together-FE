@@ -26,9 +26,6 @@ const OrderComplete = () => {
     const result = await GetOrderStateApi(id.index);
     inputTime = new Date(result.deliveryTimeInputTime);
     nowTime = new Date(date);
-    console.log(inputTime);
-    console.log(nowTime);
-    console.log(result.timeToOrder);
   };
 
   useEffect(() => {
