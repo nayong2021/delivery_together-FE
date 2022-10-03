@@ -1,6 +1,5 @@
 import * as React from "react";
 import { ReactComponent as User } from "../../assets/img/ico_user1.svg";
-import { useState, useEffect } from "react";
 import ChatTimeClock from "../common/ChatTimeClock";
 
 export default function ChatFileItem({
@@ -16,7 +15,7 @@ export default function ChatFileItem({
     <li ref={innerRef}>
       <div className="ly-r">
         <div className="chat-content">
-          <img className="file-content-r" src={fileurl} />
+          <img className="file-content-r" src={fileurl} alt="img" />
           <ChatTimeClock hour={date.getHours()} minute={date.getMinutes()} />
         </div>
       </div>
@@ -29,7 +28,7 @@ export default function ChatFileItem({
           <div className="nickname">&nbsp;&nbsp;{writerNickname}</div>
         </div>
         <div className="chat-content">
-          <img className="file-content-l" src={fileurl} />
+          <img className="file-content-l" src={fileurl} alt="img" />
           <ChatTimeClock hour={date.getHours()} minute={date.getMinutes()} />
         </div>
       </div>

@@ -161,7 +161,7 @@ const Chatting = () => {
   return user ? (
     <section className="chat">
       <div ref={scrollRef} className="wrap">
-        <div ref={ref}>Test</div>
+        <div ref={ref}></div>
         <ol className="list-chat">
           {chatList && Array.isArray(chatList) ? (
             chatList
@@ -181,8 +181,6 @@ const Chatting = () => {
                       />
                     );
                   } else {
-                    console.log(item.fileUrl);
-                    // return <img src={item.fileUrl} />;
                     return (
                       <ChatFileItem
                         key={item.id}
@@ -206,8 +204,6 @@ const Chatting = () => {
                       />
                     );
                   } else {
-                    console.log(item.fileUrl);
-                    // return <img src={item.fileUrl} />;
                     return (
                       <ChatFileItem
                         key={item.id}

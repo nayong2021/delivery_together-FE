@@ -2047,19 +2047,17 @@ section {
 
 /*.list-chat .ly-l .chat-content */
 
-.file-content-l {
-  max-width: 79%;
+.list-chat .ly-l .chat-content .file-content-l {
+  max-width: 55%;
 }
 
-.file-content-r {
-  max-width: 79%;
+.list-chat .ly-r .chat-content .file-content-r {
+  max-width: 55%;
 }
 
 .list-chat .ly-r .chat-content .bubble {
   background: #ff981e;
-  max-width: 304px;
-  border-radius: 10px;
-  height: 184px;
+  color: #fff;
 }
 .list-chat .ly-r .chat-content .chat-time {
   margin-left: 0;

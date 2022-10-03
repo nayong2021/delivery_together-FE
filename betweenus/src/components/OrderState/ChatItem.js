@@ -1,6 +1,5 @@
 import * as React from "react";
 import { ReactComponent as User } from "../../assets/img/ico_user1.svg";
-import { useState, useEffect } from "react";
 import ChatTimeClock from "../common/ChatTimeClock";
 
 export default function ChatItem({
@@ -9,9 +8,7 @@ export default function ChatItem({
   createdAt,
   writerStatus,
   innerRef,
-  // user,
 }) {
-  const [self, setSelf] = useState(false);
   const date = new Date(createdAt);
 
   return writerStatus ? (
