@@ -6,10 +6,13 @@ import { PostGroupBuyingApi } from "../modules/api/add/PostGroupBuyingApi";
 import ScrollTimePicker from "../components/add/ScrollTimePicker";
 import useStoreTime from "../store/storeTime";
 import DaumPostcode from "react-daum-postcode";
+import StoreSelectModal from "../components/add/StoreSelectModal";
 
 const Add = () => {
   const navigate = useNavigate();
   const { hour, minute } = useStoreTime();
+
+  const [openStoreSelect, setOpenStoreSelect] = useState(false);
 
   const [isOpenPost, setIsOpenPost] = useState(false);
 
@@ -21,6 +24,8 @@ const Add = () => {
     detailPickupPlace: "",
     additionalInfo: "",
   });
+
+  const [selectedStore, setSelectedStore] = useState({});
 
   const {
     title,
@@ -56,6 +61,10 @@ const Add = () => {
     setIsOpenPost(!isOpenPost);
   };
 
+  const onClickFindStore = () => {
+    setOpenStoreSelect(true);
+  };
+
   const onCompletePost = (data) => {
     let addr = "";
 
@@ -86,6 +95,12 @@ const Add = () => {
   return (
     <div id="root">
       <MetaTag />
+      <StoreSelectModal
+        open={openStoreSelect}
+        setOpenStoreSelect={setOpenStoreSelect}
+        selectedStore={selectedStore}
+        setSelectedStore={setSelectedStore}
+      />
       <header className="header">
         <div className="hd">
           <div className="hd-tit">
@@ -136,14 +151,23 @@ const Add = () => {
             </div>
 
             <div className="frm-group">
-              <input
-                type="text"
-                placeholder="가게 이름"
-                className="inp-frm"
-                name="storeName"
-                onChange={onChangeInput}
-                value={storeName}
-              />
+              <div className="inp-group">
+                <input
+                  type="text"
+                  placeholder="가게 이름"
+                  className="inp-frm"
+                  name="storeName"
+                  readOnly={true}
+                  value={selectedStore.name || ""}
+                />
+                <button
+                  type="button"
+                  className="btn-frm"
+                  onClick={onClickFindStore}
+                >
+                  매장 찾기
+                </button>
+              </div>
             </div>
 
             <div className="frm-group">
