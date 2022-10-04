@@ -12,9 +12,11 @@ import instance from "../ApiInstance";
 //     return e;
 //   }
 // };
-export const PostGroupBuyingApi = async (data) => {
+export const PostGroupBuyingApi = async (data, storeId) => {
+  const requestBody = data;
+  requestBody.storeId = storeId;
   try {
-    const response = await instance.post(`/groupbuying`, data);
+    const response = await instance.post(`/groupbuying`, requestBody);
     console.log(response);
   } catch (e) {
     console.log("[FAIL] GET user data", e);

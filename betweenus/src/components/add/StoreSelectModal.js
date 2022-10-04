@@ -4,6 +4,7 @@ import { GetYogiyoStoreListApi } from "../../modules/api/add/GetYogiyoStoreListA
 import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 import useDrag from "./useDrag";
 import Store from "./Store";
+import { useInView } from "react-intersection-observer";
 
 const categories = [
   { id: "전체", sendToApi: "" },
@@ -65,13 +66,21 @@ export default function StoreSelectModal({
   setSelectedStore,
 }) {
   const [items, setItems] = useState(categories);
+  const [page, setPage] = useState(0);
+  // const [storeSearchWord, setStoreSearchWord] = useState("");
 
   const [stores, setStores] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(categories[0]);
+
+  const { ref, inView } = useInView({
+    threshold: 0,
+  });
+
   const handleItemClick = (category) => () => {
     if (dragging) {
       return false;
     }
+    setPage(0);
     setSelectedCategory(category);
   };
   const onBackBtnClick = () => {
@@ -87,9 +96,24 @@ export default function StoreSelectModal({
     setOpenStoreSelect(false);
   };
 
-  const getStoreList = async (category) => {
-    const result = await GetYogiyoStoreListApi(category.sendToApi);
-    setStores(result.data.restaurants);
+  const getStoreList = async () => {
+    try {
+      const result = await GetYogiyoStoreListApi(
+        selectedCategory.sendToApi,
+        page
+      );
+      setStores(result.data.restaurants);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getMoreList = async () => {
+    const result = await GetYogiyoStoreListApi(
+      selectedCategory.sendToApi,
+      page
+    );
+    setStores([...stores, ...result.data.restaurants]);
   };
 
   const { dragStart, dragStop, dragMove, dragging } = useDrag();
@@ -103,71 +127,122 @@ export default function StoreSelectModal({
         }
       });
 
+  // const handleStoreSearchWordChange = (e) => {
+  //   setStoreSearchWord(e.target.value);
+  // };
+
+  // const handleStoreSearchWordClear = () => {
+  //   setStoreSearchWord("");
+  // };
+
+  // const onKeyEnter = async (e) => {
+  //   if (e.key === "Enter") {
+  //     try {
+  //       const result = await GetYogiyoStoreListApi(
+  //         selectedCategory.sendToApi,
+  //         page,
+  //         storeSearchWord
+  //       );
+  //       console.log(storeSearchWord);
+  //       console.log(result);
+  //       setStores(result.data.restaurants);
+  //       setStoreSearchWord("");
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   }
+  // };
+
   useEffect(() => {
-    getStoreList(selectedCategory);
+    getStoreList();
   }, [selectedCategory]);
 
+  useEffect(() => {
+    if (page !== 0) {
+      getMoreList();
+    }
+  }, [page]);
+
+  useEffect(() => {
+    if (inView) {
+      setPage((prevState) => prevState + 1);
+    }
+  }, [inView]);
+
   return (
-    <>
-      {true ? (
-        <div className={`dim-layer js-modal` + (open ? ` dim-layer-on` : "")}>
-          <div className="menu-popup">
-            <div className="header">
-              <div className="hd">
-                <div className="hd-tit">
-                  <button
-                    type="button"
-                    className="hd-back"
-                    onClick={onBackBtnClick}
-                  ></button>
-                  매장 찾기
-                </div>
-              </div>
+    <div className={`dim-layer js-modal` + (open ? ` dim-layer-on` : "")}>
+      <div className="menu-popup">
+        <div className="header">
+          <div className="hd">
+            <div className="hd-tit">
+              <button
+                type="button"
+                className="hd-back"
+                onClick={onBackBtnClick}
+              ></button>
+              매장 찾기
             </div>
-            <section className="store-select">
-              <div className="store-categories">
-                <div onMouseLeave={dragStop}>
-                  <ScrollMenu
-                    onWheel={onWheel}
-                    onMouseDown={() => dragStart}
-                    onMouseUp={() => dragStop}
-                    onMouseMove={handleDrag}
-                  >
-                    {items.map((item) => (
-                      <Card
-                        itemId={item.id} // NOTE: itemId is required for track items
-                        title={item.id}
-                        key={item.id}
-                        onClick={handleItemClick(item)}
-                        selected={item.id === selectedCategory.id}
-                      />
-                    ))}
-                  </ScrollMenu>
-                </div>
-              </div>
-              <div className="wrap">
-                <ol className="store-list">
-                  {stores
-                    ? stores.map((store, idx) => (
-                        <Store
-                          key={idx}
-                          store={store}
-                          onStoreClick={onStoreClick}
-                          selected={selectedStore.id === store.id}
-                        />
-                      ))
-                    : null}
-                </ol>
-              </div>
-              <div className="btn-group-bottom">
-                <button className="btn-custom" onClick={onDecisionBtnClick}>
-                  매장 선택
-                </button>
-              </div>
-            </section>
           </div>
+          <div className="store-categories">
+            <div onMouseLeave={dragStop}>
+              <ScrollMenu
+                onWheel={onWheel}
+                onMouseDown={() => dragStart}
+                onMouseUp={() => dragStop}
+                onMouseMove={handleDrag}
+              >
+                {items.map((item) => (
+                  <Card
+                    itemId={item.id} // NOTE: itemId is required for track items
+                    title={item.id}
+                    key={item.id}
+                    onClick={handleItemClick(item)}
+                    selected={item.id === selectedCategory.id}
+                  />
+                ))}
+              </ScrollMenu>
+            </div>
+          </div>
+          {/* <div className="store-search">
+            <input
+              type="text"
+              placeholder="모집글 검색"
+              className="inp-frm"
+              onKeyPress={onKeyEnter}
+              onChange={handleStoreSearchWordChange}
+              value={storeSearchWord}
+            />
+            <button
+              type="button"
+              className="btn-delete"
+              onClick={handleStoreSearchWordClear}
+            ></button>
+            <div>여기가 정렬기준 넣을 곳</div>
+          </div> */}
         </div>
-      ) : null}
-    </>
+        <section className="store-select">
+          <div className="wrap">
+            <ol className="store-list">
+              {stores
+                ? stores.map((store, idx) => (
+                    <Store
+                      key={idx}
+                      store={store}
+                      onStoreClick={onStoreClick}
+                      selected={selectedStore.id === store.id}
+                    />
+                  ))
+                : null}
+              <li ref={ref} />
+            </ol>
+          </div>
+          <div className="btn-group-bottom">
+            <button className="btn-custom" onClick={onDecisionBtnClick}>
+              매장 선택
+            </button>
+          </div>
+        </section>
+      </div>
+    </div>
   );
 }

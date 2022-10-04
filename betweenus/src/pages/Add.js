@@ -19,7 +19,6 @@ const Add = () => {
   const [inputs, setInputs] = useState({
     title: "",
     timeToOrder: "",
-    storeName: "",
     pickupPlace: "",
     detailPickupPlace: "",
     additionalInfo: "",
@@ -27,14 +26,8 @@ const Add = () => {
 
   const [selectedStore, setSelectedStore] = useState({});
 
-  const {
-    title,
-    timeToOrder,
-    storeName,
-    pickupPlace,
-    detailPickupPlace,
-    additionalInfo,
-  } = inputs;
+  const { title, timeToOrder, pickupPlace, detailPickupPlace, additionalInfo } =
+    inputs;
 
   const onChangeInput = (e) => {
     setInputs({
@@ -53,7 +46,7 @@ const Add = () => {
   };
 
   const onClickButton = () => {
-    PostGroupBuyingApi(inputs);
+    PostGroupBuyingApi(inputs, selectedStore.id);
     navigate("/");
   };
 
@@ -134,14 +127,6 @@ const Add = () => {
                 시간 설정
               </div>
               <div className="inp-group-time" onClick={onClickTime}>
-                {/* <input
-                  type="text"
-                  placeholder="주문시간 설정"
-                  className="inp-frm"
-                  name="timeToOrder"
-                  onChange={onChangeInput}
-                  value={timeToOrder}
-                /> */}
                 <ScrollTimePicker
                   className="inp-frm"
                   name="timeToOrder"
