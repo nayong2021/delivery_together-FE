@@ -1689,6 +1689,160 @@ section {
   width: calc(100% - 80px);
 }
 
+.store-select {
+  padding-top: 80px;
+}
+
+.store-search {
+  /* margin-bottom: 10px; */
+  /* padding: 0 30px 0 30px; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: calc(100% - 40px);
+  margin: 5px auto 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+}
+
+.store-search .inp-frm {
+  width: calc(100% - 35px);
+  padding-left: 35px;
+  border: none;
+  box-sizing: border-box;
+  background: url("../img/ico_search2.svg") left center no-repeat;
+  font-size: 15px;
+  font-weight: 500;
+  color: #000;
+  letter-spacing: -0.41px;
+}
+
+.store-search .btn-delete {
+  width: 35px;
+  height: 35px;
+  border: none;
+  background: url("../img/ico_x1.svg") center center no-repeat;
+}
+
+.store-categories {
+  font-size: 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  color: #777;
+}
+
+.store-categories .category-card {
+  text-align: center;
+  padding: 0px 15px;
+  height: 30px;
+  white-space: pre;
+}
+
+.store-categories .selected-card {
+  color: #000;
+  font-weight: 700;
+  border-bottom: 3px solid rgba(0, 0, 0, 1);
+}
+
+/* .store-categories .category-card .selected-card {
+  color: #000;
+  font-weight: 700;
+  border-bottom: 1px solid rgba(0, 0, 0, 1);
+} */
+
+.react-horizontal-scrolling-menu--scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.store-select {
+  padding-bottom: 0;
+}
+
+.store-select .wrap {
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.store-list > li {
+  display: flex;
+  align-items: center;
+  padding: 10px 0px;
+  font-size: 14px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.store-list .img-group {
+  width: 70px;
+  height: 70px;
+  margin-right: 10px;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+.store-list .img-group .thumb {
+  height: 100%;
+  border: 1px solid #bfbfbf;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.store-list .store-info {
+  width: calc(100% - 105px);
+  font-size: 12px;
+}
+
+.store-list .store-info .tit {
+  font-size: 16px;
+  font-weight: 700;
+}
+.store-list .store-info .additional-info {
+  display: flex;
+  align-items: center;
+}
+.store-list .store-info .additional-info .rating:before {
+  content: "★";
+  color: #ff981c;
+  font-weight: 600;
+}
+.store-list .store-info .additional-info .rating {
+  /* color: #ff981c; */
+  font-weight: 600;
+}
+.store-list .store-info .additional-info .review-count {
+  margin-left: 3px;
+  /* font-size: 12px; */
+  color: #777;
+}
+.store-list .store-info .additional-info .distance {
+  /* margin-left: 3px; */
+  /* font-size: 12px; */
+  color: #777;
+}
+.store-list .store-info .additional-info .distance:before {
+  content: "•";
+  margin-right: 3px;
+  margin-left: 3px;
+}
+.store-list .store-info .additional-info .pickup-available {
+  /* margin-left: 3px; */
+  /* font-size: 12px; */
+  color: #777;
+}
+.store-list .store-info .additional-info .pickup-available:before {
+  content: "•";
+  margin-right: 3px;
+  margin-left: 3px;
+}
+.store-list .store-info .delivery-info {
+  display: flex;
+}
+.store-list .store-info .delivery-info .delivery-time {
+  color: #777;
+}
+.store-list .store-info .delivery-info .delivery-fee:before {
+  content: "• 배달요금";
+  color: #777;
+  margin-right: 3px;
+  margin-left: 3px;
+}
 /*mui*/
 
 /*장바구니*/

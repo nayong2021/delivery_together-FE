@@ -6,30 +6,28 @@ import { PostGroupBuyingApi } from "../modules/api/add/PostGroupBuyingApi";
 import ScrollTimePicker from "../components/add/ScrollTimePicker";
 import useStoreTime from "../store/storeTime";
 import DaumPostcode from "react-daum-postcode";
+import StoreSelectModal from "../components/add/StoreSelectModal";
 
 const Add = () => {
   const navigate = useNavigate();
   const { hour, minute } = useStoreTime();
+
+  const [openStoreSelect, setOpenStoreSelect] = useState(false);
 
   const [isOpenPost, setIsOpenPost] = useState(false);
 
   const [inputs, setInputs] = useState({
     title: "",
     timeToOrder: "",
-    storeName: "",
     pickupPlace: "",
     detailPickupPlace: "",
     additionalInfo: "",
   });
 
-  const {
-    title,
-    timeToOrder,
-    storeName,
-    pickupPlace,
-    detailPickupPlace,
-    additionalInfo,
-  } = inputs;
+  const [selectedStore, setSelectedStore] = useState({});
+
+  const { title, timeToOrder, pickupPlace, detailPickupPlace, additionalInfo } =
+    inputs;
 
   const onChangeInput = (e) => {
     setInputs({
@@ -48,12 +46,16 @@ const Add = () => {
   };
 
   const onClickButton = () => {
-    PostGroupBuyingApi(inputs);
+    PostGroupBuyingApi(inputs, selectedStore.id);
     navigate("/");
   };
 
   const onChangeOpenPost = () => {
     setIsOpenPost(!isOpenPost);
+  };
+
+  const onClickFindStore = () => {
+    setOpenStoreSelect(true);
   };
 
   const onCompletePost = (data) => {
@@ -86,6 +88,12 @@ const Add = () => {
   return (
     <div id="root">
       <MetaTag />
+      <StoreSelectModal
+        open={openStoreSelect}
+        setOpenStoreSelect={setOpenStoreSelect}
+        selectedStore={selectedStore}
+        setSelectedStore={setSelectedStore}
+      />
       <header className="header">
         <div className="hd">
           <div className="hd-tit">
@@ -119,14 +127,6 @@ const Add = () => {
                 시간 설정
               </div>
               <div className="inp-group-time" onClick={onClickTime}>
-                {/* <input
-                  type="text"
-                  placeholder="주문시간 설정"
-                  className="inp-frm"
-                  name="timeToOrder"
-                  onChange={onChangeInput}
-                  value={timeToOrder}
-                /> */}
                 <ScrollTimePicker
                   className="inp-frm"
                   name="timeToOrder"
@@ -136,14 +136,23 @@ const Add = () => {
             </div>
 
             <div className="frm-group">
-              <input
-                type="text"
-                placeholder="가게 이름"
-                className="inp-frm"
-                name="storeName"
-                onChange={onChangeInput}
-                value={storeName}
-              />
+              <div className="inp-group">
+                <input
+                  type="text"
+                  placeholder="가게 이름"
+                  className="inp-frm"
+                  name="storeName"
+                  readOnly={true}
+                  value={selectedStore.name || ""}
+                />
+                <button
+                  type="button"
+                  className="btn-frm"
+                  onClick={onClickFindStore}
+                >
+                  매장 찾기
+                </button>
+              </div>
             </div>
 
             <div className="frm-group">
