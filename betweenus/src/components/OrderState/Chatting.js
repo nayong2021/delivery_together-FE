@@ -38,7 +38,9 @@ const Chatting = () => {
     resp = await GetMessage(client, postIdx);
     setChatList(resp.messages);
     setHasNext(resp.hasNext);
-    setLastMessageId(resp.messages[resp.messages.length - 1].id);
+    if (resp.messages.length !== 0) {
+      setLastMessageId(resp.messages[resp.messages.length - 1].id);
+    }
   };
 
   const getMoreList = async (postIdx) => {
