@@ -151,12 +151,17 @@ const Chatting = () => {
 
   const onUploadImg = async (event) => {
     console.log(event.target.files[0]);
-    const response = await client.sendMessage({
-      channelId: String(orderInfo.postIdx),
-      type: "text",
-      text: "",
-      file: event.target.files[0], // 업로드 가능한 최대 파일 사이즈는 15MB입니다.
-    });
+    const response = await client.sendMessage(
+      {
+        channelId: String(orderInfo.postIdx),
+        type: "text",
+        text: "",
+        file: event.target.files[0], // 업로드 가능한 최대 파일 사이즈는 15MB입니다.
+      },
+      function (err, data) {
+        setChatList([data.message, ...chatListStateRef.current]);
+      }
+    );
     console.log(response);
   };
 
