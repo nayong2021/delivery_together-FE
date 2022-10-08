@@ -3,7 +3,7 @@ import axios from "axios";
 const createInstance = () => {
   const instance = axios.create({
     baseURL: process.env.REACT_APP_API_HOST,
-    timeout: 1000,
+    timeout: 5000,
   });
 
   instance.interceptors.request.use(
