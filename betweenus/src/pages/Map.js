@@ -15,13 +15,19 @@ const Map = () => {
     <div className="Map">
       <MetaTag />
       <section className="map" width="100%" height="100%">
-        <a href="#" className="btn-search" onClick={searchButton}></a>
+        {/* <a
+          href="#"
+          className="btn-search"
+          onClick={searchButton}
+          style={{ position: "absolute", zIndex: "2" }}
+        ></a> */}
         <button
           type="button"
           className="btn-location"
+          style={{ position: "absolute", zIndex: "2" }}
           onClick={currentLocation}
         ></button>
-        <KakaoMap />
+        <KakaoMap style={{ position: "relative", zIndex: "1" }} />
         <BottomNavigation />
       </section>
     </div>
