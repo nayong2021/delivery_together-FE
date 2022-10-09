@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Map, MapMarker } from "react-kakao-maps-sdk";
 import { useState, useEffect } from "react";
+import { GetRepresentAddressApi } from "../../modules/api/map/GetRepresentAddressApi";
 
 const KakaoMap = () => {
   const [state, setState] = useState({
@@ -12,7 +13,17 @@ const KakaoMap = () => {
     isLoading: true,
   });
 
-  useEffect(() => {
+  const [marker, setMarker] = useState({
+    center: {
+      lat: 33.450701,
+      lng: 126.570667,
+    },
+    errMsg: null,
+    isLoading: true,
+  });
+
+  const currentLocation = () => {
+    console.log("current!");
     if (navigator.geolocation) {
       // GeoLocation을 이용해서 접속 위치를 얻어옵니다
       navigator.geolocation.getCurrentPosition(
@@ -42,16 +53,48 @@ const KakaoMap = () => {
         isLoading: false,
       }));
     }
+  };
+
+  const getAddress = async () => {
+    const data = await GetRepresentAddressApi();
+    setMarker((prev) => ({
+      ...prev,
+      center: {
+        lat: data.latitude, // 위도
+        lng: data.longitude, // 경도
+      },
+      isLoading: false,
+    }));
+    setState((prev) => ({
+      ...prev,
+      center: {
+        lat: data.latitude, // 위도
+        lng: data.longitude, // 경도
+      },
+      isLoading: false,
+    }));
+  };
+
+  useEffect(() => {
+    getAddress();
   }, []);
 
   return (
-    <Map center={state.center} style={{ width: "100%", height: "100vh" }}>
-      {!state.isLoading && (
-        <MapMarker position={state.center}>
-          {/* <div style={{ color: "#000" }}></div> */}
-        </MapMarker>
-      )}
-    </Map>
+    <>
+      <button
+        type="button"
+        className="btn-location"
+        style={{ position: "absolute", zIndex: "3" }}
+        onClick={currentLocation}
+      ></button>
+      <Map center={state.center} style={{ width: "100%", height: "100vh" }}>
+        {!state.isLoading && (
+          <MapMarker position={marker.center}>
+            {/* <div style={{ color: "#000" }}></div> */}
+          </MapMarker>
+        )}
+      </Map>
+    </>
   );
 };
 
