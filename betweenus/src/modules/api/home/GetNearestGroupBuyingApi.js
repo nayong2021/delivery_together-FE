@@ -1,9 +1,9 @@
 import instance from "../ApiInstance";
 
-export const GetOrderOfLargePeopleApi = async () => {
+export const GetJoinableGroupBuyingApi = async () => {
   try {
     const { data } = await instance.get(
-      `/groupbuying?items=20&page=0&sort=participants`
+      `/groupbuying?items=20&page=0&sort=nearest`
     );
     return data;
   } catch (e) {
