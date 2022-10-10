@@ -17,7 +17,7 @@ const Map = () => {
     <div className="Map">
       <MetaTag />
       <section className="map" width="100%" height="100%">
-        {/* <MapItemDetail style={{ position: "relative", zIndex: "2" }} /> */}
+        <MapItemDetail />
         <KakaoMap style={{ position: "relative", zIndex: "1" }} />
         <BottomNavigation />
       </section>
