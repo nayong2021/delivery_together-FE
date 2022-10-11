@@ -7,6 +7,7 @@ import useStoreDropdownMenu from "../../store/storeDropdownMenu";
 import { GetOrderOfLargePeopleApi } from "../../modules/api/home/GetOrderOfLargePeopleApi";
 // import useStoreChatClient from "../../store/storeChatClient";
 import client from "../../modules/api/ChatClientInstance";
+import { GetNearestGroupBuyingApi } from "../../modules/api/home/GetNearestGroupBuyingApi";
 
 export default function HomeItemList() {
   const [list, setData] = useState({});
@@ -17,13 +18,11 @@ export default function HomeItemList() {
   const getList = async () => {
     // console.log(option);
     if (option === "최신순") {
-      // console.log(option);
       data = await GetJoinableGroupBuyingApi();
-      // console.log(data);
     } else if (option === "모집인원 많은 순") {
-      // console.log(option);
       data = await GetOrderOfLargePeopleApi();
-      // console.log(data);
+    } else if (option === "가까운 순") {
+      data = await GetNearestGroupBuyingApi();
     }
     setData(data);
   };

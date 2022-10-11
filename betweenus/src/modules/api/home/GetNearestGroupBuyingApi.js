@@ -1,6 +1,6 @@
 import instance from "../ApiInstance";
 
-export const GetJoinableGroupBuyingApi = async () => {
+export const GetNearestGroupBuyingApi = async () => {
   try {
     const { data } = await instance.get(
       `/groupbuying?items=20&page=0&sort=nearest`

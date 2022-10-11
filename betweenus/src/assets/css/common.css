@@ -1618,10 +1618,15 @@ section {
 }
 .map .btn-location {
   position: absolute;
-  right: 20px;
-  bottom: 115px;
-  width: 40px;
-  height: 40px;
+  top: 5.128vh;
+  right: 5.128vw;
+  width: 10.256vw;
+  height: 10.256vw;
+  background-size: 7.692vw;
+  /* right: 20px; */
+  /* bottom: 115px; */
+  /* width: 40px; */
+  /* height: 40px; */
   border: none;
   border-radius: 50%;
   box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.35);
@@ -3161,14 +3166,13 @@ section {
     height: 10.256vw;
     background-size: 6.154vw;
   }
-  .map .btn-location {
-    top: 5.128vw;
+  /* .map .btn-location {
+    top: 5.128vh;
     right: 5.128vw;
-    /* bottom: 29.487vw; */
     width: 10.256vw;
     height: 10.256vw;
     background-size: 7.692vw;
-  }
+  } */
 
   /*모집하기*/
   .item-write .wrap {
