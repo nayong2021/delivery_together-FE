@@ -3166,13 +3166,13 @@ section {
     height: 10.256vw;
     background-size: 6.154vw;
   }
-  /* .map .btn-location {
+  .map .btn-location {
     top: 5.128vh;
     right: 5.128vw;
     width: 10.256vw;
     height: 10.256vw;
     background-size: 7.692vw;
-  } */
+  }
 
   /*모집하기*/
   .item-write .wrap {
