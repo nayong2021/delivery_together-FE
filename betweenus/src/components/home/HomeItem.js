@@ -11,6 +11,7 @@ export default function HomeItem({
   participant,
   distance,
 }) {
+  console.log();
   return (
     <li className="list-item">
       <Link to={`/itemview/${index}`}>

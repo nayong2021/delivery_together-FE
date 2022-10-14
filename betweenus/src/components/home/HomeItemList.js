@@ -10,7 +10,7 @@ import client from "../../modules/api/ChatClientInstance";
 import { GetNearestGroupBuyingApi } from "../../modules/api/home/GetNearestGroupBuyingApi";
 
 export default function HomeItemList() {
-  const [list, setData] = useState({});
+  const [list, setData] = useState([]);
   const { option } = useStoreDropdownMenu();
 
   let data = {};
@@ -19,10 +19,13 @@ export default function HomeItemList() {
     // console.log(option);
     if (option === "최신순") {
       data = await GetJoinableGroupBuyingApi();
+      console.log(data);
     } else if (option === "모집인원 많은 순") {
       data = await GetOrderOfLargePeopleApi();
+      console.log(data);
     } else if (option === "가까운 순") {
       data = await GetNearestGroupBuyingApi();
+      console.log(data);
     }
     setData(data);
   };
@@ -48,8 +51,8 @@ export default function HomeItemList() {
   return (
     <>
       <ol className="list-item">
-        {list.resultCount > 0 ? (
-          list.groupBuyingPostList.map((item, idx) => (
+        {list.length > 0 ? (
+          list.map((item, idx) => (
             <HomeItem
               key={idx}
               index={item.postIdx}
@@ -58,7 +61,7 @@ export default function HomeItemList() {
               time={item.timeToOrder}
               price={item.expectedDeliveryFee}
               participant={item.currentParticipant}
-              distance={item.timeToOrder}
+              distance={item.distance}
             />
           ))
         ) : (

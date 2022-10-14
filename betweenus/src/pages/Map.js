@@ -25,7 +25,6 @@ const Map = () => {
     <div className="Map">
       <MetaTag />
       <MapContainer className="map">
-        {/* <MapItemDetail /> */}
         <KakaoMap style={{ position: "relative", zIndex: "1" }} />
         <BottomNavigation />
       </MapContainer>
