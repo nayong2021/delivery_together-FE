@@ -7,28 +7,10 @@ import { GetJoinableGroupBuyingApi } from "../../modules/api/home/GetJoinableGro
 
 const KakaoMap = () => {
   const [list, setList] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
   let temp = {};
-  const positions = [
-    {
-      title: "카카오",
-      latlng: { lat: 33.450705, lng: 126.570677 },
-    },
-    {
-      title: "생태연못",
-      latlng: { lat: 33.450936, lng: 126.569477 },
-    },
-    {
-      title: "텃밭",
-      latlng: { lat: 33.450879, lng: 126.56994 },
-    },
-    {
-      title: "근린공원",
-      latlng: { lat: 33.451393, lng: 126.570738 },
-    },
-  ];
 
   const getList = async () => {
-    // console.log(option);
     temp = await GetJoinableGroupBuyingApi();
     console.log(temp);
     setList(temp);
@@ -143,8 +125,28 @@ const KakaoMap = () => {
                 }, // 마커이미지의 크기입니다
               }}
               title={position.title} // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+              clickable={true}
+              onClick={() => setIsOpen(true)}
             />
           ))}
+        {isOpen && (
+          <div style={{ minWidth: "150px" }}>
+            <img
+              alt="close"
+              width="14"
+              height="13"
+              src="https://t1.daumcdn.net/localimg/localimages/07/mapjsapi/2x/bt_close.gif"
+              style={{
+                position: "absolute",
+                right: "5px",
+                top: "5px",
+                cursor: "pointer",
+              }}
+              onClick={() => setIsOpen(false)}
+            />
+            <div style={{ padding: "5px", color: "#000" }}>Hello World!</div>
+          </div>
+        )}
       </Map>
     </>
   );
