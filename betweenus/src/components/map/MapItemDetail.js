@@ -1,7 +1,12 @@
 import * as React from "react";
 import styled from "styled-components";
+import { GetJoinableGroupBuyingApi } from "../../modules/api/home/GetJoinableGroupBuyingApi";
+import { useState } from "react";
 
-const MapItemDetail = () => {
+const MapItemDetail = (index) => {
+  console.log(index);
+  const [list, setList] = useState([]);
+  let temp;
   const ItemContainer = styled.div`
     position: absolute;
     top: 60%;
@@ -13,6 +18,13 @@ const MapItemDetail = () => {
     background: #fff;
     z-index: 3;
   `;
+
+  const getList = async () => {
+    temp = await GetJoinableGroupBuyingApi();
+    console.log(temp);
+    setList(temp);
+    console.log(list);
+  };
   return <ItemContainer></ItemContainer>;
 };
 
