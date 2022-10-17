@@ -22,6 +22,12 @@ const MapItemDetail = (index) => {
     z-index: 3;
   `;
 
+  const ImgContainer = styled.img`
+    border-radius: 24px 24px 0px 0px;
+    height: 60%;
+    object-fit: cover;
+  `;
+
   const getList = async () => {
     temp = await GetJoinableGroupBuyingApi();
     // console.log(index.index);
@@ -37,9 +43,20 @@ const MapItemDetail = (index) => {
   return (
     <>
       <ItemContainer>
-        <div className="list-item">
-          <div className="tit">{clickedInfo.title}</div>
-          <div className="place">{clickedInfo.storeName}</div>
+        {clickedInfo.storeLogoUrl ? (
+          <ImgContainer
+            src={clickedInfo.storeLogoUrl}
+            alt="썸네일"
+            className="thumb"
+          />
+        ) : null}
+        <div className="list-item" style={{ padding: "0px 9px 28px 16px" }}>
+          <div className="tit" style={{ textAlign: "left" }}>
+            {clickedInfo.title}
+          </div>
+          <div className="place" style={{ textAlign: "left" }}>
+            {clickedInfo.storeName}
+          </div>
           <div className="info-group">
             <div className="time">
               <OrderTimeClock timeToOrder={clickedInfo.timeToOrder} />
