@@ -10,17 +10,6 @@ const MapItemDetail = (index) => {
   const [clickedInfo, setInfo] = useState({});
 
   let temp;
-  const ItemContainer = styled.div`
-    position: absolute;
-    top: 60%;
-    width: 88%;
-    height: 25%;
-    border-radius: 24px 24px 24px 24px;
-    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.35);
-    box-sizing: border-box;
-    background: #fff;
-    z-index: 3;
-  `;
 
   const ImgContainer = styled.img`
     border-radius: 24px 24px 0px 0px;
@@ -42,7 +31,7 @@ const MapItemDetail = (index) => {
 
   return (
     <>
-      <ItemContainer>
+      <div className="item-container" style={{ zIndex: "3" }}>
         {clickedInfo.storeLogoUrl ? (
           <ImgContainer
             src={clickedInfo.storeLogoUrl}
@@ -70,7 +59,7 @@ const MapItemDetail = (index) => {
             </div>
           </div>
         </div>
-      </ItemContainer>
+      </div>
     </>
   );
 };
