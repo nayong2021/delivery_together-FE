@@ -39,7 +39,7 @@ const MapItemDetail = (index) => {
             className="thumb"
           />
         ) : null}
-        <div className="list-item" style={{ padding: "0px 9px 28px 16px" }}>
+        <div className="list-item" style={{ padding: "1px 9px 28px 15px" }}>
           <div className="tit" style={{ textAlign: "left" }}>
             {clickedInfo.title}
           </div>

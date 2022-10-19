@@ -88,9 +88,7 @@ const KakaoMapEx = () => {
             className="x-button"
             style={{ zIndex: "4" }}
             onClick={() => setSeleteMarker(null)}
-          >
-            X
-          </div>
+          ></div>
         ) : (
           <></>
         )}
