@@ -3,9 +3,10 @@ import styled from "styled-components";
 import { GetJoinableGroupBuyingApi } from "../../modules/api/home/GetJoinableGroupBuyingApi";
 import { useState, useEffect } from "react";
 import OrderTimeClock from "../common/OrderTimeClock";
+import { useNavigate } from "react-router-dom";
 
 const MapItemDetail = (index) => {
-  // console.log(index);
+  const navigate = useNavigate();
   const [list, setList] = useState([]);
   const [clickedInfo, setInfo] = useState({});
 
@@ -17,9 +18,13 @@ const MapItemDetail = (index) => {
     object-fit: cover;
   `;
 
+  const onClickItem = () => {
+    console.log("clicked");
+    navigate(`/itemview/${clickedInfo.postIdx}`);
+  };
+
   const getList = async () => {
     temp = await GetJoinableGroupBuyingApi();
-    // console.log(index.index);
     console.log(temp[index.index].additionalInfo);
     setList(temp);
     setInfo(temp[index.index]);
@@ -31,7 +36,11 @@ const MapItemDetail = (index) => {
 
   return (
     <>
-      <div className="item-container" style={{ zIndex: "3" }}>
+      <div
+        className="item-container"
+        style={{ zIndex: "3" }}
+        onClick={onClickItem}
+      >
         {clickedInfo.storeLogoUrl ? (
           <ImgContainer
             src={clickedInfo.storeLogoUrl}

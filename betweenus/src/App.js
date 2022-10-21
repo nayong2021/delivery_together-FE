@@ -33,6 +33,7 @@ import Password from "./pages/setting/Password";
 import Unregister from "./pages/setting/Unregister";
 import OrderHistoryState from "./pages/setting/OrderHistoryState";
 import Phone from "./pages/setting/Phone";
+import OAuthLogin from "./pages/member/OAuthLogin";
 
 function App() {
   return (
@@ -46,6 +47,10 @@ function App() {
           <Route path="/login/findid/idresult" element={<IdResult />}></Route>
           <Route path="/login/findpw" element={<FindPw />}></Route>
           <Route path="/login/findpw/pwresult" element={<PwResult />}></Route>
+          <Route
+            path="/login/oauth2/code/:oauthPlatform"
+            element={<OAuthLogin />}
+          ></Route>
         </Route>
 
         {/* 온보딩 */}

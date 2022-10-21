@@ -9,6 +9,8 @@ import Apple from "../../assets/img/ico_apple1.png";
 import { PostLoginApi } from "../../modules/api/member/PostLoginApi";
 import Parser from "html-react-parser";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import instance from "../../modules/api/ApiInstance";
 
 const LogIn = () => {
   const [inputId, setInputId] = useState("");
@@ -92,13 +94,19 @@ const LogIn = () => {
 
             <ol className="list-sns-login">
               <li>
-                <img src={Naver} alt=" " />
+                <a href="https://nid.naver.com/oauth2.0/authorize?response_type=code&state=STATE_STRING&client_id=vvHUq0qX9AXLBnrSIAsO&redirect_uri=https://www.deliverytogether.com/login/oauth2/code/naver">
+                  <img src={Naver} alt=" " />
+                </a>
               </li>
               <li>
-                <img src={Kakao} alt=" " />
+                <a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=04949a28db4e3308b9043cc740782305&redirect_uri=https://www.deliverytogether.com/login/oauth2/code/kakao">
+                  <img src={Kakao} alt=" " />
+                </a>
               </li>
               <li>
-                <img src={Apple} alt=" " />
+                <a href="#">
+                  <img src={Apple} alt=" " />
+                </a>
               </li>
             </ol>
           </div>
