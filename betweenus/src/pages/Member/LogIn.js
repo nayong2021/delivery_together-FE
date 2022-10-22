@@ -9,8 +9,6 @@ import Apple from "../../assets/img/ico_apple1.png";
 import { PostLoginApi } from "../../modules/api/member/PostLoginApi";
 import Parser from "html-react-parser";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import instance from "../../modules/api/ApiInstance";
 
 const LogIn = () => {
   const [inputId, setInputId] = useState("");
@@ -104,7 +102,7 @@ const LogIn = () => {
                 </a>
               </li>
               <li>
-                <a href="#">
+                <a href="https://appleid.apple.com/auth/authorize?client_id=com.deliverytogether.lesserpanda&redirect_uri=https://api.deliverytogether.com/login/oauth_apple&response_type=code%20id_token&scope=name%20email&response_mode=form_post&frame_id=c7de876d-a09f-49e4-a54f-a865ecf99b96&m=12&v=1.5.4">
                   <img src={Apple} alt=" " />
                 </a>
               </li>
