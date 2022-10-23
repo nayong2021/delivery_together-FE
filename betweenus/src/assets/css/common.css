@@ -2367,7 +2367,7 @@ section {
   display: flex;
   align-items: center;
   padding: 28px 25px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  /* border-bottom: 1px solid rgba(0, 0, 0, 0.2); */
   box-sizing: border-box;
   /* background: url("../img/ico_arrow_right1.svg") calc(100% - 10px) center
     no-repeat; */
@@ -2422,6 +2422,21 @@ section {
   color: #000;
   text-align: center;
   letter-spacing: 0.13px;
+}
+
+.list-profile-menu {
+  /* display: flex; */
+  justify-content: space-around;
+  padding: 25px;
+  /* border-bottom: 1px solid rgba(0, 0, 0, 0.2); */
+  box-sizing: border-box;
+}
+
+.list-profile-menu .tit {
+  font-size: 13px;
+  justify-content: space-around;
+  /* border-bottom: 1px solid rgba(0, 0, 0, 0.2); */
+  box-sizing: border-box;
 }
 
 /*내 정보 수정*/

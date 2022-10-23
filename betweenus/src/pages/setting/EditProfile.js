@@ -2,9 +2,9 @@ import * as React from "react";
 import "../../assets/css/common.css";
 import MetaTag from "../../components/common/MetaTag";
 import { ReactComponent as Profile1 } from "../../assets/img/img_profile1.svg";
-import { ReactComponent as Menu1 } from "../../assets/img/ico_menu1_setting.svg";
-import { ReactComponent as Menu2 } from "../../assets/img/ico_menu2_setting.svg";
-import { ReactComponent as Menu3 } from "../../assets/img/ico_menu3_setting.svg";
+import { ReactComponent as Menu1 } from "../../assets/img/ico_password.svg";
+import { ReactComponent as Menu2 } from "../../assets/img/ico_birth.svg";
+import { ReactComponent as Menu3 } from "../../assets/img/ico_phone.svg";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
@@ -34,8 +34,8 @@ export default function EditProfile() {
           </div>
         </div>
       </header>
-      <section className="profile">
-        <div className="edit-profile">
+      <section className="profile" style={{ backgroundColor: "#f2f2f2" }}>
+        <div className="edit-profile" style={{ backgroundColor: "#ffff" }}>
           <div className="user-picture">
             <Profile1 />
           </div>
@@ -47,34 +47,43 @@ export default function EditProfile() {
             닉네임 변경
           </NickNameDiv>
         </div>
-        <ol className="list-setting-menu">
-          <li>
-            <div onClick={() => navigate("password")}>
-              <div className="ico">
-                <Menu1 />
-              </div>
+        <div style={{ height: "10px" }}></div>
+        <ol className="list-profile-menu" style={{ backgroundColor: "#ffff" }}>
+          <li style={{ padding: "20px 0 20px 0" }}>
+            <div
+              onClick={() => navigate("password")}
+              style={{ display: "flex" }}
+            >
+              <Menu1 style={{ padding: "0 15px 0 10px" }} />
               <div className="tit">비밀번호 변경</div>
             </div>
           </li>
-          <li>
-            <a href="/village">
-              <div className="ico">
-                <Menu2 />
-              </div>
+          <li style={{ padding: "20px 0 20px 0" }}>
+            <a href="/village" style={{ display: "flex" }}>
+              <Menu2 style={{ padding: "0 15px 0 10px" }} />
               <div className="tit">생년월일</div>
+              <div className="tit">&nbsp;성별</div>
             </a>
           </li>
-          <li>
-            <div onClick={() => navigate("phone")}>
-              <div className="ico">
-                <Menu3 />
-              </div>
+          <li style={{ padding: "20px 0 20px 0" }}>
+            <div onClick={() => navigate("phone")} style={{ display: "flex" }}>
+              <Menu3 style={{ padding: "0 15px 0 10px" }} />
               <div className="tit">휴대폰 번호 변경</div>
             </div>
           </li>
         </ol>
-        <div>로그아웃</div>
-        <div onClick={() => navigate("unregister")}>회원탈퇴</div>
+        <div
+          style={{ float: "right", display: "flex", padding: "15px 15px 0 0" }}
+        >
+          <div style={{ fontSize: "13px" }}>로그아웃</div>
+          <div>&nbsp;&nbsp;|&nbsp;&nbsp;</div>
+          <div
+            style={{ fontSize: "13px" }}
+            onClick={() => navigate("unregister")}
+          >
+            회원탈퇴
+          </div>
+        </div>
       </section>
     </div>
   );
