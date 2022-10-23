@@ -26,6 +26,12 @@ const OAuthLogin = () => {
     navigate("/");
   };
 
+  const appleOAuthLogin = (token) => {
+    sessionStorage.setItem("accessToken", token.accessToken);
+    sessionStorage.setItem("refreshToken", token.refreshToken);
+    navigate("/");
+  };
+
   useEffect(() => {
     const oauthPlatform = params.oauthPlatform;
     if (oauthPlatform === "naver") {
@@ -39,7 +45,8 @@ const OAuthLogin = () => {
       kakaoOAuthLogin(oauthCode.code);
     }
     if (oauthPlatform === "apple") {
-      console.log("apple oauth");
+      const token = queryString.parse(location.search);
+      appleOAuthLogin(token);
     }
   }, []);
 
