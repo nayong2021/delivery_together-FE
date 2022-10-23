@@ -2354,7 +2354,6 @@ section {
   font-weight: 500;
   color: #000;
   letter-spacing: 0.15px;
-  margin-left: 5px;
 }
 .user-profile .user-info .user-mail {
   font-size: 13px;
@@ -2389,7 +2388,6 @@ section {
   font-weight: 500;
   color: #000;
   letter-spacing: 0.15px;
-  margin-left: 5px;
 }
 .edit-profile .user-info .user-mail {
   font-size: 13px;
@@ -2430,6 +2428,41 @@ section {
   padding: 25px;
   /* border-bottom: 1px solid rgba(0, 0, 0, 0.2); */
   box-sizing: border-box;
+  background-color: #ffff;
+}
+
+.list-profile-menu > li {
+  padding: 20px 0px;
+}
+
+.list-profile-menu-item {
+  display: flex;
+  align-items: center;
+}
+
+.list-profile-menu .profile-icon {
+  padding: 0 15px 0 10px;
+}
+
+.list-profile-menu .birth:before {
+  content: "생년월일";
+  color: #000;
+  margin-right: 10px;
+}
+
+.list-profile-menu .birth {
+  color: #aaa;
+  margin-right: 10px;
+}
+
+.list-profile-menu .gender:before {
+  content: "성별";
+  color: #000;
+  margin-right: 10px;
+}
+
+.list-profile-menu .gender {
+  color: #aaa;
 }
 
 .list-profile-menu .tit {

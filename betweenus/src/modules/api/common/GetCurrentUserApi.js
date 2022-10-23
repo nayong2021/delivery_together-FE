@@ -1,6 +1,6 @@
 import instance from "../ApiInstance";
 
-export const GetCurrentUser = async () => {
+export const GetCurrentUserApi = async () => {
   try {
     const { data } = await instance.get(`/currentUser`);
     return data;

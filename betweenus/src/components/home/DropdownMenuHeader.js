@@ -4,7 +4,7 @@ import textLengthOverCut from "../../hooks/textLengthOverCut";
 import FilterMenu from "./FilterMenu";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { GetCurrentUser } from "../../modules/api/common/GetCurrentUserApi";
+import { GetCurrentUserApi } from "../../modules/api/common/GetCurrentUserApi";
 
 export default function DrowpdownMenuHeader() {
   const navigate = useNavigate();
@@ -13,7 +13,7 @@ export default function DrowpdownMenuHeader() {
     navigate("search");
   };
   const getList = async () => {
-    const data = GetCurrentUser();
+    const data = GetCurrentUserApi();
     data.then((r) => {
       console.log(r);
       if (r.representationTown === "") {
