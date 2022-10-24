@@ -5,8 +5,8 @@ import BottomNavigation from "../../components/common/BottomNavigation";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as Profile1 } from "../../assets/img/img_profile1.svg";
 import { ReactComponent as Menu1 } from "../../assets/img/ico_menu1_setting.svg";
-import { ReactComponent as Menu2 } from "../../assets/img/ico_menu2_setting.svg";
-import { ReactComponent as Menu3 } from "../../assets/img/ico_menu3_setting.svg";
+import { ReactComponent as Menu2 } from "../../assets/img/user-gathering-01.svg";
+import { ReactComponent as Menu3 } from "../../assets/img/user-participate-01.svg";
 import Character from "../../assets/img/img_3d.png";
 
 const Setting = () => {
@@ -46,7 +46,7 @@ const Setting = () => {
               <div className="ico">
                 <Menu2 />
               </div>
-              <div className="tit">동네 인증</div>
+              <div className="tit">모집 내역</div>
             </a>
           </li>
           <li>
@@ -54,7 +54,7 @@ const Setting = () => {
               <div className="ico">
                 <Menu3 />
               </div>
-              <div className="tit">주문 내역</div>
+              <div className="tit">참여 내역</div>
             </div>
           </li>
         </ol>

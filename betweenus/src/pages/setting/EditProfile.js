@@ -59,11 +59,11 @@ export default function EditProfile() {
             </div>
           </li>
           <li style={{ padding: "20px 0 20px 0" }}>
-            <a href="/village" style={{ display: "flex" }}>
+            <div style={{ display: "flex" }}>
               <Menu2 style={{ padding: "0 15px 0 10px" }} />
               <div className="tit">생년월일</div>
               <div className="tit">&nbsp;성별</div>
-            </a>
+            </div>
           </li>
           <li style={{ padding: "20px 0 20px 0" }}>
             <div onClick={() => navigate("phone")} style={{ display: "flex" }}>
