@@ -1,9 +1,9 @@
 // import client from "../ChatClientInstance";
-import { GetCurrentUser } from "../common/GetCurrentUserApi";
+import { GetCurrentUserApi } from "../common/GetCurrentUserApi";
 
 export const LoginWithToken = async (client) => {
   try {
-    const data = GetCurrentUser();
+    const data = GetCurrentUserApi();
     await data.then(async (r) => {
       const userIdx = r.memberIdx;
       const userToken = r.talkPlusLoginToken;

@@ -5,7 +5,7 @@ import { ReactComponent as Profile1 } from "../../assets/img/img_profile1.svg";
 import { ReactComponent as Menu1 } from "../../assets/img/ico_password.svg";
 import { ReactComponent as Menu2 } from "../../assets/img/ico_birth.svg";
 import { ReactComponent as Menu3 } from "../../assets/img/ico_phone.svg";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const NickNameDiv = styled.div`
@@ -19,6 +19,17 @@ const NickNameDiv = styled.div`
 
 export default function EditProfile() {
   const navigate = useNavigate();
+  const { state } = useLocation();
+  const { email, gender, nickName, birth } = state;
+
+  console.log(email, gender, nickName, birth);
+
+  const genderTraslate = () => {
+    if (gender === "MALE") return "남성";
+    if (gender === "FEMALE") return "여성";
+    return "미설정";
+  };
+
   return (
     <div id="root">
       <MetaTag />
@@ -40,34 +51,50 @@ export default function EditProfile() {
             <Profile1 />
           </div>
           <div className="user-info">
-            <div className="user-nickname">치킨공주</div>
-            <div className="user-mail">kwaksj329@naver.com</div>
+            <div className="user-nickname">{nickName ? nickName : null}</div>
+            <div className="user-mail">{email ? email : null}</div>
           </div>
           <NickNameDiv onClick={() => navigate("nickname")}>
             닉네임 변경
           </NickNameDiv>
         </div>
         <div style={{ height: "10px" }}></div>
-        <ol className="list-profile-menu" style={{ backgroundColor: "#ffff" }}>
-          <li style={{ padding: "20px 0 20px 0" }}>
+        <ol className="list-profile-menu">
+          <li>
             <div
+              className="list-profile-menu-item"
               onClick={() => navigate("password")}
-              style={{ display: "flex" }}
             >
-              <Menu1 style={{ padding: "0 15px 0 10px" }} />
+              <div className="profile-icon">
+                <Menu1 />
+              </div>
               <div className="tit">비밀번호 변경</div>
             </div>
           </li>
-          <li style={{ padding: "20px 0 20px 0" }}>
-            <div style={{ display: "flex" }}>
-              <Menu2 style={{ padding: "0 15px 0 10px" }} />
-              <div className="tit">생년월일</div>
-              <div className="tit">&nbsp;성별</div>
+          <li>
+            <div className="list-profile-menu-item">
+              <div className="profile-icon">
+                <Menu2 />
+              </div>
+              <div className="tit">
+                <div className="birth">
+                  {birth ? birth[0] + "." + birth[1] + "." + birth[2] : null}
+                </div>
+              </div>
+              <div className="tit">
+                <div className="gender">{genderTraslate()}</div>
+              </div>
+              >>>>>>> 7c67dc511791997446cd969465e1fd0e8fab1e1a
             </div>
           </li>
-          <li style={{ padding: "20px 0 20px 0" }}>
-            <div onClick={() => navigate("phone")} style={{ display: "flex" }}>
-              <Menu3 style={{ padding: "0 15px 0 10px" }} />
+          <li>
+            <div
+              className="list-profile-menu-item"
+              onClick={() => navigate("phone")}
+            >
+              <div className="profile-icon">
+                <Menu3 />
+              </div>
               <div className="tit">휴대폰 번호 변경</div>
             </div>
           </li>

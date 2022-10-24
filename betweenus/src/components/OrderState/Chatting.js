@@ -6,7 +6,7 @@ import ChatFileItem from "./ChatFileItem";
 import { GetMessage } from "../../modules/api/chatting/GetMessage";
 import client from "../../modules/api/ChatClientInstance";
 import { LoginWithToken } from "../../modules/api/chatting/LoginWithToken";
-import { GetCurrentUser } from "../../modules/api/common/GetCurrentUserApi";
+import { GetCurrentUserApi } from "../../modules/api/common/GetCurrentUserApi";
 import useStoreOrderInfo from "../../store/storeOrderInfo";
 import { useInView } from "react-intersection-observer";
 
@@ -128,7 +128,7 @@ const Chatting = () => {
         });
         getList(orderInfo.postIdx);
       }
-      GetCurrentUser().then((r) => {
+      GetCurrentUserApi().then((r) => {
         setUser(r);
       });
     }

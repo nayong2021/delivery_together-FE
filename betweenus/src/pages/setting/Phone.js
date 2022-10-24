@@ -17,21 +17,20 @@ const Phone = () => {
     setPhoneNumber(e.target.value);
   };
 
-  const onClickButton = () => {
-    try{
-        PostChangePhoneNumber(phoneNumber, receiptID);
-        navigate(-1);
-    }
-    catch (e) {
-        setGuideMs(
-            "&nbsp;입력하신 정보와 일치하는 아이디가 없습니다.<br/>&nbsp;입력하신 내용을 다시 확인해주세요."
-        );
+  const onClickButton = async () => {
+    try {
+      await PostChangePhoneNumber(phoneNumber, receiptID);
+      navigate(-1);
+    } catch (e) {
+      setGuideMs(
+        "&nbsp;휴대폰 본인인증에 실패했습니다.<br/>&nbsp;다시 시도해주세요."
+      );
     }
   };
 
   const onClickPhone = () => {
-    RequestKakaocertForPhoneUpdate(phoneNumber).then(result => {
-        setReceiptID(result.data.receiptID);
+    RequestKakaocertForPhoneUpdate(phoneNumber).then((result) => {
+      setReceiptID(result.data.receiptID);
     });
   };
 
@@ -57,15 +56,19 @@ const Phone = () => {
             <div className="frm-group">
               <div className="tit-frm">휴대폰 번호</div>
               <div className="inp-group">
-              <input
-                type="text"
-                placeholder="‘-’ 없이 입력"
-                name="phoneNumber"
-                className="inp-frm"
-                onChange={onChangeInput}
-                value={phoneNumber}
-              />
-              <button type="button" className="btn-frm" onClick={onClickPhone}>
+                <input
+                  type="text"
+                  placeholder="‘-’ 없이 입력"
+                  name="phoneNumber"
+                  className="inp-frm"
+                  onChange={onChangeInput}
+                  value={phoneNumber}
+                />
+                <button
+                  type="button"
+                  className="btn-frm"
+                  onClick={onClickPhone}
+                >
                   인증요청
                 </button>
               </div>
