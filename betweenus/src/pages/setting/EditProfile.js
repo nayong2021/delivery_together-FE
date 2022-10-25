@@ -84,7 +84,6 @@ export default function EditProfile() {
               <div className="tit">
                 <div className="gender">{genderTraslate()}</div>
               </div>
-              >>>>>>> 7c67dc511791997446cd969465e1fd0e8fab1e1a
             </div>
           </li>
           <li>
