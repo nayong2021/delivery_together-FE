@@ -62,6 +62,7 @@ export default function HomeItemList() {
               price={item.expectedDeliveryFee}
               participant={item.currentParticipant}
               distance={item.distance}
+              logo={item.storeLogoUrl}
             />
           ))
         ) : (

@@ -34,6 +34,7 @@ import Unregister from "./pages/setting/Unregister";
 import OrderHistoryState from "./pages/setting/OrderHistoryState";
 import Phone from "./pages/setting/Phone";
 import OAuthLogin from "./pages/member/OAuthLogin";
+import ItemView_Renewal from "./pages/home/ItemView_Renewal";
 
 function App() {
   return (
@@ -63,7 +64,8 @@ function App() {
 
         <Route path="/" element={<PrivateRoute />}>
           {/* 홈 -> 상세, 주문 */}
-          <Route path="/itemview/:index" element={<ItemView />} />
+          {/* <Route path="/itemview/:index" element={<ItemView />} /> */}
+          <Route path="/itemview/:index" element={<ItemView_Renewal />} />
           <Route path="/itemview/:index/order" element={<Order />} />
           <Route
             path="/itemview/:index/order/ordersheet"

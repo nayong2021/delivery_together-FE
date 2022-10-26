@@ -10,22 +10,33 @@ export default function HomeItem({
   price,
   participant,
   distance,
+  logo,
 }) {
-  console.log();
+  const printDistance = (distance) => {
+    distance /= 1000;
+    if (distance < 1) {
+      return Math.round(distance * 1000) + "m";
+    } else {
+      return distance.toFixed(1) + "km";
+    }
+  };
   return (
-    <li className="list-item">
+    <li>
       <Link to={`/itemview/${index}`}>
-        <div className="tit">{title}</div>
-        <div className="place">{place}</div>
-        <div className="info-group">
+        <div class="img-group">
+          <img src={logo} alt="썸네일" class="thumb" />
+        </div>
+        <div className="item-info">
           <div className="time">
             <OrderTimeClock timeToOrder={time} />
           </div>
-          <div className="info">
-            <span className="price">
+          <div className="tit">{title}</div>
+          <div className="place">{place}</div>
+          <div className="etc-info">
+            <div className="distance">{printDistance(distance)}</div>
+            <div className="price">
               예상배달비: {price}원 / {participant}명
-            </span>
-            {/* <span className="distance">{distance}</span> */}
+            </div>
           </div>
         </div>
       </Link>

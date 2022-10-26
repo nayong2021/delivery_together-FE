@@ -22,8 +22,6 @@ export default function EditProfile() {
   const { state } = useLocation();
   const { email, gender, nickName, birth } = state;
 
-  console.log(email, gender, nickName, birth);
-
   const genderTraslate = () => {
     if (gender === "MALE") return "남성";
     if (gender === "FEMALE") return "여성";

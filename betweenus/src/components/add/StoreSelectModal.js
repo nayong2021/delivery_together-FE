@@ -127,32 +127,6 @@ export default function StoreSelectModal({
         }
       });
 
-  // const handleStoreSearchWordChange = (e) => {
-  //   setStoreSearchWord(e.target.value);
-  // };
-
-  // const handleStoreSearchWordClear = () => {
-  //   setStoreSearchWord("");
-  // };
-
-  // const onKeyEnter = async (e) => {
-  //   if (e.key === "Enter") {
-  //     try {
-  //       const result = await GetYogiyoStoreListApi(
-  //         selectedCategory.sendToApi,
-  //         page,
-  //         storeSearchWord
-  //       );
-  //       console.log(storeSearchWord);
-  //       console.log(result);
-  //       setStores(result.data.restaurants);
-  //       setStoreSearchWord("");
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   }
-  // };
-
   useEffect(() => {
     getStoreList();
   }, [selectedCategory]);
@@ -203,22 +177,6 @@ export default function StoreSelectModal({
               </ScrollMenu>
             </div>
           </div>
-          {/* <div className="store-search">
-            <input
-              type="text"
-              placeholder="모집글 검색"
-              className="inp-frm"
-              onKeyPress={onKeyEnter}
-              onChange={handleStoreSearchWordChange}
-              value={storeSearchWord}
-            />
-            <button
-              type="button"
-              className="btn-delete"
-              onClick={handleStoreSearchWordClear}
-            ></button>
-            <div>여기가 정렬기준 넣을 곳</div>
-          </div> */}
         </div>
         <section className="store-select">
           <div className="wrap">
