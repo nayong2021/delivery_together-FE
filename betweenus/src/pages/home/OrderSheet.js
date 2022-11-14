@@ -6,7 +6,8 @@ import { useState, useEffect, useCallback } from "react";
 import OrderSheetItem from "../../components/home/OrderSheetItem";
 import { GetGroupBuyingMenuListApi } from "../../modules/api/home/GetGroupBuyingMenuListApi";
 import { PostParticipationgApi } from "../../modules/api/home/PostParticipationApi";
-import OrderTimeClock from "../../components/common/OrderTimeClock";
+import { ReactComponent as Arrow } from "../../assets/img_renewal/ico_arrow_right1.svg";
+import { ReactComponent as Clock } from "../../assets/img_renewal/ico_clock1.svg";
 
 const OrderSheet = () => {
   const id = useParams();
@@ -15,6 +16,9 @@ const OrderSheet = () => {
   const [orderList, setOrderList] = useState([]);
 
   const { state } = useLocation();
+  const timeToOrder = itemdata.timeToOrder
+    ? itemdata.timeToOrder.split(":")
+    : null;
 
   const getList = useCallback(async () => {
     const data = await GetGroupBuyingMenuListApi(id);
@@ -75,36 +79,42 @@ const OrderSheet = () => {
   return (
     <div id="root">
       <MetaTag />
-      <header className="header">
-        <div className="hd">
-          <div className="hd-tit">
-            <button
-              type="button"
-              className="hd-back"
-              onClick={() => navigate(-1)}
-            ></button>
-            내 주문서
-          </div>
+
+      <header class="header-v2">
+        <div class="hd-v2">
+          <button
+            type="button"
+            class="hd-back"
+            onClick={() => navigate(-1)}
+          ></button>
+          <div class="hd-tit">내 주문서</div>
         </div>
       </header>
 
-      <section className="order-sheet">
-        <div className="wrap">
-          <div className="item-info">
-            <div className="tit">{itemdata.title}</div>
-            <div className="group">
-              <div className="place">{itemdata.storeName}</div>
-              <div className="time">
-                <OrderTimeClock timeToOrder={itemdata.timeToOrder} />
-              </div>
+      <section className="item-view">
+        <div class="top">
+          <div class="item-info">
+            <div class="time">
+              <Clock />
+              &nbsp;마감&nbsp;
+              {timeToOrder
+                ? Number(
+                    timeToOrder[0] > 12 ? timeToOrder[0] - 12 : timeToOrder[0]
+                  ) +
+                  ":" +
+                  (timeToOrder[1] < 10 ? "0" : "") +
+                  timeToOrder[1] +
+                  (timeToOrder[0] >= 12 ? "pm" : "am")
+                : null}
             </div>
+            <div class="tit">{itemdata.title}</div>
+            <a href="#" class="place">
+              {itemdata.storeName}
+              <Arrow />
+            </a>
           </div>
-
-          <div className="delivery-charge">
-            예상배달비: {itemdata.expectedDeliveryFee} 원 /{" "}
-            {itemdata.currentParticipant}명
-          </div>
-
+        </div>
+        <div className="wrap">
           <ol className="list-order">
             {orderList.map((item, idx) => {
               return (
@@ -145,14 +155,20 @@ const OrderSheet = () => {
             안내받아 주문 금액과 함께 전달해주세요!
           </div>
 
-          <div className="btn-group-bottom">
-            <button
-              type="button"
-              className="btn-custom"
-              // onClick={onSubmitOrder}
-              onClick={onSubmitOrder}
-            >
-              주문서 전달
+          <div class="btn-group-bottom2">
+            <div class="price">
+              <div class="tit">예상 배달비</div>
+              <div class="txt">
+                {itemdata.expectedDeliveryFee}원/
+                {itemdata.currentParticipant
+                  ? itemdata.currentParticipant.toLocaleString()
+                  : null}
+                명
+              </div>
+            </div>
+
+            <button type="button" class="btn-custom-v3" onClick={onSubmitOrder}>
+              참여하기
             </button>
           </div>
         </div>
