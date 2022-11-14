@@ -1,4 +1,4 @@
-import { ReactComponent as MenuIcon } from "../../assets/img/menu-01.svg";
+import { ReactComponent as MenuIcon } from "../../assets/img_renewal/ico_hamburger1.svg";
 import useStoreDropdownMenu from "../../store/storeDropdownMenu";
 import * as React from "react";
 import Menu from "@mui/material/Menu";

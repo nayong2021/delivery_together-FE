@@ -43,7 +43,8 @@ export default function HomeSearchItemList() {
               time={item.timeToOrder}
               price={item.expectedDeliveryFee}
               participant={item.currentParticipant}
-              distance={item.timeToOrder}
+              distance={item.distance}
+              logo={item.storeLogoUrl}
             />
           ))
         ) : (

@@ -1,5 +1,5 @@
 import * as React from "react";
-import HomeItem from "../../components/settings/HomeItem";
+import OrderHistoryItem from "../../components/settings/OrderHistoryItem";
 import { useEffect, useState } from "react";
 import NoRoomNotice from "../../components/home/NoRoomNotice";
 import { GetOrderHistoryApi } from "../../modules/api/setting/GetOrderHistoryApi";
@@ -21,8 +21,8 @@ export default function OrderHistory() {
 
   return (
     <>
-      <header className="header">
-        <div className="hd">
+      <header className="header-v2">
+        <div className="hd-v2">
           <div className="hd-tit">
             <button
               type="button"
@@ -38,7 +38,7 @@ export default function OrderHistory() {
           <ol className="list-item">
             {list.resultCount > 0 ? (
               list.orderHistoryList.map((item, idx) => (
-                <HomeItem
+                <OrderHistoryItem
                   key={idx}
                   index={item.postIdx}
                   title={item.title}
@@ -46,6 +46,7 @@ export default function OrderHistory() {
                   time={item.createdAt}
                   price={item.orderAmount}
                   host={item.host}
+                  logo={item.storeLogoUrl}
                 />
               ))
             ) : (
