@@ -80,7 +80,7 @@ const Add = () => {
     display: "block",
     position: "relative",
     top: "0%",
-    width: "400px",
+    width: "340px",
     height: "400px",
     padding: "7px",
   };
@@ -94,120 +94,128 @@ const Add = () => {
         selectedStore={selectedStore}
         setSelectedStore={setSelectedStore}
       />
-      <header className="header">
-        <div className="hd">
-          <div className="hd-tit">
-            <button
-              type="button"
-              className="hd-back"
-              onClick={() => navigate(-1)}
-            ></button>
-            모집하기
-          </div>
+      <header class="header">
+        <div class="hd">
+          <button
+            type="button"
+            class="hd-back"
+            onClick={() => navigate(-1)}
+          ></button>
+          <div class="hd-tit">모집하기</div>
         </div>
       </header>
 
       <section className="item-write">
         <div className="wrap">
-          <div className="frm2">
-            <div className="frm-group">
-              <input
-                type="text"
-                placeholder="제목"
-                className="inp-frm"
-                name="title"
-                onChange={onChangeInput}
-                value={title}
-              />
-            </div>
-
-            <div className="frm-group frm-group-time">
-              <div className="tit-frm">
-                모집 마감 <br />
-                시간 설정
-              </div>
-              <div className="inp-group-time" onClick={onClickTime}>
-                <ScrollTimePicker
-                  className="inp-frm"
-                  name="timeToOrder"
-                  value={timeToOrder}
-                />
-              </div>
-            </div>
-
-            <div className="frm-group">
-              <div className="inp-group">
+          <ol class="list-frm">
+            <li>
+              <div class="frm-group">
+                <div class="tit-frm">제목</div>
                 <input
                   type="text"
-                  placeholder="가게 이름"
-                  className="inp-frm"
-                  name="storeName"
-                  readOnly={true}
-                  value={selectedStore.name || ""}
-                />
-                <button
-                  type="button"
-                  className="btn-frm"
-                  onClick={onClickFindStore}
-                >
-                  매장 찾기
-                </button>
-              </div>
-            </div>
-
-            <div className="frm-group">
-              <div className="inp-group">
-                <input
-                  type="text"
-                  placeholder="픽업 장소"
-                  className="inp-frm"
-                  name="pickupPlace"
+                  placeholder="제목을 입력해주세요."
+                  class="inp-frm"
+                  name="title"
                   onChange={onChangeInput}
-                  value={pickupPlace}
-                  disabled={true}
+                  value={title}
                 />
-                <button
-                  type="button"
-                  className="btn-frm"
-                  onClick={onChangeOpenPost}
-                >
-                  주소 찾기
-                </button>
               </div>
-            </div>
-            {isOpenPost ? (
-              <div className="frm-group">
-                <div className="inp-group">
-                  <DaumPostcode
-                    style={postCodeStyle}
-                    autoClose
-                    onComplete={onCompletePost}
+            </li>
+
+            <li>
+              <div class="frm-group frm-group-v1">
+                <div class="tit-frm">모집 마감 시간</div>
+                <div className="inp-group-time" onClick={onClickTime}>
+                  <ScrollTimePicker
+                    className="inp-frm"
+                    name="timeToOrder"
+                    value={timeToOrder}
                   />
                 </div>
               </div>
+            </li>
+
+            <li>
+              <div class="frm-group">
+                <div class="tit-frm">매장명</div>
+                <div class="inp-group">
+                  <input
+                    type="text"
+                    placeholder="매장을 선택해주세요."
+                    class="inp-frm"
+                    name="storeName"
+                    readOnly={true}
+                    value={selectedStore.name || ""}
+                  />
+                  <button
+                    type="button"
+                    class="btn-frm"
+                    onClick={onClickFindStore}
+                  >
+                    매장 찾기
+                  </button>
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <div class="frm-group">
+                <div class="tit-frm">픽업장소</div>
+                <div class="inp-group">
+                  <input
+                    type="text"
+                    placeholder="주소를 검색해주세요."
+                    class="inp-frm"
+                    name="pickupPlace"
+                    onChange={onChangeInput}
+                    value={pickupPlace}
+                    disabled={true}
+                  />
+                  <button
+                    type="button"
+                    class="btn-frm"
+                    onClick={onChangeOpenPost}
+                  >
+                    주소 찾기
+                  </button>
+                </div>
+              </div>
+            </li>
+            {isOpenPost ? (
+              <DaumPostcode
+                style={postCodeStyle}
+                autoClose
+                onComplete={onCompletePost}
+              />
             ) : null}
 
-            <div className="frm-group">
-              <input
-                type="text"
-                placeholder="상세 픽업 장소"
-                className="inp-frm"
-                name="detailPickupPlace"
-                onChange={onChangeInput}
-                value={detailPickupPlace}
-              />
-            </div>
-          </div>
+            <li>
+              <div class="frm-group">
+                <div class="tit-frm">상세 픽업 장소</div>
+                <input
+                  type="text"
+                  placeholder="상세 픽업장소를 입력해주세요."
+                  class="inp-frm"
+                  name="detailPickupPlace"
+                  onChange={onChangeInput}
+                  value={detailPickupPlace}
+                />
+              </div>
+            </li>
 
-          <div className="add-info">
-            <div className="tit">추가정보</div>
-            <textarea
-              className="txt"
-              name="additionalInfo"
-              onChange={onChangeInput}
-              value={additionalInfo}
-            ></textarea>
-          </div>
+            <li>
+              <div class="frm-group">
+                <div class="tit-frm">내용</div>
+                <textarea
+                  placeholder="내용을 입력해주세요."
+                  class="inp-frm"
+                  name="additionalInfo"
+                  onChange={onChangeInput}
+                  value={additionalInfo}
+                ></textarea>
+              </div>
+            </li>
+          </ol>
 
           <div className="btn-group-bottom" onClick={onClickButton}>
             <button type="submit" className="btn-custom">
