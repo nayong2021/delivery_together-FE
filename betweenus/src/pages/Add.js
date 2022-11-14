@@ -80,7 +80,7 @@ const Add = () => {
     display: "block",
     position: "relative",
     top: "0%",
-    width: "400px",
+    width: "340px",
     height: "400px",
     padding: "7px",
   };
@@ -99,7 +99,7 @@ const Add = () => {
           <button
             type="button"
             class="hd-back"
-            onclick="location.href='javascript:history.back(-1);'"
+            onClick={() => navigate(-1)}
           ></button>
           <div class="hd-tit">모집하기</div>
         </div>
@@ -115,6 +115,9 @@ const Add = () => {
                   type="text"
                   placeholder="제목을 입력해주세요."
                   class="inp-frm"
+                  name="title"
+                  onChange={onChangeInput}
+                  value={title}
                 />
               </div>
             </li>
@@ -140,8 +143,15 @@ const Add = () => {
                     type="text"
                     placeholder="매장을 선택해주세요."
                     class="inp-frm"
+                    name="storeName"
+                    readOnly={true}
+                    value={selectedStore.name || ""}
                   />
-                  <button type="button" class="btn-frm">
+                  <button
+                    type="button"
+                    class="btn-frm"
+                    onClick={onClickFindStore}
+                  >
                     매장 찾기
                   </button>
                 </div>
@@ -156,13 +166,28 @@ const Add = () => {
                     type="text"
                     placeholder="주소를 검색해주세요."
                     class="inp-frm"
+                    name="pickupPlace"
+                    onChange={onChangeInput}
+                    value={pickupPlace}
+                    disabled={true}
                   />
-                  <button type="button" class="btn-frm">
+                  <button
+                    type="button"
+                    class="btn-frm"
+                    onClick={onChangeOpenPost}
+                  >
                     주소 찾기
                   </button>
                 </div>
               </div>
             </li>
+            {isOpenPost ? (
+              <DaumPostcode
+                style={postCodeStyle}
+                autoClose
+                onComplete={onCompletePost}
+              />
+            ) : null}
 
             <li>
               <div class="frm-group">
@@ -171,6 +196,9 @@ const Add = () => {
                   type="text"
                   placeholder="상세 픽업장소를 입력해주세요."
                   class="inp-frm"
+                  name="detailPickupPlace"
+                  onChange={onChangeInput}
+                  value={detailPickupPlace}
                 />
               </div>
             </li>
@@ -181,6 +209,9 @@ const Add = () => {
                 <textarea
                   placeholder="내용을 입력해주세요."
                   class="inp-frm"
+                  name="additionalInfo"
+                  onChange={onChangeInput}
+                  value={additionalInfo}
                 ></textarea>
               </div>
             </li>
