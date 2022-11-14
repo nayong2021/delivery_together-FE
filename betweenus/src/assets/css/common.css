@@ -2783,48 +2783,72 @@ a.btn-custom-v5 {
 }
 
 /*설정*/
+.setting .wrap {
+  padding: 24px 24px 0 24px;
+}
 .setting .user-profile {
   display: flex;
   align-items: center;
-  padding: 28px 25px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  margin-bottom: 40px;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.06);
   box-sizing: border-box;
-  background: url("../img/ico_arrow_right1.svg") calc(100% - 10px) center
-    no-repeat;
 }
 .setting .user-profile .user-picture {
-  width: 54px;
-  height: 54px;
-  margin-right: 12px;
+  width: 40px;
+  height: 40px;
+  margin-right: 8px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  overflow: hidden;
 }
-.setting .user-profile .user-picture .thumb {
-  height: 100%;
-}
-.setting .user-profile .user-info {
-  width: calc(100% - 66px);
-}
+/* .setting .user-profile .user-info {
+  width: calc(100% - 48px);
+} */
 .setting .user-profile .user-info .user-nickname {
-  margin-bottom: 2px;
-  font-size: 15px;
-  font-weight: 500;
-  color: #000;
-  letter-spacing: 0.15px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #111;
+  letter-spacing: -0.35px;
 }
 .setting .user-profile .user-info .user-mail {
+  font-size: 12px;
+  font-weight: 400;
+  color: #999;
+  letter-spacing: -0.3px;
+}
+.setting .user-profile .change-nickname {
+  margin: 0 0 0 auto;
   font-size: 13px;
+  font-weight: 400;
+  color: #f87245;
+  display: flex;
+}
+
+.setting .line {
+  height: 16px;
+  margin-bottom: 25px;
+  background: #f7f7f7;
+}
+.setting .btn-logout {
+  width: 100%;
+  padding: 0 24px;
+  border: none;
+  box-sizing: border-box;
+  background: none;
+  font-size: 14px;
   font-weight: 500;
-  color: #7f7f7f;
-  letter-spacing: 0.13px;
+  color: #111;
+  text-align: left;
+  letter-spacing: -0.35px;
 }
 
 .edit-profile {
   display: flex;
   align-items: center;
   padding: 28px 25px;
-  /* border-bottom: 1px solid rgba(0, 0, 0, 0.2); */
   box-sizing: border-box;
-  /* background: url("../img/ico_arrow_right1.svg") calc(100% - 10px) center
-    no-repeat; */
 }
 .edit-profile .user-picture {
   width: 54px;
@@ -2855,7 +2879,6 @@ a.btn-custom-v5 {
   display: flex;
   justify-content: space-around;
   padding: 23px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
 }
 .list-setting-menu .ico {

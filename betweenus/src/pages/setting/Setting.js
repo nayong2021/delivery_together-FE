@@ -8,6 +8,7 @@ import { ReactComponent as Profile1 } from "../../assets/img/img_profile1.svg";
 import { ReactComponent as Menu1 } from "../../assets/img/ico_menu1_setting.svg";
 import { ReactComponent as Menu2 } from "../../assets/img/user-gathering-01.svg";
 import { ReactComponent as Menu3 } from "../../assets/img/user-participate-01.svg";
+import { ReactComponent as Arrow } from "../../assets/img_renewal/ico_arrow_right1.svg";
 import Character from "../../assets/img/img_3d.png";
 import { GetCurrentUserApi } from "../../modules/api/member/GetCurrentUserApi";
 
@@ -29,32 +30,36 @@ const Setting = () => {
     <div id="root">
       <MetaTag />
       <header className="header">
-        <div className="hd hd-v1">
+        <div className="hd">
           <div className="hd-tit">설정</div>
         </div>
       </header>
       <section className="setting">
-        <div
-          className="user-profile"
-          onClick={() =>
-            navigate("/setting/profile", {
-              state: {
-                email: email,
-                gender: gender,
-                nickName: nickName,
-                birth: birth,
-              },
-            })
-          }
-        >
-          <div className="user-picture">
-            <Profile1 />
-          </div>
-          <div className="user-info">
-            <div className="user-nickname">{nickName ? nickName : null}</div>
-            <div className="user-mail">{email ? email : null}</div>
+        <div className="wrap">
+          <div
+            className="user-profile"
+            onClick={() =>
+              navigate("/setting/profile", {
+                state: {
+                  email: email,
+                  gender: gender,
+                  nickName: nickName,
+                  birth: birth,
+                },
+              })
+            }
+          >
+            <div className="user-picture">
+              <Profile1 width={"100%"} height={"100%"} />
+            </div>
+            <div className="user-info">
+              <div className="user-nickname">{nickName ? nickName : null}</div>
+              <div className="user-mail">{email ? email : null}</div>
+            </div>
+            <Arrow style={{ margin: "0 0 0 auto" }} />
           </div>
         </div>
+
         <ol className="list-setting-menu">
           <li>
             <div onClick={() => navigate("/setting/region")}>

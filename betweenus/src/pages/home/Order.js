@@ -4,7 +4,6 @@ import MetaTag from "../../components/common/MetaTag";
 import { useNavigate, useParams } from "react-router-dom";
 import { GetGroupBuyingMenuListApi } from "../../modules/api/home/GetGroupBuyingMenuListApi";
 import { useState, useEffect, useCallback } from "react";
-import OrderTimeClock from "../../components/common/OrderTimeClock";
 import MenuCategory from "../../components/home/MenuCategory";
 import MenuOption from "../../components/home/MenuOption";
 import { ReactComponent as Arrow } from "../../assets/img_renewal/ico_arrow_right1.svg";

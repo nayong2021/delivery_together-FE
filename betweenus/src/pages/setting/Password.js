@@ -47,49 +47,59 @@ const Password = () => {
         </div>
       </header>
       <section className="sign">
-        <form className="wrap">
-          <div className="frm">
-            <div className="frm-group">
-              <div className="tit-frm">기존 비밀번호</div>
-              <input
-                type="password"
-                name="currentPassword"
-                className="inp-frm"
-                placeholder="영어 대문자와 소문자, 숫자, 특수문자 포함 9~15자"
-                value={currentPassword}
-                onChange={onChangeInput}
-              />
-              <div className="tit-frm">새 비밀번호</div>
-              <input
-                type="password"
-                name="newPassword"
-                className="inp-frm"
-                placeholder="영어 대문자와 소문자, 숫자, 특수문자 포함 9~15자"
-                value={newPassword}
-                onChange={onChangeInput}
-              />
-              <div className="tit-frm">새 비밀번호 확인</div>
-              <input
-                type="password"
-                name="newPasswordVerification"
-                className="inp-frm"
-                value={newPasswordVerification}
-                onChange={onChangeInput}
-              />
-            </div>
-            <div className="frm-message">{errorMS}</div>
-          </div>
+        <div className="wrap">
+          <ol className="list-frm">
+            <li>
+              <div className="frm-group">
+                <div className="tit-frm">기존 비밀번호</div>
+                <input
+                  type="password"
+                  name="currentPassword"
+                  className="inp-frm"
+                  placeholder="기존 비밀번호를 입력해주세요."
+                  value={currentPassword}
+                  onChange={onChangeInput}
+                />
+              </div>
+            </li>
+            <li>
+              <div className="frm-group">
+                <div className="tit-frm">새 비밀번호</div>
+                <input
+                  type="password"
+                  name="newPassword"
+                  className="inp-frm"
+                  placeholder="새 비밀번호를 입력해주세요."
+                  value={newPassword}
+                  onChange={onChangeInput}
+                />
+                <div className="inp-message">
+                  영어, 숫자, 특수문자 포함 9~ 15자
+                </div>
+              </div>
+            </li>
+            <li>
+              <div className="frm-group">
+                <div className="tit-frm">새 비밀번호 확인</div>
+                <input
+                  type="password"
+                  name="newPasswordVerification"
+                  className="inp-frm"
+                  placeholder="새 비밀번호를 동일하게 입력해주세요."
+                  value={newPasswordVerification}
+                  onChange={onChangeInput}
+                />
+              </div>
+            </li>
+          </ol>
+          <div className="frm-message">{errorMS}</div>
+        </div>
 
-          <div className="btn-group-bottom">
-            <button
-              type="button"
-              className="btn-custom"
-              onClick={onClickButton}
-            >
-              저장
-            </button>
-          </div>
-        </form>
+        <div className="btn-group-bottom">
+          <button type="button" className="btn-custom" onClick={onClickButton}>
+            저장
+          </button>
+        </div>
       </section>
     </div>
   );

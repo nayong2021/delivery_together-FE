@@ -52,7 +52,7 @@ const Phone = () => {
 
       <section className="find">
         <div className="wrap">
-          <div className="frm">
+          <div className="list-frm">
             <div className="frm-group">
               <div className="tit-frm">휴대폰 번호</div>
               <div className="inp-group">
@@ -72,9 +72,9 @@ const Phone = () => {
                   인증요청
                 </button>
               </div>
-            </div>
-            <div className="frm-message" white-space="pre-wrap">
-              {Parser(guideMS)}
+              <div className="error-message" white-space="pre-wrap">
+                {Parser(guideMS)}
+              </div>
             </div>
           </div>
 

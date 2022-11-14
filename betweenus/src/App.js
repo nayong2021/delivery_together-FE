@@ -6,7 +6,6 @@ import Map from "./pages/Map";
 import Setting from "./pages/setting/Setting";
 import State from "./pages/orderState/State";
 import Order from "./pages/home/Order";
-import ItemView from "./pages/home/ItemView";
 import OrderSheet from "./pages/home/OrderSheet";
 import Chatting from "./components/orderState/Chatting";
 import OrderState from "./components/orderState/OrderState";
@@ -64,7 +63,6 @@ function App() {
 
         <Route path="/" element={<PrivateRoute />}>
           {/* 홈 -> 상세, 주문 */}
-          {/* <Route path="/itemview/:index" element={<ItemView />} /> */}
           <Route path="/itemview/:index" element={<ItemView_Renewal />} />
           <Route path="/itemview/:index/order" element={<Order />} />
           <Route

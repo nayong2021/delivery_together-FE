@@ -14,7 +14,6 @@ export default function OrderHistoryItem({
   logo,
 }) {
   const orderDate = new Date(time[0], time[1] - 1, time[2]);
-  console.log(orderDate);
   return (
     <li>
       <Link to={`/setting/orderhistory/${index}`}>

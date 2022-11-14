@@ -6,16 +6,6 @@ import { ReactComponent as Menu1 } from "../../assets/img/ico_password.svg";
 import { ReactComponent as Menu2 } from "../../assets/img/ico_birth.svg";
 import { ReactComponent as Menu3 } from "../../assets/img/ico_phone.svg";
 import { useLocation, useNavigate } from "react-router-dom";
-import styled from "styled-components";
-
-const NickNameDiv = styled.div`
-  padding: 0 0 0 50px;
-  font-size: 15px;
-  font-weight: 400;
-  color: #f87245;
-  width: 100%;
-  display: flex;
-`;
 
 export default function EditProfile() {
   const navigate = useNavigate();
@@ -37,26 +27,32 @@ export default function EditProfile() {
             <button
               type="button"
               className="hd-back"
-              onClick={() => navigate(-1)}
+              onClick={() => navigate("/setting")}
             ></button>
             내 정보 수정
           </div>
         </div>
       </header>
-      <section className="profile" style={{ backgroundColor: "#f2f2f2" }}>
-        <div className="edit-profile" style={{ backgroundColor: "#ffff" }}>
-          <div className="user-picture">
-            <Profile1 />
+      <section className="setting">
+        <div className="wrap">
+          <div className="user-profile" style={{ marginBottom: "20px" }}>
+            <div className="user-picture">
+              <Profile1 width={"100%"} height={"100%"} />
+            </div>
+            <div className="user-info">
+              <div className="user-nickname">{nickName ? nickName : null}</div>
+              <div className="user-mail">{email ? email : null}</div>
+            </div>
+            <div
+              className="change-nickname"
+              onClick={() => navigate("nickname")}
+            >
+              닉네임 변경
+            </div>
           </div>
-          <div className="user-info">
-            <div className="user-nickname">{nickName ? nickName : null}</div>
-            <div className="user-mail">{email ? email : null}</div>
-          </div>
-          <NickNameDiv onClick={() => navigate("nickname")}>
-            닉네임 변경
-          </NickNameDiv>
         </div>
-        <div style={{ height: "10px" }}></div>
+
+        <div style={{ height: "10px", backgroundColor: "#f2f2f2" }} />
         <ol className="list-profile-menu">
           <li>
             <div
@@ -96,6 +92,7 @@ export default function EditProfile() {
             </div>
           </li>
         </ol>
+        <div style={{ height: "10px", backgroundColor: "#f2f2f2" }} />
         <div
           style={{ float: "right", display: "flex", padding: "15px 15px 0 0" }}
         >

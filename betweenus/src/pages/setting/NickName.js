@@ -40,7 +40,7 @@ const NickName = () => {
       </header>
       <section className="sign">
         <form className="wrap">
-          <div className="frm">
+          <div className="list-frm">
             <div className="frm-group">
               <div className="tit-frm">닉네임</div>
               <input
@@ -49,8 +49,8 @@ const NickName = () => {
                 className="inp-frm"
                 onChange={onChangeInput}
               />
+              <div className="error-message">{errorMS}</div>
             </div>
-            <div className="frm-message">{errorMS}</div>
           </div>
 
           <div className="btn-group-bottom">
