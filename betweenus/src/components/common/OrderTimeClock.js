@@ -5,7 +5,7 @@ export default function OrderTimeClock({ timeToOrder }) {
   return timeToOrder ? (
     <div className="time">
       <Clock />
-      &nbsp;모집 마감{" "}
+      &nbsp;마감{" "}
       {timeToOrder
         ? (timeToOrder[0] > 12 ? timeToOrder[0] - 12 : timeToOrder[0]) +
           ":" +

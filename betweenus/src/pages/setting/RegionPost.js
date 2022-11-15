@@ -40,21 +40,21 @@ export default function RegionPost() {
     let reqbody = {
       address: state.jibunAddr,
       alias: alias,
-      addressCategory: ""
+      addressCategory: "",
+    };
+    if (btnActive === "우리집") {
+      reqbody.addressCategory = "우리집";
     }
-    if(btnActive === "우리집"){
-      reqbody.addressCategory = "우리집"
+    if (btnActive === "회사") {
+      reqbody.addressCategory = "회사";
     }
-    if(btnActive === "회사"){
-      reqbody.addressCategory = "회사"
-    }
-    if(btnActive === "기타"){
-      reqbody.addressCategory = "ETC"
+    if (btnActive === "기타") {
+      reqbody.addressCategory = "ETC";
     }
     await RegionPostApi(reqbody);
-    
+
     navigate(-2);
-  }
+  };
 
   return (
     <>
@@ -119,14 +119,15 @@ export default function RegionPost() {
         </div>
         {btnActive === "기타" ? (
           <div className="box-places">
-            <EtcBox 
-            placeholder="주소 별명 입력"
-            onChange={handleAlias}
-            value={alias} />
+            <EtcBox
+              placeholder="주소 별명 입력"
+              onChange={handleAlias}
+              value={alias}
+            />
           </div>
         ) : null}
 
-        <div className="btn-group-bottom">
+        <div className="btn-group-bottom2">
           <button type="button" className="btn-custom" onClick={onClickConfirm}>
             확인
           </button>

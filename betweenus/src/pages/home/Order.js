@@ -50,21 +50,21 @@ const Order = () => {
         onPopupBackBtnClick={onPopupBackBtnClick}
         setOrderList={setOrderList}
       />
-      <header class="header-v2">
-        <div class="hd-v2">
+      <header className="header-v2">
+        <div className="hd-v2">
           <button
             type="button"
-            class="hd-back"
+            className="hd-back"
             onClick={() => navigate(-1)}
           ></button>
-          <div class="hd-tit">주문하기</div>
+          <div className="hd-tit">주문하기</div>
         </div>
       </header>
 
       <section className="item-view">
-        <div class="top">
-          <div class="item-info">
-            <div class="time">
+        <div className="top">
+          <div className="item-info">
+            <div className="time">
               <Clock />
               &nbsp;마감&nbsp;
               {timeToOrder
@@ -77,8 +77,8 @@ const Order = () => {
                   (timeToOrder[0] >= 12 ? "pm" : "am")
                 : null}
             </div>
-            <div class="tit">{itemdata.title}</div>
-            <a href="#" class="place">
+            <div className="tit">{itemdata.title}</div>
+            <a href="#" className="place">
               {itemdata.storeName}
               <Arrow />
             </a>
@@ -95,10 +95,10 @@ const Order = () => {
               ))
             : null}
 
-          <div class="btn-group-bottom2">
-            <div class="price">
-              <div class="tit">예상 배달비</div>
-              <div class="txt">
+          <div className="btn-group-bottom2">
+            <div className="price">
+              <div className="tit">예상 배달비</div>
+              <div className="txt">
                 {itemdata.expectedDeliveryFee}원/
                 {itemdata.currentParticipant
                   ? itemdata.currentParticipant.toLocaleString()
@@ -109,7 +109,7 @@ const Order = () => {
 
             <button
               type="button"
-              class="btn-custom-v3"
+              className="btn-custom-v3"
               onClick={() => navigate("ordersheet", { state: orderList })}
             >
               참여하기

@@ -129,124 +129,156 @@ const Join = () => {
       </header>
       <section className="sign">
         <form className="wrap">
-          <div className="frm">
-            <div className="frm-group">
-              <div className="tit-frm">이메일</div>
-              <div className="inp-group">
+          <div className="list-frm">
+            <li>
+              <div className="frm-group">
+                <div className="tit-frm">이메일</div>
+                <div className="inp-group">
+                  <input
+                    type="text"
+                    name="email"
+                    className="inp-frm"
+                    placeholder="이메일주소를 입력해주세요."
+                    onChange={onChangeInput}
+                    value={email}
+                  />
+                  <button
+                    type="button"
+                    className="btn-frm"
+                    onClick={onClickEmail}
+                  >
+                    인증요청
+                  </button>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div className="frm-group">
+                <div className="tit-frm">이메일 인증번호</div>
                 <input
-                  type="text"
-                  name="email"
+                  type="number"
+                  name="authToken"
                   className="inp-frm"
                   onChange={onChangeInput}
-                  value={email}
+                  placeholder="인증번호를 입력해주세요."
+                  value={authToken > 0 ? authToken : ""}
                 />
-                <button
-                  type="button"
-                  className="btn-frm"
-                  onClick={onClickEmail}
-                >
-                  인증요청
-                </button>
               </div>
-            </div>
+            </li>
 
-            <div className="frm-group">
-              <div className="tit-frm">이메일 인증번호</div>
-              <input
-                type="number"
-                name="authToken"
-                className="inp-frm"
-                onChange={onChangeInput}
-                value={authToken > 0 ? authToken : ""}
-              />
-            </div>
-
-            <div className="frm-group">
-              <div className="tit-frm">비밀번호</div>
-              <input
-                type="password"
-                name="password"
-                placeholder="영어 대문자와 소문자, 숫자, 특수문자 포함 9~15자"
-                className="inp-frm"
-                onChange={onChangeInput}
-                value={password}
-              />
-            </div>
-
-            <div className="frm-group">
-              <div className="tit-frm">비밀번호 확인</div>
-              <input
-                type="password"
-                name="passwordVerification"
-                className="inp-frm"
-                onChange={onChangeInput}
-                value={passwordVerification}
-              />
-            </div>
-
-            <div className="frm-group">
-              <div className="tit-frm">이름</div>
-              <input
-                type="text"
-                name="name"
-                className="inp-frm"
-                onChange={onChangeInput}
-                value={name}
-              />
-            </div>
-
-            <div className="frm-group">
-              <div className="tit-frm">생년월일</div>
-              <div className="inp-group">
+            <li>
+              <div className="frm-group">
+                <div className="tit-frm">비밀번호</div>
                 <input
-                  type="text"
-                  name="birth"
-                  placeholder="8자리 숫자 입력"
+                  type="password"
+                  name="password"
+                  placeholder="비밀번호를 입력해주세요."
                   className="inp-frm"
                   onChange={onChangeInput}
-                  value={birth}
+                  value={password}
                 />
-                <select name="gender" onChange={onChangeInput} value={gender}>
-                  <option value="MALE">남자</option>
-                  <option value="FEMALE">여자</option>
-                </select>
+                <div class="inp-message">영어, 숫자, 특수문자 포함 9~ 15자</div>
               </div>
-            </div>
+            </li>
 
-            <div className="frm-group">
-              <div className="tit-frm">닉네임</div>
-              <input
-                type="text"
-                name="nickName"
-                className="inp-frm"
-                onChange={onChangeInput}
-                value={nickName}
-              />
-              {/* <button type="button" className="btn-frm">
+            <li>
+              <div className="frm-group">
+                <div className="tit-frm">비밀번호 확인</div>
+                <input
+                  type="password"
+                  name="passwordVerification"
+                  className="inp-frm"
+                  placeholder="비밀번호를 입력해주세요."
+                  onChange={onChangeInput}
+                  value={passwordVerification}
+                />
+              </div>
+            </li>
+
+            <li>
+              <div className="frm-group">
+                <div className="tit-frm">이름</div>
+                <input
+                  type="text"
+                  name="name"
+                  className="inp-frm"
+                  onChange={onChangeInput}
+                  placeholder="이름을 입력해주세요."
+                  value={name}
+                />
+              </div>
+            </li>
+
+            <li>
+              <div className="box-frm">
+                <div className="frm-group">
+                  <div className="tit-frm">생년월일</div>
+                  <input
+                    type="text"
+                    name="birth"
+                    placeholder="생년월일을 입력해주세요."
+                    className="inp-frm"
+                    onChange={onChangeInput}
+                    value={birth}
+                  />
+                  <div className="inp-message">
+                    8자리 숫자 입력/예 : 20000928
+                  </div>
+                </div>
+
+                <div className="frm-group">
+                  <div className="tit-frm">성별</div>
+                  <select
+                    className="select-custom"
+                    name="gender"
+                    onChange={onChangeInput}
+                    value={gender}
+                  >
+                    <option value="MALE">남자</option>
+                    <option value="FEMALE">여자</option>
+                  </select>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div className="frm-group">
+                <div className="tit-frm">닉네임</div>
+                <input
+                  type="text"
+                  name="nickName"
+                  className="inp-frm"
+                  placeholder="닉네임을 입력해주세요."
+                  onChange={onChangeInput}
+                  value={nickName}
+                />
+                {/* <button type="button" className="btn-frm">
                   중복확인
                 </button> */}
-            </div>
-
-            <div className="frm-group">
-              <div className="tit-frm">휴대폰 번호</div>
-              <div className="inp-group">
-                <input
-                  type="text"
-                  name="phoneNumber"
-                  placeholder="‘-’ 없이 입력"
-                  className="inp-frm"
-                  onChange={onChangeInput}
-                  value={phoneNumber}
-                />
-                <button
-                  type="button"
-                  className="btn-frm"
-                  onClick={onClickPhone}
-                >
-                  인증요청
-                </button>
               </div>
-            </div>
+            </li>
+            <li>
+              <div className="frm-group">
+                <div className="tit-frm">휴대폰 번호</div>
+                <div className="inp-group">
+                  <input
+                    type="text"
+                    name="phoneNumber"
+                    // placeholder="‘-’ 없이 입력"
+                    className="inp-frm"
+                    onChange={onChangeInput}
+                    placeholder="휴대폰 번호를 ‘-’ 없이 입력해주세요."
+                    value={phoneNumber}
+                  />
+                  <button
+                    type="button"
+                    className="btn-frm"
+                    onClick={onClickPhone}
+                  >
+                    인증요청
+                  </button>
+                </div>
+              </div>
+            </li>
 
             {/* <div className="frm-group">
               <div className="tit-frm">휴대폰 인증번호</div>
@@ -256,7 +288,7 @@ const Join = () => {
             <div className="frm-message">{guideMS}</div>
           </div>
 
-          <div className="btn-group-bottom" onClick={onClickLogin}>
+          <div className="btn-group-bottom2" onClick={onClickLogin}>
             <button type="button" className="btn-custom">
               다음
             </button>

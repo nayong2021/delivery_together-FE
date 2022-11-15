@@ -1,15 +1,19 @@
 import * as React from "react";
 import "../../assets/css/common.css";
-import { ReactComponent as Img } from "../../assets/img/ico_graphic2.svg";
+import Cart from "../../assets/img_renewal/img_cart1.png";
 
 const HostNoGuest = () => {
   return (
     <div className="no-data">
-      <Img />
+      <img src={Cart} alt="" />
       <div className="txt">
         <br />
       </div>
-      <div className="txt">아직 배달 공동구매 방에 참여한 게스트가 없어요!</div>
+      <div className="txt">
+        아직 배달 공동구매 방에
+        <br />
+        참여한 게스트가 없어요!
+      </div>
     </div>
   );
 };

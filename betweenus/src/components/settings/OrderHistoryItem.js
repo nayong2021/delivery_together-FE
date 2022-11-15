@@ -22,7 +22,6 @@ export default function OrderHistoryItem({
         </div>
         <div className="item-info">
           <div className="time">
-            {/* <OrderTimeClock timeToOrder={time} /> */}
             <Clock />
             &nbsp;
             {`${time[0]}/${time[1]}/${time[2]} (${days[orderDate.getDay()]})`}
@@ -30,7 +29,6 @@ export default function OrderHistoryItem({
           <div className="tit">{title}</div>
           <div className="place">{place}</div>
           <div className="etc-info">
-            {/* <div className="distance">{printDistance(distance)}</div> */}
             {host ? null : (
               <div className="price">
                 <span className="price">주문금액: {price}원</span>{" "}

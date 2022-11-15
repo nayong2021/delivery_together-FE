@@ -29,9 +29,9 @@ const Guide1 = () => {
         <div></div>
       </div>
 
-      <div className="btn-group-bottom">
+      <div className="btn-group-bottom2">
         <div
-          className="btn-custom btn-custom-v1"
+          className="btn-custom btn-custom-v2"
           onClick={() => navigate("/guide/2")}
         >
           다음

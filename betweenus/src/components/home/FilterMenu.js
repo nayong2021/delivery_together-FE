@@ -7,7 +7,6 @@ import IconButton from "@mui/material/IconButton";
 import AccessTimeRoundedIcon from "@mui/icons-material/AccessTimeRounded";
 import DirectionsWalkRoundedIcon from "@mui/icons-material/DirectionsWalkRounded";
 import PeopleRoundedIcon from "@mui/icons-material/PeopleRounded";
-// import { orange } from "@mui/material/colors";
 
 export default function FilterMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);

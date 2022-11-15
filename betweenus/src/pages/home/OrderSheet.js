@@ -80,21 +80,21 @@ const OrderSheet = () => {
     <div id="root">
       <MetaTag />
 
-      <header class="header-v2">
-        <div class="hd-v2">
+      <header className="header-v2">
+        <div className="hd-v2">
           <button
             type="button"
-            class="hd-back"
+            className="hd-back"
             onClick={() => navigate(-1)}
           ></button>
-          <div class="hd-tit">내 주문서</div>
+          <div className="hd-tit">내 주문서</div>
         </div>
       </header>
 
       <section className="item-view">
-        <div class="top">
-          <div class="item-info">
-            <div class="time">
+        <div className="top">
+          <div className="item-info">
+            <div className="time">
               <Clock />
               &nbsp;마감&nbsp;
               {timeToOrder
@@ -107,8 +107,8 @@ const OrderSheet = () => {
                   (timeToOrder[0] >= 12 ? "pm" : "am")
                 : null}
             </div>
-            <div class="tit">{itemdata.title}</div>
-            <a href="#" class="place">
+            <div className="tit">{itemdata.title}</div>
+            <a href="#" className="place">
               {itemdata.storeName}
               <Arrow />
             </a>
@@ -155,10 +155,10 @@ const OrderSheet = () => {
             안내받아 주문 금액과 함께 전달해주세요!
           </div>
 
-          <div class="btn-group-bottom2">
-            <div class="price">
-              <div class="tit">예상 배달비</div>
-              <div class="txt">
+          <div className="btn-group-bottom2">
+            <div className="price">
+              <div className="tit">예상 배달비</div>
+              <div className="txt">
                 {itemdata.expectedDeliveryFee}원/
                 {itemdata.currentParticipant
                   ? itemdata.currentParticipant.toLocaleString()
@@ -167,7 +167,11 @@ const OrderSheet = () => {
               </div>
             </div>
 
-            <button type="button" class="btn-custom-v3" onClick={onSubmitOrder}>
+            <button
+              type="button"
+              className="btn-custom-v3"
+              onClick={onSubmitOrder}
+            >
               참여하기
             </button>
           </div>

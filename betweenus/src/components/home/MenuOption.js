@@ -139,7 +139,7 @@ export default function MenuOption({
                 <strong>총 주문금액</strong>
                 <div>{calculateTotalPrice()}원</div>
               </div>
-              <div className="btn-group-bottom">
+              <div className="btn-group-bottom2">
                 <button className="btn-custom" onClick={onAddOrder}>
                   장바구니에 추가
                 </button>

@@ -23,8 +23,8 @@ export default function HomeItem({
   return (
     <li>
       <Link to={`/itemview/${index}`}>
-        <div class="img-group">
-          <img src={logo} alt="썸네일" class="thumb" />
+        <div className="img-group">
+          <img src={logo} alt="썸네일" className="thumb" />
         </div>
         <div className="item-info">
           <div className="time">

@@ -10,16 +10,16 @@ export default function RegionList() {
   const [regionList, setRegionList] = useState({});
   const getList = async () => {
     const result = await RegionListGetApi();
-    console.log(result)
+    console.log(result);
     setRegionList(result.data);
-  }
+  };
 
   const onClickRegion = async (addressIdx) => {
     const result = await PatchRepresentationRegion(addressIdx);
-    if(result){
+    if (result) {
       getList();
     }
-  }
+  };
 
   useEffect(() => {
     getList();
@@ -55,27 +55,29 @@ export default function RegionList() {
           {/* 체크박스는 백엔드에서 값 넘겨주기로 함*/}
           <ol className="list-region">
             <RegionListItem
-            addressInfo={regionList.homeAddressInfo}
-            onClickRegion={onClickRegion}
+              addressInfo={regionList.homeAddressInfo}
+              onClickRegion={onClickRegion}
             />
             <RegionListItem
-            addressInfo={regionList.officeAddressInfo}
-            onClickRegion={onClickRegion}
+              addressInfo={regionList.officeAddressInfo}
+              onClickRegion={onClickRegion}
             />
-            {
-              regionList.etcAddressesCount > 0 ? (regionList.etcAddressInfoList.map((item, idx) => (
-                <RegionListItem
-                key={idx}
-                addressInfo={item}
-                onClickRegion={onClickRegion}
-                />
-              ))) : (null)
-          }
+            {regionList.etcAddressesCount > 0
+              ? regionList.etcAddressInfoList.map((item, idx) => (
+                  <RegionListItem
+                    key={idx}
+                    addressInfo={item}
+                    onClickRegion={onClickRegion}
+                  />
+                ))
+              : null}
           </ol>
-          <div className="btn-group-bottom">
-            <button type="button" 
-            className="btn-custom"
-            onClick={() => navigate("/")}>
+          <div className="btn-group-bottom2">
+            <button
+              type="button"
+              className="btn-custom"
+              onClick={() => navigate("/")}
+            >
               내 동네 설정 완료
             </button>
           </div>

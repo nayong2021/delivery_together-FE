@@ -28,7 +28,12 @@ const FindId = () => {
   };
 
   const onClickButton = async () => {
-    const data = await GetFindidApi(inputs.name, inputs.phoneNumber, inputs.birth, inputs.receiptID);
+    const data = await GetFindidApi(
+      inputs.name,
+      inputs.phoneNumber,
+      inputs.birth,
+      inputs.receiptID
+    );
     if (data.find) {
       navigate("idresult", { state: data });
     } else {
@@ -39,7 +44,7 @@ const FindId = () => {
   };
 
   const onClickPhone = () => {
-    RequestKakaocert(inputs).then(result => {
+    RequestKakaocert(inputs).then((result) => {
       setInputs({
         ...inputs,
         receiptID: result.receiptID,
@@ -65,7 +70,7 @@ const FindId = () => {
 
       <section className="find">
         <div className="wrap">
-          <div className="frm">
+          <div className="list-frm">
             <div className="frm-group">
               <div className="tit-frm">이름</div>
               <input
@@ -92,15 +97,19 @@ const FindId = () => {
             <div className="frm-group">
               <div className="tit-frm">휴대폰 번호</div>
               <div className="inp-group">
-              <input
-                type="text"
-                placeholder="‘-’ 없이 입력"
-                name="phoneNumber"
-                className="inp-frm"
-                onChange={onChangeInput}
-                value={phoneNumber}
-              />
-              <button type="button" className="btn-frm" onClick={onClickPhone}>
+                <input
+                  type="text"
+                  placeholder="‘-’ 없이 입력"
+                  name="phoneNumber"
+                  className="inp-frm"
+                  onChange={onChangeInput}
+                  value={phoneNumber}
+                />
+                <button
+                  type="button"
+                  className="btn-frm"
+                  onClick={onClickPhone}
+                >
                   인증요청
                 </button>
               </div>
@@ -121,7 +130,7 @@ const FindId = () => {
             </div>
           </div>
 
-          <div className="btn-group-bottom">
+          <div className="btn-group-bottom2">
             <button
               type="button"
               className="btn-custom"

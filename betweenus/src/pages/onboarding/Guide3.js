@@ -30,12 +30,12 @@ const Guide3 = () => {
         <div className="active"></div>
       </div>
 
-      <div className="btn-group-bottom">
+      <div className="btn-group-bottom2">
         <div className="btn btn-custom" onClick={() => navigate("/login")}>
           로그인
         </div>
         <div
-          className="btn btn-custom btn-custom-v1"
+          className="btn btn-custom btn-custom-v2"
           onClick={() => navigate("/login/join")}
         >
           회원가입

@@ -11,18 +11,17 @@ export default function OrderMenuItem({ menu }) {
     return optionString;
   };
   return (
-    <div className="order">
+    <>
       <div className="menu">
-        <div className="tit">{menu.menuName}</div>
-        <div className="num">x {menu.quantity}개</div>
+        <div className="tit">
+          {menu.menuName}
+          <span className="count">x{menu.quantity}개</span>
+        </div>
         <div className="price">{menu.itemTotalPrice.toLocaleString()}원</div>
       </div>
       {menu.options.length > 0 ? (
         <div className="menu-options">{concatOptions()}</div>
       ) : null}
-      {/* {menu.options.map((item, idx) => {
-        return <div key={idx}>{item.optionName}</div>;
-      })} */}
-    </div>
+    </>
   );
 }

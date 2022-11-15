@@ -95,7 +95,7 @@ const Password = () => {
           <div className="frm-message">{errorMS}</div>
         </div>
 
-        <div className="btn-group-bottom">
+        <div className="btn-group-bottom2">
           <button type="button" className="btn-custom" onClick={onClickButton}>
             저장
           </button>

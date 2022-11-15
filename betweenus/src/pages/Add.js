@@ -73,7 +73,6 @@ const Add = () => {
       ...inputs,
       pickupPlace: addr,
     });
-    setIsOpenPost(false);
   };
 
   const postCodeStyle = {
@@ -94,27 +93,27 @@ const Add = () => {
         selectedStore={selectedStore}
         setSelectedStore={setSelectedStore}
       />
-      <header class="header">
-        <div class="hd">
+      <header className="header">
+        <div className="hd">
           <button
             type="button"
-            class="hd-back"
+            className="hd-back"
             onClick={() => navigate(-1)}
           ></button>
-          <div class="hd-tit">모집하기</div>
+          <div className="hd-tit">모집하기</div>
         </div>
       </header>
 
       <section className="item-write">
         <div className="wrap">
-          <ol class="list-frm">
+          <ol className="list-frm">
             <li>
-              <div class="frm-group">
-                <div class="tit-frm">제목</div>
+              <div className="frm-group">
+                <div className="tit-frm">제목</div>
                 <input
                   type="text"
                   placeholder="제목을 입력해주세요."
-                  class="inp-frm"
+                  className="inp-frm"
                   name="title"
                   onChange={onChangeInput}
                   value={title}
@@ -123,8 +122,8 @@ const Add = () => {
             </li>
 
             <li>
-              <div class="frm-group frm-group-v1">
-                <div class="tit-frm">모집 마감 시간</div>
+              <div className="frm-group frm-group-v1">
+                <div className="tit-frm">모집 마감 시간</div>
                 <div className="inp-group-time" onClick={onClickTime}>
                   <ScrollTimePicker
                     className="inp-frm"
@@ -136,20 +135,20 @@ const Add = () => {
             </li>
 
             <li>
-              <div class="frm-group">
-                <div class="tit-frm">매장명</div>
-                <div class="inp-group">
+              <div className="frm-group">
+                <div className="tit-frm">매장명</div>
+                <div className="inp-group">
                   <input
                     type="text"
                     placeholder="매장을 선택해주세요."
-                    class="inp-frm"
+                    className="inp-frm"
                     name="storeName"
                     readOnly={true}
                     value={selectedStore.name || ""}
                   />
                   <button
                     type="button"
-                    class="btn-frm"
+                    className="btn-frm"
                     onClick={onClickFindStore}
                   >
                     매장 찾기
@@ -159,13 +158,13 @@ const Add = () => {
             </li>
 
             <li>
-              <div class="frm-group">
-                <div class="tit-frm">픽업장소</div>
-                <div class="inp-group">
+              <div className="frm-group">
+                <div className="tit-frm">픽업장소</div>
+                <div className="inp-group">
                   <input
                     type="text"
                     placeholder="주소를 검색해주세요."
-                    class="inp-frm"
+                    className="inp-frm"
                     name="pickupPlace"
                     onChange={onChangeInput}
                     value={pickupPlace}
@@ -173,7 +172,7 @@ const Add = () => {
                   />
                   <button
                     type="button"
-                    class="btn-frm"
+                    className="btn-frm"
                     onClick={onChangeOpenPost}
                   >
                     주소 찾기
@@ -182,20 +181,23 @@ const Add = () => {
               </div>
             </li>
             {isOpenPost ? (
-              <DaumPostcode
-                style={postCodeStyle}
-                autoClose
-                onComplete={onCompletePost}
-              />
+              <div>
+                <DaumPostcode
+                  style={postCodeStyle}
+                  autoClose={true}
+                  onComplete={onCompletePost}
+                  onClose={() => setIsOpenPost(false)}
+                />
+              </div>
             ) : null}
 
             <li>
-              <div class="frm-group">
-                <div class="tit-frm">상세 픽업 장소</div>
+              <div className="frm-group">
+                <div className="tit-frm">상세 픽업 장소</div>
                 <input
                   type="text"
                   placeholder="상세 픽업장소를 입력해주세요."
-                  class="inp-frm"
+                  className="inp-frm"
                   name="detailPickupPlace"
                   onChange={onChangeInput}
                   value={detailPickupPlace}
@@ -204,11 +206,11 @@ const Add = () => {
             </li>
 
             <li>
-              <div class="frm-group">
-                <div class="tit-frm">내용</div>
+              <div className="frm-group">
+                <div className="tit-frm">내용</div>
                 <textarea
                   placeholder="내용을 입력해주세요."
-                  class="inp-frm"
+                  className="inp-frm"
                   name="additionalInfo"
                   onChange={onChangeInput}
                   value={additionalInfo}
@@ -217,7 +219,7 @@ const Add = () => {
             </li>
           </ol>
 
-          <div className="btn-group-bottom" onClick={onClickButton}>
+          <div className="btn-group-bottom2" onClick={onClickButton}>
             <button type="submit" className="btn-custom">
               모집하기
             </button>

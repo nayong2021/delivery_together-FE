@@ -40,7 +40,7 @@ const IdResult = () => {
             </div>
           </div>
 
-          <div className="btn-group-bottom">
+          <div className="btn-group-bottom2">
             <button
               className="btn btn-custom"
               onClick={() => navigate("/login")}

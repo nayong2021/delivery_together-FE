@@ -1,15 +1,18 @@
 import * as React from "react";
 import "../../assets/css/common.css";
-import { ReactComponent as Img } from "../../assets/img/ico_graphic2.svg";
+import Cart from "../../assets/img_renewal/img_cart1.png";
 
 const JoinBefore = () => {
   return (
     <div className="no-data">
-      <Img />
+      <img src={Cart} alt="" />
       <div className="txt">
         <br />
       </div>
-      <div className="txt">현재 참여하고 있는 배달 공동구매 방이 없어요!</div>
+      <div className="txt">
+        현재 참여하고 있는 <br />
+        배달 공동구매 방이 없어요!
+      </div>
     </div>
   );
 };

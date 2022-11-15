@@ -1,11 +1,11 @@
 import * as React from "react";
 import "../../assets/css/common.css";
-import { ReactComponent as Img } from "../../assets/img/ico_graphic2.svg";
+import Cart from "../../assets/img_renewal/img_cart1.png";
 
 const GuestWaitRecruit = () => {
   return (
     <div className="no-data">
-      <Img />
+      <img src={Cart} alt="" />
       <div className="txt">
         <br />
       </div>

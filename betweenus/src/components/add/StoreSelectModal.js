@@ -194,7 +194,7 @@ export default function StoreSelectModal({
               <li ref={ref} />
             </ol>
           </div>
-          <div className="btn-group-bottom">
+          <div className="btn-group-bottom2">
             <button className="btn-custom" onClick={onDecisionBtnClick}>
               매장 선택
             </button>

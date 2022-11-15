@@ -29,12 +29,14 @@ const PwResult = () => {
           <div className="id-result">
             <div className="frm">
               <div className="frm-guide">
-                {location.state.email}로 임시 비밀번호를 전송해 드렸습니다. <br></br>임시 비밀번호를 이용해 로그인 후 비밀번호를 변경해 주세요.
+                {location.state.email}로 임시 비밀번호를 전송해 드렸습니다.{" "}
+                <br></br>임시 비밀번호를 이용해 로그인 후 비밀번호를 변경해
+                주세요.
               </div>
             </div>
           </div>
 
-          <div className="btn-group-bottom">
+          <div className="btn-group-bottom2">
             <button
               className="btn btn-custom"
               onClick={() => navigate("/login")}

@@ -9,32 +9,38 @@ export default function OrderResult() {
   return (
     <>
       {Object.keys(orderInfo).length !== 0 ? (
-        <ol className="order-result">
-          <li>
+        <div className="price-group">
+          <div className="type">
             <div className="tit">그룹 음식 총 금액</div>
-            <div className="txt">{orderInfo.totalPrice.toLocaleString()}원</div>
-          </li>
-
-          <li>
-            <div className="tit">배달비</div>
-            <div className="txt">4,000원</div>
-            {/* <div className="txt">{orderInfo.expectedDeliveryFee}원</div> */}
-          </li>
-
-          <li>
-            <div className="tit">
-              <strong>총 금액</strong>
+            <div className="price">
+              {(
+                orderInfo.totalPrice + orderInfo.expectedDeliveryFee
+              ).toLocaleString()}
+              원
             </div>
-            <div className="txt">
+          </div>
+
+          <div className="type">
+            <div className="tit">배달비</div>
+            <div className="price price-v1">
+              {orderInfo.expectedDeliveryFee.toLocaleString()}원
+            </div>
+          </div>
+
+          <div className="type">
+            <div className="tit">
+              <strong>최종 결제금액</strong>
+            </div>
+            <div className="price price-v2">
               <strong>
                 {(
                   orderInfo.totalPrice + orderInfo.expectedDeliveryFee
                 ).toLocaleString()}
-                원
               </strong>
+              원
             </div>
-          </li>
-        </ol>
+          </div>
+        </div>
       ) : null}
     </>
   );

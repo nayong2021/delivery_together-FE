@@ -28,7 +28,7 @@ const FindPw = () => {
   };
 
   const onClickPhone = () => {
-    RequestKakaocert(inputs).then(result => {
+    RequestKakaocert(inputs).then((result) => {
       console.log(result);
       setInputs({
         ...inputs,
@@ -39,7 +39,7 @@ const FindPw = () => {
 
   const onClickButton = async () => {
     // console.log(inputs);
-    try{
+    try {
       await PostResetPwApi(
         inputs.name,
         inputs.birth,
@@ -48,8 +48,7 @@ const FindPw = () => {
         inputs.receiptID
       );
       navigate("pwresult", { state: inputs });
-    }
-    catch (e) {
+    } catch (e) {
       setGuideMs(
         "&nbsp;입력하신 정보와 일치하는 유저가 없습니다.<br/>&nbsp;입력하신 내용을 다시 확인해주세요."
       );
@@ -74,7 +73,7 @@ const FindPw = () => {
 
       <section className="find">
         <div className="wrap">
-          <div className="frm">
+          <div className="list-frm">
             <div className="frm-group">
               <div className="tit-frm">이름</div>
               <input
@@ -101,12 +100,12 @@ const FindPw = () => {
             <div className="frm-group">
               <div className="tit-frm">이메일</div>
               <input
-                  type="text"
-                  name="email"
-                  className="inp-frm"
-                  onChange={onChangeInput}
-                  value={email}
-                />
+                type="text"
+                name="email"
+                className="inp-frm"
+                onChange={onChangeInput}
+                value={email}
+              />
               {/* <div className="inp-group">
                 <input
                   type="text"
@@ -139,15 +138,14 @@ const FindPw = () => {
             <div className="frm-group">
               <div className="tit-frm">휴대폰 번호</div>
               <div className="inp-group">
-              <input
-                type="text"
-                placeholder="‘-’ 없이 입력"
-                className="inp-frm"
-                name="phoneNumber"
-                onChange={onChangeInput}
-                value={phoneNumber}
-                
-              />
+                <input
+                  type="text"
+                  placeholder="‘-’ 없이 입력"
+                  className="inp-frm"
+                  name="phoneNumber"
+                  onChange={onChangeInput}
+                  value={phoneNumber}
+                />
                 <button
                   type="button"
                   className="btn-frm"
@@ -156,12 +154,11 @@ const FindPw = () => {
                   인증요청
                 </button>
               </div>
-              
             </div>
             <div className="frm-message">{Parser(guideMS)}</div>
           </div>
 
-          <div className="btn-group-bottom" onClick={onClickButton}>
+          <div className="btn-group-bottom2" onClick={onClickButton}>
             <button type="button" className="btn-custom">
               확인
             </button>

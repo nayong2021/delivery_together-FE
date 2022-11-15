@@ -27,22 +27,22 @@ const ItemView_Renewal = () => {
   return (
     <>
       <MetaTag />
-      <header class="header-v2">
-        <div class="hd-v2">
+      <header className="header-v2">
+        <div className="hd-v2">
           <button
             type="button"
-            class="hd-back"
+            className="hd-back"
             onClick={() => navigate(-1)}
           ></button>
-          <div class="hd-tit">모집글 상세정보</div>
+          <div className="hd-tit">모집글 상세정보</div>
         </div>
       </header>
 
-      <section class="item-view">
-        <div class="fix">
-          <div class="top">
-            <div class="item-info">
-              <div class="time">
+      <section className="item-view">
+        <div className="fix">
+          <div className="top">
+            <div className="item-info">
+              <div className="time">
                 <Clock />
                 &nbsp;마감&nbsp;
                 {timeToOrder
@@ -55,77 +55,77 @@ const ItemView_Renewal = () => {
                     (timeToOrder[0] >= 12 ? "pm" : "am")
                   : null}
               </div>
-              <div class="tit">{groupBuyingDetail.title}</div>
-              <a href="#" class="place">
+              <div className="tit">{groupBuyingDetail.title}</div>
+              <a href="#" className="place">
                 {groupBuyingDetail.storeName}
                 <Arrow />
               </a>
             </div>
 
-            <div class="delivery-location">
-              <div class="tit">픽업장소</div>
-              <div class="txt">
+            <div className="delivery-location">
+              <div className="tit">픽업장소</div>
+              <div className="txt">
                 <span>{groupBuyingDetail.pickupPlace}</span>
-                <button type="button" class="btn-copy"></button>
+                <button type="button" className="btn-copy"></button>
               </div>
-              {/* <a href="#" class="btn-map">
+              {/* <a href="#" className="btn-map">
                 지도보기
               </a> */}
             </div>
           </div>
 
-          <div class="item-gallery">
-            <div class="img-group">
+          <div className="item-gallery">
+            <div className="img-group">
               <img
                 src={groupBuyingDetail.backgroundUrl}
                 alt="썸네일"
-                class="thumb"
+                className="thumb"
               />
             </div>
 
-            {/* <div class="gallery-pagination">1/3</div> */}
+            {/* <div className="gallery-pagination">1/3</div> */}
           </div>
         </div>
 
-        <div class="item-detail">
-          <a href="#" class="user-data">
-            <div class="user-profile">
-              <div class="user-picture">
+        <div className="item-detail">
+          <a href="#" className="user-data">
+            <div className="user-profile">
+              <div className="user-picture">
                 <img
                   src={Picture1}
                   alt="썸네일"
-                  class="thumb"
+                  className="thumb"
                   // style="background-image: url('../img/tmp/img_picture1.png');"
                 />
               </div>
 
-              <div class="user-info">
-                <div class="user-nickname">
+              <div className="user-info">
+                <div className="user-nickname">
                   {groupBuyingDetail.hostNickName}
                 </div>
-                {/* <div class="manner-check">매너나무 확인하기</div> */}
+                {/* <div className="manner-check">매너나무 확인하기</div> */}
               </div>
             </div>
 
-            {/* <div class="user-manner">
-              <div class="manner-point">
-                <div class="txt">85.5%</div>
-                <div class="bar">
-                  <span class="progress" style={{ width: "85.5%" }}></span>
+            {/* <div className="user-manner">
+              <div className="manner-point">
+                <div className="txt">85.5%</div>
+                <div className="bar">
+                  <span className="progress" style={{ width: "85.5%" }}></span>
                 </div>
               </div>
 
-              <img src={Tree1} alt=" " class="img-manner" />
+              <img src={Tree1} alt=" " className="img-manner" />
             </div> */}
           </a>
 
-          <div class="item-desc">{groupBuyingDetail.additionalInfo}</div>
+          <div className="item-desc">{groupBuyingDetail.additionalInfo}</div>
         </div>
 
-        <div class="btn-group-bottom2">
-          <div class="price">
-            <div class="tit">예상 배달비</div>
-            <div class="txt">
+        <div className="btn-group-bottom2">
+          <div className="price">
+            <div className="tit">예상 배달비</div>
+            <div className="txt">
               {groupBuyingDetail.expectedDeliveryFee}원/
               {groupBuyingDetail.currentParticipant
                 ? groupBuyingDetail.currentParticipant.toLocaleString()
@@ -136,7 +136,7 @@ const ItemView_Renewal = () => {
 
           <button
             type="button"
-            class="btn-custom-v3"
+            className="btn-custom-v3"
             onClick={() => navigate(`/itemview/${id.index}/order`)}
           >
             참여하기
