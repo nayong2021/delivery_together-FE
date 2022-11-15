@@ -23,10 +23,20 @@ const MapItemDetail = (index) => {
     navigate(`/itemview/${clickedInfo.postIdx}`);
   };
 
+  const printDistance = (distance) => {
+    distance /= 1000;
+    if (distance < 1) {
+      return Math.round(distance * 1000) + "m";
+    } else {
+      return distance.toFixed(1) + "km";
+    }
+  };
+
   const getList = async () => {
     temp = await GetJoinableGroupBuyingApi();
     console.log(temp[index.index].additionalInfo);
     setList(temp);
+    console.log(temp);
     setInfo(temp[index.index]);
   };
 
@@ -41,32 +51,41 @@ const MapItemDetail = (index) => {
         style={{ zIndex: "3" }}
         onClick={onClickItem}
       >
-        {clickedInfo.storeLogoUrl ? (
+        {clickedInfo.backgroundUrl ? (
           <ImgContainer
-            src={clickedInfo.storeLogoUrl}
+            src={clickedInfo.backgroundUrl}
             alt="썸네일"
             className="thumb"
           />
         ) : null}
-        <div className="list-item" style={{ padding: "1px 9px 28px 15px" }}>
-          <div className="tit" style={{ textAlign: "left" }}>
-            {clickedInfo.title}
-          </div>
-          <div className="place" style={{ textAlign: "left" }}>
-            {clickedInfo.storeName}
-          </div>
-          <div className="info-group">
-            <div className="time">
-              <OrderTimeClock timeToOrder={clickedInfo.timeToOrder} />
-            </div>
-            <div className="info">
-              <span className="price">
-                예상배달비: {clickedInfo.expectedDeliveryFee}원 /{" "}
-                {clickedInfo.currentParticipant}명
-              </span>
-              {/* <span className="distance">{clickedInfo.distance}</span> */}
-            </div>
-          </div>
+        <div className="list-item">
+          <li>
+            <a style={{ padding: "3px 24px 5px 24px" }}>
+              <div class="img-group">
+                <img
+                  src={clickedInfo.storeLogoUrl}
+                  alt="썸네일"
+                  class="thumb"
+                />
+              </div>
+              <div className="item-info" style={{ textAlign: "left" }}>
+                <div className="time">
+                  <OrderTimeClock timeToOrder={clickedInfo.timeToOrder} />
+                </div>
+                <div className="tit">{clickedInfo.title}</div>
+                <div className="place">{clickedInfo.storeName}</div>
+                <div className="etc-info">
+                  <div className="distance">
+                    {printDistance(clickedInfo.distance)}
+                  </div>
+                  <div className="price">
+                    예상배달비: {clickedInfo.expectedDeliveryFee}원 /{" "}
+                    {clickedInfo.currentParticipant}명
+                  </div>
+                </div>
+              </div>
+            </a>
+          </li>
         </div>
       </div>
     </>
