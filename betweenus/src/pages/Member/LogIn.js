@@ -94,17 +94,19 @@ const LogIn = () => {
 
             <ol className="list-sns-login">
               <li>
-                <a href="https://nid.naver.com/oauth2.0/authorize?response_type=code&state=STATE_STRING&client_id=vvHUq0qX9AXLBnrSIAsO&redirect_uri=http://localhost:80/naver/auth">
+                <a href="https://nid.naver.com/oauth2.0/authorize?response_type=code&state=STATE_STRING&client_id=vvHUq0qX9AXLBnrSIAsO&redirect_uri=https://www.deliverytogether.com/login/oauth2/code/naver">
                   <img src={Naver} alt=" " />
                 </a>
               </li>
               <li>
-                <a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=04949a28db4e3308b9043cc740782305&redirect_uri=http://localhost/oauth2/code/kakao">
+                <a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=04949a28db4e3308b9043cc740782305&redirect_uri=https://www.deliverytogether.com/login/oauth2/code/kakao">
                   <img src={Kakao} alt=" " />
                 </a>
               </li>
               <li>
-                <img src={Apple} alt=" " />
+                <a href="#">
+                  <img src={Apple} alt=" " />
+                </a>
               </li>
             </ol>
           </div>
