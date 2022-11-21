@@ -22,19 +22,6 @@ const KakaoMapEx = () => {
   const SPRITE_HEIGHT = 146; // 스프라이트 이미지 높이
   const SPRITE_GAP = 10; // 스프라이트 이미지에서 마커간 간격
 
-  //   const XButton = styled.div`
-  //     position: absolute;
-  //     top: 63%;
-  //     left: 85%;
-  //     width: 3%;
-  //     height: 3%;
-  //     border-radius: 24px 24px 24px 24px;
-  //     box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.35);
-  //     box-sizing: border-box;
-  //     background: #fff;
-  //     z-index: 4;
-  //   `;
-
   const positions = [
     { lat: 33.44975, lng: 126.56967 },
     { lat: 33.450579, lng: 126.56956 },
@@ -203,6 +190,7 @@ const KakaoMapEx = () => {
         {list.map((position, index) => (
           <EventMarkerContainer
             index={index}
+            list={list}
             key={`EventMarkerContainer-${position.latitude}-${position.longitude}`}
             position={{ lat: position.latitude, lng: position.longitude }}
             onClick={() => setSeleteMarker(index)}

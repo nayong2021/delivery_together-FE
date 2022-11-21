@@ -10,4 +10,22 @@ module.exports = function (app) {
       changeOrigin: true,
     })
   );
+  app.use(
+    createProxyMiddleware("/nid", {
+      target: "https://nid.naver.com",
+      // pathRewrite: {
+      //   "^/nid": "",
+      // },
+      changeOrigin: true,
+    })
+  );
+  app.use(
+    createProxyMiddleware("/kauth", {
+      target: "https://kauth.kakao.com",
+      // pathRewrite: {
+      //   "^/kauth": "",
+      // },
+      changeOrigin: true,
+    })
+  );
 };
