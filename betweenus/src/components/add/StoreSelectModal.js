@@ -5,6 +5,7 @@ import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 import useDrag from "./useDrag";
 import Store from "./Store";
 import { useInView } from "react-intersection-observer";
+import Loading from "../common/Loading";
 
 const categories = [
   { id: "전체", sendToApi: "" },
@@ -67,6 +68,7 @@ export default function StoreSelectModal({
 }) {
   const [items, setItems] = useState(categories);
   const [page, setPage] = useState(0);
+  const [isLoaded, setLoaded] = useState(false);
   // const [storeSearchWord, setStoreSearchWord] = useState("");
 
   const [stores, setStores] = useState([]);
@@ -80,6 +82,7 @@ export default function StoreSelectModal({
     if (dragging) {
       return false;
     }
+    setLoaded(false);
     setPage(0);
     setSelectedCategory(category);
   };
@@ -103,6 +106,7 @@ export default function StoreSelectModal({
         page
       );
       setStores(result.data.restaurants);
+      setLoaded(true);
     } catch (error) {
       console.log(error);
     }
@@ -178,28 +182,32 @@ export default function StoreSelectModal({
             </div>
           </div>
         </div>
-        <section className="store-select">
-          <div className="wrap">
-            <ol className="store-list">
-              {stores
-                ? stores.map((store, idx) => (
-                    <Store
-                      key={idx}
-                      store={store}
-                      onStoreClick={onStoreClick}
-                      selected={selectedStore.id === store.id}
-                    />
-                  ))
-                : null}
-              <li ref={ref} />
-            </ol>
-          </div>
-          <div className="btn-group-bottom2">
-            <button className="btn-custom" onClick={onDecisionBtnClick}>
-              매장 선택
-            </button>
-          </div>
-        </section>
+        {isLoaded ? (
+          <section className="store-select">
+            <div className="wrap">
+              <ol className="store-list">
+                {stores
+                  ? stores.map((store, idx) => (
+                      <Store
+                        key={idx}
+                        store={store}
+                        onStoreClick={onStoreClick}
+                        selected={selectedStore.id === store.id}
+                      />
+                    ))
+                  : null}
+                <li ref={ref} />
+              </ol>
+            </div>
+            <div className="btn-group-bottom2">
+              <button className="btn-custom" onClick={onDecisionBtnClick}>
+                매장 선택
+              </button>
+            </div>
+          </section>
+        ) : (
+          <Loading />
+        )}
       </div>
     </div>
   );

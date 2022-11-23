@@ -35,10 +35,8 @@ const OAuthLogin = () => {
   useEffect(() => {
     const oauthPlatform = params.oauthPlatform;
     if (oauthPlatform === "naver") {
-      console.log("naver oauth");
       const oauthCode = queryString.parse(location.search);
       naverOAuthLogin(oauthCode.code, oauthCode.state);
-      console.log(oauthCode);
     }
     if (oauthPlatform === "kakao") {
       const oauthCode = queryString.parse(location.search);

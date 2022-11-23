@@ -19,7 +19,6 @@ const Setting = () => {
 
   const getUserInfo = async () => {
     const apiResult = await GetCurrentUserApi();
-    console.log(apiResult);
     setCurrentUser(apiResult);
   };
   useEffect(() => {

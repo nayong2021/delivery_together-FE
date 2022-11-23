@@ -10,7 +10,6 @@ export default function RegionList() {
   const [regionList, setRegionList] = useState({});
   const getList = async () => {
     const result = await RegionListGetApi();
-    console.log(result);
     setRegionList(result.data);
   };
 

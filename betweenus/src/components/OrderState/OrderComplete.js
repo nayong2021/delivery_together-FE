@@ -3,6 +3,7 @@ import "../../assets/css/common.css";
 import { GetOrderStateApi } from "../../modules/api/orderstate/GetOrderStateApi";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import useStoreOrderInfo from "../../store/storeOrderInfo";
 
 /* 배달 입력 시간 1: 50
 현재 시간 1:58
@@ -17,10 +18,12 @@ import { useParams } from "react-router-dom";
 // const elapsedHour = elapsedMSec / 1000 / 60 / 60; // 2.501111...
 
 const OrderComplete = () => {
+  const { orderInfo } = useStoreOrderInfo();
   const id = useParams();
   const date = new Date();
   let inputTime;
   let nowTime;
+  const deliveryTime = new Date(orderInfo.deliveryTimeInputTime);
 
   const getOrderState = async () => {
     const result = await GetOrderStateApi(id.index);
@@ -35,14 +38,17 @@ const OrderComplete = () => {
   return (
     <div className="delivery-state">
       <div className="message">주문 완료! :)</div>
-      <div className="time">오후 7시 15분 도착 예정</div>
+      <div className="time">
+        오후 {deliveryTime.getHours()}시 $
+        {deliveryTime.getMinutes() + orderInfo.deliveryLeadTime}분 도착 예정
+      </div>
       <div className="timer">
         남은시간 <br />
         7분
       </div>
       <div className="progress-group">
         <div className="bg">
-          <div className="current" style={{ width: "65%" }}>
+          <div className="current" style={{ width: "0%" }}>
             <span className="bubble">진행중</span>
           </div>
         </div>

@@ -8,6 +8,7 @@ import MenuCategory from "../../components/home/MenuCategory";
 import MenuOption from "../../components/home/MenuOption";
 import { ReactComponent as Arrow } from "../../assets/img_renewal/ico_arrow_right1.svg";
 import { ReactComponent as Clock } from "../../assets/img_renewal/ico_clock1.svg";
+import Loading from "../../components/common/Loading";
 
 const Order = () => {
   const navigate = useNavigate();
@@ -17,6 +18,7 @@ const Order = () => {
   const [selectedMenu, setSelectedMenu] = useState({});
   const [popupState, setPopupState] = useState(false);
   const [orderList, setOrderList] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
   const timeToOrder = itemdata.timeToOrder
     ? itemdata.timeToOrder.split(":")
     : null;
@@ -25,6 +27,7 @@ const Order = () => {
     const data = await GetGroupBuyingMenuListApi(id);
     setData(data);
     setMenuList(data.menuList);
+    setIsLoaded(true);
   }, [id]);
 
   const onMenuClick = (menuData) => {
@@ -60,63 +63,66 @@ const Order = () => {
           <div className="hd-tit">주문하기</div>
         </div>
       </header>
-
-      <section className="item-view">
-        <div className="top">
-          <div className="item-info">
-            <div className="time">
-              <Clock />
-              &nbsp;마감&nbsp;
-              {timeToOrder
-                ? Number(
-                    timeToOrder[0] > 12 ? timeToOrder[0] - 12 : timeToOrder[0]
-                  ) +
-                  ":" +
-                  (timeToOrder[1] < 10 ? "0" : "") +
-                  timeToOrder[1] +
-                  (timeToOrder[0] >= 12 ? "pm" : "am")
-                : null}
-            </div>
-            <div className="tit">{itemdata.title}</div>
-            <a href="#" className="place">
-              {itemdata.storeName}
-              <Arrow />
-            </a>
-          </div>
-        </div>
-        <div className="wrap">
-          {menuList
-            ? menuList.map((item, idx) => (
-                <MenuCategory
-                  key={idx}
-                  categoryList={item}
-                  onMenuClick={onMenuClick}
-                ></MenuCategory>
-              ))
-            : null}
-
-          <div className="btn-group-bottom2">
-            <div className="price">
-              <div className="tit">예상 배달비</div>
-              <div className="txt">
-                {itemdata.expectedDeliveryFee}원/
-                {itemdata.currentParticipant
-                  ? itemdata.currentParticipant.toLocaleString()
+      {isLoaded ? (
+        <section className="item-view">
+          <div className="top">
+            <div className="item-info">
+              <div className="time">
+                <Clock />
+                &nbsp;마감&nbsp;
+                {timeToOrder
+                  ? Number(
+                      timeToOrder[0] > 12 ? timeToOrder[0] - 12 : timeToOrder[0]
+                    ) +
+                    ":" +
+                    (timeToOrder[1] < 10 && timeToOrder[1] != 0 ? "0" : "") +
+                    timeToOrder[1] +
+                    (timeToOrder[0] >= 12 ? "pm" : "am")
                   : null}
-                명
               </div>
+              <div className="tit">{itemdata.title}</div>
+              <a href="#" className="place">
+                {itemdata.storeName}
+                <Arrow />
+              </a>
             </div>
-
-            <button
-              type="button"
-              className="btn-custom-v3"
-              onClick={() => navigate("ordersheet", { state: orderList })}
-            >
-              참여하기
-            </button>
           </div>
-        </div>
-      </section>
+          <div className="wrap">
+            {menuList
+              ? menuList.map((item, idx) => (
+                  <MenuCategory
+                    key={idx}
+                    categoryList={item}
+                    onMenuClick={onMenuClick}
+                  ></MenuCategory>
+                ))
+              : null}
+
+            <div className="btn-group-bottom2">
+              <div className="price">
+                <div className="tit">예상 배달비</div>
+                <div className="txt">
+                  {itemdata.expectedDeliveryFee}원/
+                  {itemdata.currentParticipant
+                    ? itemdata.currentParticipant.toLocaleString()
+                    : null}
+                  명
+                </div>
+              </div>
+
+              <button
+                type="button"
+                className="btn-custom-v3"
+                onClick={() => navigate("ordersheet", { state: orderList })}
+              >
+                참여하기
+              </button>
+            </div>
+          </div>
+        </section>
+      ) : (
+        <Loading />
+      )}
     </div>
   );
 };

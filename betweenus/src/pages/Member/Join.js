@@ -56,11 +56,9 @@ const Join = () => {
   };
 
   const onClickLogin = async () => {
-    console.log(inputs);
     try {
       const result = await PostMemberRegister(inputs);
       result.then((r) => {
-        console.log(r);
         sessionStorage.setItem("accessToken", r.data.accessToken);
         sessionStorage.setItem("refreshToken", r.data.refreshToken);
         navigate("/");
@@ -68,7 +66,6 @@ const Join = () => {
     } catch (error) {
       const errorCode = error.response.data.code;
       if (errorCode === 1) {
-        console.log("corret");
         navigate("/login");
       } else if (errorCode === "M001") {
         setGuideMS(

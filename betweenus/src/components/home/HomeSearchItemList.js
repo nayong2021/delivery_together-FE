@@ -15,13 +15,9 @@ export default function HomeSearchItemList() {
 
   const getList = async () => {
     if (option === "최신순") {
-      console.log(option);
       data = await GetSearchLatestOrderApi(keyword);
-      console.log(data);
     } else if (option === "모집인원 많은 순") {
-      console.log(option);
       data = await GetSearchLargePeopleApi(keyword);
-      console.log(data);
     }
     setData(data);
   };

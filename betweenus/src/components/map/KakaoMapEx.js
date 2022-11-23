@@ -91,9 +91,7 @@ const KakaoMapEx = () => {
 
   const getList = async () => {
     temp = await GetJoinableGroupBuyingApi();
-    console.log(temp);
     setList(temp);
-    console.log(list);
   };
 
   const [state, setState] = useState({

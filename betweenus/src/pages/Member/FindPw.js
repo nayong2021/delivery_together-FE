@@ -29,7 +29,6 @@ const FindPw = () => {
 
   const onClickPhone = () => {
     RequestKakaocert(inputs).then((result) => {
-      console.log(result);
       setInputs({
         ...inputs,
         receiptID: result.receiptID,

@@ -7,7 +7,6 @@ export const PostParticipateAcceptApi = async (memberIdx, postIdx) => {
     );
     return data;
   } catch (e) {
-    console.log("[FAIL] GET order progress data", e);
-    return e;
+    throw e;
   }
 };

@@ -19,7 +19,6 @@ const MapItemDetail = (index) => {
   `;
 
   const onClickItem = () => {
-    console.log("clicked");
     navigate(`/itemview/${clickedInfo.postIdx}`);
   };
 
@@ -34,9 +33,7 @@ const MapItemDetail = (index) => {
 
   const getList = async () => {
     temp = await GetJoinableGroupBuyingApi();
-    console.log(temp[index.index].additionalInfo);
     setList(temp);
-    console.log(temp);
     setInfo(temp[index.index]);
   };
 
@@ -73,7 +70,9 @@ const MapItemDetail = (index) => {
                   <OrderTimeClock timeToOrder={clickedInfo.timeToOrder} />
                 </div>
                 <div className="tit">{clickedInfo.title}</div>
-                <div className="place">{clickedInfo.storeName}</div>
+                <div className="place" style={{ marginBottom: "0" }}>
+                  {clickedInfo.storeName}
+                </div>
                 <div className="etc-info">
                   <div className="distance">
                     {printDistance(clickedInfo.distance)}

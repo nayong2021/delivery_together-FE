@@ -17,7 +17,6 @@ export const PostGroupBuyingApi = async (data, storeId) => {
   requestBody.storeId = storeId;
   try {
     const response = await instance.post(`/groupbuying`, requestBody);
-    console.log(response);
   } catch (e) {
     console.log("[FAIL] GET user data", e);
     return e;

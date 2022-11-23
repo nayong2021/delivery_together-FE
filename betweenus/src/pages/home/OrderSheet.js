@@ -8,12 +8,14 @@ import { GetGroupBuyingMenuListApi } from "../../modules/api/home/GetGroupBuying
 import { PostParticipationgApi } from "../../modules/api/home/PostParticipationApi";
 import { ReactComponent as Arrow } from "../../assets/img_renewal/ico_arrow_right1.svg";
 import { ReactComponent as Clock } from "../../assets/img_renewal/ico_clock1.svg";
+import Loading from "../../components/common/Loading";
 
 const OrderSheet = () => {
   const id = useParams();
   const navigate = useNavigate();
   const [itemdata, setData] = useState({});
   const [orderList, setOrderList] = useState([]);
+  const [isLoaded, setLoaded] = useState(false);
 
   const { state } = useLocation();
   const timeToOrder = itemdata.timeToOrder
@@ -23,6 +25,7 @@ const OrderSheet = () => {
   const getList = useCallback(async () => {
     const data = await GetGroupBuyingMenuListApi(id);
     setData(data);
+    setLoaded(true);
   }, [id]);
 
   const onSubmitOrder = () => {
@@ -90,93 +93,96 @@ const OrderSheet = () => {
           <div className="hd-tit">내 주문서</div>
         </div>
       </header>
-
-      <section className="item-view">
-        <div className="top">
-          <div className="item-info">
-            <div className="time">
-              <Clock />
-              &nbsp;마감&nbsp;
-              {timeToOrder
-                ? Number(
-                    timeToOrder[0] > 12 ? timeToOrder[0] - 12 : timeToOrder[0]
-                  ) +
-                  ":" +
-                  (timeToOrder[1] < 10 ? "0" : "") +
-                  timeToOrder[1] +
-                  (timeToOrder[0] >= 12 ? "pm" : "am")
-                : null}
-            </div>
-            <div className="tit">{itemdata.title}</div>
-            <a href="#" className="place">
-              {itemdata.storeName}
-              <Arrow />
-            </a>
-          </div>
-        </div>
-        <div className="wrap">
-          <ol className="list-order">
-            {orderList.map((item, idx) => {
-              return (
-                <OrderSheetItem
-                  key={idx}
-                  index={idx}
-                  orderInfo={item}
-                  setOrderList={setOrderList}
-                  deleteOrder={deleteOrder}
-                />
-              );
-            })}
-          </ol>
-
-          <ol className="order-result">
-            <li>
-              <div className="tit">음식 총 금액</div>
-              <div className="txt">{totalPrice}원</div>
-            </li>
-
-            <li>
-              <div className="tit">배달비</div>
-              <div className="txt">? 원</div>
-            </li>
-
-            <li>
-              <div className="tit">
-                <strong>총 금액</strong>
-              </div>
-              <div className="txt">
-                <strong>{totalPrice}원</strong>
-              </div>
-            </li>
-          </ol>
-
-          <div className="order-message">
-            주문서 전달 이후 호스트에게 정확한 공동구매 배달비를 <br />
-            안내받아 주문 금액과 함께 전달해주세요!
-          </div>
-
-          <div className="btn-group-bottom2">
-            <div className="price">
-              <div className="tit">예상 배달비</div>
-              <div className="txt">
-                {itemdata.expectedDeliveryFee}원/
-                {itemdata.currentParticipant
-                  ? itemdata.currentParticipant.toLocaleString()
+      {isLoaded ? (
+        <section className="item-view">
+          <div className="top">
+            <div className="item-info">
+              <div className="time">
+                <Clock />
+                &nbsp;마감&nbsp;
+                {timeToOrder
+                  ? Number(
+                      timeToOrder[0] > 12 ? timeToOrder[0] - 12 : timeToOrder[0]
+                    ) +
+                    ":" +
+                    (timeToOrder[1] < 10 && timeToOrder[1] != 0 ? "0" : "") +
+                    timeToOrder[1] +
+                    (timeToOrder[0] >= 12 ? "pm" : "am")
                   : null}
-                명
               </div>
+              <div className="tit">{itemdata.title}</div>
+              <a href="#" className="place">
+                {itemdata.storeName}
+                <Arrow />
+              </a>
+            </div>
+          </div>
+          <div className="wrap">
+            <ol className="list-order">
+              {orderList.map((item, idx) => {
+                return (
+                  <OrderSheetItem
+                    key={idx}
+                    index={idx}
+                    orderInfo={item}
+                    setOrderList={setOrderList}
+                    deleteOrder={deleteOrder}
+                  />
+                );
+              })}
+            </ol>
+
+            <ol className="order-result">
+              <li>
+                <div className="tit">음식 총 금액</div>
+                <div className="txt">{totalPrice}원</div>
+              </li>
+
+              <li>
+                <div className="tit">배달비</div>
+                <div className="txt">? 원</div>
+              </li>
+
+              <li>
+                <div className="tit">
+                  <strong>총 금액</strong>
+                </div>
+                <div className="txt">
+                  <strong>{totalPrice}원</strong>
+                </div>
+              </li>
+            </ol>
+
+            <div className="order-message">
+              주문서 전달 이후 호스트에게 정확한 공동구매 배달비를 <br />
+              안내받아 주문 금액과 함께 전달해주세요!
             </div>
 
-            <button
-              type="button"
-              className="btn-custom-v3"
-              onClick={onSubmitOrder}
-            >
-              참여하기
-            </button>
+            <div className="btn-group-bottom2">
+              <div className="price">
+                <div className="tit">예상 배달비</div>
+                <div className="txt">
+                  {itemdata.expectedDeliveryFee}원/
+                  {itemdata.currentParticipant
+                    ? itemdata.currentParticipant.toLocaleString()
+                    : null}
+                  명
+                </div>
+              </div>
+
+              <button
+                type="button"
+                className="btn-custom-v3"
+                onClick={onSubmitOrder}
+              >
+                참여하기
+              </button>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : (
+        <Loading />
+      )}
     </div>
   );
 };

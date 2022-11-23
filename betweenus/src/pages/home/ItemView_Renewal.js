@@ -7,17 +7,24 @@ import { GetGroupBuyingDetailApi } from "../../modules/api/home/GetGroupBuyingDe
 import { ReactComponent as Arrow } from "../../assets/img_renewal/ico_arrow_right1.svg";
 import { ReactComponent as Clock } from "../../assets/img_renewal/ico_clock1.svg";
 import Picture1 from "../../assets/img_renewal/tmp/img_picture1.png";
+import Loading from "../../components/common/Loading";
 
 const ItemView_Renewal = () => {
   const navigate = useNavigate();
   const id = useParams();
-  const [groupBuyingDetail, setGroupBuyingDetail] = useState({});
-  const timeToOrder = groupBuyingDetail.timeToOrder;
+  const [groupBuyingDetail, setGroupBuyingDetail] = useState({
+    isLoaded: false,
+    data: {},
+  });
+  const timeToOrder = groupBuyingDetail.data.timeToOrder;
 
   const getList = useCallback(async () => {
     const apiResult = await GetGroupBuyingDetailApi(id);
-    console.log(apiResult);
-    setGroupBuyingDetail(apiResult);
+    setGroupBuyingDetail({
+      ...groupBuyingDetail,
+      data: apiResult,
+      isLoaded: true,
+    });
   }, [id]);
 
   useEffect(() => {
@@ -38,76 +45,77 @@ const ItemView_Renewal = () => {
         </div>
       </header>
 
-      <section className="item-view">
-        <div className="fix">
-          <div className="top">
-            <div className="item-info">
-              <div className="time">
-                <Clock />
-                &nbsp;마감&nbsp;
-                {timeToOrder
-                  ? (timeToOrder[0] > 12
-                      ? timeToOrder[0] - 12
-                      : timeToOrder[0]) +
-                    ":" +
-                    (timeToOrder[1] < 10 ? "0" : "") +
-                    timeToOrder[1] +
-                    (timeToOrder[0] >= 12 ? "pm" : "am")
-                  : null}
+      {groupBuyingDetail.isLoaded ? (
+        <section className="item-view">
+          <div className="fix">
+            <div className="top">
+              <div className="item-info">
+                <div className="time">
+                  <Clock />
+                  &nbsp;마감&nbsp;
+                  {timeToOrder
+                    ? (timeToOrder[0] > 12
+                        ? timeToOrder[0] - 12
+                        : timeToOrder[0]) +
+                      ":" +
+                      (timeToOrder[1] < 10 ? "0" : "") +
+                      timeToOrder[1] +
+                      (timeToOrder[0] >= 12 ? "pm" : "am")
+                    : null}
+                </div>
+                <div className="tit">{groupBuyingDetail.data.title}</div>
+                <a href="#" className="place">
+                  {groupBuyingDetail.data.storeName}
+                  <Arrow />
+                </a>
               </div>
-              <div className="tit">{groupBuyingDetail.title}</div>
-              <a href="#" className="place">
-                {groupBuyingDetail.storeName}
-                <Arrow />
-              </a>
-            </div>
 
-            <div className="delivery-location">
-              <div className="tit">픽업장소</div>
-              <div className="txt">
-                <span>{groupBuyingDetail.pickupPlace}</span>
-                <button type="button" className="btn-copy"></button>
-              </div>
-              {/* <a href="#" className="btn-map">
+              <div className="delivery-location">
+                <div className="tit">픽업장소</div>
+                <div className="txt">
+                  <span>{groupBuyingDetail.data.pickupPlace}</span>
+                  <button type="button" className="btn-copy"></button>
+                </div>
+                {/* <a href="#" className="btn-map">
                 지도보기
               </a> */}
-            </div>
-          </div>
-
-          <div className="item-gallery">
-            <div className="img-group">
-              <img
-                src={groupBuyingDetail.backgroundUrl}
-                alt="썸네일"
-                className="thumb"
-              />
+              </div>
             </div>
 
-            {/* <div className="gallery-pagination">1/3</div> */}
-          </div>
-        </div>
-
-        <div className="item-detail">
-          <a href="#" className="user-data">
-            <div className="user-profile">
-              <div className="user-picture">
+            <div className="item-gallery">
+              <div className="img-group">
                 <img
-                  src={Picture1}
+                  src={groupBuyingDetail.data.backgroundUrl}
                   alt="썸네일"
                   className="thumb"
-                  // style="background-image: url('../img/tmp/img_picture1.png');"
                 />
               </div>
 
-              <div className="user-info">
-                <div className="user-nickname">
-                  {groupBuyingDetail.hostNickName}
-                </div>
-                {/* <div className="manner-check">매너나무 확인하기</div> */}
-              </div>
+              {/* <div className="gallery-pagination">1/3</div> */}
             </div>
+          </div>
 
-            {/* <div className="user-manner">
+          <div className="item-detail">
+            <a href="#" className="user-data">
+              <div className="user-profile">
+                <div className="user-picture">
+                  <img
+                    src={Picture1}
+                    alt="썸네일"
+                    className="thumb"
+                    // style="background-image: url('../img/tmp/img_picture1.png');"
+                  />
+                </div>
+
+                <div className="user-info">
+                  <div className="user-nickname">
+                    {groupBuyingDetail.data.hostNickName}
+                  </div>
+                  {/* <div className="manner-check">매너나무 확인하기</div> */}
+                </div>
+              </div>
+
+              {/* <div className="user-manner">
               <div className="manner-point">
                 <div className="txt">85.5%</div>
                 <div className="bar">
@@ -117,32 +125,37 @@ const ItemView_Renewal = () => {
 
               <img src={Tree1} alt=" " className="img-manner" />
             </div> */}
-          </a>
+            </a>
 
-          <div className="item-desc">{groupBuyingDetail.additionalInfo}</div>
-        </div>
-
-        <div className="btn-group-bottom2">
-          <div className="price">
-            <div className="tit">예상 배달비</div>
-            <div className="txt">
-              {groupBuyingDetail.expectedDeliveryFee}원/
-              {groupBuyingDetail.currentParticipant
-                ? groupBuyingDetail.currentParticipant.toLocaleString()
-                : null}
-              명
+            <div className="item-desc">
+              {groupBuyingDetail.data.additionalInfo}
             </div>
           </div>
 
-          <button
-            type="button"
-            className="btn-custom-v3"
-            onClick={() => navigate(`/itemview/${id.index}/order`)}
-          >
-            참여하기
-          </button>
-        </div>
-      </section>
+          <div className="btn-group-bottom2">
+            <div className="price">
+              <div className="tit">예상 배달비</div>
+              <div className="txt">
+                {groupBuyingDetail.data.expectedDeliveryFee}원/
+                {groupBuyingDetail.data.currentParticipant
+                  ? groupBuyingDetail.data.currentParticipant.toLocaleString()
+                  : null}
+                명
+              </div>
+            </div>
+
+            <button
+              type="button"
+              className="btn-custom-v3"
+              onClick={() => navigate(`/itemview/${id.index}/order`)}
+            >
+              참여하기
+            </button>
+          </div>
+        </section>
+      ) : (
+        <Loading />
+      )}
     </>
   );
 };

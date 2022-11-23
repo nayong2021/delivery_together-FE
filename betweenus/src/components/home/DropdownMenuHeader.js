@@ -15,7 +15,6 @@ export default function DrowpdownMenuHeader() {
   const getList = async () => {
     const data = GetCurrentUserApi();
     data.then((r) => {
-      console.log(r);
       if (r.representationTown === "") {
         navigate("/setting/region");
       }

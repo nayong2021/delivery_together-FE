@@ -4,8 +4,6 @@ import useStoreOrderInfo from "../../store/storeOrderInfo";
 export default function OrderResult() {
   const { orderInfo } = useStoreOrderInfo();
 
-  console.log(orderInfo);
-
   return (
     <>
       {Object.keys(orderInfo).length !== 0 ? (
@@ -13,10 +11,7 @@ export default function OrderResult() {
           <div className="type">
             <div className="tit">그룹 음식 총 금액</div>
             <div className="price">
-              {(
-                orderInfo.totalPrice + orderInfo.expectedDeliveryFee
-              ).toLocaleString()}
-              원
+              {orderInfo.totalPrice.toLocaleString()}원
             </div>
           </div>
 

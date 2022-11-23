@@ -6,7 +6,6 @@ import MetaTag from "../../components/common/MetaTag";
 const IdResult = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
-  console.log(state);
 
   return (
     <div id="root">

@@ -9,6 +9,7 @@ import { LoginWithToken } from "../../modules/api/chatting/LoginWithToken";
 import { GetCurrentUserApi } from "../../modules/api/common/GetCurrentUserApi";
 import useStoreOrderInfo from "../../store/storeOrderInfo";
 import { useInView } from "react-intersection-observer";
+import Loading from "../common/Loading";
 
 let firstLoaded = true;
 
@@ -144,13 +145,7 @@ const Chatting = () => {
     }
   }, [inView]);
 
-  const check = () => {
-    console.log(document.documentElement.scrollTop);
-    console.log(window.innerHeight);
-  };
-
   const onUploadImg = async (event) => {
-    console.log(event.target.files[0]);
     const response = await client.sendMessage(
       {
         channelId: String(orderInfo.postIdx),
@@ -162,102 +157,113 @@ const Chatting = () => {
         setChatList([data.message, ...chatListStateRef.current]);
       }
     );
-    console.log(response);
   };
 
-  return user ? (
-    <section className="chat">
-      <div ref={scrollRef} className="wrap">
-        <div ref={ref}></div>
-        <ol className="list-chat">
-          {chatList && Array.isArray(chatList) ? (
-            chatList
-              .slice()
-              .reverse()
-              .map((item, idx) => {
-                if (item.id === firstMessageId) {
-                  if (item.fileUrl === "") {
-                    return (
-                      <ChatItem
-                        key={item.id}
-                        writerNickname={item.username}
-                        contents={item.text}
-                        createdAt={item.createdAt}
-                        writerStatus={item.userId === String(user.memberIdx)}
-                        innerRef={firstMessageRef}
-                      />
-                    );
-                  } else {
-                    return (
-                      <ChatFileItem
-                        key={item.id}
-                        writerNickname={item.username}
-                        createdAt={item.createdAt}
-                        writerStatus={item.userId === String(user.memberIdx)}
-                        fileurl={item.fileUrl}
-                        innerRef={firstMessageRef}
-                      ></ChatFileItem>
-                    );
-                  }
-                } else {
-                  if (item.fileUrl === "") {
-                    return (
-                      <ChatItem
-                        key={item.id}
-                        writerNickname={item.username}
-                        contents={item.text}
-                        createdAt={item.createdAt}
-                        writerStatus={item.userId === String(user.memberIdx)}
-                      />
-                    );
-                  } else {
-                    return (
-                      <ChatFileItem
-                        key={item.id}
-                        writerNickname={item.username}
-                        createdAt={item.createdAt}
-                        writerStatus={item.userId === String(user.memberIdx)}
-                        fileurl={item.fileUrl}
-                      ></ChatFileItem>
-                    );
-                  }
-                }
-              })
-          ) : (
-            <li></li>
-          )}
-        </ol>
-      </div>
-
-      <div className="inp-group-chat">
-        <div className="write-tool">
-          <div className="btn-upload">
-            <input
-              type="file"
-              id="upload"
-              accept="image/*"
-              onChange={onUploadImg}
-            />
-            <label htmlFor="upload"></label>
+  return (
+    <>
+      <section className="chat">
+        {user ? (
+          <div ref={scrollRef} className="wrap">
+            <div ref={ref}></div>
+            <ol className="list-chat">
+              {chatList && Array.isArray(chatList) ? (
+                chatList
+                  .slice()
+                  .reverse()
+                  .map((item, idx) => {
+                    if (item.id === firstMessageId) {
+                      if (item.fileUrl === "") {
+                        return (
+                          <ChatItem
+                            key={item.id}
+                            writerNickname={item.username}
+                            contents={item.text}
+                            createdAt={item.createdAt}
+                            writerStatus={
+                              item.userId === String(user.memberIdx)
+                            }
+                            innerRef={firstMessageRef}
+                          />
+                        );
+                      } else {
+                        return (
+                          <ChatFileItem
+                            key={item.id}
+                            writerNickname={item.username}
+                            createdAt={item.createdAt}
+                            writerStatus={
+                              item.userId === String(user.memberIdx)
+                            }
+                            fileurl={item.fileUrl}
+                            innerRef={firstMessageRef}
+                          ></ChatFileItem>
+                        );
+                      }
+                    } else {
+                      if (item.fileUrl === "") {
+                        return (
+                          <ChatItem
+                            key={item.id}
+                            writerNickname={item.username}
+                            contents={item.text}
+                            createdAt={item.createdAt}
+                            writerStatus={
+                              item.userId === String(user.memberIdx)
+                            }
+                          />
+                        );
+                      } else {
+                        return (
+                          <ChatFileItem
+                            key={item.id}
+                            writerNickname={item.username}
+                            createdAt={item.createdAt}
+                            writerStatus={
+                              item.userId === String(user.memberIdx)
+                            }
+                            fileurl={item.fileUrl}
+                          ></ChatFileItem>
+                        );
+                      }
+                    }
+                  })
+              ) : (
+                <li></li>
+              )}
+            </ol>
           </div>
-          <input
-            type="text"
-            placeholder="메세지를 입력하세요."
-            className="inp-chat"
-            onChange={handleContents}
-            value={contents}
-            onKeyPress={onKeyPress}
-          />
-          <button
-            type="button"
-            className="btn-send"
-            // onClick={postChatContents}
-            onClick={check}
-          ></button>
+        ) : (
+          <Loading />
+        )}
+        <div className="inp-group-chat">
+          <div className="write-tool">
+            <div className="btn-upload">
+              <input
+                type="file"
+                id="upload"
+                accept="image/*"
+                onChange={onUploadImg}
+              />
+              <label htmlFor="upload"></label>
+            </div>
+            <input
+              type="text"
+              placeholder="메세지를 입력하세요."
+              className="inp-chat"
+              onChange={handleContents}
+              value={contents}
+              onKeyPress={onKeyPress}
+            />
+            <button
+              type="button"
+              className="btn-send"
+              onClick={postChatContents}
+            ></button>
+          </div>
         </div>
-      </div>
-    </section>
-  ) : null;
+      </section>
+    </>
+  );
 };
 
 export default Chatting;

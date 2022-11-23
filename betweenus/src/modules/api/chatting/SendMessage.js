@@ -9,7 +9,6 @@ export const SendMessage = async (sendtxt, setChatList) => {
         text: sendtxt,
       },
       function (err, data) {
-        console.log(data);
         return data;
       }
     );

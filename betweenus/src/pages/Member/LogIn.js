@@ -30,8 +30,6 @@ const LogIn = () => {
     });
     result.then((r) => {
       if (r.data) {
-        console.log("corret");
-        console.log(r.data);
         sessionStorage.setItem("accessToken", r.data.accessToken);
         sessionStorage.setItem("refreshToken", r.data.refreshToken);
         navigate("/");
@@ -39,7 +37,6 @@ const LogIn = () => {
         setWrongMessage(
           "&nbsp;&nbsp;&nbsp;이메일 또는 비밀번호를 잘못 입력했습니다. 입력하신 내용을 다시 확인해주세요."
         );
-        console.log("wrong");
       }
     });
   };

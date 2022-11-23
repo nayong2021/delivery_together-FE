@@ -32,11 +32,11 @@ const HostYesGuest = () => {
   };
 
   const onClickModalRefuse = async () => {
-    const result = await PostParticipateRefuseApi(
-      selectedMemberIdx,
-      orderInfo.postIdx
-    );
-    if (result) {
+    try {
+      const result = await PostParticipateRefuseApi(
+        selectedMemberIdx,
+        orderInfo.postIdx
+      );
       let newOrderLists = [...orderInfo.orderLists];
       newOrderLists[selectedIdx].agreeByHostStatus = "REFUSED";
       setOrderInfo({
@@ -46,19 +46,26 @@ const HostYesGuest = () => {
           orderInfo.totalPrice - newOrderLists[selectedIdx].memberTotalPrice,
         currentParticipant: orderInfo.currentParticipant - 1,
       });
+    } catch (e) {
+      console.log(e);
     }
     setModalActivate(false);
   };
 
   const onClickGuestParticipationItemAccept = async (memberIdx, idx) => {
-    const result = await PostParticipateAcceptApi(memberIdx, orderInfo.postIdx);
-    if (result) {
+    try {
+      const result = await PostParticipateAcceptApi(
+        memberIdx,
+        orderInfo.postIdx
+      );
       let newOrderLists = [...orderInfo.orderLists];
       newOrderLists[idx].agreeByHostStatus = "ACCEPTED";
       setOrderInfo({
         ...orderInfo,
         orderLists: newOrderLists,
       });
+    } catch (e) {
+      console.log(e);
     }
   };
 
